@@ -13,12 +13,23 @@ public class SceneController : MonoBehaviour
     public GameObject PerimeterParent;
     public GameObject MiddleParent;
     public GameObject BoxComplexities;
-
     public GameObject InteractiveElements;
+
+    private Dictionary<ParentObject, GameObject> parentObjects;
+
 
     // Start is called before the first frame update
     public void Awake()
     {
+        parentObjects = new Dictionary<ParentObject, GameObject>()
+        {
+            {ParentObject.TopParent, TopParent},
+            {ParentObject.PerimeterParent, PerimeterParent},
+            {ParentObject.MiddleParent, MiddleParent},
+            {ParentObject.ComplexitiesParent, BoxComplexities},
+            {ParentObject.InteractiveParent, InteractiveElements}
+
+        };
         //Academy.Instance.OnEnvironmentReset += RestartEnv;
         RestartEnv();
     }
@@ -27,7 +38,7 @@ public class SceneController : MonoBehaviour
     void RestartEnv()
     {
         // pass in parents as a names tuples
-        IEnvSetup env = new EnvSetup(2, 2, TopParent, PerimeterParent);
+        IEnvSetup env = new EnvSetup(2, 2, parentObjects);
         env.CreateEnv();
         
     }

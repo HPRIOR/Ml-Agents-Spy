@@ -12,24 +12,19 @@ public class EnvSetup : IEnvSetup
 {
     private readonly int _mapSize;
     private readonly int _mapComplexity;
+    private readonly Dictionary<ParentObject, GameObject> _parentObjects;
 
-    private readonly Dictionary<string, GameObject> parentObjects;
-    private readonly GameObject _topParent;
-    private readonly GameObject _perimeterParent;
+  
     private readonly List<List<Tile>> _tiles;
     private readonly int _gridMapSize;
 
-    public EnvSetup(int mapSize, int mapComplexity, (GameObject, GameObject, GameObject, GameObject, GameObject) parentTuple)
+    public EnvSetup(int mapSize, int mapComplexity, Dictionary<ParentObject, GameObject> parentObjects)
     {
         _mapSize = mapSize;
         _mapComplexity = mapComplexity;
         _gridMapSize = GridMapSize(_mapSize);
-
-        _topParent = topParent;
-        _perimeterParent = parentTuple.;
-        
-        
-        _tiles = new TileManager(_mapSize, topParent.transform.localPosition, _gridMapSize).Tiles;
+        _parentObjects = parentObjects;
+        _tiles = new TileManager(_mapSize, _parentObjects[ParentObject.TopParent].transform.localPosition, _gridMapSize).Tiles;
 
     }
 
@@ -40,9 +35,9 @@ public class EnvSetup : IEnvSetup
     {
         GameObject plane = CreatePlane(
             scale: new Vector3(_mapSize, 1, _mapSize),
-            parent: _topParent.transform
+            parent: _parentObjects[ParentObject.TopParent].transform
             );
-        CreatePerimeter(_tiles, _perimeterParent.transform, _gridMapSize);
+        CreatePerimeter(_tiles, _parentObjects, _gridMapSize);
     }
 
     /// <summary>
@@ -81,18 +76,14 @@ public class EnvSetup : IEnvSetup
         return plane;
     }
 
-    private void CreatePerimeter(List<List<Tile>> tiles, Transform periParent, int maxLen)
+    private void CreatePerimeter(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents, int maxLen)
     {
         foreach (var list in tiles)
         {
             foreach (var tile in list)
             {
-                if (CanPlacePerimeter(tile) || CanPlaceMiddle(tile))
-                    CreateBox(
-                        2,
-                        periParent.transform,
-                        tile.Position);
-        
+                if (CanPlacePerimeter(tile)) CreateBox(2, parents[ParentObject.PerimeterParent].transform, tile.Position);
+                if (CanPlaceMiddle(tile)) CreateBox(2, parents[ParentObject.MiddleParent].transform, tile.Position);
             }
         }
     }
@@ -105,6 +96,7 @@ public class EnvSetup : IEnvSetup
         & !tile.IsExit;
 
     private bool CanPlaceMiddle(Tile tile) =>
-        tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0;
+        (tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0)
+        & !CanPlacePerimeter(tile);
 
 }
