@@ -1,42 +1,110 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
+/// <summary>
+/// This class generates the environment environment 
+/// </summary>
 public class EnvSetup : IEnvSetup
 {
     private readonly int _mapSize;
     private readonly int _mapComplexity;
-    private readonly GameObject _topLevelParent;
 
-    public EnvSetup(int mapSize, int mapComplexity, GameObject topLevelParent)
+    private readonly Dictionary<string, GameObject> parentObjects;
+    private readonly GameObject _topParent;
+    private readonly GameObject _perimeterParent;
+    private readonly List<List<Tile>> _tiles;
+    private readonly int _gridMapSize;
+
+    public EnvSetup(int mapSize, int mapComplexity, (GameObject, GameObject, GameObject, GameObject, GameObject) parentTuple)
     {
         _mapSize = mapSize;
         _mapComplexity = mapComplexity;
-        _topLevelParent = topLevelParent;
+        _gridMapSize = GridMapSize(_mapSize);
+
+        _topParent = topParent;
+        _perimeterParent = parentTuple.;
+        
+        
+        _tiles = new TileManager(_mapSize, topParent.transform.localPosition, _gridMapSize).Tiles;
+
     }
 
+    /// <summary>
+    /// This is called by the Academy in the SceneController to produce a new env
+    /// </summary>
     public void CreateEnv()
     {
         GameObject plane = CreatePlane(
-            position: _topLevelParent.transform.localPosition,
             scale: new Vector3(_mapSize, 1, _mapSize),
-            parent: _topLevelParent.transform
+            parent: _topParent.transform
             );
-        
+        CreatePerimeter(_tiles, _perimeterParent.transform, _gridMapSize);
     }
 
-    private int GridMapSize => 
-        _mapSize % 2 == 0 ? (_mapSize * 10) / 2 : ((_mapSize * 10) / 2) + 1;
+    /// <summary>
+    /// Defines the height/width of the centre of the outermost tile
+    /// </summary>
+    /// <param name="mapSize">the scale of the plane on which the tiles will be set</param>
+    /// <returns>max height/width from centre of outermost tile</returns>
+    private int GridMapSize(int mapSize) =>
+        mapSize % 2 == 0 ? (mapSize * 10) / 2 : ((mapSize * 10) / 2) + 1;
 
 
+    private GameObject CreateBox(float scale, Transform parent, Vector3 position)
+    {
+        GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
+        box.transform.localScale = new Vector3(scale, scale, scale);
+        box.transform.parent = parent;
+        return box;
+    }
 
-    private GameObject CreatePlane(Vector3 position, Vector3 scale, Transform parent)
+   
+    /// <summary>
+    /// Produces a plane with a specified size and position (relative to the parent)
+    /// </summary>
+    /// <param name="scale">the size of the plane</param>
+    /// <param name="parent">the parent in the hierarchy window</param>
+    /// <returns></returns>
+    private GameObject CreatePlane(Vector3 scale, Transform parent)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        plane.transform.localPosition = position;
+        // sets the plane relative to the parent
+        plane.transform.localPosition = parent.localPosition ;
         plane.transform.localScale = scale;
+        // sets the parent of the plane object
         plane.transform.parent = parent;
         return plane;
     }
+
+    private void CreatePerimeter(List<List<Tile>> tiles, Transform periParent, int maxLen)
+    {
+        foreach (var list in tiles)
+        {
+            foreach (var tile in list)
+            {
+                if (CanPlacePerimeter(tile) || CanPlaceMiddle(tile))
+                    CreateBox(
+                        2,
+                        periParent.transform,
+                        tile.Position);
+        
+            }
+        }
+    }
+
+    private bool CanPlacePerimeter(Tile tile) => 
+        (tile.Coords.x == 0 
+         || tile.Coords.x == _gridMapSize
+         || tile.Coords.y == 0
+         || tile.Coords.y == _gridMapSize) 
+        & !tile.IsExit;
+
+    private bool CanPlaceMiddle(Tile tile) =>
+        tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0;
 
 }

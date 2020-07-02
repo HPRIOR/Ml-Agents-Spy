@@ -1,25 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Xml;
 using UnityEngine;
 
 public class Tile
 {
-    private Vector3 Position { get; }
-    private (int, int) Coords { get; }
+    public Vector3 Position { get; }
+    public (int x, int y) Coords { get; }
 
-    private Dictionary<Direction, Tile> AdjacentTiles { get; set; }
+    public Dictionary<Direction, Tile> AdjacentTiles { get; set; }
         = new Dictionary<Direction, Tile>();
 
-    private bool HasSpy { get; set; } = false;
-    private bool HasGuard { get; set; } = false;
-    private bool HasEnv { get; set; } = false;
+    public bool HasSpy { get; set; } = false;
+    public bool HasGuard { get; set; } = false;
+    public bool HasEnv { get; set; } = false;
+    public bool IsExit { get; set; } = false;
 
 
     public Tile(Vector3 position, (int, int) coords)
     {
         Position = position;
-        Coords = coords;
+        Coords = (x: coords.Item1, y: coords.Item2);
     }
 
+    public override string ToString()
+    {
+        return $"Tile at coordinate: {Coords}, \n" +
+               $"Position: {Position} \n" +
+               $"HasSpy = {HasSpy} \n" +
+               $"HasGuard = {HasGuard} \n" +
+               $"HasEnv = {HasEnv} \n";
+    }
 }
