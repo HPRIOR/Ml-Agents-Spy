@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using Grpc.Core.Logging;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile
@@ -23,6 +19,7 @@ public class Tile
     public bool HasGuard { get; set; } = false;
     public bool HasEnv { get; set; } = false;
     public bool IsExit { get; set; } = false;
+    public bool HasBeenVisited { get; set; } = false;
 
 
     public Tile(Vector3 position, (int, int) coords)

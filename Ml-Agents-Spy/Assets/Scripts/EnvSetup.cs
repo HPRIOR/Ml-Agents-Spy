@@ -11,18 +11,18 @@ public class EnvSetup : IEnvSetup
     private readonly int _mapComplexity;
     private readonly int _gridMapSize;
 
-    private readonly Dictionary<ParentObject, GameObject> _parentObjects;
+    private readonly Dictionary<ParentObject, GameObject> _parents;
     private readonly List<List<Tile>> _tiles;
     private List<Tile> _freeTiles = new List<Tile>();
 
 
-    public EnvSetup(int mapSize, int mapComplexity, Dictionary<ParentObject, GameObject> parentObjects)
+    public EnvSetup(int mapSize, int mapComplexity, Dictionary<ParentObject, GameObject> parents)
     {
         _mapSize = mapSize;
         _mapComplexity = mapComplexity;
         _gridMapSize = GridMapSize(_mapSize);
-        _parentObjects = parentObjects;
-        _tiles = new TileManager(_mapSize, _parentObjects[ParentObject.TopParent].transform.localPosition, _gridMapSize).Tiles;
+        _parents = parents;
+        _tiles = new TileManager(_mapSize, _parents[ParentObject.TopParent].transform.localPosition, _gridMapSize).Tiles;
 
     }
 
@@ -33,10 +33,13 @@ public class EnvSetup : IEnvSetup
     {
         GameObject plane = CreatePlane(
             scale: new Vector3(_mapSize, 1, _mapSize),
-            parent: _parentObjects[ParentObject.TopParent].transform
+            parent: _parents[ParentObject.TopParent].transform
             );
-        CreatePerimeter(_tiles, _parentObjects, _gridMapSize);
-        AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parentObjects);
+        CreatePerimeter(_tiles, _parents, _gridMapSize);
+        AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parents);
+        PathFinder p = new PathFinder();
+        Debug.Log(_freeTiles[0]);
+        p.SearchTiles(_freeTiles[0]);
     }
 
     /// <summary>
@@ -137,6 +140,7 @@ public class EnvSetup : IEnvSetup
             if (!tile.HasGuard || !tile.HasSpy)
             {
                 tile.HasEnv = true;
+                freeTiles.Remove(tile);
                 CreateBox(new Vector3(2, 2, 2), parents[ParentObject.ComplexitiesParent].transform, tile.Position);
             }
             
