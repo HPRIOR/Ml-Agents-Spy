@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
@@ -16,7 +17,7 @@ public class TileManager
         Tiles = CreateTilesList(gridMapSize, planeCentre);
         GetAdjacentTiles(Tiles, gridMapSize);
         
-        // Uncomment to debug each tile
+        // Uncomment to debug all tiles
         // Tiles.ForEach(tileRow=> tileRow.ForEach(tile => Debug.Log(tile)));
     }
 

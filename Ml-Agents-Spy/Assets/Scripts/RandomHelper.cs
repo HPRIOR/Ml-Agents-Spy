@@ -11,7 +11,7 @@ public class RandomHelper
     /// Generates list of random unique sequence of numbers.
     /// </summary>
     /// <remarks>
-    /// The count will default to the max value if the count is larger than the max value.
+    /// The exitCount will default to the max value if the exitCount is larger than the max value.
     /// Otherwise there will be no values left to populate the list and it will loop forever
     /// </remarks>
     /// <param name="count">the length of the returned List</param>

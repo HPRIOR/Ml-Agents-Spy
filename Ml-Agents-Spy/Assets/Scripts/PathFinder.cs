@@ -1,41 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using TMPro;
+﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Profiling.Experimental;
+using Vector3 = UnityEngine.Vector3;
 
 public class PathFinder
 {
-    public int count = 0;
-    public void ExitCount(Tile tile)
+    public int ExitCount { get; set; } = 0;
+    public void GetExitCount(Tile tile)
     {
-        count += 1;
+        //DebugSphere(tile.Position);
+        ExitCount += 1;
         tile.HasBeenVisited = true;
-        if (!tile.AdjacentTile[Direction.N].HasEnv & !tile.AdjacentTile[Direction.N].HasBeenVisited)
-            ExitCount(tile.AdjacentTile[Direction.N]);
-        if (!tile.AdjacentTile[Direction.E].HasEnv & !tile.AdjacentTile[Direction.E].HasBeenVisited)
-            ExitCount(tile.AdjacentTile[Direction.E]);
-        if (!tile.AdjacentTile[Direction.W].HasEnv & !tile.AdjacentTile[Direction.W].HasBeenVisited)
-            ExitCount(tile.AdjacentTile[Direction.W]);
-        if (!tile.AdjacentTile[Direction.S].HasEnv & !tile.AdjacentTile[Direction.S].HasBeenVisited)
-            ExitCount(tile.AdjacentTile[Direction.S]);
-    }
-
-    public int ExitCount2(Tile tile)
-    {
-        tile.HasBeenVisited = true;
-        Debug.Log(tile);
+        
         foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
         {
-            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited)
-                return !tile.IsExit
-                    ? ExitCount2(tile.AdjacentTile[direction]) + 1
-                    : ExitCount2(tile.AdjacentTile[direction]) + 0;
+            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited & !(tile.AdjacentTile[direction] is null))
+                if (!tile.IsExit) GetExitCount(tile.AdjacentTile[direction]);
         }
-        return 0;
+    }
+
+    // public int ExitCount2(Tile tile)
+    // {
+    //     DebugSphere(tile.Position);
+    //     tile.HasBeenVisited = true;
+    // 
+    //     foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
+    //     {
+    //         if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited)
+    //             return ExitCount2(tile.AdjacentTile[direction]) + 1;
+    //     }
+    // 
+    //     return 0;
+    // }
+
+    private void DebugSphere(Vector3 tilePosition)
+    {
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.localPosition = tilePosition;
     }
 }

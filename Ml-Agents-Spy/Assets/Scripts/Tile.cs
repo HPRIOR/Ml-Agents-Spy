@@ -34,6 +34,8 @@ public class Tile
                                          $"HasSpy = {HasSpy} \n" +
                                          $"HasGuard = {HasGuard} \n" +
                                          $"HasEnv = {HasEnv} \n" +
+                                         $"HasBeenVisited = {HasBeenVisited} \n" +
+                                         $"IsExit = {IsExit} \n" +
                                          $"North-Tile = {(AdjacentTile[Direction.N] is null ? "None" : AdjacentTile[Direction.N].Coords.ToString())} \n" +
                                          $"East-Tile = {(AdjacentTile[Direction.E] is null ? "None" : AdjacentTile[Direction.E].Coords.ToString())} \n" +
                                          $"South-Tile = {(AdjacentTile[Direction.S] is null ? "None" : AdjacentTile[Direction.S].Coords.ToString())} \n" +
