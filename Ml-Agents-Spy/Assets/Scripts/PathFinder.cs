@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -8,35 +10,32 @@ using UnityEngine.Profiling.Experimental;
 
 public class PathFinder
 {
-   
-    private int count = 0;
+    public int count = 0;
+    public void ExitCount(Tile tile)
+    {
+        count += 1;
+        tile.HasBeenVisited = true;
+        if (!tile.AdjacentTile[Direction.N].HasEnv & !tile.AdjacentTile[Direction.N].HasBeenVisited)
+            ExitCount(tile.AdjacentTile[Direction.N]);
+        if (!tile.AdjacentTile[Direction.E].HasEnv & !tile.AdjacentTile[Direction.E].HasBeenVisited)
+            ExitCount(tile.AdjacentTile[Direction.E]);
+        if (!tile.AdjacentTile[Direction.W].HasEnv & !tile.AdjacentTile[Direction.W].HasBeenVisited)
+            ExitCount(tile.AdjacentTile[Direction.W]);
+        if (!tile.AdjacentTile[Direction.S].HasEnv & !tile.AdjacentTile[Direction.S].HasBeenVisited)
+            ExitCount(tile.AdjacentTile[Direction.S]);
+    }
 
-    
-    public void SearchTiles(Tile tile)
+    public int ExitCount2(Tile tile)
     {
         tile.HasBeenVisited = true;
         Debug.Log(tile);
-        Debug.Log(count);
-        count += 1;
-        if (!tile.AdjacentTile[Direction.N].HasEnv & !tile.AdjacentTile[Direction.N].HasBeenVisited)
+        foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
         {
-            SearchTiles(tile.AdjacentTile[Direction.N]);
-            
+            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited)
+                return !tile.IsExit
+                    ? ExitCount2(tile.AdjacentTile[direction]) + 1
+                    : ExitCount2(tile.AdjacentTile[direction]) + 0;
         }
-        if (!tile.AdjacentTile[Direction.E].HasEnv & !tile.AdjacentTile[Direction.E].HasBeenVisited)
-        {
-             SearchTiles(tile.AdjacentTile[Direction.E]);
-             
-        }
-        if (!tile.AdjacentTile[Direction.W].HasEnv & !tile.AdjacentTile[Direction.W].HasBeenVisited)
-        {
-             SearchTiles(tile.AdjacentTile[Direction.W]);
-             
-        }
-        if (!tile.AdjacentTile[Direction.S].HasEnv & !tile.AdjacentTile[Direction.S].HasBeenVisited)
-        {
-             SearchTiles(tile.AdjacentTile[Direction.S]);
-             
-        }
+        return 0;
     }
 }

@@ -22,6 +22,7 @@ public class Tile
     public bool HasBeenVisited { get; set; } = false;
 
 
+
     public Tile(Vector3 position, (int, int) coords)
     {
         Position = position;

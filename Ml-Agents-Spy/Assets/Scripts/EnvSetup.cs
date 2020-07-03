@@ -38,8 +38,9 @@ public class EnvSetup : IEnvSetup
         CreatePerimeter(_tiles, _parents, _gridMapSize);
         AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parents);
         PathFinder p = new PathFinder();
-        Debug.Log(_freeTiles[0]);
-        p.SearchTiles(_freeTiles[0]);
+        Debug.Log(p.ExitCount2(_freeTiles[0]));
+        //p.ExitCount(_freeTiles[0]);
+        //Debug.Log(p.count);
     }
 
     /// <summary>
