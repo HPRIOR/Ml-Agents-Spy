@@ -32,11 +32,10 @@ public class TileManager
     private List<List<Tile>> CreateTilesList(int gridMapSize, Vector3 planeCentre)
     {
         int x = -gridMapSize;
-        int z = -gridMapSize;
         List<List<Tile>> tileList = new List<List<Tile>>();
         for (int i = 0; i < gridMapSize+1; i++)
         {
-            z = -gridMapSize;
+            int z = -gridMapSize;
             List<Tile> column = new List<Tile>();
             for (int j = 0; j < gridMapSize+1; j++)
             {
@@ -52,6 +51,15 @@ public class TileManager
             x += 2;
         }
         return tileList;
+    }
+
+    /// <summary>
+    /// Populates the adjacency dictionary of each tile with NESW neighboring tiles
+    /// </summary>
+    /// <param name="tiles">2D array of tiles</param>
+    private void GetAdjacentTiles(List<List<Tile>> tiles)
+    {
+
     }
 
 }

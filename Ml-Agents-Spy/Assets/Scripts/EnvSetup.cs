@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// This class generates the environment environment 
@@ -12,11 +14,12 @@ public class EnvSetup : IEnvSetup
 {
     private readonly int _mapSize;
     private readonly int _mapComplexity;
-    private readonly Dictionary<ParentObject, GameObject> _parentObjects;
-
-  
-    private readonly List<List<Tile>> _tiles;
     private readonly int _gridMapSize;
+
+    private readonly Dictionary<ParentObject, GameObject> _parentObjects;
+    private readonly List<List<Tile>> _tiles;
+    private List<Tile> _freeTiles = new List<Tile>();
+
 
     public EnvSetup(int mapSize, int mapComplexity, Dictionary<ParentObject, GameObject> parentObjects)
     {
@@ -38,6 +41,7 @@ public class EnvSetup : IEnvSetup
             parent: _parentObjects[ParentObject.TopParent].transform
             );
         CreatePerimeter(_tiles, _parentObjects, _gridMapSize);
+        AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parentObjects);
     }
 
     /// <summary>
@@ -49,11 +53,11 @@ public class EnvSetup : IEnvSetup
         mapSize % 2 == 0 ? (mapSize * 10) / 2 : ((mapSize * 10) / 2) + 1;
 
 
-    private GameObject CreateBox(float scale, Transform parent, Vector3 position)
+    private GameObject CreateBox(Vector3 scale, Transform parent, Vector3 position)
     {
         GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
         box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
-        box.transform.localScale = new Vector3(scale, scale, scale);
+        box.transform.localScale = scale;
         box.transform.parent = parent;
         return box;
     }
@@ -82,21 +86,67 @@ public class EnvSetup : IEnvSetup
         {
             foreach (var tile in list)
             {
-                if (CanPlacePerimeter(tile)) CreateBox(2, parents[ParentObject.PerimeterParent].transform, tile.Position);
-                if (CanPlaceMiddle(tile)) CreateBox(2, parents[ParentObject.MiddleParent].transform, tile.Position);
+                if (CanPlacePerimeter(tile, maxLen)) {
+                    CreateBox(
+                    scale: new Vector3(2, 2, 2),
+                    parent: parents[ParentObject.PerimeterParent].transform, 
+                    position: tile.Position
+                    );
+                    tile.HasEnv = true;
+                }
+                else if (CanPlaceMiddle(tile, maxLen)){
+                    CreateBox(
+                    scale: new Vector3(2, 2, 2), 
+                    parent: parents[ParentObject.MiddleParent].transform, 
+                    position: tile.Position
+                    );
+                    tile.HasEnv = true;
+                }
+                else 
+                {
+                    if (!tile.IsExit & !tile.HasGuard & !tile.HasSpy) _freeTiles.Add(tile);
+                } 
             }
         }
     }
 
-    private bool CanPlacePerimeter(Tile tile) => 
+    private bool CanPlacePerimeter(Tile tile, int maxLen) => 
         (tile.Coords.x == 0 
-         || tile.Coords.x == _gridMapSize
+         || tile.Coords.x == maxLen
          || tile.Coords.y == 0
-         || tile.Coords.y == _gridMapSize) 
+         || tile.Coords.y == maxLen) 
         & !tile.IsExit;
 
-    private bool CanPlaceMiddle(Tile tile) =>
+    private bool CanPlaceMiddle(Tile tile, int maxLen) =>
         (tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0)
-        & !CanPlacePerimeter(tile);
+        & !CanPlacePerimeter(tile, maxLen);
+
+    /// <summary>
+    /// Adds complexity to the map by filling in tiles and blocking off areas, reducing the possible the routes to the finish
+    /// </summary>
+    /// <param name="freeTiles"></param>
+    /// <param name="mapComplexity"></param>
+    /// <param name="parents"></param>
+    private void AddEnvBoxComplexity(List<Tile> freeTiles, int mapComplexity, Dictionary<ParentObject, GameObject> parents)
+    {
+        // Defaults to max free tiles if complexity is higher. Ensures max 1 env-block per tile
+        var checkComplexityCount = mapComplexity > freeTiles.Count ? freeTiles.Count : mapComplexity;
+
+        // unique list of indexes up to the amount of tiles 
+        List<int> randSequence = RandomHelper.GetUniqueRandomList(freeTiles.Count, freeTiles.Count);
+        
+
+        for (int i = 0; i < checkComplexityCount; i++)
+        {
+            var tile = freeTiles[randSequence[i]];
+            if (!tile.HasGuard || !tile.HasSpy)
+            {
+                tile.HasEnv = true;
+                CreateBox(new Vector3(2, 2, 2), parents[ParentObject.ComplexitiesParent].transform, tile.Position);
+            }
+            
+        }
+
+    }
 
 }
