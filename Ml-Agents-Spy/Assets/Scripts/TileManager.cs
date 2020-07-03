@@ -1,11 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net.Http.Headers;
-using System.Numerics;
-using Microsoft.Win32.SafeHandles;
-using UnityEditor;
-using UnityEngine;
+using System.Linq;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
@@ -19,6 +14,10 @@ public class TileManager
     public TileManager(int mapSize, Vector3 planeCentre, int gridMapSize)
     {
         Tiles = CreateTilesList(gridMapSize, planeCentre);
+        GetAdjacentTiles(Tiles, gridMapSize);
+        
+        // Uncomment to debug each tile
+        // Tiles.ForEach(tileRow=> tileRow.ForEach(tile => Debug.Log(tile)));
     }
 
    
@@ -57,9 +56,24 @@ public class TileManager
     /// Populates the adjacency dictionary of each tile with NESW neighboring tiles
     /// </summary>
     /// <param name="tiles">2D array of tiles</param>
-    private void GetAdjacentTiles(List<List<Tile>> tiles)
+    /// <param name="maxMapRange">The maximum width and height of tiles</param>
+    private void GetAdjacentTiles(List<List<Tile>> tiles, int maxMapRange) =>
+        tiles.
+            ForEach(tileRow => tileRow.
+                ForEach(tile => GetAllDirectionTiles(tile, tiles, maxMapRange)));
+    
+
+    private void GetAllDirectionTiles(Tile tile, List<List<Tile>> tiles, int maxMapRange) =>
+        System.Enum.GetValues(typeof(Direction)).Cast<Direction>()
+            .ToList()
+            .ForEach(direction => tile.AdjacentTile[direction] = GetDirectionTile(direction, tile, tiles, maxMapRange));
+    
+    private Tile GetDirectionTile(Direction d, Tile inputTile, List<List<Tile>> tiles, int mapMaxRange)
     {
-
+        if (d == Direction.N) return inputTile.Coords.y == mapMaxRange ? null : tiles[inputTile.Coords.x][inputTile.Coords.y + 1];
+        if (d == Direction.E) return inputTile.Coords.x == mapMaxRange ? null : tiles[inputTile.Coords.x + 1][inputTile.Coords.y];
+        if (d == Direction.S) return inputTile.Coords.y == 0 ? null : tiles[inputTile.Coords.x][inputTile.Coords.y - 1];
+        if (d == Direction.W) return inputTile.Coords.x == 0 ? null : tiles[inputTile.Coords.x - 1][inputTile.Coords.y];
+        throw new Exception("No direction given in TileManager.GetDirectionTile");
     }
-
 }
