@@ -1,7 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile
+/// <summary>
+/// Individual tile which forms part of the environments grid system
+/// </summary>
+/// <remarks>
+/// Each tile contains reference to their NESW neighboring tiles, their Vector position on the map, and spawning information for agents 
+/// </remarks>
+public class Tile : ICloneable
 {
     public Vector3 Position { get; }
     public (int x, int y) Coords { get; }
@@ -40,6 +47,9 @@ public class Tile
                                          $"East-Tile = {(AdjacentTile[Direction.E] is null ? "None" : AdjacentTile[Direction.E].Coords.ToString())} \n" +
                                          $"South-Tile = {(AdjacentTile[Direction.S] is null ? "None" : AdjacentTile[Direction.S].Coords.ToString())} \n" +
                                          $"West-Tile = {(AdjacentTile[Direction.W] is null ? "None" : AdjacentTile[Direction.W].Coords.ToString())} \n";
-        
-    
+
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
 }

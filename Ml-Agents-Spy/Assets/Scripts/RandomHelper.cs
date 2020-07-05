@@ -11,7 +11,7 @@ public class RandomHelper
     /// Generates list of random unique sequence of numbers.
     /// </summary>
     /// <remarks>
-    /// The exitCount will default to the max value if the exitCount is larger than the max value.
+    /// The ExitCount will default to the max value if the ExitCount is larger than the max value.
     /// Otherwise there will be no values left to populate the list and it will loop forever
     /// </remarks>
     /// <param name="count">the length of the returned List</param>
@@ -20,12 +20,14 @@ public class RandomHelper
     public static List<int> GetUniqueRandomList(int count, int maxVal)
     {
         int checkCount = count > maxVal ? maxVal : count;
+
         List<int> uniqueInts = new List<int>();
+        
         int counting = 0;
         while (counting < checkCount)
         {
             int num = _random.Next(0, maxVal);
-            if (!uniqueInts.Contains(num))
+            if  (!uniqueInts.Contains(num))
             {
                 uniqueInts.Add(num);
                 counting += 1;

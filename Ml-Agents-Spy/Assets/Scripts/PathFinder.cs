@@ -8,7 +8,7 @@ public class PathFinder
     public int ExitCount { get; set; } = 0;
     public void GetExitCount(Tile tile)
     {
-        //DebugSphere(tile.Position);
+        DebugSphere(tile.Position);
         ExitCount += 1;
         tile.HasBeenVisited = true;
         
@@ -18,7 +18,8 @@ public class PathFinder
                 if (!tile.IsExit) GetExitCount(tile.AdjacentTile[direction]);
         }
     }
-
+    
+    // // this should be fixed - add exit count to arguments 
     // public int ExitCount2(Tile tile)
     // {
     //     DebugSphere(tile.Position);
@@ -29,7 +30,6 @@ public class PathFinder
     //         if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited)
     //             return ExitCount2(tile.AdjacentTile[direction]) + 1;
     //     }
-    // 
     //     return 0;
     // }
 

@@ -38,7 +38,7 @@ public class SceneController : MonoBehaviour
     void RestartEnv()
     {
         // pass in parents as a names tuples
-        IEnvSetup env = new EnvSetup(1, 0, parentObjects);
+        IEnvSetup env = new EnvSetup(1, 21, parentObjects);
         env.CreateEnv();
         
     }

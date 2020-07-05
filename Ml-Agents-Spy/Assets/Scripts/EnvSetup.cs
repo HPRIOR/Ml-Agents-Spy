@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static ClassExtensions;
 
 
 /// <summary>
@@ -37,9 +39,10 @@ public class EnvSetup : IEnvSetup
             );
         CreatePerimeter(_tiles, _parents, _gridMapSize);
         AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parents);
-        PathFinder p = new PathFinder();
-        p.GetExitCount(_freeTiles[0]);
-        Debug.Log(p.exitCount);
+        // PathFinder p = new PathFinder();
+        // p.GetExitCount(_tiles[1][1]);
+        // Debug.Log(p.ExitCount);
+        //Debug.Log(p.ExitCount2(_tiles[1][1]));
     }
 
     /// <summary>
@@ -128,24 +131,30 @@ public class EnvSetup : IEnvSetup
     private void AddEnvBoxComplexity(List<Tile> freeTiles, int mapComplexity, Dictionary<ParentObject, GameObject> parents)
     {
         // Defaults to max free tiles if complexity is higher. Ensures max 1 env-block per tile
-        var checkComplexityCount = mapComplexity > freeTiles.Count ? freeTiles.Count : mapComplexity;
+        var checkComplexityCount = mapComplexity > freeTiles.Count  ? freeTiles.Count : mapComplexity;
 
         // unique list of indexes up to the amount of tiles 
-        List<int> randSequence = RandomHelper.GetUniqueRandomList(freeTiles.Count, freeTiles.Count);
-        
+        List<int> randSequence = RandomHelper.GetUniqueRandomList(count: mapComplexity , maxVal: freeTiles.Count );
 
+        /*
+         *  Debug.Log("complexity count: " + checkComplexityCount);
+         *  Debug.Log("count of free tiles: "+ freeTiles.Count);/
+         *  Debug.Log("count of random sequence: " + randSequence.Count);
+         *  randSequence.ForEach(x => Debug.Log(x));
+         */
+        
+        
         for (int i = 0; i < checkComplexityCount; i++)
         {
-            var tile = freeTiles[randSequence[i]];
+            int randomIndex = randSequence[i];
+            var tile = freeTiles[randomIndex];
             if (!tile.HasGuard || !tile.HasSpy)
             {
                 tile.HasEnv = true;
-                freeTiles.Remove(tile);
                 CreateBox(new Vector3(2, 2, 2), parents[ParentObject.ComplexitiesParent].transform, tile.Position);
             }
-            
         }
-
+        // problem: need to delete from freetiles, however the index of the tiles will be different when they are removed 
     }
 
 }
