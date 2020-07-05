@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class RandomHelper 
@@ -35,5 +36,19 @@ public class RandomHelper
         }
 
         return uniqueInts;
+    }
+
+    public static int GetParityRandom(int min, int max, ParityEnum parity)
+    {
+        if (parity == ParityEnum.Even)
+        {
+            int num = _random.Next(min, max);
+            return num % 2 != 0 & num < max ? num + 1 : num % 2 != 0 & num > min ? num - 1 : num;
+        }
+        else
+        {
+            int num = _random.Next(min, max);
+            return num % 2 == 0 & num < max ? num + 1 : num % 2 == 0 & num > min ? num - 1 : num;
+        }
     }
 }

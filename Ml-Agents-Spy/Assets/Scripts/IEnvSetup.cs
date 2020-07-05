@@ -4,5 +4,5 @@ using UnityEngine;
 
 interface IEnvSetup
 {
-    void CreateEnv();
+    void SetUpEnv();
 }
