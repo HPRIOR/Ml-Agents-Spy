@@ -8,6 +8,7 @@ using Unity.MLAgents;
 using UnityEngine;
 using static ClassExtensions;
 using static RandomHelper;
+using Random = System.Random;
 
 
 /// <summary>
@@ -26,7 +27,11 @@ public class EnvSetup : IEnvSetup
 
     private readonly Dictionary<ParentObject, GameObject> _parents;
     private readonly List<List<Tile>> _tiles;
+   
     private List<Tile> _freeTiles = new List<Tile>();
+    private List<Tile> _modifiedTiles = new List<Tile>();
+    private List<Tile> _guardTiles = new List<Tile>();
+    private Tile _spyTile;
 
 
     public EnvSetup(int mapSize, int mapComplexity, int exitCount, int guardAgentCount,
@@ -60,35 +65,60 @@ public class EnvSetup : IEnvSetup
             );
         
         CreateInitialEnv(_tiles, _freeTiles, _parents, _gridMapSize);
+        SetAgentTiles(_tiles, _mapSize, _gridMapSize, _guardAgentCount);
         AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parents);
-        SetAgentTile(_tiles, _gridMapSize, _guardAgentCount, _mapSize);
+        
     }
 
-    private void SetAgentTile(List<List<Tile>> tiles, int maxGridMapSize, int guardCount, int mapSize)
+    private void SetAgentTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
     {
-        System.Random r = new System.Random();
         // place spy
-        int y = mapSize >= 1 & mapSize <= 3 ? 1 : GetParityRandom(1, 3, ParityEnum.Odd);
-        int x = GetParityRandom(1, maxGridMapSize - 1, ParityEnum.Even);
-        SetSpyTile(x, y, tiles);
-        // uncomment to see placement of spy
-        // CreateBox(new Vector3(1,1,1), _parents[ParentObject.PerimeterParent].transform, tiles[x][y].Position);
-        // place guard - loop through guard guard count, check each time that the coordinates are different
-        y = mapSize >= 1 & mapSize <= 3 ? maxGridMapSize - 1 : GetParityRandom(maxGridMapSize  - 4, maxGridMapSize - 1, ParityEnum.Odd);
-        x = GetParityRandom(1, maxGridMapSize - 1, ParityEnum.Even);
+        SetSpyTile(tiles,  mapSize, gridMapSize);
 
+        //place guards
+        SetGuardTiles(tiles, mapSize, guardCount, gridMapSize);
     }
 
-    private static void SetGuardTile(int x, int y, List<List<Tile>> tiles) => 
-        tiles[x][y].HasGuard = true;
 
-
-    private static void SetSpyTile(int x, int y, List<List<Tile>> tiles) =>
-        tiles[x][y].HasSpy = true;
-
-    private static void PlaceExits()
+    private static void SetSpyTile(List<List<Tile>> tiles, int mapSize, int gridMapSize)
     {
+        int y = mapSize >= 1 & mapSize <= 3 ? 1 : GetParityRandom(1, 3, ParityEnum.Odd);
+        int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
+        tiles[x][y].HasSpy = true;
+        // CreateBox(new Vector3(1,1,1), _parents[ParentObject.PerimeterParent].transform, tiles[x][y].Position);
+    }
 
+    private static void SetGuardTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
+    {
+        List<(int, int)> coordsList = new List<(int, int)>();
+
+        // ensures the maximum amount of guards doesn't exceed the room for them in the map
+        int loopCount = mapSize <= 3 & guardCount > mapSize * 2 ? mapSize * 2 :
+            mapSize > 3 & guardCount > mapSize * 4 ? mapSize * 4 : guardCount;
+
+        for (int i = 0; i < loopCount; i++)
+        {
+            int y = mapSize >= 1 & mapSize <= 3 ? gridMapSize - 1 : GetParityRandom(gridMapSize - 4, gridMapSize - 1, ParityEnum.Odd);
+            int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
+
+            if (coordsList.Contains((x, y))) { i -= 1; }
+            else
+            {
+                tiles[x][y].HasGuard = true;
+                coordsList.Add((x, y));
+
+                //CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
+            }
+
+        }
+        
+    }
+
+    private static void PlaceExits(int exitCount, int guardCount)
+    {
+        int exitCountCheck = exitCount <= guardCount ? guardCount + 1 : exitCount;
+
+        // Random coords/ make sure there are more exits than gaurds
     }
 
     private static void CreateInitialEnv(List<List<Tile>> tiles, List<Tile> freeTiles, Dictionary<ParentObject, GameObject> parents, int maxLen)
