@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using TMPro;
 using Unity.MLAgents;
+using UnityEditor;
 using UnityEngine;
 using static ClassExtensions;
 using static RandomHelper;
@@ -63,7 +64,7 @@ public class EnvSetup : IEnvSetup
             scale: new Vector3(_mapSize, 1, _mapSize),
             parent: _parents[ParentObject.TopParent].transform
             );
-        
+        PlaceExits(_gridMapSize, _exitCount, _guardAgentCount, _tiles);
         CreateInitialEnv(_tiles, _freeTiles, _parents, _gridMapSize);
         SetAgentTiles(_tiles, _mapSize, _gridMapSize, _guardAgentCount);
         AddEnvBoxComplexity(_freeTiles, _mapComplexity, _parents);
@@ -76,19 +77,19 @@ public class EnvSetup : IEnvSetup
         SetSpyTile(tiles,  mapSize, gridMapSize);
 
         //place guards
-        SetGuardTiles(tiles, mapSize, guardCount, gridMapSize);
+        SetGuardTiles(tiles, mapSize, gridMapSize, guardCount);
     }
 
 
-    private static void SetSpyTile(List<List<Tile>> tiles, int mapSize, int gridMapSize)
+    private void SetSpyTile(List<List<Tile>> tiles, int mapSize, int gridMapSize)
     {
         int y = mapSize >= 1 & mapSize <= 3 ? 1 : GetParityRandom(1, 3, ParityEnum.Odd);
         int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
         tiles[x][y].HasSpy = true;
-        // CreateBox(new Vector3(1,1,1), _parents[ParentObject.PerimeterParent].transform, tiles[x][y].Position);
+        CreateBox(new Vector3(1,1,1), _parents[ParentObject.PerimeterParent].transform, tiles[x][y].Position);
     }
 
-    private static void SetGuardTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
+    private  void SetGuardTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
     {
         List<(int, int)> coordsList = new List<(int, int)>();
 
@@ -107,18 +108,33 @@ public class EnvSetup : IEnvSetup
                 tiles[x][y].HasGuard = true;
                 coordsList.Add((x, y));
 
-                //CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
+                CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
             }
 
         }
         
     }
 
-    private static void PlaceExits(int exitCount, int guardCount)
+    private void PlaceExits(int gridMapSize, int exitCount, int guardCount, List<List<Tile>> tiles, int guardExitDiff = 1)
     {
-        int exitCountCheck = exitCount <= guardCount ? guardCount + 1 : exitCount;
+        // ensures no# of exits > than no# guards and can fit onto the map
+        int exitCountCheck = exitCount <= guardCount ? guardCount + guardExitDiff : exitCount > gridMapSize - 2 ? gridMapSize : exitCount;
+        Debug.Log(exitCountCheck);
+        List<(int,int)> coordsList = new List<(int, int)>();
 
-        // Random coords/ make sure there are more exits than gaurds
+        System.Random r = new Random();
+        for (int i = 0; i < exitCountCheck; i++)
+        {
+            int x = r.Next(1, gridMapSize - 1);
+            int y = gridMapSize;
+            if (coordsList.Contains((x, y))) i -= 1;
+            else
+            {
+                tiles[x][y].IsExit = true;
+                coordsList.Add((x, y));
+                CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
+            }
+        }
     }
 
     private static void CreateInitialEnv(List<List<Tile>> tiles, List<Tile> freeTiles, Dictionary<ParentObject, GameObject> parents, int maxLen)
@@ -155,7 +171,10 @@ public class EnvSetup : IEnvSetup
 
     private static bool CanPlaceMiddle(Tile tile, int maxLen) =>
         (tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0)
-        & !CanPlacePerimeter(tile, maxLen);
+        & !(tile.Coords.x == 0
+            || tile.Coords.x == maxLen
+            || tile.Coords.y == 0
+            || tile.Coords.y == maxLen);
 
     private static bool CanPlacePerimeter(Tile tile, int maxLen) =>
         (tile.Coords.x == 0
