@@ -5,11 +5,13 @@ using Vector3 = UnityEngine.Vector3;
 
 public static  class PathFinder
 {
+    // this causes a stack overflow if map is too large...
+    // maybe should not be recursive
+
     public static void GetSpyPathFrom(Tile tile)
     {
-        DebugSphere(tile.Position);
+        // DebugSphere(tile.Position);
         tile.OnSpyPath = true;
-        
         foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
         {
             if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].OnSpyPath & !(tile.AdjacentTile[direction] is null))

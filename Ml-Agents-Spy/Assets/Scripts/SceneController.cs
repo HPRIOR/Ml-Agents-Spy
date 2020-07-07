@@ -10,10 +10,10 @@ using UnityEngine.Playables;
 public class SceneController : MonoBehaviour
 {
     public GameObject TopParent;
-    public GameObject PerimeterParent;
-    public GameObject MiddleParent;
-    public GameObject BoxComplexities;
-    public GameObject InteractiveElements;
+    public GameObject EnvParent;
+    public GameObject SpyParent;
+    public GameObject GuardParent;
+    public GameObject DebugParent;
 
     private Dictionary<ParentObject, GameObject> parentObjects;
 
@@ -24,10 +24,10 @@ public class SceneController : MonoBehaviour
         parentObjects = new Dictionary<ParentObject, GameObject>()
         {
             {ParentObject.TopParent, TopParent},
-            {ParentObject.PerimeterParent, PerimeterParent},
-            {ParentObject.MiddleParent, MiddleParent},
-            {ParentObject.ComplexitiesParent, BoxComplexities},
-            {ParentObject.InteractiveParent, InteractiveElements}
+            {ParentObject.EnvParent, EnvParent},
+            {ParentObject.SpyParent, SpyParent},
+            {ParentObject.GuardParent, GuardParent},
+            {ParentObject.DebugParent, DebugParent}
 
         };
         //Academy.Instance.OnEnvironmentReset += RestartEnv;
@@ -39,10 +39,10 @@ public class SceneController : MonoBehaviour
     {
         // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
-            mapSize: 4,
-            mapComplexity: 50,
-            exitCount: 3,
-            guardAgentCount: 2,
+            mapSize: 5,
+            mapComplexity: 0,
+            exitCount: 2,
+            guardAgentCount: 5,
             parents: parentObjects
         );
 

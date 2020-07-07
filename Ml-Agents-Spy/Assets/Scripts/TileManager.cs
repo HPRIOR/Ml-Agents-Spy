@@ -12,7 +12,7 @@ public class TileManager
     public List<List<Tile>> Tiles { get; }
    
 
-    public TileManager(int mapSize, Vector3 planeCentre, int gridMapSize)
+    public TileManager(Vector3 planeCentre, int gridMapSize)
     {
         Tiles = CreateTilesList(gridMapSize, planeCentre);
         GetAdjacentTiles(Tiles, gridMapSize);
@@ -20,8 +20,6 @@ public class TileManager
         // Uncomment to debug all tiles
         // Tiles.ForEach(tileRow=> tileRow.ForEach(tile => Debug.Log(tile)));
     }
-
-   
 
     /// <summary>
     /// produces 2D list of tiles 

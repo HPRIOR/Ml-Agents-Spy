@@ -5,8 +5,8 @@ using UnityEngine;
 public enum ParentObject
 {
     TopParent,
-    PerimeterParent,
-    MiddleParent,
-    ComplexitiesParent,
-    InteractiveParent
+    EnvParent,
+    SpyParent,
+    GuardParent,
+    DebugParent
 }
