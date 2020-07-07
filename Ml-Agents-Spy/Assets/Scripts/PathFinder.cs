@@ -3,27 +3,17 @@ using UnityEditor;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class PathFinder
+public static  class PathFinder
 {
-    public int ExitCount { get; set; } = 0;
-
-    public PathFinder()
-    {
-         
-    }
-    public void GetExitCount(Tile tile)
+    public static void GetSpyPathFrom(Tile tile)
     {
         DebugSphere(tile.Position);
-        if (tile.IsExit)
-        {
-            ExitCount += 1;
-        }
-        tile.HasBeenVisited = true;
+        tile.OnSpyPath = true;
         
         foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
         {
-            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited & !(tile.AdjacentTile[direction] is null))
-                GetExitCount(tile.AdjacentTile[direction]);
+            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].OnSpyPath & !(tile.AdjacentTile[direction] is null))
+                GetSpyPathFrom(tile.AdjacentTile[direction]);
         }
     }
     
@@ -31,17 +21,17 @@ public class PathFinder
     //public int ExitCount2(Tile tile)
     //{
     //    DebugSphere(tile.Position);
-    //    tile.HasBeenVisited = true;
+    //    tile.OnSpyPath = true;
     //
     //    foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
     //    {
-    //        if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].HasBeenVisited)
+    //        if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].OnSpyPath)
     //            return ExitCount2(tile.AdjacentTile[direction]) + 1;
     //    }
     //    return 0;
     //}
 
-    private void DebugSphere(Vector3 tilePosition)
+    private static void DebugSphere(Vector3 tilePosition)
     {
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.localPosition = tilePosition;

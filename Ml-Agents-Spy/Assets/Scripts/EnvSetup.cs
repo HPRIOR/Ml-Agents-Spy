@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -19,9 +20,6 @@ public class EnvSetup : IEnvSetup
 {
     private readonly int _mapSize;
     private readonly int _mapComplexity;
-    /// <summary>
-    /// grid map size is half of the total map size in tiles
-    /// </summary>
     private readonly int _gridMapSize;
     private readonly int _exitCount;
     private readonly int _guardAgentCount;
@@ -65,55 +63,68 @@ public class EnvSetup : IEnvSetup
             scale: new Vector3(_mapSize, 1, _mapSize),
             parent: _parents[ParentObject.TopParent].transform
             );
-        PlaceExits(_gridMapSize, _exitCount, _guardAgentCount, _tiles);
-        SetAgentTiles(_tiles, _mapSize, _gridMapSize, _guardAgentCount);
+
+        var spyTile = SetSpyTile(_tiles, _gridMapSize);
         CreateInitialEnv(_tiles, _complexityTiles, _parents, _gridMapSize);
-        AddEnvBoxComplexity(_complexityTiles, _mapComplexity, _mapSize, _parents);
-        
+        AddEnvComplexity(_tiles, _mapComplexity, _gridMapSize,_mapSize, _parents);
+        PathFinder.GetSpyPathFrom(spyTile);
+
+        if (ExitsAreAvailable(_tiles, _gridMapSize, _exitCount))
+        {
+            PlaceExits(_gridMapSize, _exitCount, _guardAgentCount, _tiles);
+            var guardSpawnTiles = GetGuardSpawnTiles(_tiles, _mapSize, _gridMapSize);
+            
+            if (GuardPlacesAreAvailable(guardSpawnTiles, _guardAgentCount, _mapSize, _gridMapSize))
+            {
+                SetGuardTiles(guardSpawnTiles, _mapSize, _gridMapSize, _guardAgentCount);
+            }
+            else
+            {
+                // throw error
+            }
+        }
+        else
+        {
+            // throw error
+        }
+
+        // build map here when loop succceeds
+
     }
+    
 
-    private void SetAgentTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
+    private Tile SetSpyTile(List<List<Tile>> tiles, int gridMapSize)
     {
-        // place spy
-        SetSpyTile(tiles,  mapSize, gridMapSize);
-
-        //place guards
-        SetGuardTiles(tiles, mapSize, gridMapSize, guardCount);
-    }
-
-
-    private void SetSpyTile(List<List<Tile>> tiles, int mapSize, int gridMapSize)
-    {
-        int y = mapSize >= 1 & mapSize <= 3 ? 1 : GetParityRandom(1, 3, ParityEnum.Odd);
+        int y = 1;
         int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
         tiles[x][y].HasSpy = true;
         CreateBox(new Vector3(1,1,1), _parents[ParentObject.PerimeterParent].transform, tiles[x][y].Position);
+        return tiles[x][y];
     }
 
-    private void SetGuardTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize, int guardCount)
+    private static List<Tile> GetGuardSpawnTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize) => 
+        (from tileRow in tiles
+            from tile in tileRow
+            where tile.OnSpyPath
+            where tile.Coords.x % 2 == 0
+            where InGuardSpawnAreaY(tile, mapSize, gridMapSize)
+            select tile).ToList();
+
+    private static bool GuardPlacesAreAvailable(List<Tile> guardSpawnTiles, int guardCount, int mapSize, int gridMapSize) => 
+        guardCount <= guardSpawnTiles.Count;
+
+    private void SetGuardTiles(List<Tile> guardSpawnTiles, int mapSize, int gridMapSize, int guardCount)
     {
-        List<(int, int)> coordsList = new List<(int, int)>();
-
-        // ensures the maximum amount of guards doesn't exceed the room for them in the map
-        int loopCount = mapSize <= 3 & guardCount > mapSize * 2 ? mapSize * 2 :
-            mapSize > 3 & guardCount > mapSize * 4 ? mapSize * 4 : guardCount;
-
-        for (int i = 0; i < loopCount; i++)
-        {
-            int y = mapSize >= 1 & mapSize <= 3 ? gridMapSize - 1 : GetParityRandom(gridMapSize - 4, gridMapSize - 1, ParityEnum.Odd);
-            int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
-
-            if (coordsList.Contains((x, y))) { i -= 1; }
-            else
-            {
-                tiles[x][y].HasGuard = true;
-                coordsList.Add((x, y));
-
-                CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
-            }
-
-        }
+        var randomList = GetUniqueRandomList(guardCount, guardSpawnTiles.Count);
+        Enumerable.Range(0, guardCount - 1).ToList().ForEach(i => guardSpawnTiles[randomList[i]].HasGuard = true);
     }
+
+
+    private static bool InGuardSpawnAreaY(Tile tile, int mapSize, int gridMapSize) =>
+        mapSize >= 1 & mapSize <= 3 & tile.Coords.y == gridMapSize - 1 
+        || mapSize > 3 & (tile.Coords.y == gridMapSize - 1 || tile.Coords.y == gridMapSize - 3);
+
+
 
     private void GetAgentTiles(List<List<Tile>> tiles)
     {
@@ -126,33 +137,51 @@ public class EnvSetup : IEnvSetup
                 else if (tile.HasGuard) _guardTiles.Add(tile);
                 else if (tile.HasEnv) _envTiles.Add(tile);
                 else _complexityTiles.Add(tile);
-
             }
         }
     }
+
+    // should pass in the first row of tiles 
+    /// <summary>
+    /// Checks if there are at least twice as many potential exit point as there are desired exit points
+    /// </summary>
+    /// <param name="tiles"></param>
+    /// <param name="gridMapSize"></param>
+    /// <param name="exitCount"></param>
+    /// <returns></returns>
+    private static bool ExitsAreAvailable(List<List<Tile>> tiles, int gridMapSize, int exitCount) =>
+        exitCount <= (from tileRow in tiles
+            from tile in tileRow
+            where tile.Coords.y == gridMapSize
+            where tile.AdjacentTile[Direction.S].OnSpyPath
+            select tile).ToList().Count/2;
 
 
     private void PlaceExits(int gridMapSize, int exitCount, int guardCount, List<List<Tile>> tiles, int guardExitDiff = 1)
     {
-        // ensures no# of exits > than no# guards and can fit onto the map
-        int exitCountCheck = exitCount <= guardCount ? guardCount + guardExitDiff : exitCount > gridMapSize - 2 ? gridMapSize : exitCount;
-        List<(int,int)> coordsList = new List<(int, int)>();
-
         System.Random r = new Random();
-        for (int i = 0; i < exitCountCheck; i++)
+        var potentialExits =
+            (from tileRow in tiles
+                from tile in tileRow
+                where tile.Coords.y == gridMapSize
+                where tile.AdjacentTile[Direction.S].OnSpyPath
+                select tile).ToList();
+
+        for (int i = 0; i < exitCount; i++)
         {
-            int x = r.Next(1, gridMapSize - 1);
-            int y = gridMapSize;
-            if (coordsList.Contains((x, y))) i -= 1;
+            var selectedExit = potentialExits[r.Next(0, potentialExits.Count - 1)];
+            if (!selectedExit.AdjacentTile[Direction.E].IsExit & !selectedExit.AdjacentTile[Direction.W].IsExit & !selectedExit.IsExit)
+            {
+                selectedExit.IsExit = true;
+                selectedExit.HasEnv = false;
+                CreateBox(new Vector3(3, 3, 3), _parents[ParentObject.ComplexitiesParent].transform, selectedExit.Position);
+            }
             else
             {
-                tiles[x][y].IsExit = true;
-                coordsList.Add((x, y));
-                CreateBox(new Vector3(1, 1, 1), _parents[ParentObject.ComplexitiesParent].transform, tiles[x][y].Position);
+                i -= 1;
             }
         }
     }
-
 
     private static void CreateInitialEnv(List<List<Tile>> tiles, List<Tile> freeTiles, Dictionary<ParentObject, GameObject> parents, int maxLen)
     {
@@ -186,6 +215,43 @@ public class EnvSetup : IEnvSetup
         }
     }
 
+    private void AddEnvComplexity(List<List<Tile>> tiles, int mapComplexity, int gridMapSize, int mapSize,
+        Dictionary<ParentObject, GameObject> parents)
+    {
+        List<Tile> freeTiles =
+            (from tileRow in tiles
+            from tile in tileRow
+            where EnvComplexityCanPlace(tile, mapSize, gridMapSize)
+            select tile)
+            .ToList();
+
+        // Defaults to max free guardSpawnTiles if complexity is higher. Ensures max 1 env-block per tile
+        var checkComplexityCount = mapComplexity > freeTiles.Count ? freeTiles.Count : mapComplexity;
+
+        List<int> randSequence = RandomHelper.GetUniqueRandomList(count: mapComplexity, maxVal: freeTiles.Count);
+        
+        for (int i = 0; i < checkComplexityCount; i++)
+        {
+            var tile = freeTiles[randSequence[i]];
+            tile.HasEnv = true;
+            CreateBox(new Vector3(2, 2, 2), parents[ParentObject.ComplexitiesParent].transform, tile.Position);
+        }
+    }
+
+    // Env placement logic:
+
+    private static bool EnvComplexityCanPlace(Tile tile, int mapSize, int gridMapSize) =>
+        !tile.IsExit & !tile.HasEnv & !tile.HasGuard & !tile.HasSpy & !CanPlacePerimeter(tile, gridMapSize) & !CanPlaceMiddle(tile, gridMapSize); 
+
+    private static bool NotInAgentArea(Tile tile, int mapSize, int gridMapSize) =>
+        mapSize < 4 ? tile.Coords.y != 1 && tile.Coords.y != gridMapSize - 1: 
+            tile.Coords.y != 1 
+            && tile.Coords.y != 2 
+            && tile.Coords.y != 3 
+            && tile.Coords.y != gridMapSize - 1 
+            && tile.Coords.y != gridMapSize - 2 
+            && tile.Coords.y != gridMapSize - 3;
+
     private static bool CanPlaceMiddle(Tile tile, int maxLen) =>
         (tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0)
         & !(tile.Coords.x == 0
@@ -200,44 +266,6 @@ public class EnvSetup : IEnvSetup
          || tile.Coords.y == maxLen)
         & !tile.IsExit;
 
-    
-
-    /// <summary>
-    /// Adds complexity to the map by filling in tiles and blocking off areas, reducing the possible the routes to the finish
-    /// </summary>
-    /// <param name="complexityTiles"></param>
-    /// <param name="mapComplexity"></param>
-    /// <param name="mapSize"></param>
-    /// <param name="parents"></param>
-    private void AddEnvBoxComplexity(List<Tile> complexityTiles, int mapComplexity, int mapSize, Dictionary<ParentObject, GameObject> parents)
-    {
-        // Defaults to max free tiles if complexity is higher. Ensures max 1 env-block per tile
-        var checkComplexityCount = mapComplexity > complexityTiles.Count ? complexityTiles.Count : mapComplexity;
-
-        // unique list of indexes up to the amount of tiles 
-        List<int> randSequence = RandomHelper.GetUniqueRandomList(count: mapComplexity, maxVal: complexityTiles.Count);
-        List<(int, int)> tilesToDeleteCoords = new List<(int, int)>();
-        
-        for (int i = 0; i < checkComplexityCount; i++)
-        {
-            var tile = complexityTiles[randSequence[i]];
-            
-                tile.HasEnv = true;
-                tilesToDeleteCoords.Add(tile.Coords);
-                CreateBox(new Vector3(2, 2, 2), parents[ParentObject.ComplexitiesParent].transform, tile.Position);
-            
-        }
-
-        // should change to loop through every tile, instead of relying on init env logic class above - also exlude perimeter 
-        // nasty side effect -- adds complexity -- only used to communicate tile references between EnvComplexity and Envlogic setup 
-        _complexityTiles = complexityTiles.Where(tile => tilesToDeleteCoords.All(coords => tile.Coords != coords)).ToList();
-
-    }
-
-    private static bool NotInAgentArea(Tile tile, int mapSize) =>
-        mapSize < 4 ? tile.Coords.y != 1 : tile.Coords.y != 1 || tile.Coords.y != 3;
-
-    
 
     private static void CreateBox(Vector3 scale, Transform parent, Vector3 position)
     {
@@ -261,12 +289,12 @@ public class EnvSetup : IEnvSetup
     }
 
 
-    private void CheckAgentCoords()
-    {
-        PathFinder p = new PathFinder();
-        p.GetExitCount(_complexityTiles[_complexityTiles.Count - 1]);
-        Debug.Log(p.ExitCount);
-    }
+    //private void CheckAgentCoords()
+    //{
+    //    PathFinder p = new PathFinder();
+    //    p.GetSpyPathFrom(_complexityTiles[_complexityTiles.Count - 1]);
+    //    Debug.Log(p.ExitCount);
+    //}
 
 
     private static void PopulateEnv(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents) => tiles
