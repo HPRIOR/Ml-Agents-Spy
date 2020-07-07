@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml.Serialization;
-using TMPro;
-using Unity.MLAgents;
-using UnityEditor;
 using UnityEngine;
-using static ClassExtensions;
 using static RandomHelper;
 using Random = System.Random;
 using Vector3 = UnityEngine.Vector3;
@@ -45,29 +36,30 @@ public class EnvSetup : IEnvSetup
         _mapSize = mapSize;
         _mapComplexity = mapComplexity;
         _gridMapSize = mapSize % 2 == 0 ? (mapSize * 10) / 2 : ((mapSize * 10) / 2) + 1;
-
         _exitCount = exitCount;
         _guardAgentCount = guardAgentCount;
-        
         _parents = parents;
         _tiles = new TileManager(_parents[ParentObject.TopParent].transform.localPosition, _gridMapSize).Tiles;
-    }
-
-
-    public void SetUpEnv()
-    {
-        CreateEnvLogic();
-        PopulateEnv(_tiles, _parents);
-        
-        // DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
-        // DebugAll(_tiles, _parents, tile => tile.HasGuard);
-
     }
 
     /// <summary>
     /// This is called by the Academy in the SceneController to produce a new env
     /// </summary>
-    private void CreateEnvLogic()
+    public void SetUpEnv()
+    {
+        ModifyTileLogic();
+        PopulateEnv(_tiles, _parents);
+
+        // DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
+        // DebugAll(_tiles, _parents, tile => tile.HasGuard);
+        // DebugAll(_tiles, _parents, tile => tile.OnSpyPath);
+
+    }
+
+    /// <summary>
+    /// This changes logic within each tile, generating environment and agent tiles
+    /// </summary>
+    private void ModifyTileLogic()
     {
         CreatePlane(
             scale: new Vector3(_mapSize, 1, _mapSize),
@@ -173,7 +165,6 @@ public class EnvSetup : IEnvSetup
     /// Checks if there are at least twice as many potential exit point as there are desired exit points
     /// </summary>
     /// <param name="potentialExitTiles"></param>
-    /// <param name="gridMapSize"></param>
     /// <param name="exitCount"></param>
     /// <returns></returns>
     private static bool ExitsAreAvailableIn(List<Tile> potentialExitTiles, int exitCount) =>
@@ -181,6 +172,7 @@ public class EnvSetup : IEnvSetup
 
     private static void PlaceExits(List<Tile> potentialExitTiles, int exitCount)
     {
+        // incorporate exits are avail logic here, and ensure exit count is smaller than number of potential exit
         System.Random r = new Random();
         for (int i = 0; i < exitCount; i++)
         {
@@ -210,6 +202,7 @@ public class EnvSetup : IEnvSetup
 
     private static void SetGuardTiles(List<Tile> guardSpawnTiles, int guardCount)
     {
+        // guardplaceare avail logic here and ensure that guard count is less than number of avail
         var randomList = GetUniqueRandomList(guardCount, guardSpawnTiles.Count);
         for (int i = 0; i < guardCount; i++) guardSpawnTiles[randomList[i]].HasGuard = true;
         

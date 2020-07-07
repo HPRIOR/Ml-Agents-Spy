@@ -40,7 +40,7 @@ public class SceneController : MonoBehaviour
         // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
             mapSize: 5,
-            mapComplexity: 0,
+            mapComplexity: 100,
             exitCount: 2,
             guardAgentCount: 5,
             parents: parentObjects

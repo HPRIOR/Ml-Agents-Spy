@@ -16,9 +16,6 @@ public class TileManager
     {
         Tiles = CreateTilesList(gridMapSize, planeCentre);
         GetAdjacentTiles(Tiles, gridMapSize);
-        
-        // Uncomment to debug all tiles
-        // Tiles.ForEach(tileRow=> tileRow.ForEach(tile => Debug.Log(tile)));
     }
 
     /// <summary>
