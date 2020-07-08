@@ -41,7 +41,7 @@ public class SceneController : MonoBehaviour
         IEnvSetup env = new EnvSetup(
             mapSize: 5,
             mapComplexity: 100,
-            exitCount: 2,
+            exitCount: 3,
             guardAgentCount: 5,
             parents: parentObjects
         );

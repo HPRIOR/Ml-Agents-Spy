@@ -14,7 +14,7 @@ public class TileManager
 
     public TileManager(Vector3 planeCentre, int gridMapSize)
     {
-        Tiles = CreateTilesList(gridMapSize, planeCentre);
+        Tiles = CreateTilesMatrix(gridMapSize, planeCentre);
         GetAdjacentTiles(Tiles, gridMapSize);
     }
 
@@ -24,7 +24,7 @@ public class TileManager
     /// <param name="gridMapSize">max height/width from centre of outermost tile</param>
     /// <param name="planeCentre">centre of the target plane</param>
     /// <returns></returns>
-    private List<List<Tile>> CreateTilesList(int gridMapSize, Vector3 planeCentre)
+    private List<List<Tile>> CreateTilesMatrix(int gridMapSize, Vector3 planeCentre)
     {
         int x = -gridMapSize;
         List<List<Tile>> tileList = new List<List<Tile>>();

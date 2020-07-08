@@ -50,9 +50,9 @@ public class EnvSetup : IEnvSetup
         ModifyTileLogic();
         PopulateEnv(_tiles, _parents);
 
-        // DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
-        // DebugAll(_tiles, _parents, tile => tile.HasGuard);
-        // DebugAll(_tiles, _parents, tile => tile.OnSpyPath);
+        DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
+        DebugAll(_tiles, _parents, tile => tile.HasGuard);
+        //DebugAll(_tiles, _parents, tile => tile.OnSpyPath);
 
     }
 
@@ -72,17 +72,20 @@ public class EnvSetup : IEnvSetup
         PathFinder.GetSpyPathFrom(spyTile);
         List<Tile> potentialExitTiles = PotentialExitTiles(_tiles, _gridMapSize);
 
-        // get max exit count, get max agent count <--  ensure that the amount of exits are smaller than or equal to the max available
-        // then don't check 
 
-        if (ExitsAreAvailableIn(potentialExitTiles, _exitCount))
+        int maxExits = _exitCount > potentialExitTiles.Count / 2 ? potentialExitTiles.Count / 2 : _exitCount;
+        int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
+
+        Debug.Log(maxGuards);
+
+        if (ExitsAreAvailableIn(potentialExitTiles, maxExits))
         {
-            PlaceExits(potentialExitTiles, _exitCount);
+            PlaceExits(potentialExitTiles, maxExits);
             List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(_tiles, _mapSize, _gridMapSize);
             
-            if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, _guardAgentCount))
+            if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
             {
-                SetGuardTiles(potentialGuardSpawnTiles, _guardAgentCount);
+                SetGuardTiles(potentialGuardSpawnTiles, maxGuards);
             }
             else
             {
@@ -168,7 +171,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="exitCount"></param>
     /// <returns></returns>
     private static bool ExitsAreAvailableIn(List<Tile> potentialExitTiles, int exitCount) =>
-        exitCount <= potentialExitTiles.Count / 2;
+        exitCount <= potentialExitTiles.Count / 2 & exitCount >= 1;
 
     private static void PlaceExits(List<Tile> potentialExitTiles, int exitCount)
     {
@@ -198,7 +201,7 @@ public class EnvSetup : IEnvSetup
             select tile).ToList();
 
     private static bool GuardPlacesAreAvailableIn(List<Tile> guardSpawnTiles, int guardCount) => 
-        guardCount <= guardSpawnTiles.Count;
+        guardCount <= guardSpawnTiles.Count & guardCount >= 1;
 
     private static void SetGuardTiles(List<Tile> guardSpawnTiles, int guardCount)
     {
