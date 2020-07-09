@@ -92,23 +92,18 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
                 }
                 else
                 {
-                    // reset tiles
                     count += 1;
-                    if (count > 100)
-                    {
-                        Debug.Log("throw exception: Not enough free tiles to place guards");
-                        flag = false;
-                    }
+                    if (count > 100) throw new MapCreationException("Not enough free tiles to place guards", _matrixSize, _mapDifficulty, 
+                            maxExits, maxGuards, _exitCount, _guardAgentCount);
+                    
                 }
             }
             else
             {
                 count += 1;
-                if (count > 100)
-                {
-                    Debug.Log("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles");
-                    flag = false;
-                }
+                if (count > 100) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles", _matrixSize, _mapDifficulty,
+                        maxExits, maxGuards, _exitCount, _guardAgentCount);
+                
             }
         }
     }

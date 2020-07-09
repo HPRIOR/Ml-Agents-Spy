@@ -15,13 +15,17 @@ public class SceneController : MonoBehaviour
     public GameObject GuardParent;
     public GameObject DebugParent;
 
-    private Dictionary<ParentObject, GameObject> parentObjects;
+    private Dictionary<ParentObject, GameObject> _parentObjects;
 
+    public int MapScale = 5;
+    public int MapDifficulty = 100;
+    public int ExitCount = 3;
+    public int GuardAgentCount = 5;
 
     // Start is called before the first frame update
     public void Awake()
     {
-        parentObjects = new Dictionary<ParentObject, GameObject>()
+        _parentObjects = new Dictionary<ParentObject, GameObject>()
         {
             {ParentObject.TopParent, TopParent},
             {ParentObject.EnvParent, EnvParent},
@@ -39,11 +43,11 @@ public class SceneController : MonoBehaviour
     {
         // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
-            mapScale: 5,
-            mapDifficulty: 150,
-            exitCount: 3,
-            guardAgentCount: 5,
-            parentDictionary: parentObjects
+            mapScale: MapScale,
+            mapDifficulty: MapDifficulty,
+            exitCount: ExitCount,
+            guardAgentCount: GuardAgentCount,
+            parentDictionary: _parentObjects
         );
 
         env.SetUpEnv();
