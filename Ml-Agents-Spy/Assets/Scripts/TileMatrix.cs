@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
@@ -55,25 +54,25 @@ public class TileMatrix : ICloneable
     /// <summary>
     /// Populates the adjacency dictionary of each tile with NESW neighboring tiles
     /// </summary>
-    /// <param name="tiles">2D array of tiles</param>
-    /// <param name="maxMapRange">The maximum width and height of tiles</param>
-    private void GetAdjacentTiles(List<List<Tile>> tiles, int maxMapRange) =>
-        tiles.
+    /// <param name="tileMatrix">2D array of tiles</param>
+    /// <param name="matrixSize">The maximum width and height of tiles</param>
+    private void GetAdjacentTiles(List<List<Tile>> tileMatrix, int matrixSize) =>
+        tileMatrix.
             ForEach(tileRow => tileRow.
-                ForEach(tile => GetAllDirectionTiles(tile, tiles, maxMapRange)));
+                ForEach(tile => GetAllDirectionTiles(tile, tileMatrix, matrixSize)));
     
 
-    private void GetAllDirectionTiles(Tile tile, List<List<Tile>> tiles, int maxMapRange) =>
+    private void GetAllDirectionTiles(Tile tile, List<List<Tile>> tileMatrix, int matrixSize) =>
         System.Enum.GetValues(typeof(Direction)).Cast<Direction>()
             .ToList()
-            .ForEach(direction => tile.AdjacentTile[direction] = GetDirectionTile(direction, tile, tiles, maxMapRange));
+            .ForEach(direction => tile.AdjacentTile[direction] = GetDirectionTile(direction, tile, tileMatrix, matrixSize));
     
-    private Tile GetDirectionTile(Direction d, Tile inputTile, List<List<Tile>> tiles, int mapMaxRange)
+    private Tile GetDirectionTile(Direction d, Tile inputTile, List<List<Tile>> tileMatrix, int matrixSize)
     {
-        if (d == Direction.N) return inputTile.Coords.y == mapMaxRange ? null : tiles[inputTile.Coords.x][inputTile.Coords.y + 1];
-        if (d == Direction.E) return inputTile.Coords.x == mapMaxRange ? null : tiles[inputTile.Coords.x + 1][inputTile.Coords.y];
-        if (d == Direction.S) return inputTile.Coords.y == 0 ? null : tiles[inputTile.Coords.x][inputTile.Coords.y - 1];
-        if (d == Direction.W) return inputTile.Coords.x == 0 ? null : tiles[inputTile.Coords.x - 1][inputTile.Coords.y];
+        if (d == Direction.N) return inputTile.Coords.y == matrixSize ? null : tileMatrix[inputTile.Coords.x][inputTile.Coords.y + 1];
+        if (d == Direction.E) return inputTile.Coords.x == matrixSize ? null : tileMatrix[inputTile.Coords.x + 1][inputTile.Coords.y];
+        if (d == Direction.S) return inputTile.Coords.y == 0 ? null : tileMatrix[inputTile.Coords.x][inputTile.Coords.y - 1];
+        if (d == Direction.W) return inputTile.Coords.x == 0 ? null : tileMatrix[inputTile.Coords.x - 1][inputTile.Coords.y];
         throw new Exception("No direction given in TileMatrix.GetDirectionTile");
     }
 

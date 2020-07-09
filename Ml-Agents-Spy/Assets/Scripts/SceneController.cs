@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.MLAgents;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 /// <summary>
 /// This is attached to the TrainingInstance and controls the generation of the env for each instance
