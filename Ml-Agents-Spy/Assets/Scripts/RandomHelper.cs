@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 public class RandomHelper 
 {
@@ -34,13 +38,6 @@ public class RandomHelper
         return uniqueInts;
     }
 
-    /// <summary>
-    /// Generates a random number with even or odd parity
-    /// </summary>
-    /// <param name="min">Minimum number - inclusive</param>
-    /// <param name="max">Maximum number inclusive</param>
-    /// <param name="parity">Even or Odd Parity Enum</param>
-    /// <returns>Random even or odd enum</returns>
     public static int GetParityRandom(int min, int max, ParityEnum parity)
     {
         if (parity == ParityEnum.Even)
