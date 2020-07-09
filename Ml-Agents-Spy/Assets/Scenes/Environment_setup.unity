@@ -360,10 +360,10 @@ MonoBehaviour:
   SpyParent: {fileID: 800864355}
   GuardParent: {fileID: 729678775}
   DebugParent: {fileID: 1657406443}
-  MapScale: 5
-  MapDifficulty: 100
-  ExitCount: 3
-  GuardAgentCount: 2
+  MapScale: 3
+  MapDifficulty: 0
+  ExitCount: 2
+  GuardAgentCount: 1
 --- !u!4 &646235973
 Transform:
   m_ObjectHideFlags: 0
