@@ -12,7 +12,7 @@ namespace Tests
 {
     public class TileTest
     {
-        // A Test behaves as an ordinary method
+         ///A Test behaves as an ordinary method
         [Test]
         public void TileTestSimplePasses()
         {
@@ -21,7 +21,7 @@ namespace Tests
             Assert.AreEqual(false, t.HasGuard);
             Assert.AreEqual(false, t.HasSpy);
             Assert.AreEqual(false, t.IsExit);
-            Assert.AreEqual(false, t.OnSpyPath);
+            Assert.AreEqual(false, t.OnPath);
         }
     }
 }
