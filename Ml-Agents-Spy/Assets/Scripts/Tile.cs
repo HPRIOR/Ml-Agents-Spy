@@ -26,7 +26,7 @@ public class Tile : ICloneable
     public bool HasGuard { get; set; } = false;
     public bool HasEnv { get; set; } = false;
     public bool IsExit { get; set; } = false;
-    public bool OnSpyPath { get; set; } = false;
+    public bool OnPath { get; set; } = false;
 
 
 
@@ -41,7 +41,7 @@ public class Tile : ICloneable
                                          $"HasSpy = {HasSpy} \n" +
                                          $"HasGuard = {HasGuard} \n" +
                                          $"HasEnv = {HasEnv} \n" +
-                                         $"OnSpyPath = {OnSpyPath} \n" +
+                                         $"OnSpyPath = {OnPath} \n" +
                                          $"IsExit = {IsExit} \n" +
                                          $"North-Tile = {(AdjacentTile[Direction.N] is null ? "None" : AdjacentTile[Direction.N].Coords.ToString())} \n" +
                                          $"East-Tile = {(AdjacentTile[Direction.E] is null ? "None" : AdjacentTile[Direction.E].Coords.ToString())} \n" +

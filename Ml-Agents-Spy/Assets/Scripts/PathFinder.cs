@@ -3,35 +3,25 @@ using UnityEditor;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public static  class PathFinder
+public class PathFinder : IPathFinder
 {
-    // this causes a stack overflow if map is too large...
-    // maybe should not be recursive
-
-    public static void GetSpyPathFrom(Tile tile)
+    
+    /// <summary>
+    /// For each tile it will attempt to visit NESW neighbor and change its Path to true
+    /// Can move to adjacent tile if it is not an environment tile, if it hasn't already been visited and if it not null
+    /// </summary>
+    /// <param name="startTile">Tile which the path starts from</param>
+    public void GetPath(Tile startTile)
     {
         // DebugSphere(tile.Position);
-        tile.OnSpyPath = true;
+        startTile.OnPath = true;
         foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
         {
-            if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].OnSpyPath & !(tile.AdjacentTile[direction] is null))
-                GetSpyPathFrom(tile.AdjacentTile[direction]);
+            if (!startTile.AdjacentTile[direction].HasEnv & !startTile.AdjacentTile[direction].OnPath & !(startTile.AdjacentTile[direction] is null))
+                GetPath(startTile.AdjacentTile[direction]);
         }
     }
     
-    // this should be fixed - add exit count to arguments 
-    //public int ExitCount2(Tile tile)
-    //{
-    //    DebugSphere(tile.Position);
-    //    tile.OnSpyPath = true;
-    //
-    //    foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
-    //    {
-    //        if (!tile.AdjacentTile[direction].HasEnv & !tile.AdjacentTile[direction].OnSpyPath)
-    //            return ExitCount2(tile.AdjacentTile[direction]) + 1;
-    //    }
-    //    return 0;
-    //}
 
     private static void DebugSphere(Vector3 tilePosition)
     {

@@ -39,12 +39,12 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     }
 
     /// <summary>
-    /// This is called by the Academy in the SceneController to produce a new env
+    /// Called by Academy class in the SceneController to produce a new env for training instance
     /// </summary>
     public void SetUpEnv()
     {
         ModifyTileLogic();
-        PopulateEnv(_tileMatrix, _parentDictionary);
+        PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
 
         // DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
         // DebugAll(_tiles, _parents, tile => tile.HasGuard);
@@ -53,7 +53,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     }
 
     /// <summary>
-    /// This changes logic within each tile, helping to generate the environment and agent tiles
+    /// Changes logic within each tile, helping to generate the environment and agent tiles
+    /// Loops until appropriate environment found, or throws an error
     /// </summary>
     private void ModifyTileLogic()
     {
@@ -69,7 +70,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             CreateInitialEnv(tilesCopy, _matrixSize);
             SetEnvDifficulty(tilesCopy, _matrixSize, _mapDifficulty);
             
-            PathFinder.GetSpyPathFrom(spyTile);
+            IPathFinder pathFinder = new PathFinder();
+            pathFinder.GetPath(spyTile);
             
             List<Tile> potentialExitTiles = PotentialExitTiles(tilesCopy, _matrixSize);
             // ensures that there are no more exits than the potential number of exits
@@ -214,7 +216,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         (from tileRow in tileMatrix
             from tile in tileRow
             where tile.Coords.y == matrixSize
-            where tile.AdjacentTile[Direction.S].OnSpyPath
+            where tile.AdjacentTile[Direction.S].OnPath
             select tile).ToList();
 
 
@@ -251,7 +253,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     private static List<Tile> PotentialGuardSpawnTiles(List<List<Tile>> tileMatrix, int mapScale, int matrixSize) => 
         (from tileRow in tileMatrix
             from tile in tileRow
-            where tile.OnSpyPath
+            where tile.OnPath
             where tile.Coords.x % 2 == 0
             where InGuardSpawnAreaY(tile, mapScale, matrixSize)
             select tile).ToList();
@@ -277,7 +279,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     }
 
     /// <summary>
-    /// Checks if tile is in the guard spawn area (1 row if mapScale < 3, else 3 rows)
+    /// Checks if tile is in the guard spawn area (1 row if mapScale less than 3, else 3 rows)
     /// </summary>
     /// <param name="tile">Tile to Check</param>
     /// <param name="mapScale">Size of the map corresponding to scale of plane</param>
@@ -319,10 +321,10 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// </summary>
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
-    private void PopulateEnv(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary)
+    private void PopulateEnv(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
     {
         CreatePlane(
-            scale: new Vector3(_mapScale, 1, _mapScale),
+            scale: new Vector3(mapScale, 1, mapScale),
             parent: _parentDictionary[ParentObject.TopParent].transform
         );
 
@@ -352,16 +354,22 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     }
 
     /// <summary>
-    /// 
+    /// Creates 3D object on first tile matching predicate - used for visual debugging
     /// </summary>
-    /// <param name="tileMatrix"></param>
-    /// <param name="parentDictionary"></param>
-    /// <param name="tilePredicate"></param>
+    /// <param name="tileMatrix">Matrix of tiles</param>
+    /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
+    /// <param name="tilePredicate">Injects predicate into where clause</param>
     private static void DebugFirstInstance(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
       CreateBox(new Vector3 (1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, (from tileRow in tileMatrix
           from tile in tileRow
           select tile).Where(tilePredicate).ToList()[0].Position);
-
+   
+    /// <summary>
+    /// Creates 3D objects on all tiles matching predicates - used for visual debugging
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of tiles</param>
+    /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
+    /// <param name="tilePredicate">Injects predicate into where clause</param>
     private static void DebugAll(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
        (from tileRow in tileMatrix
            from tile in tileRow
