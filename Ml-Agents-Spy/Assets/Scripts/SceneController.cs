@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.MLAgents;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 /// <summary>
 /// This is attached to the TrainingInstance and controls the generation of the env for each instance
@@ -16,6 +13,12 @@ public class SceneController : MonoBehaviour
     public GameObject DebugParent;
 
     private Dictionary<ParentObject, GameObject> parentObjects;
+
+    public int MapScale = 5;
+    public int MapDifficulty = 100;
+    public int ExitCount = 3;
+    public int GuardAgentCount = 4;
+    
 
 
     // Start is called before the first frame update
@@ -37,14 +40,13 @@ public class SceneController : MonoBehaviour
 
     void RestartEnv()
     {
-        // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
-            mapSize: 5,
-            mapDifficulty: 150,
-            exitCount: 3,
-            guardAgentCount: 5,
+            mapScale: MapScale,
+            mapDifficulty: MapDifficulty,
+            exitCount: ExitCount,
+            guardAgentCount: GuardAgentCount,
             parents: parentObjects
-        );
+            );
 
         env.SetUpEnv();
         
