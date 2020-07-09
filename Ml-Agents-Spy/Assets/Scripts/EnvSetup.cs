@@ -280,14 +280,20 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// Checks if tile is in the guard spawn area (1 row if mapScale < 3, else 3 rows)
     /// </summary>
     /// <param name="tile">Tile to Check</param>
-    /// <param name="mapScale"></param>
-    /// <param name="matrixSize"></param>
-    /// <returns></returns>
+    /// <param name="mapScale">Size of the map corresponding to scale of plane</param>
+    /// <param name="matrixSize">Size of tile matrix</param>
+    /// <returns>True if tile is in the guard spawn area </returns>
     private static bool InGuardSpawnAreaY(Tile tile, int mapScale, int matrixSize) =>
         mapScale >= 1 & mapScale <= 3 & tile.Coords.y == matrixSize - 1 
         || mapScale > 3 & (tile.Coords.y >= matrixSize - 1 || tile.Coords.y <= matrixSize - 3);
 
-    private static void CreateBox(Transform parent, Vector3 position, Vector3 scale)
+    /// <summary>
+    /// Creates box with given scale, GameObject parent, and 3D position
+    /// </summary>
+    /// <param name="scale">Size of box</param>
+    /// <param name="parent">Parent GameObject of box</param>
+    /// <param name="position">3D position of box</param>
+    private static void CreateBox(Vector3 scale, Transform parent, Vector3 position)
     {
         GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
         box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
@@ -298,8 +304,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <summary>
     /// Produces a plane with a specified size and position (relative to the parent)
     /// </summary>
-    /// <param name="scale">the size of the plane</param>
-    /// <param name="parent">the parent in the hierarchy window</param>
+    /// <param name="scale">Size of the plane</param>
+    /// <param name="parent">Parent GameObject of the plane</param>
     private static void CreatePlane(Vector3 scale, Transform parent)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -308,24 +314,32 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         plane.transform.parent = parent;
     }
     
-    private void PopulateEnv(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents)
+    /// <summary>
+    /// Creates 3D objects based on tile position and logic
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of tiles</param>
+    /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
+    private void PopulateEnv(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary)
     {
         CreatePlane(
             scale: new Vector3(_mapScale, 1, _mapScale),
             parent: _parentDictionary[ParentObject.TopParent].transform
         );
 
-        tiles
+        tileMatrix
             .ForEach(tileRow => tileRow
                 .Where(tile => tile.HasEnv)
                 .ToList()
                 .ForEach(tile =>
-                    CreateBox(parents[ParentObject.EnvParent].transform, tile.Position, new Vector3(2, 2, 2))));
+                    CreateBox(new Vector3(2, 2, 2), parentDictionary[ParentObject.EnvParent].transform, tile.Position)));
     }
 
+    /// <summary>
+    /// Returns dictionary of Tile type references and corresponding tiles
+    /// </summary>
+    /// <returns>Tile type references and corresponding tiles</returns>
     public Dictionary<TileType, List<Tile>> GetTileTypes()
     {
-        // this should return a dictionary with all the potentialExitTiles instead of fields
         foreach (var tileRow in _tileMatrix) foreach (var tile in tileRow)
         {
             if (tile.IsExit) _tileTypes[TileType.ExitTiles].Add(tile);
@@ -337,19 +351,22 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         return _tileTypes;
     }
 
-    private static void DebugFirstInstance(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents, Func<Tile, bool> tilePredicate) =>
-      CreateBox(
-          parents[ParentObject.DebugParent].transform, 
-          (from tileRow in tiles
-              from tile in tileRow
-              select tile).Where(tilePredicate).ToList()[0].Position, new Vector3 (1, 1, 1)
-          );
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tileMatrix"></param>
+    /// <param name="parentDictionary"></param>
+    /// <param name="tilePredicate"></param>
+    private static void DebugFirstInstance(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+      CreateBox(new Vector3 (1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, (from tileRow in tileMatrix
+          from tile in tileRow
+          select tile).Where(tilePredicate).ToList()[0].Position);
 
-    private static void DebugAll(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents, Func<Tile, bool> tilePredicate) =>
-       (from tileRow in tiles
+    private static void DebugAll(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+       (from tileRow in tileMatrix
            from tile in tileRow
            select tile).Where(tilePredicate).ToList().ForEach(tile =>
-           CreateBox(parents[ParentObject.DebugParent].transform, tile.Position, new Vector3(1, 1, 1)));
+           CreateBox(new Vector3(1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, tile.Position));
 
 
 
