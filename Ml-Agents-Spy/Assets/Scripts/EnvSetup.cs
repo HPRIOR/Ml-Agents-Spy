@@ -53,7 +53,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     }
 
     /// <summary>
-    /// This changes logic within each tile, generating environment and agent tiles
+    /// This changes logic within each tile, helping to generate the environment and agent tiles
     /// </summary>
     private void ModifyTileLogic()
     {
@@ -67,7 +67,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
 
             Tile spyTile = SetSpyTile(tilesCopy, _matrixSize);
             CreateInitialEnv(tilesCopy, _matrixSize);
-            AddEnvDifficulty(tilesCopy, _matrixSize, _mapDifficulty);
+            SetEnvDifficulty(tilesCopy, _matrixSize, _mapDifficulty);
             
             PathFinder.GetSpyPathFrom(spyTile);
             
@@ -77,9 +77,9 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
 
-            if (ExitsAreAvailableIn(potentialExitTiles, maxExits))
+            if (maxExits > 1)
             {
-                PlaceExits(potentialExitTiles, maxExits);
+                SetExits(potentialExitTiles, maxExits);
                 List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
 
                 if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
@@ -111,36 +111,53 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         }
     }
 
-    private Tile SetSpyTile(List<List<Tile>> tiles, int gridMapSize)
+    /// <summary>
+    /// Set the spawn tile of the Spy agent in the first row of the tile matrix
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of Tiles</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <returns></returns>
+    private Tile SetSpyTile(List<List<Tile>> tileMatrix, int matrixSize)
     {
         int y = 1;
-        int x = GetParityRandom(1, gridMapSize - 1, ParityEnum.Even);
-        tiles[x][y].HasSpy = true;
-        return tiles[x][y];
+        int x = GetParityRandom(1, matrixSize - 1, ParityEnum.Even);
+        tileMatrix[x][y].HasSpy = true;
+        return tileMatrix[x][y];
     }
-    
-    private static void CreateInitialEnv(List<List<Tile>> tiles, int maxLen)
+
+    /// <summary>
+    /// Sets environment tiles on the perimeter and on their default positions in the middle
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of Tiles</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    private static void CreateInitialEnv(List<List<Tile>> tileMatrix, int matrixSize)
     {
-        foreach (var tileRow in tiles)
+        foreach (var tileRow in tileMatrix)
         {
             foreach (var tile in tileRow)
             {
-                if (CanPlacePerimeter(tile, maxLen)) tile.HasEnv = true;
-                else if (CanPlaceMiddle(tile, maxLen)) tile.HasEnv = true;
+                if (CanPlacePerimeter(tile, matrixSize)) tile.HasEnv = true;
+                else if (CanPlaceMiddle(tile, matrixSize)) tile.HasEnv = true;
             }
         }
     }
 
-    private static void AddEnvDifficulty(List<List<Tile>> tiles, int gridMapSize, int mapDifficulty)
+    /// <summary>
+    /// Sets a random group of environment tiles 
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of Tiles</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <param name="mapDifficulty">Number of tiles to randomly set</param>
+    private static void SetEnvDifficulty(List<List<Tile>> tileMatrix, int matrixSize, int mapDifficulty)
     {
         List<Tile> freeTiles =
-            (from tileRow in tiles
+            (from tileRow in tileMatrix
              from tile in tileRow
-             where EnvDifficultyCanPlace(tile, gridMapSize)
+             where CanPlaceEnvDifficulty(tile, matrixSize)
              select tile)
             .ToList();
 
-        // Defaults to max free guardSpawnTiles if diffulty is higher. Ensures max 1 env-block per tile
+        // Defaults to max free guardSpawnTiles if difficulty is higher. Ensures max 1 env-block per tile
         var checkDifficultyCount = mapDifficulty > freeTiles.Count ? freeTiles.Count : mapDifficulty;
 
         List<int> randSequence = RandomHelper.GetUniqueRandomList(mapDifficulty, freeTiles.Count);
@@ -152,45 +169,63 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         }
     }
 
-    // Env placement logic:
-    private static bool EnvDifficultyCanPlace(Tile tile, int gridMapSize) =>
-        !tile.IsExit & !tile.HasEnv & !tile.HasGuard & !tile.HasSpy & !CanPlacePerimeter(tile, gridMapSize) & !CanPlaceMiddle(tile, gridMapSize);
+    /// <summary>
+    /// Checks if a tile can be used as an environment tile to increase difficulty 
+    /// </summary>
+    /// <param name="tile">Tile to check</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <returns>true if appropriate tile</returns>
+    private static bool CanPlaceEnvDifficulty(Tile tile, int matrixSize) =>
+        !tile.IsExit & !tile.HasEnv & !tile.HasGuard & !tile.HasSpy & !CanPlacePerimeter(tile, matrixSize) & !CanPlaceMiddle(tile, matrixSize);
 
-    private static bool CanPlaceMiddle(Tile tile, int maxLen) =>
+    /// <summary>
+    /// Checks if tile can be used as a default environment tile
+    /// </summary>
+    /// <param name="tile">Tile to check</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <returns></returns>
+    private static bool CanPlaceMiddle(Tile tile, int matrixSize) =>
         (tile.Coords.y % 2 == 0 & tile.Coords.x % 2 == 0)
         & !(tile.Coords.x == 0
-            || tile.Coords.x == maxLen
+            || tile.Coords.x == matrixSize
             || tile.Coords.y == 0
-            || tile.Coords.y == maxLen);
+            || tile.Coords.y == matrixSize);
 
-    private static bool CanPlacePerimeter(Tile tile, int maxLen) =>
+    /// <summary>
+    /// Checks if tile is on the outside perimeter of matrix
+    /// </summary>
+    /// <param name="tile">Tile to check</param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <returns>true if tile is on the perimeter</returns>
+    private static bool CanPlacePerimeter(Tile tile, int matrixSize) =>
         (tile.Coords.x == 0
-         || tile.Coords.x == maxLen
+         || tile.Coords.x == matrixSize
          || tile.Coords.y == 0
-         || tile.Coords.y == maxLen)
+         || tile.Coords.y == matrixSize)
         & !tile.IsExit;
 
-    private static List<Tile> PotentialExitTiles(List<List<Tile>> tiles, int gridMapSize) =>
-        (from tileRow in tiles
+    /// <summary>
+    /// Gets perimeter tiles from farthest side of perimeter which are on the Spy agents potential path
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of Tiles </param>
+    /// <param name="matrixSize">Size of matrix</param>
+    /// <returns>List of tiles which are candidates for exit tiles</returns>
+    private static List<Tile> PotentialExitTiles(List<List<Tile>> tileMatrix, int matrixSize) =>
+        (from tileRow in tileMatrix
             from tile in tileRow
-            where tile.Coords.y == gridMapSize
+            where tile.Coords.y == matrixSize
             where tile.AdjacentTile[Direction.S].OnSpyPath
             select tile).ToList();
 
-    /// <summary>
-    /// Checks if there are at least twice as many potential exit point as there are desired exit points
-    /// </summary>
-    /// <param name="potentialExitTiles"></param>
-    /// <param name="exitCount"></param>
-    /// <returns></returns>
-    private static bool ExitsAreAvailableIn(List<Tile> potentialExitTiles, int exitCount) =>
-        exitCount <= potentialExitTiles.Count / 2 & exitCount >= 1;
-        // initial check may be redundant as this is already done in CreateEnvLogic
 
-    private static void PlaceExits(List<Tile> potentialExitTiles, int exitCount)
+    /// <summary>
+    /// Places exits randomly along candidate exit tiles so long as they are not next to each other
+    /// </summary>
+    /// <param name="potentialExitTiles">Candidate exit tiles</param>
+    /// <param name="exitCount">Number of exits to set</param>
+    private static void SetExits(List<Tile> potentialExitTiles, int exitCount)
     {
-        // incorporate exits are avail logic here, and ensure exit count is smaller than number of potential exit
-        System.Random r = new Random();
+        Random r = new Random();
         for (int i = 0; i < exitCount; i++)
         {
             var selectedExit = potentialExitTiles[r.Next(0, potentialExitTiles.Count - 1)];
@@ -206,28 +241,51 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         }
     }
 
-    private static List<Tile> PotentialGuardSpawnTiles(List<List<Tile>> tiles, int mapSize, int gridMapSize) => 
-        (from tileRow in tiles
+    /// <summary>
+    /// Gets a list of tiles which are both on the Spy agents path and in the guard spawn area
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of Tiles</param>
+    /// <param name="mapScale">Size of map corresponding to plane scale</param>
+    /// <param name="matrixSize">Size of Matrix</param>
+    /// <returns>List of appropriate tiles</returns>
+    private static List<Tile> PotentialGuardSpawnTiles(List<List<Tile>> tileMatrix, int mapScale, int matrixSize) => 
+        (from tileRow in tileMatrix
             from tile in tileRow
             where tile.OnSpyPath
             where tile.Coords.x % 2 == 0
-            where InGuardSpawnAreaY(tile, mapSize, gridMapSize)
+            where InGuardSpawnAreaY(tile, mapScale, matrixSize)
             select tile).ToList();
 
+    /// <summary>
+    /// Checks that there are enough spawn tiles available and at least one guard agent being spawned
+    /// </summary>
+    /// <param name="guardSpawnTiles">Candidate tiles for guard spawning</param>
+    /// <param name="guardCount">Number of guards agents to spawn</param>
+    /// <returns>true if there are enough spawn tiles available and at least one guard agent being spawned</returns>
     private static bool GuardPlacesAreAvailableIn(List<Tile> guardSpawnTiles, int guardCount) => 
-        guardCount <= guardSpawnTiles.Count & guardCount >= 1;
+        guardCount <= guardSpawnTiles.Count && guardCount >= 1;
 
+    /// <summary>
+    /// Randomly sets guard spawn tiles out of the candidate tiles 
+    /// </summary>
+    /// <param name="guardSpawnTiles">Candidate tiles for guard spawning</param>
+    /// <param name="guardCount">Number of guards agents to spawn</param>
     private static void SetGuardTiles(List<Tile> guardSpawnTiles, int guardCount)
     {
-        // guardplaceare avail logic here and ensure that guard count is less than number of avail
         var randomList = GetUniqueRandomList(guardCount, guardSpawnTiles.Count);
         for (int i = 0; i < guardCount; i++) guardSpawnTiles[randomList[i]].HasGuard = true;
-        
     }
 
-    private static bool InGuardSpawnAreaY(Tile tile, int mapSize, int gridMapSize) =>
-        mapSize >= 1 & mapSize <= 3 & tile.Coords.y == gridMapSize - 1 
-        || mapSize > 3 & (tile.Coords.y == gridMapSize - 1 || tile.Coords.y == gridMapSize - 3);
+    /// <summary>
+    /// Checks if tile is in the guard spawn area (1 row if mapScale < 3, else 3 rows)
+    /// </summary>
+    /// <param name="tile">Tile to Check</param>
+    /// <param name="mapScale"></param>
+    /// <param name="matrixSize"></param>
+    /// <returns></returns>
+    private static bool InGuardSpawnAreaY(Tile tile, int mapScale, int matrixSize) =>
+        mapScale >= 1 & mapScale <= 3 & tile.Coords.y == matrixSize - 1 
+        || mapScale > 3 & (tile.Coords.y >= matrixSize - 1 || tile.Coords.y <= matrixSize - 3);
 
     private static void CreateBox(Transform parent, Vector3 position, Vector3 scale)
     {
