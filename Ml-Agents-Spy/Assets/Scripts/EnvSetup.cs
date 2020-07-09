@@ -14,27 +14,27 @@ using Vector3 = UnityEngine.Vector3;
 /// </summary>
 public class EnvSetup : IEnvSetup, IGetTileTypes
 {
-    private readonly int _mapSize;
+    private readonly int _mapScale;
     private readonly int _mapDifficulty;
-    private readonly int _gridMapSize;
+    private readonly int _matrixSize;
     private readonly int _exitCount;
     private readonly int _guardAgentCount;
-    private readonly Dictionary<ParentObject, GameObject> _parents;
+    private readonly Dictionary<ParentObject, GameObject> _parentDictionary;
     private Dictionary<TileType, List<Tile>> _tileTypes = new Dictionary<TileType, List<Tile>>();
-    private TileMatrix _tileMatrix;
-    private List<List<Tile>> _tiles;
+    private TileMatrix _tileMatrixProducer;
+    private List<List<Tile>> _tileMatrix;
 
-    public EnvSetup(int mapSize, int mapDifficulty, int exitCount, int guardAgentCount,
-        Dictionary<ParentObject, GameObject> parents)
+    public EnvSetup(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
+        Dictionary<ParentObject, GameObject> parentDictionary)
     {
-        _mapSize = mapSize;
+        _mapScale = mapScale;
         _mapDifficulty = mapDifficulty;
-        _gridMapSize = mapSize % 2 == 0 ? (mapSize * 10) / 2 : ((mapSize * 10) / 2) + 1;
+        _matrixSize = mapScale % 2 == 0 ? (mapScale * 10) / 2 : ((mapScale * 10) / 2) + 1;
         _exitCount = exitCount;
         _guardAgentCount = guardAgentCount;
-        _parents = parents;
-        _tileMatrix = new TileMatrix(_parents[ParentObject.TopParent].transform.localPosition, _gridMapSize);
-        _tiles = _tileMatrix.Tiles;
+        _parentDictionary = parentDictionary;
+        _tileMatrixProducer = new TileMatrix(_parentDictionary[ParentObject.TopParent].transform.localPosition, _matrixSize);
+        _tileMatrix = _tileMatrixProducer.Tiles;
         Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => _tileTypes.Add(tileType, new List<Tile>()));
     }
 
@@ -44,11 +44,11 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     public void SetUpEnv()
     {
         ModifyTileLogic();
-        PopulateEnv(_tiles, _parents);
+        PopulateEnv(_tileMatrix, _parentDictionary);
 
         // DebugFirstInstance(_tiles, _parents, tile => tile.HasSpy);
         // DebugAll(_tiles, _parents, tile => tile.HasGuard);
-        //DebugAll(_tiles, _parents, tile => tile.OnSpyPath);
+        // DebugAll(_tiles, _parents, tile => tile.OnSpyPath);
 
     }
 
@@ -62,16 +62,16 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
 
         while (flag)
         {
-            TileMatrix matrixClone = (TileMatrix)_tileMatrix.Clone();
+            TileMatrix matrixClone = (TileMatrix)_tileMatrixProducer.Clone();
             List<List<Tile>> tilesCopy = matrixClone.Tiles;
 
-            Tile spyTile = SetSpyTile(tilesCopy, _gridMapSize);
-            CreateInitialEnv(tilesCopy, _gridMapSize);
-            AddEnvDifficulty(tilesCopy, _gridMapSize, _mapDifficulty);
+            Tile spyTile = SetSpyTile(tilesCopy, _matrixSize);
+            CreateInitialEnv(tilesCopy, _matrixSize);
+            AddEnvDifficulty(tilesCopy, _matrixSize, _mapDifficulty);
             
             PathFinder.GetSpyPathFrom(spyTile);
             
-            List<Tile> potentialExitTiles = PotentialExitTiles(tilesCopy, _gridMapSize);
+            List<Tile> potentialExitTiles = PotentialExitTiles(tilesCopy, _matrixSize);
             // ensures that there are no more exits than the potential number of exits
             int maxExits = _exitCount > potentialExitTiles.Count / 2 ? potentialExitTiles.Count / 2 : _exitCount;
             // ensures there is at most -1 guards to exits
@@ -80,12 +80,12 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             if (ExitsAreAvailableIn(potentialExitTiles, maxExits))
             {
                 PlaceExits(potentialExitTiles, maxExits);
-                List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapSize, _gridMapSize);
+                List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
 
                 if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
                 {
                     SetGuardTiles(potentialGuardSpawnTiles, maxGuards);
-                    _tiles = tilesCopy;
+                    _tileMatrix = tilesCopy;
                     flag = false;
                 }
                 else
@@ -253,8 +253,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     private void PopulateEnv(List<List<Tile>> tiles, Dictionary<ParentObject, GameObject> parents)
     {
         CreatePlane(
-            scale: new Vector3(_mapSize, 1, _mapSize),
-            parent: _parents[ParentObject.TopParent].transform
+            scale: new Vector3(_mapScale, 1, _mapScale),
+            parent: _parentDictionary[ParentObject.TopParent].transform
         );
 
         tiles
@@ -268,7 +268,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     public Dictionary<TileType, List<Tile>> GetTileTypes()
     {
         // this should return a dictionary with all the potentialExitTiles instead of fields
-        foreach (var tileRow in _tiles) foreach (var tile in tileRow)
+        foreach (var tileRow in _tileMatrix) foreach (var tile in tileRow)
         {
             if (tile.IsExit) _tileTypes[TileType.ExitTiles].Add(tile);
             else if (tile.HasSpy) _tileTypes[TileType.SpyTile].Add(tile);
