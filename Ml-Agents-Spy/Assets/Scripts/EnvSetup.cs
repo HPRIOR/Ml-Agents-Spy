@@ -21,7 +21,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     private readonly Dictionary<ParentObject, GameObject> _parentDictionary;
     private Dictionary<TileType, List<Tile>> _tileTypes = new Dictionary<TileType, List<Tile>>();
     private TileMatrix _tileMatrixProducer;
-    private List<List<Tile>> _tileMatrix;
+    private Tile[,] _tileMatrix;
 
     public EnvSetup(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
         Dictionary<ParentObject, GameObject> parentDictionary)
@@ -63,7 +63,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         while (flag)
         {
             TileMatrix matrixClone = (TileMatrix)_tileMatrixProducer.Clone();
-            List<List<Tile>> tilesCopy = matrixClone.Tiles;
+            Tile[,] tilesCopy = matrixClone.Tiles;
             
             Tile spyTile = SetSpyTile(tilesCopy, _matrixSize);
             CreateInitialEnv(tilesCopy, _matrixSize);
@@ -82,7 +82,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             if (maxExits > 1)
             {
                 SetExits(potentialExitTiles, maxExits);
-                List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
+                Tile[] potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
                
                 if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
                 {
@@ -113,12 +113,12 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of Tiles</param>
     /// <param name="matrixSize">Size of matrix</param>
     /// <returns></returns>
-    private Tile SetSpyTile(List<List<Tile>> tileMatrix, int matrixSize)
+    private Tile SetSpyTile(Tile[,] tileMatrix, int matrixSize)
     {
         int y = 1;
         int x = GetParityRandom(1, matrixSize - 1, ParityEnum.Even);
-        tileMatrix[x][y].HasSpy = true;
-        return tileMatrix[x][y];
+        tileMatrix[x,y].HasSpy = true;
+        return tileMatrix[x,y];
     }
 
     /// <summary>
@@ -126,15 +126,13 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// </summary>
     /// <param name="tileMatrix">Matrix of Tiles</param>
     /// <param name="matrixSize">Size of matrix</param>
-    private static void CreateInitialEnv(List<List<Tile>> tileMatrix, int matrixSize)
+    private static void CreateInitialEnv(Tile[,] tileMatrix, int matrixSize)
     {
-        foreach (var tileRow in tileMatrix)
+        foreach (var tile in tileMatrix)
         {
-            foreach (var tile in tileRow)
-            {
-                if (CanPlacePerimeter(tile, matrixSize)) tile.HasEnv = true;
-                else if (CanPlaceMiddle(tile, matrixSize)) tile.HasEnv = true;
-            }
+            if (CanPlacePerimeter(tile, matrixSize)) tile.HasEnv = true;
+            else if (CanPlaceMiddle(tile, matrixSize)) tile.HasEnv = true;
+            
         }
     }
 
@@ -144,19 +142,18 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of Tiles</param>
     /// <param name="matrixSize">Size of matrix</param>
     /// <param name="mapDifficulty">Number of tiles to randomly set</param>
-    private static void SetEnvDifficulty(List<List<Tile>> tileMatrix, int matrixSize, int mapDifficulty)
+    private static void SetEnvDifficulty(Tile[,] tileMatrix, int matrixSize, int mapDifficulty)
     {
-        List<Tile> freeTiles =
-            (from tileRow in tileMatrix
-             from tile in tileRow
-             where CanPlaceEnvDifficulty(tile, matrixSize)
+        var freeTiles =
+            (from Tile tile in tileMatrix 
+                where CanPlaceEnvDifficulty(tile, matrixSize)
              select tile)
-            .ToList();
+            .ToArray();
 
         // Defaults to max free guardSpawnTiles if difficulty is higher. Ensures max 1 env-block per tile
-        var checkDifficultyCount = mapDifficulty > freeTiles.Count ? freeTiles.Count : mapDifficulty;
+        var checkDifficultyCount = mapDifficulty > freeTiles.Length ? freeTiles.Length : mapDifficulty;
 
-        List<int> randSequence = RandomHelper.GetUniqueRandomList(mapDifficulty, freeTiles.Count);
+        List<int> randSequence = RandomHelper.GetUniqueRandomList(mapDifficulty, freeTiles.Length);
 
         for (int i = 0; i < checkDifficultyCount; i++)
         {
@@ -206,9 +203,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of Tiles </param>
     /// <param name="matrixSize">Size of matrix</param>
     /// <returns>List of tiles which are candidates for exit tiles</returns>
-    private static List<Tile> PotentialExitTiles(List<List<Tile>> tileMatrix, int matrixSize) =>
-        (from tileRow in tileMatrix
-            from tile in tileRow
+    private static List<Tile> PotentialExitTiles(Tile[,] tileMatrix, int matrixSize) =>
+        (from Tile tile in tileMatrix
             where tile.Coords.y == matrixSize
             where tile.AdjacentTile[Direction.S].OnPath
             select tile).ToList();
@@ -239,13 +235,12 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="mapScale">Size of map corresponding to plane scale</param>
     /// <param name="matrixSize">Size of Matrix</param>
     /// <returns>List of appropriate tiles</returns>
-    private static List<Tile> PotentialGuardSpawnTiles(List<List<Tile>> tileMatrix, int mapScale, int matrixSize) => 
-        (from tileRow in tileMatrix
-            from tile in tileRow
+    private static Tile[] PotentialGuardSpawnTiles(Tile[,] tileMatrix, int mapScale, int matrixSize) => 
+        (from Tile tile in tileMatrix
             where tile.OnPath
             where tile.Coords.x % 2 == 0
             where InGuardSpawnAreaY(tile, mapScale, matrixSize)
-            select tile).ToList();
+            select tile).ToArray();
 
     /// <summary>
     /// Checks that there are enough spawn tiles available and at least one guard agent being spawned
@@ -253,17 +248,17 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="guardSpawnTiles">Candidate tiles for guard spawning</param>
     /// <param name="guardCount">Number of guards agents to spawn</param>
     /// <returns>true if there are enough spawn tiles available and at least one guard agent being spawned</returns>
-    private static bool GuardPlacesAreAvailableIn(List<Tile> guardSpawnTiles, int guardCount) => 
-        guardCount <= guardSpawnTiles.Count && guardCount >= 1;
+    private static bool GuardPlacesAreAvailableIn(Tile[] guardSpawnTiles, int guardCount) => 
+        guardCount <= guardSpawnTiles.Length && guardCount >= 1;
 
     /// <summary>
     /// Randomly sets guard spawn tiles out of the candidate tiles 
     /// </summary>
     /// <param name="guardSpawnTiles">Candidate tiles for guard spawning</param>
     /// <param name="guardCount">Number of guards agents to spawn</param>
-    private static void SetGuardTiles(List<Tile> guardSpawnTiles, int guardCount)
+    private static void SetGuardTiles(Tile[] guardSpawnTiles, int guardCount)
     {
-        var randomList = GetUniqueRandomList(guardCount, guardSpawnTiles.Count);
+        var randomList = GetUniqueRandomList(guardCount, guardSpawnTiles.Length);
         for (int i = 0; i < guardCount; i++) guardSpawnTiles[randomList[i]].HasGuard = true;
     }
 
@@ -311,19 +306,17 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="mapScale">Size of map corresponding to scale of plane</param>
-    private void PopulateEnv(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
+    private void PopulateEnv(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
     {
         CreatePlane(
             scale: new Vector3(mapScale, 1, mapScale),
             parent: _parentDictionary[ParentObject.TopParent].transform
         );
 
-        tileMatrix
-            .ForEach(tileRow => tileRow
-                .Where(tile => tile.HasEnv)
-                .ToList()
-                .ForEach(tile =>
-                    CreateBox(new Vector3(2, 2, 2), parentDictionary[ParentObject.EnvParent].transform, tile.Position)));
+        foreach (var tile in tileMatrix)
+        {
+            if (tile.HasEnv) CreateBox(new Vector3(2, 2, 2), parentDictionary[ParentObject.EnvParent].transform, tile.Position);
+        }
     }
 
     /// <summary>
@@ -332,7 +325,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <returns>Tile type references and corresponding tiles</returns>
     public Dictionary<TileType, List<Tile>> GetTileTypes()
     {
-        foreach (var tileRow in _tileMatrix) foreach (var tile in tileRow)
+        foreach (var tile in _tileMatrix)
         {
             if (tile.IsExit) _tileTypes[TileType.ExitTiles].Add(tile);
             else if (tile.HasSpy) _tileTypes[TileType.SpyTile].Add(tile);

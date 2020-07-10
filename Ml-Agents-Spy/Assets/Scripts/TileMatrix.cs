@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 /// </summary>
 public class TileMatrix : ICloneable
 {
-    public List<List<Tile>> Tiles { get; }
+    public Tile[,] Tiles { get; }
     private readonly Vector3 _planeCentre;
     private readonly int _gridMapSize;
    
@@ -27,28 +27,26 @@ public class TileMatrix : ICloneable
     /// <param name="gridMapSize">max height/width from centre of outermost tile</param>
     /// <param name="planeCentre">centre of the target plane</param>
     /// <returns></returns>
-    private List<List<Tile>> CreateTilesMatrix(int gridMapSize, Vector3 planeCentre)
+    private Tile[,] CreateTilesMatrix(int gridMapSize, Vector3 planeCentre)
     {
+        Tile[,] tiles = new Tile[gridMapSize+1, gridMapSize+1];
         int x = -gridMapSize;
-        List<List<Tile>> tileList = new List<List<Tile>>();
         for (int i = 0; i < gridMapSize+1; i++)
         {
             int z = -gridMapSize;
-            List<Tile> column = new List<Tile>();
             for (int j = 0; j < gridMapSize+1; j++)
             {
-                column.Add(
+                tiles[i, j] =
                     new Tile(
                         position: planeCentre + new Vector3(x, 0.5f, z),
-                        coords: (i, j) 
-                    )
-                );
+                        coords: (i, j)
+                    );
                 z += 2;
             }
-            tileList.Add(column);
             x += 2;
         }
-        return tileList;
+
+        return tiles;
     }
 
     /// <summary>
@@ -56,23 +54,26 @@ public class TileMatrix : ICloneable
     /// </summary>
     /// <param name="tileMatrix">2D array of tiles</param>
     /// <param name="matrixSize">The maximum width and height of tiles</param>
-    private void GetAdjacentTiles(List<List<Tile>> tileMatrix, int matrixSize) =>
-        tileMatrix.
-            ForEach(tileRow => tileRow.
-                ForEach(tile => GetAllDirectionTiles(tile, tileMatrix, matrixSize)));
-    
+    private void GetAdjacentTiles(Tile[,] tileMatrix, int matrixSize)
+    {
+        foreach (var tile in tileMatrix)
+        {
+            GetAllDirectionTiles(tile, tileMatrix, matrixSize);
+        }
+    }
 
-    private void GetAllDirectionTiles(Tile tile, List<List<Tile>> tileMatrix, int matrixSize) =>
+
+    private void GetAllDirectionTiles(Tile tile, Tile[,] tileMatrix, int matrixSize) =>
         System.Enum.GetValues(typeof(Direction)).Cast<Direction>()
             .ToList()
             .ForEach(direction => tile.AdjacentTile[direction] = GetDirectionTile(direction, tile, tileMatrix, matrixSize));
     
-    private Tile GetDirectionTile(Direction d, Tile inputTile, List<List<Tile>> tileMatrix, int matrixSize)
+    private Tile GetDirectionTile(Direction d, Tile inputTile, Tile[,] tileMatrix, int matrixSize)
     {
-        if (d == Direction.N) return inputTile.Coords.y == matrixSize ? null : tileMatrix[inputTile.Coords.x][inputTile.Coords.y + 1];
-        if (d == Direction.E) return inputTile.Coords.x == matrixSize ? null : tileMatrix[inputTile.Coords.x + 1][inputTile.Coords.y];
-        if (d == Direction.S) return inputTile.Coords.y == 0 ? null : tileMatrix[inputTile.Coords.x][inputTile.Coords.y - 1];
-        if (d == Direction.W) return inputTile.Coords.x == 0 ? null : tileMatrix[inputTile.Coords.x - 1][inputTile.Coords.y];
+        if (d == Direction.N) return inputTile.Coords.y == matrixSize ? null : tileMatrix[inputTile.Coords.x, inputTile.Coords.y + 1];
+        if (d == Direction.E) return inputTile.Coords.x == matrixSize ? null : tileMatrix[inputTile.Coords.x + 1,inputTile.Coords.y];
+        if (d == Direction.S) return inputTile.Coords.y == 0 ? null : tileMatrix[inputTile.Coords.x,inputTile.Coords.y - 1];
+        if (d == Direction.W) return inputTile.Coords.x == 0 ? null : tileMatrix[inputTile.Coords.x - 1,inputTile.Coords.y];
         throw new Exception("No direction given in TileMatrix.GetDirectionTile");
     }
 

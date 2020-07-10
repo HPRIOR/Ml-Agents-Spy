@@ -361,7 +361,7 @@ MonoBehaviour:
   GuardParent: {fileID: 729678775}
   DebugParent: {fileID: 1657406443}
   MapScale: 6
-  MapDifficulty: 100
+  MapDifficulty: 50
   ExitCount: 5
   GuardAgentCount: 4
 --- !u!4 &646235973
