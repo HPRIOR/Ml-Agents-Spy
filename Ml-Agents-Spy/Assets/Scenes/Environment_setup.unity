@@ -361,9 +361,9 @@ MonoBehaviour:
   GuardParent: {fileID: 729678775}
   DebugParent: {fileID: 1657406443}
   MapScale: 6
-  MapDifficulty: 200
-  ExitCount: 2
-  GuardAgentCount: 1
+  MapDifficulty: 100
+  ExitCount: 5
+  GuardAgentCount: 4
 --- !u!4 &646235973
 Transform:
   m_ObjectHideFlags: 0

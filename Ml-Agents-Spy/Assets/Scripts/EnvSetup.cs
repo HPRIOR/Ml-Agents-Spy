@@ -79,12 +79,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
             
-            
-
             if (maxExits > 1)
             {
-                Debug.Log(maxExits);
-                Debug.Log(potentialExitTiles.Count);
                 SetExits(potentialExitTiles, maxExits);
                 List<Tile> potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
                
@@ -93,7 +89,6 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
                     SetGuardTiles(potentialGuardSpawnTiles, maxGuards);
                     _tileMatrix = tilesCopy;
                     flag = false;
-                    
                 }
                 else
                 {
@@ -229,7 +224,6 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         for (int i = 0; i < exitCount; i++)
         {
             var selectedExit = potentialExitTiles[r.Next(0, potentialExitTiles.Count)];
-            Debug.Log(selectedExit);
             selectedExit.IsExit = true;
             selectedExit.HasEnv = false;
             potentialExitTiles.Remove(selectedExit);
