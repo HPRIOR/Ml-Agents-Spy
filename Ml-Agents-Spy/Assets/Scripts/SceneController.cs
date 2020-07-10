@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -38,6 +39,7 @@ public class SceneController : MonoBehaviour
 
     void RestartEnv()
     {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
             mapScale: MapScale,
@@ -48,6 +50,9 @@ public class SceneController : MonoBehaviour
         );
 
         env.SetUpEnv();
-        
+        watch.Stop();
+
+        Debug.Log($"Execution Time: {watch.ElapsedMilliseconds} ms");
+
     }
 }

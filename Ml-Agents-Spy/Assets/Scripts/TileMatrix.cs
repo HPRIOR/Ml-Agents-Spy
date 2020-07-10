@@ -4,13 +4,13 @@ using System.Linq;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// Produces a 2D array of tiles
+/// Creates Tile Matrix
 /// </summary>
 public class TileMatrix : ICloneable
 {
     public List<List<Tile>> Tiles { get; }
-    private Vector3 _planeCentre;
-    private int _gridMapSize;
+    private readonly Vector3 _planeCentre;
+    private readonly int _gridMapSize;
    
 
     public TileMatrix(Vector3 planeCentre, int gridMapSize)
