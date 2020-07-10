@@ -10,8 +10,8 @@ using UnityEngine;
 /// </remarks>
 public class Tile : ICloneable
 {
-    public Vector3 Position { get; }
-    public (int x, int y) Coords { get; }
+    public Vector3 Position { get; set; }
+    public (int x, int y) Coords { get; set; }
 
     public Dictionary<Direction, Tile> AdjacentTile { get; set; }
         = new Dictionary<Direction, Tile>()
