@@ -46,7 +46,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
 
         // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
-        // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
+         DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.OnPath);
 
     }
@@ -73,15 +73,19 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             pathFinder.GetPath(spyTile);
 
             List<Tile> potentialExitTiles = PotentialExitTiles(tilesCopy, _matrixSize);
+            
+            IExitHelper exitHelper = new ExitHelper(potentialExitTiles);
 
-            // ensures that there are no more exits than half the potential number of exits
-            int maxExits = _exitCount > (potentialExitTiles.Count)/ 2 ? (potentialExitTiles.Count)/ 2 : _exitCount;
+            int maxExits = exitHelper.ExitCount;
+                
+                //_exitCount > ((potentialExitTiles.Count)/ 2)  ? ((potentialExitTiles.Count) / 2) : _exitCount;
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
             
             if (maxExits > 1)
             {
-                SetExits(potentialExitTiles, maxExits);
+                exitHelper.SetExitTiles();
+                //SetExits(potentialExitTiles, maxExits);
                 Tile[] potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
                
                 if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
@@ -219,7 +223,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         Random r = new Random();
         for (int i = 0; i < exitCount; i++)
         {
-            var selectedExit = potentialExitTiles[r.Next(0, potentialExitTiles.Count)];
+            var selectedExit = potentialExitTiles[r.Next(0, potentialExitTiles.Count)];                                                                                                                            
             selectedExit.IsExit = true;
             selectedExit.HasEnv = false;
             potentialExitTiles.Remove(selectedExit);
@@ -271,7 +275,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <returns>True if tile is in the guard spawn area </returns>
     private static bool InGuardSpawnAreaY(Tile tile, int mapScale, int matrixSize) =>
         mapScale >= 1 & mapScale <= 3 & tile.Coords.y == matrixSize - 1 
-        || mapScale > 3 & (tile.Coords.y >= matrixSize - 1 || tile.Coords.y <= matrixSize - 3);
+        || mapScale > 3 & (tile.Coords.y <= matrixSize - 1 & tile.Coords.y >= matrixSize - 3);
 
     /// <summary>
     /// Creates box with given scale, GameObject parent, and 3D position
@@ -342,9 +346,9 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="tilePredicate">Injects predicate into where clause</param>
-    private static void DebugFirstInstance(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
-      CreateBox(new Vector3 (1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, (from tileRow in tileMatrix
-          from tile in tileRow
+    private static void DebugFirstInstance(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+      CreateBox(new Vector3 (1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, (
+          from Tile tile in tileMatrix
           select tile).Where(tilePredicate).ToList()[0].Position);
    
     /// <summary>
@@ -353,9 +357,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="tilePredicate">Injects predicate into where clause</param>
-    private static void DebugAll(List<List<Tile>> tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
-       (from tileRow in tileMatrix
-           from tile in tileRow
+    private static void DebugAll(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+       (from Tile tile in tileMatrix
            select tile).Where(tilePredicate).ToList().ForEach(tile =>
            CreateBox(new Vector3(1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, tile.Position));
 

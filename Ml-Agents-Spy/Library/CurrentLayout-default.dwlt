@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 202
+    x: 1
     y: 51
     width: 1278
-    height: 970
+    height: 998
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 7}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -41,8 +41,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 590
-    height: 625
+    width: 201
+    height: 644
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
@@ -70,8 +70,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 590
-    height: 920
+    width: 201
+    height: 948
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1278
-    height: 920
+    height: 948
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 1
@@ -117,8 +117,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 313
-    height: 392
+    width: 284
+    height: 404
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
@@ -143,14 +143,14 @@ MonoBehaviour:
   - {fileID: 11}
   m_Position:
     serializedVersion: 2
-    x: 590
+    x: 201
     y: 0
-    width: 313
-    height: 920
+    width: 284
+    height: 948
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 121
+  controlID: 122
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1278
-    height: 970
+    height: 998
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &8
@@ -218,7 +218,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1278
-    height: 920
+    height: 948
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 950
+    y: 978
     width: 1278
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -260,9 +260,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 392
-    width: 313
-    height: 528
+    y: 404
+    width: 284
+    height: 544
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 17}
@@ -285,10 +285,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 903
+    x: 485
     y: 0
-    width: 375
-    height: 920
+    width: 793
+    height: 948
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
@@ -312,9 +312,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 625
-    width: 590
-    height: 295
+    y: 644
+    width: 201
+    height: 304
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
@@ -342,25 +342,25 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1281
+    x: 8
     y: 81
     width: 589
-    height: 624
+    height: 618
   m_ViewDataDictionary: {fileID: 0}
   m_Spl:
-    ID: 658
+    ID: 181
     splitterInitialOffset: 0
     currentActiveSplitter: -1
-    realSizes: a00100008a000000
+    realSizes: 9b01000089000000
     relativeSizes:
     - 0.75
     - 0.25
     minSizes: 2000000020000000
     maxSizes: 0000000000000000
-    lastTotalSize: 554
+    lastTotalSize: 548
     splitSize: 6
     xOffset: 0
-  m_TestTypeToolbarIndex: 0
+  m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
     m_Window: {fileID: 14}
     newResultList:
@@ -445,29 +445,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
-    - id: 1003
-      uniqueId: Play-Mode.dll/Tests/TileTest/[Play-Mode][Tests.TileTest.TileTestWithEnumeratorPasses]
-      name: TileTestWithEnumeratorPasses
-      fullName: Tests.TileTest.TileTestWithEnumeratorPasses
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
-    m_ResultText: TileTestWithEnumeratorPasses (0.000s)
+    m_ResultText: Tests (0.000s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 761dd2d0
-      m_LastClickedID: -791536266
+      m_SelectedIDs: a4e15a91
+      m_LastClickedID: -1856314972
       m_ExpandedIDs: a4e15a91865db401379b0561ce65a269ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -501,8 +484,8 @@ MonoBehaviour:
       uniqueId: '[Ml-Agents-Spy][suite]'
       name: Ml-Agents-Spy
       fullName: Ml-Agents-Spy
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.1128268
       messages: 
       output: 
       stacktrace: 
@@ -513,13 +496,178 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    m_ResultText: 
+    - id: 1014
+      uniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
+      name: Edit-Mode.dll
+      fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll
+      resultStatus: 1
+      duration: 0.0795874
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: '[Ml-Agents-Spy][suite]'
+    - id: 1001
+      uniqueId: Edit-Mode.dll/[Edit-Mode][EnvSetupTests][suite]
+      name: EnvSetupTests
+      fullName: EnvSetupTests
+      resultStatus: 1
+      duration: 0.0234075
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1009
+      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
+    - id: 1002
+      uniqueId: Edit-Mode.dll/EnvSetupTests/[Edit-Mode][EnvSetupTests.RandomTest]
+      name: RandomTest
+      fullName: EnvSetupTests.RandomTest
+      resultStatus: 1
+      duration: 0.0061674
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][EnvSetupTests][suite]
+    - id: 1007
+      uniqueId: Edit-Mode.dll/[Edit-Mode][PathFinderTest][suite]
+      name: PathFinderTest
+      fullName: PathFinderTest
+      resultStatus: 1
+      duration: 0.0318647
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
+    - id: 1008
+      uniqueId: Edit-Mode.dll/PathFinderTest/[Edit-Mode][PathFinderTest.tmOnePathTest]
+      name: tmOnePathTest
+      fullName: PathFinderTest.tmOnePathTest
+      resultStatus: 1
+      duration: 0.0113694
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1007
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][PathFinderTest][suite]
+    - id: 1015
+      uniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+      name: Tests
+      fullName: Tests
+      resultStatus: 1
+      duration: 0.0196334
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
+    - id: 1009
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+      name: TileMatrixTest
+      fullName: Tests.TileMatrixTest
+      resultStatus: 1
+      duration: 0.0102201
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1015
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1013
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.AdjacencyMatrixTest]
+      name: AdjacencyMatrixTest
+      fullName: Tests.TileMatrixTest.AdjacencyMatrixTest
+      resultStatus: 1
+      duration: 0.0012927
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    - id: 1012
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.CoordsTest]
+      name: CoordsTest
+      fullName: Tests.TileMatrixTest.CoordsTest
+      resultStatus: 1
+      duration: 0.002404
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    - id: 1011
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.VectorTest]
+      name: VectorTest
+      fullName: Tests.TileMatrixTest.VectorTest
+      resultStatus: 1
+      duration: 0.0014922
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    m_ResultText: AdjacencyMatrixTest (0.001s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 249e8fb26c3b6624379b0561ffffff7f
+      m_SelectedIDs: 50e40c62
+      m_LastClickedID: 1645012048
+      m_ExpandedIDs: 49ef458e249e8fb2890706ee6c3b6624379b05619af2f269ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -566,17 +714,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 792
+    x: 202
     y: 81
-    width: 311
-    height: 371
+    width: 282
+    height: 383
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f6360000
-      m_LastClickedID: 14070
-      m_ExpandedIDs: 6afbffff08370000
+      m_SelectedIDs: 6e300000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -621,10 +769,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1105
+    x: 486
     y: 81
-    width: 374
-    height: 899
+    width: 792
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -659,10 +807,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 792
-    y: 473
-    width: 311
-    height: 507
+    x: 202
+    y: 485
+    width: 282
+    height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -689,7 +837,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 54300000
     m_LastClickedID: 12372
-    m_ExpandedIDs: 00000000583700005a3700005c3700005e37000060370000623700006437000066370000
+    m_ExpandedIDs: 000000005a3700005c3700005e3700006037000062370000643700006637000068370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -714,10 +862,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 30}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000583700005a3700005c3700005e37000060370000623700006437000066370000
+    m_ExpandedIDs: ffffffff000000005a3700005c3700005e3700006037000062370000643700006637000068370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -794,10 +942,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 644
-    width: 589
-    height: 274
+    x: 1
+    y: 725
+    width: 200
+    height: 283
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
   m_SerializedViewValues: []
@@ -807,7 +955,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 589, y: 253}
+  m_TargetSize: {x: 200, y: 262}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -822,10 +970,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -294.5
-    m_HBaseRangeMax: 294.5
-    m_VBaseRangeMin: -126.5
-    m_VBaseRangeMax: 126.5
+    m_HBaseRangeMin: -100
+    m_HBaseRangeMax: 100
+    m_VBaseRangeMin: -131
+    m_VBaseRangeMax: 131
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -843,23 +991,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 589
-      height: 253
+      width: 200
+      height: 262
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 294.5, y: 126.5}
+    m_Translation: {x: 100, y: 131}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -294.5
-      y: -126.5
-      width: 589
-      height: 253
+      x: -100
+      y: -131
+      width: 200
+      height: 262
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 589, y: 274}
+  m_LastWindowPixelSize: {x: 200, y: 283}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -886,10 +1034,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 202
+    x: 1
     y: 81
-    width: 589
-    height: 604
+    width: 200
+    height: 623
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 34a73a3eb528cc54ca216c50d0964146
@@ -901,9 +1049,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.5709114, y: -36.058594, z: 15.129883}
+    m_Target: {x: 3.0085437, y: -4.578125, z: -1.6711558}
     speed: 2
-    m_Value: {x: -6.5709114, y: -36.058594, z: 15.129883}
+    m_Value: {x: 3.0085437, y: -4.578125, z: -1.6711558}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -949,13 +1097,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.6360746, y: 0.0011573804, z: -0.00095442514, w: 0.77162945}
+    m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0.63607293, y: 0.0011573774, z: -0.00095442263, w: 0.7716274}
+    m_Value: {x: -0.7071068, y: 0, z: -0, w: -0.7071068}
   m_Size:
-    m_Target: 44.600506
+    m_Target: 33.778095
     speed: 2
-    m_Value: 44.600506
+    m_Value: 33.778095
   m_Ortho:
     m_Target: 1
     speed: 2
