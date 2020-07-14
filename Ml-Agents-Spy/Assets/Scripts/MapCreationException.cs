@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class MapCreationException : Exception
 {
-    public MapCreationException(string message, int matrixSize, int difficulty, 
-        int exitCount, int guardAgentCount, int originalExit, int originalGuard) : base(message)
+    public MapCreationException(string message, int matrixSize =0, int difficulty=0, 
+        int exitCount=0, int guardAgentCount=0, int originalExit=0, int originalGuard=0) : base(message)
     {
         Debug.Log($"{message} \n" +
                   $"Matrix Size: {matrixSize}, \n" +

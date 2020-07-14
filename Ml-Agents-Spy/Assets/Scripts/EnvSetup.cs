@@ -72,20 +72,19 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             IPathFinder pathFinder = new PathFinder();
             pathFinder.GetPath(spyTile);
 
-            List<Tile> potentialExitTiles = PotentialExitTiles(tilesCopy, _matrixSize);
-            
-            IExitHelper exitHelper = new ExitHelper(potentialExitTiles);
+            // take in all tiles and do potential exits in house
+            IExitFinder exitFinder = new ExitFinder(tilesCopy, _matrixSize, _exitCount);
 
-            int maxExits = exitHelper.ExitCount;
-                
-                //_exitCount > ((potentialExitTiles.Count)/ 2)  ? ((potentialExitTiles.Count) / 2) : _exitCount;
+            int maxExits = exitFinder.ExitCount;
+            
+
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
             
-            if (maxExits > 1)
+            if (exitFinder.ExitsAreAvailable())
             {
-                exitHelper.SetExitTiles();
-                //SetExits(potentialExitTiles, maxExits);
+                exitFinder.SetExitTiles();
+                
                 Tile[] potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tilesCopy, _mapScale, _matrixSize);
                
                 if (GuardPlacesAreAvailableIn(potentialGuardSpawnTiles, maxGuards))
@@ -201,36 +200,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
          || tile.Coords.y == matrixSize)
         & !tile.IsExit;
 
-    /// <summary>
-    /// Gets perimeter tiles from farthest side of perimeter which are on the Spy agents potential path
-    /// </summary>
-    /// <param name="tileMatrix">Matrix of Tiles </param>
-    /// <param name="matrixSize">Size of matrix</param>
-    /// <returns>List of tiles which are candidates for exit tiles</returns>
-    private static List<Tile> PotentialExitTiles(Tile[,] tileMatrix, int matrixSize) =>
-        (from Tile tile in tileMatrix
-            where tile.Coords.y == matrixSize
-            where tile.AdjacentTile[Direction.S].OnPath
-            select tile).ToList();
+    
 
-    /// <summary>
-    /// Places exits randomly along candidate exit tiles so long as they are not next to each other
-    /// </summary>
-    /// <param name="potentialExitTiles">Candidate exit tiles</param>
-    /// <param name="exitCount">Number of exits to set</param>
-    private static void SetExits(List<Tile> potentialExitTiles, int exitCount)
-    {
-        Random r = new Random();
-        for (int i = 0; i < exitCount; i++)
-        {
-            var selectedExit = potentialExitTiles[r.Next(0, potentialExitTiles.Count)];                                                                                                                            
-            selectedExit.IsExit = true;
-            selectedExit.HasEnv = false;
-            potentialExitTiles.Remove(selectedExit);
-            potentialExitTiles.Remove(selectedExit.AdjacentTile[Direction.E]);
-            potentialExitTiles.Remove(selectedExit.AdjacentTile[Direction.W]);
-        }
-    }
 
     /// <summary>
     /// Gets a list of tiles which are both on the Spy agents path and in the guard spawn area
