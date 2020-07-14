@@ -10,15 +10,15 @@ public class TileMatrix : ICloneable
 {
     public Tile[,] Tiles { get; }
     private readonly Vector3 _planeCentre;
-    private readonly int _gridMapSize;
+    public int MatrixSize { get; }
    
 
-    public TileMatrix(Vector3 planeCentre, int gridMapSize)
+    public TileMatrix(Vector3 planeCentre, int matrixSize)
     {
         _planeCentre = planeCentre;
-        _gridMapSize = gridMapSize;
-        Tiles = CreateTilesMatrix(gridMapSize, planeCentre);
-        GetAdjacentTiles(Tiles, gridMapSize);
+        MatrixSize = matrixSize;
+        Tiles = CreateTilesMatrix(matrixSize, planeCentre);
+        GetAdjacentTiles(Tiles, matrixSize);
     }
 
     /// <summary>
@@ -79,6 +79,6 @@ public class TileMatrix : ICloneable
 
     public object Clone()
     {
-        return (TileMatrix) new TileMatrix(planeCentre: _planeCentre, _gridMapSize);
+        return (TileMatrix) new TileMatrix(planeCentre: _planeCentre, MatrixSize);
     }
 }

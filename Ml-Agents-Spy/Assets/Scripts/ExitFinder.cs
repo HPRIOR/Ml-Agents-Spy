@@ -28,22 +28,6 @@ public class ExitFinder : IExitFinder
                 ? maxPossibleExitCount
                 : requestedExitCount;
         }
-        //try
-        //{
-        //    
-        //    
-        //}
-        //catch (IndexOutOfRangeException)
-        //{
-        //    _canProceed = false;
-        //}
-        //catch (ArgumentOutOfRangeException)
-        //{
-        //    _canProceed = false;
-        //}
-
-        
-
     }
 
 
@@ -53,7 +37,7 @@ public class ExitFinder : IExitFinder
     /// <param name="tileMatrix">Matrix of Tiles </param>
     /// <param name="matrixSize">Size of matrix</param>
     /// <returns>List of tiles which are candidates for exit tiles</returns>
-    private static List<Tile> PotentialExitTiles(Tile[,] tileMatrix, int matrixSize) =>
+    static List<Tile> PotentialExitTiles(Tile[,] tileMatrix, int matrixSize) =>
         (from Tile tile in tileMatrix
             where tile.Coords.y == matrixSize
             where tile.AdjacentTile[Direction.S].OnPath
@@ -121,25 +105,8 @@ public class ExitFinder : IExitFinder
         return (nearestCeilingDivThree / 3);
     }
 
-    int TotalMaxExit(List<List<Tile>> tileGroups)
-    {
-        try
-        {
-            return tileGroups.Select(MaxExit).Aggregate((a, b) => a + b);
-        }
-        catch (InvalidOperationException)
-        {
-            _canProceed = false;
-            return 0;
-        }
-        catch (ArgumentNullException)
-        {
-            _canProceed = false;
-            return 0;
-        }
-        
-    }
-
+    int TotalMaxExit(List<List<Tile>> tileGroups) => tileGroups.Select(MaxExit).Aggregate((a, b) => a + b);
+    
     public void SetExitTiles()
     {
         
@@ -148,8 +115,6 @@ public class ExitFinder : IExitFinder
         Random r = new Random();
         for (int i = 0; i < ExitCount; i++)
         {
-            Debug.Log(associatedList.Count);
-            associatedList.ForEach(t => Debug.Log(t));
             var tuple = associatedList[r.Next(0, associatedList.Count)];
             var selectedTile = tuple.tileGroup[r.Next(0, tuple.tileGroup.Count)];
             
