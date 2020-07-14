@@ -9,25 +9,6 @@ namespace Tests
 {
     public class ExitFinderTest
     {
-        Dictionary<ParentObject, GameObject> GetDictionary()
-        {
-            GameObject TopParent = new GameObject();
-            GameObject EnvParent = new GameObject();
-            GameObject SpyParent = new GameObject();
-            GameObject GuardParent = new GameObject();
-            GameObject DebugParent = new GameObject();
-
-            return new Dictionary<ParentObject, GameObject>()
-            {
-                {ParentObject.TopParent, TopParent},
-                {ParentObject.EnvParent, EnvParent},
-                {ParentObject.SpyParent, SpyParent},
-                {ParentObject.GuardParent, GuardParent},
-                {ParentObject.DebugParent, DebugParent}
-
-            };
-        }
-
         int matrixSize(int scale) => scale % 2 == 0 ? (scale * 10) / 2 : ((scale * 10) / 2) + 1;
 
         Tile[,] GetTileMatrix(int scale)=>

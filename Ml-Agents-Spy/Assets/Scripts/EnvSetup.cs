@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static RandomHelper;
-using Random = System.Random;
 using Vector3 = UnityEngine.Vector3;
 
 
@@ -46,7 +45,7 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
 
         // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
-         DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
+        // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.OnPath);
 
     }
@@ -68,21 +67,18 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
             
             IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty);
             envTileLogic.SetEnvTiles();
-
             IPathFinder pathFinder = new PathFinder();
             pathFinder.GetPath(spyTile);
-
             IExitFinder exitFinder = new ExitFinder(tilesCopy, _matrixSize, _exitCount);
-
             int maxExits = exitFinder.ExitCount;
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
-            
+            IGuardLogic guardLogic = new GuardLogic(tilesCopy, _mapScale, _matrixSize, maxGuards);
+
+            // tests could be done inside classes instead of here, try catch could replaces
             if (exitFinder.ExitsAreAvailable())
             {
                 exitFinder.SetExitTiles();
-                IGuardLogic guardLogic = new GuardLogic(tilesCopy, _mapScale, _matrixSize, maxGuards);
-                
                 if (guardLogic.GuardPlacesAreAvailable())
                 {
                     guardLogic.SetGuardTiles();
