@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/EnvironmentSetup.unity
+- path: C:/Users/User/Documents/ML-AgentsRepo/ml-agents/Project/Assets/ML-Agents/Examples/PushBlock/Scenes/PushBlock.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

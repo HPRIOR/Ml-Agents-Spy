@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using static RandomHelper;
 using Vector3 = UnityEngine.Vector3;
@@ -10,20 +11,21 @@ using Vector3 = UnityEngine.Vector3;
 /// <summary>
 /// This class generates the environment environment 
 /// </summary>
-public class EnvSetup : IEnvSetup, IGetTileTypes
+public class EnvSetup : IEnvSetup
 {
     private readonly int _mapScale;
     private readonly int _mapDifficulty;
     private readonly int _matrixSize;
     private readonly int _exitCount;
     private readonly int _guardAgentCount;
+    private readonly int _mapCreationTolerance;
     private readonly Dictionary<ParentObject, GameObject> _parentDictionary;
     private Dictionary<TileType, List<Tile>> _tileTypes = new Dictionary<TileType, List<Tile>>();
     private TileMatrix _tileMatrixProducer;
     private Tile[,] _tileMatrix;
 
     public EnvSetup(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
-        Dictionary<ParentObject, GameObject> parentDictionary)
+        Dictionary<ParentObject, GameObject> parentDictionary, int mapCreationTolerance = 500)
     {
         _mapScale = mapScale;
         _mapDifficulty = mapDifficulty;
@@ -33,6 +35,8 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         _parentDictionary = parentDictionary;
         _tileMatrixProducer = new TileMatrix(_parentDictionary[ParentObject.TopParent].transform.localPosition, _matrixSize);
         _tileMatrix = _tileMatrixProducer.Tiles;
+        _mapCreationTolerance = mapCreationTolerance;
+        
         Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => _tileTypes.Add(tileType, new List<Tile>()));
     }
 
@@ -43,12 +47,15 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     {
         ModifyTileLogic();
         PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
+        _tileTypes = GetTileTypes();
 
         // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.OnPath);
 
     }
+
+    
 
     /// <summary>
     /// Changes logic within each tile, helping to generate the environment and agent tiles
@@ -88,14 +95,14 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
                 else
                 {
                     count += 1;
-                    if (count > 1000) throw new MapCreationException("Not enough free tiles to place guards", _matrixSize, _mapDifficulty, 
+                    if (count > _mapCreationTolerance) throw new MapCreationException("Not enough free tiles to place guards", _matrixSize, _mapDifficulty, 
                             maxExits, maxGuards, _exitCount, _guardAgentCount);
                 }
             }
             else
             {
                 count += 1;
-                if (count > 1000) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles", _matrixSize, _mapDifficulty,
+                if (count > _mapCreationTolerance) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles", _matrixSize, _mapDifficulty,
                         maxExits, maxGuards, _exitCount, _guardAgentCount);
             }
         }
@@ -150,11 +157,11 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
     /// <param name="mapScale">Size of map corresponding to scale of plane</param>
     private void PopulateEnv(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
     {
+        var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
         CreatePlane(
-            scale: new Vector3(mapScale, 1, mapScale),
+            scale: new Vector3(calcMapScale, 1, calcMapScale),
             parent: _parentDictionary[ParentObject.TopParent].transform
         );
-
         foreach (var tile in tileMatrix)
         {
             if (tile.HasEnv) CreateBox(new Vector3(2, 2, 2), parentDictionary[ParentObject.EnvParent].transform, tile.Position);
@@ -177,6 +184,13 @@ public class EnvSetup : IEnvSetup, IGetTileTypes
         }
         return _tileTypes;
     }
+
+    public List<Tile> GetSpyTile() => _tileTypes[TileType.SpyTile];
+
+    public List<Tile> GetGuardTiles() => _tileTypes[TileType.GuardTiles];
+
+    public List<Tile> GetExitTiles() => _tileTypes[TileType.ExitTiles];
+
 
     /// <summary>
     /// Creates 3D object on first tile matching predicate - used for visual debugging

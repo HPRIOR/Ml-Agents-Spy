@@ -10,9 +10,10 @@ public class SceneController : MonoBehaviour
 {
     public GameObject TopParent;
     public GameObject EnvParent;
-    public GameObject SpyParent;
-    public GameObject GuardParent;
     public GameObject DebugParent;
+    public List<Tile> SpyTile;
+    public List<Tile> GuardTiles;
+    public List<Tile> ExitTiles;
 
     private Dictionary<ParentObject, GameObject> _parentObjects;
 
@@ -28,19 +29,17 @@ public class SceneController : MonoBehaviour
         {
             {ParentObject.TopParent, TopParent},
             {ParentObject.EnvParent, EnvParent},
-            {ParentObject.SpyParent, SpyParent},
-            {ParentObject.GuardParent, GuardParent},
             {ParentObject.DebugParent, DebugParent}
 
         };
-        //Academy.Instance.OnEnvironmentReset += RestartEnv;
-        RestartEnv();
+        Academy.Instance.OnEnvironmentReset += RestartEnv;
+        //RestartEnv();
+
     }
 
 
     void RestartEnv()
     {
-        
         // pass in parents as a names tuples
         IEnvSetup env = new EnvSetup(
             mapScale: MapScale,
@@ -49,11 +48,16 @@ public class SceneController : MonoBehaviour
             guardAgentCount: GuardAgentCount,
             parentDictionary: _parentObjects
         );
+        SetEnvTiles(env);
 
+
+    }
+
+    void SetEnvTiles(IEnvSetup env)
+    {
         env.SetUpEnv();
-      
-
-
-
+        SpyTile = env.GetSpyTile();
+        GuardTiles = env.GetGuardTiles();
+        ExitTiles = env.GetExitTiles();
     }
 }
