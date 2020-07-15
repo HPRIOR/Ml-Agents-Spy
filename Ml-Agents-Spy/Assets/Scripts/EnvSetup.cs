@@ -134,6 +134,7 @@ public class EnvSetup : IEnvSetup
         box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
         box.transform.localScale = scale;
         box.transform.parent = parent;
+        box.tag = "env";
     }
 
     /// <summary>
