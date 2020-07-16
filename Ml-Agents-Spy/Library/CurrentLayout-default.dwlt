@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -1745
+    x: 1
     y: 51
     width: 1278
-    height: 991
+    height: 998
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 7}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -41,8 +41,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 770
-    height: 641
+    width: 601
+    height: 748
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
@@ -70,12 +70,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 770
-    height: 941
-  m_MinSize: {x: 201, y: 442}
-  m_MaxSize: {x: 4001, y: 8042}
+    width: 601
+    height: 948
+  m_MinSize: {x: 201, y: 421}
+  m_MaxSize: {x: 4001, y: 8021}
   vertical: 1
-  controlID: 98
+  controlID: 16
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,11 +95,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1278
-    height: 941
-  m_MinSize: {x: 709, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+    height: 948
+  m_MinSize: {x: 708, y: 471}
+  m_MaxSize: {x: 18003, y: 14021}
   vertical: 1
-  controlID: 96
+  controlID: 14
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -117,10 +117,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 232
-    height: 401
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 309
+    height: 404
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -143,14 +143,14 @@ MonoBehaviour:
   - {fileID: 11}
   m_Position:
     serializedVersion: 2
-    x: 770
+    x: 601
     y: 0
-    width: 232
-    height: 941
-  m_MinSize: {x: 232, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+    width: 309
+    height: 948
+  m_MinSize: {x: 232, y: 471}
+  m_MaxSize: {x: 10002, y: 14021}
   vertical: 1
-  controlID: 78
+  controlID: 81
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1278
-    height: 991
+    height: 998
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &8
@@ -218,11 +218,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1278
-    height: 941
-  m_MinSize: {x: 709, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+    height: 948
+  m_MinSize: {x: 708, y: 471}
+  m_MaxSize: {x: 18003, y: 14021}
   vertical: 0
-  controlID: 97
+  controlID: 15
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 971
+    y: 978
     width: 1278
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -260,9 +260,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 401
-    width: 232
-    height: 540
+    y: 404
+    width: 309
+    height: 544
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 17}
@@ -285,12 +285,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1002
+    x: 910
     y: 0
-    width: 276
-    height: 941
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 368
+    height: 948
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -312,11 +312,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 641
-    width: 770
-    height: 300
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    y: 748
+    width: 601
+    height: 200
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -342,22 +342,22 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1
+    x: -959
     y: 81
-    width: 601
-    height: 625
+    width: 434
+    height: 727
   m_ViewDataDictionary: {fileID: 0}
   m_Spl:
-    ID: 176
+    ID: 10511
     splitterInitialOffset: 0
     currentActiveSplitter: -1
-    realSizes: a00100008b000000
+    realSizes: ed010000a4000000
     relativeSizes:
     - 0.75
     - 0.25
     minSizes: 2000000020000000
     maxSizes: 0000000000000000
-    lastTotalSize: 555
+    lastTotalSize: 657
     splitSize: 6
     xOffset: 0
   m_TestTypeToolbarIndex: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
       name: Ml-Agents-Spy
       fullName: Ml-Agents-Spy
       resultStatus: 1
-      duration: 42.28964
+      duration: 38.840187
       messages: 
       output: 
       stacktrace: 
@@ -501,7 +501,7 @@ MonoBehaviour:
       name: Edit-Mode.dll
       fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll
       resultStatus: 1
-      duration: 42.245914
+      duration: 38.785862
       messages: 
       output: 
       stacktrace: 
@@ -517,7 +517,7 @@ MonoBehaviour:
       name: PathFinderTest
       fullName: PathFinderTest
       resultStatus: 1
-      duration: 0.0085516
+      duration: 0.0372894
       messages: 
       output: 
       stacktrace: 
@@ -533,7 +533,7 @@ MonoBehaviour:
       name: tmOnePathTest
       fullName: PathFinderTest.tmOnePathTest
       resultStatus: 1
-      duration: 0.00405
+      duration: 0.0179427
       messages: 
       output: 
       stacktrace: 
@@ -550,7 +550,7 @@ MonoBehaviour:
       name: Tests
       fullName: Tests
       resultStatus: 1
-      duration: 38.588135
+      duration: 36.150345
       messages: 
       output: 
       stacktrace: 
@@ -566,7 +566,7 @@ MonoBehaviour:
       name: ExitFinderTest
       fullName: Tests.ExitFinderTest
       resultStatus: 1
-      duration: 0.0353755
+      duration: 0.0371679
       messages: 
       output: 
       stacktrace: 
@@ -582,7 +582,7 @@ MonoBehaviour:
       name: TestExitCountOneContentiousBlock
       fullName: Tests.ExitFinderTest.TestExitCountOneContentiousBlock
       resultStatus: 1
-      duration: 0.0118897
+      duration: 0.0080018
       messages: 
       output: 
       stacktrace: 
@@ -599,7 +599,7 @@ MonoBehaviour:
       name: TestExitsAreAvailable
       fullName: Tests.ExitFinderTest.TestExitsAreAvailable
       resultStatus: 1
-      duration: 0.00623
+      duration: 0.0074118
       messages: 
       output: 
       stacktrace: 
@@ -616,7 +616,7 @@ MonoBehaviour:
       name: TestSetExitTiles
       fullName: Tests.ExitFinderTest.TestSetExitTiles
       resultStatus: 1
-      duration: 0.0070295
+      duration: 0.0052946
       messages: 
       output: 
       stacktrace: 
@@ -633,7 +633,7 @@ MonoBehaviour:
       name: TestTileGroupsExitCount
       fullName: Tests.ExitFinderTest.TestTileGroupsExitCount
       resultStatus: 1
-      duration: 0.0024451
+      duration: 0.0069777
       messages: 
       output: 
       stacktrace: 
@@ -650,7 +650,7 @@ MonoBehaviour:
       name: GuardSpawnTest
       fullName: Tests.GuardSpawnTest
       resultStatus: 1
-      duration: 0.0289703
+      duration: 0.0247428
       messages: 
       output: 
       stacktrace: 
@@ -666,7 +666,7 @@ MonoBehaviour:
       name: TestGreaterThanFourYAxis
       fullName: Tests.GuardSpawnTest.TestGreaterThanFourYAxis
       resultStatus: 1
-      duration: 0.003396
+      duration: 0.0034723
       messages: 
       output: 
       stacktrace: 
@@ -683,7 +683,7 @@ MonoBehaviour:
       name: TestGuardPlacesFilledWithEnvTiles
       fullName: Tests.GuardSpawnTest.TestGuardPlacesFilledWithEnvTiles
       resultStatus: 1
-      duration: 0.0023788
+      duration: 0.0021812
       messages: 
       output: 
       stacktrace: 
@@ -700,7 +700,7 @@ MonoBehaviour:
       name: TestIfCanSpawnBetweenPillars
       fullName: Tests.GuardSpawnTest.TestIfCanSpawnBetweenPillars
       resultStatus: 1
-      duration: 0.0023
+      duration: 0.0022929
       messages: 
       output: 
       stacktrace: 
@@ -717,7 +717,7 @@ MonoBehaviour:
       name: TestJustRightAmountOfAvailableTiles
       fullName: Tests.GuardSpawnTest.TestJustRightAmountOfAvailableTiles
       resultStatus: 1
-      duration: 0.0021747
+      duration: 0.0022163
       messages: 
       output: 
       stacktrace: 
@@ -734,7 +734,7 @@ MonoBehaviour:
       name: TestSetGuardTiles
       fullName: Tests.GuardSpawnTest.TestSetGuardTiles
       resultStatus: 1
-      duration: 0.0033196
+      duration: 0.0030596
       messages: 
       output: 
       stacktrace: 
@@ -751,7 +751,7 @@ MonoBehaviour:
       name: TileLogicAcceptanceTests
       fullName: Tests.TileLogicAcceptanceTests
       resultStatus: 1
-      duration: 34.982536
+      duration: 32.66019
       messages: 
       output: 
       stacktrace: 
@@ -767,7 +767,7 @@ MonoBehaviour:
       name: TestScaleEight
       fullName: Tests.TileLogicAcceptanceTests.TestScaleEight
       resultStatus: 1
-      duration: 5.788209
+      duration: 5.458745
       messages: 
       output: 
       stacktrace: 
@@ -784,7 +784,7 @@ MonoBehaviour:
       name: TestScaleFive
       fullName: Tests.TileLogicAcceptanceTests.TestScaleFive
       resultStatus: 1
-      duration: 2.4027026
+      duration: 2.3631713
       messages: 
       output: 
       stacktrace: 
@@ -801,7 +801,7 @@ MonoBehaviour:
       name: TestScaleFour
       fullName: Tests.TileLogicAcceptanceTests.TestScaleFour
       resultStatus: 1
-      duration: 1.4441143
+      duration: 1.4194747
       messages: 
       output: 
       stacktrace: 
@@ -818,7 +818,7 @@ MonoBehaviour:
       name: TestScaleNine
       fullName: Tests.TileLogicAcceptanceTests.TestScaleNine
       resultStatus: 1
-      duration: 7.0784206
+      duration: 6.6353407
       messages: 
       output: 
       stacktrace: 
@@ -835,7 +835,7 @@ MonoBehaviour:
       name: TestScaleOne
       fullName: Tests.TileLogicAcceptanceTests.TestScaleOne
       resultStatus: 1
-      duration: 0.1670918
+      duration: 0.16537
       messages: 
       output: 
       stacktrace: 
@@ -852,7 +852,7 @@ MonoBehaviour:
       name: TestScaleSeven
       fullName: Tests.TileLogicAcceptanceTests.TestScaleSeven
       resultStatus: 1
-      duration: 5.1000557
+      duration: 4.538041
       messages: 
       output: 
       stacktrace: 
@@ -869,7 +869,7 @@ MonoBehaviour:
       name: TestScaleSix
       fullName: Tests.TileLogicAcceptanceTests.TestScaleSix
       resultStatus: 1
-      duration: 3.2087994
+      duration: 2.9814675
       messages: 
       output: 
       stacktrace: 
@@ -886,7 +886,7 @@ MonoBehaviour:
       name: TestScaleTen
       fullName: Tests.TileLogicAcceptanceTests.TestScaleTen
       resultStatus: 1
-      duration: 8.455443
+      duration: 7.868665
       messages: 
       output: 
       stacktrace: 
@@ -903,7 +903,7 @@ MonoBehaviour:
       name: TestScaleThree
       fullName: Tests.TileLogicAcceptanceTests.TestScaleThree
       resultStatus: 1
-      duration: 0.9455314
+      duration: 0.8668733
       messages: 
       output: 
       stacktrace: 
@@ -920,7 +920,7 @@ MonoBehaviour:
       name: TestScaleTwo
       fullName: Tests.TileLogicAcceptanceTests.TestScaleTwo
       resultStatus: 1
-      duration: 0.3761693
+      duration: 0.3483296
       messages: 
       output: 
       stacktrace: 
@@ -937,7 +937,7 @@ MonoBehaviour:
       name: TileMatrixTest
       fullName: Tests.TileMatrixTest
       resultStatus: 1
-      duration: 3.5069695
+      duration: 3.398941
       messages: 
       output: 
       stacktrace: 
@@ -953,7 +953,7 @@ MonoBehaviour:
       name: AdjacencyMatrixTest
       fullName: Tests.TileMatrixTest.AdjacencyMatrixTest
       resultStatus: 1
-      duration: 0.0021486
+      duration: 0.0016834
       messages: 
       output: 
       stacktrace: 
@@ -970,7 +970,7 @@ MonoBehaviour:
       name: CoordsTest
       fullName: Tests.TileMatrixTest.CoordsTest
       resultStatus: 1
-      duration: 0.0011185
+      duration: 0.001105
       messages: 
       output: 
       stacktrace: 
@@ -987,7 +987,7 @@ MonoBehaviour:
       name: VectorTest
       fullName: Tests.TileMatrixTest.VectorTest
       resultStatus: 1
-      duration: 0.0017736
+      duration: 0.0016164
       messages: 
       output: 
       stacktrace: 
@@ -1004,7 +1004,7 @@ MonoBehaviour:
       name: TileLogicTests
       fullName: TileLogicTests
       resultStatus: 1
-      duration: 3.6272213
+      duration: 2.581614
       messages: 
       output: 
       stacktrace: 
@@ -1020,7 +1020,7 @@ MonoBehaviour:
       name: TestEnvTileCount
       fullName: TileLogicTests.TestEnvTileCount
       resultStatus: 1
-      duration: 0.042026
+      duration: 0.0603871
       messages: 
       output: 
       stacktrace: 
@@ -1037,7 +1037,7 @@ MonoBehaviour:
       name: TestExitCount
       fullName: TileLogicTests.TestExitCount
       resultStatus: 1
-      duration: 0.0203741
+      duration: 0.0182392
       messages: 
       output: 
       stacktrace: 
@@ -1054,7 +1054,7 @@ MonoBehaviour:
       name: TestExitLocationsOnYAxis
       fullName: TileLogicTests.TestExitLocationsOnYAxis
       resultStatus: 1
-      duration: 0.0115972
+      duration: 0.0099635
       messages: 
       output: 
       stacktrace: 
@@ -1071,7 +1071,7 @@ MonoBehaviour:
       name: TestFreeTilesCount
       fullName: TileLogicTests.TestFreeTilesCount
       resultStatus: 1
-      duration: 0.0022871
+      duration: 0.0021957
       messages: 
       output: 
       stacktrace: 
@@ -1088,7 +1088,7 @@ MonoBehaviour:
       name: TestGuardCount
       fullName: TileLogicTests.TestGuardCount
       resultStatus: 1
-      duration: 0.0495005
+      duration: 0.0179925
       messages: 
       output: 
       stacktrace: 
@@ -1105,7 +1105,7 @@ MonoBehaviour:
       name: TestGuardCountLessThanExitCount
       fullName: TileLogicTests.TestGuardCountLessThanExitCount
       resultStatus: 1
-      duration: 0.0057415
+      duration: 0.0051448
       messages: 
       output: 
       stacktrace: 
@@ -1122,7 +1122,7 @@ MonoBehaviour:
       name: TestGuardGreaterThanOne
       fullName: TileLogicTests.TestGuardGreaterThanOne
       resultStatus: 1
-      duration: 0.5681744
+      duration: 0.2316859
       messages: 
       output: "Not enough free tiles to place guards \nMatrix Size: 6, \nDifficulty:
         0, \nExit count: 2, changed from 2, \nNumber of Guards: 0, changed from 0\r\n"
@@ -1140,7 +1140,7 @@ MonoBehaviour:
       name: TestGuardSpawnArea
       fullName: TileLogicTests.TestGuardSpawnArea
       resultStatus: 1
-      duration: 0.0474315
+      duration: 0.0419486
       messages: 
       output: 
       stacktrace: 
@@ -1157,7 +1157,7 @@ MonoBehaviour:
       name: TestSpyCount
       fullName: TileLogicTests.TestSpyCount
       resultStatus: 1
-      duration: 0.0230511
+      duration: 0.0185307
       messages: 
       output: 
       stacktrace: 
@@ -1174,7 +1174,7 @@ MonoBehaviour:
       name: TestSpyOnYAxis
       fullName: TileLogicTests.TestSpyOnYAxis
       resultStatus: 1
-      duration: 0.0109428
+      duration: 0.009663
       messages: 
       output: 
       stacktrace: 
@@ -1191,7 +1191,7 @@ MonoBehaviour:
       name: TestThrowErrorIfExitCountBelow2
       fullName: TileLogicTests.TestThrowErrorIfExitCountBelow2
       resultStatus: 1
-      duration: 1.1149055
+      duration: 0.4718252
       messages: 
       output: "Exits cannot be created: \n either the map is too small for the number
         of exits, or the spy cannot reach enough exit tiles \nMatrix Size: 6, \nDifficulty:
@@ -1213,7 +1213,7 @@ MonoBehaviour:
       name: TestThrowExceptionIfMapTooComplex
       fullName: TileLogicTests.TestThrowExceptionIfMapTooComplex
       resultStatus: 1
-      duration: 0.406448
+      duration: 0.1955479
       messages: 
       output: "Exits cannot be created: \n either the map is too small for the number
         of exits, or the spy cannot reach enough exit tiles \nMatrix Size: 6, \nDifficulty:
@@ -1228,13 +1228,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1003
       parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    m_ResultText: TestSetGuardTiles (0.003s)
+    m_ResultText: TestSpyCount (0.019s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8f7ad817
-      m_LastClickedID: 400063119
-      m_ExpandedIDs: 49ef458e249e8fb26c3b6624379b0561ffffff7f
+      m_SelectedIDs: 4397e3df
+      m_LastClickedID: -538732733
+      m_ExpandedIDs: 49ef458e249e8fb26c3b6624b2067a36379b0561ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1281,17 +1281,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -975
+    x: 602
     y: 81
-    width: 230
-    height: 380
+    width: 307
+    height: 383
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: eaaa9cff
       m_LastClickedID: 0
-      m_ExpandedIDs: 12fbffff
+      m_ExpandedIDs: dcfc9effe0fc9eff40fd9eff44fd9effe6889ffff4889ffff6889fff201ce7ff16a2fcff24a2fcff6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1336,10 +1336,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -743
+    x: 911
     y: 81
-    width: 275
-    height: 920
+    width: 367
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -1374,10 +1374,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -975
-    y: 482
-    width: 230
-    height: 519
+    x: 602
+    y: 485
+    width: 307
+    height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -1392,7 +1392,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -1404,7 +1404,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 54300000
     m_LastClickedID: 12372
-    m_ExpandedIDs: 000000008c3700008e37000090370000923700009437000096370000983700009a3700009c3700009e370000
+    m_ExpandedIDs: 0000000076370000783700007a3700007c3700007e3700008037000082370000843700008637000088370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1429,24 +1429,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 180}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000008c3700008e37000090370000923700009437000096370000983700009a3700009c3700009e370000
+    m_ExpandedIDs: ffffffff0000000076370000783700007a3700008037000082370000843700008637000088370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Spy
+      m_OriginalName: Spy
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14132
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -1509,10 +1509,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1745
-    y: 722
-    width: 769
-    height: 279
+    x: 1
+    y: 829
+    width: 600
+    height: 179
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
   m_SerializedViewValues: []
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 769, y: 258}
+  m_TargetSize: {x: 600, y: 158}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1537,10 +1537,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -384.5
-    m_HBaseRangeMax: 384.5
-    m_VBaseRangeMin: -129
-    m_VBaseRangeMax: 129
+    m_HBaseRangeMin: -300
+    m_HBaseRangeMax: 300
+    m_VBaseRangeMin: -79
+    m_VBaseRangeMax: 79
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1549,7 +1549,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1558,23 +1558,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 769
-      height: 258
+      width: 600
+      height: 158
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 384.5, y: 129}
+    m_Translation: {x: 300, y: 79}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -384.5
-      y: -129
-      width: 769
-      height: 258
+      x: -300
+      y: -79
+      width: 600
+      height: 158
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 769, y: 279}
+  m_LastWindowPixelSize: {x: 600, y: 179}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1601,24 +1601,24 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1745
+    x: 1
     y: 81
-    width: 769
-    height: 620
+    width: 600
+    height: 727
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 34a73a3eb528cc54ca216c50d0964146
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
-  m_isRotationLocked: 0
+  m_isRotationLocked: 1
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.416926, y: -12.351627, z: -1.134211}
+    m_Target: {x: -0.3889343, y: -5.015625, z: -0.25644484}
     speed: 2
-    m_Value: {x: 2.416926, y: -12.351627, z: -1.134211}
+    m_Value: {x: -0.3889343, y: -5.015625, z: -0.25644484}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1640,10 +1640,10 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
         m_Target: 1
@@ -1668,16 +1668,16 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 30.78991
+    m_Target: 7.2022576
     speed: 2
-    m_Value: 30.78991
+    m_Value: 7.2022576
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 0.8
-    m_SpeedNormalized: 0.4074874
+    m_SpeedNormalized: 0.39698493
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1

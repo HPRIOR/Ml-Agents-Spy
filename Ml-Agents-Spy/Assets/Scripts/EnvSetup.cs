@@ -19,12 +19,13 @@ public class EnvSetup : IEnvSetup
     private readonly int _exitCount;
     private readonly int _guardAgentCount;
     private readonly int _mapCreationTolerance;
+    private readonly bool _hasMiddleTiles;
     private readonly Dictionary<ParentObject, GameObject> _parentDictionary;
     private TileMatrix _tileMatrixProducer;
     private Tile[,] _tileMatrix;
 
     public EnvSetup(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
-        Dictionary<ParentObject, GameObject> parentDictionary, int mapCreationTolerance = 500)
+        Dictionary<ParentObject, GameObject> parentDictionary, int mapCreationTolerance = 500, bool hasMiddleTiles = true)
     {
         _mapScale = mapScale;
         _mapDifficulty = mapDifficulty;
@@ -35,7 +36,8 @@ public class EnvSetup : IEnvSetup
         _tileMatrixProducer = new TileMatrix(_parentDictionary[ParentObject.TopParent].transform.localPosition, _matrixSize);
         _tileMatrix = _tileMatrixProducer.Tiles;
         _mapCreationTolerance = mapCreationTolerance;
-        
+        _hasMiddleTiles = hasMiddleTiles;
+
     }
 
     /// <summary>
@@ -69,7 +71,7 @@ public class EnvSetup : IEnvSetup
             Tile[,] tilesCopy = matrixClone.Tiles;
             Tile spyTile = SetSpyTile(tilesCopy, _matrixSize);
             
-            IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty);
+            IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty, _hasMiddleTiles);
             envTileLogic.SetEnvTiles();
             
             IPathFinder pathFinder = new PathFinder();
@@ -145,7 +147,7 @@ public class EnvSetup : IEnvSetup
     private static void CreatePlane(Vector3 scale, Transform parent)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        plane.transform.localPosition = parent.localPosition;
+        plane.transform.localPosition = parent.position;
         plane.transform.localScale = scale;
         plane.transform.parent = parent;
     }
@@ -161,11 +163,14 @@ public class EnvSetup : IEnvSetup
         var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
         CreatePlane(
             scale: new Vector3(calcMapScale, 1, calcMapScale),
-            parent: _parentDictionary[ParentObject.TopParent].transform
+            parent: _parentDictionary[ParentObject.EnvParent].transform
         );
         foreach (var tile in tileMatrix)
         {
-            if (tile.HasEnv) CreateBox(new Vector3(2, 2, 2), parentDictionary[ParentObject.EnvParent].transform, tile.Position);
+            if (tile.HasEnv) CreateBox(
+                new Vector3(2, 2, 2), 
+                parentDictionary[ParentObject.EnvParent].transform, 
+                tile.Position);
         }
     }
 

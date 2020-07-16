@@ -21,6 +21,7 @@ public class TrainingInstanceController : MonoBehaviour
     public int MapDifficulty = 100;
     public int ExitCount = 3;
     public int GuardAgentCount = 5;
+    public bool HasMiddleTiles = true;
 
     // Start is called before the first frame update
     public void Awake()
@@ -49,7 +50,8 @@ public class TrainingInstanceController : MonoBehaviour
             mapDifficulty: MapDifficulty,
             exitCount: ExitCount,
             guardAgentCount: GuardAgentCount,
-            parentDictionary: _parentObjects
+            parentDictionary: _parentObjects,
+            hasMiddleTiles: HasMiddleTiles
         );
         
         env.SetUpEnv();
@@ -70,7 +72,10 @@ public class TrainingInstanceController : MonoBehaviour
             _spyPrefabClone = Instantiate(SpyPrefab, TileDict[TileType.SpyTile][0].Position, Quaternion.identity);
             _spyPrefabClone.transform.parent = transform;
         }
-        else _spyPrefabClone.transform.localPosition = TileDict[TileType.SpyTile][0].Position;
+        else
+        {
+            _spyPrefabClone.transform.position = TileDict[TileType.SpyTile][0].Position;
+        }
         
         
     }

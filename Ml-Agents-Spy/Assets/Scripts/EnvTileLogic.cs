@@ -8,16 +8,18 @@ public class EnvTileLogic : IEnvTileLogic
     private readonly Tile[,] _tiles;
     private readonly int _matrixSize;
     private readonly int _mapDifficulty;
+    private bool _hasMiddleTiles;
 
-    public EnvTileLogic(Tile[,] tiles, int matrixSize, int mapDifficulty)
+    public EnvTileLogic(Tile[,] tiles, int matrixSize, int mapDifficulty, bool hasMiddleTiles = true)
     {
         _tiles = tiles;
         _matrixSize = matrixSize;
         _mapDifficulty = mapDifficulty;
+        _hasMiddleTiles = hasMiddleTiles;
     }
     public void SetEnvTiles()
     {
-        CreateInitialEnv(_tiles, _matrixSize);
+        CreateInitialEnv(_tiles, _matrixSize, _hasMiddleTiles);
         SetEnvDifficulty(_tiles, _matrixSize, _mapDifficulty);
     }
 
@@ -26,12 +28,16 @@ public class EnvTileLogic : IEnvTileLogic
     /// </summary>
     /// <param name="tileMatrix">Matrix of Tiles</param>
     /// <param name="matrixSize">Size of matrix</param>
-    private static void CreateInitialEnv(Tile[,] tileMatrix, int matrixSize)
+    /// <param name="hasMiddleTiles">allows to change whether middle tiles are created or not</param>
+    private static void CreateInitialEnv(Tile[,] tileMatrix, int matrixSize, bool hasMiddleTiles)
     {
         foreach (var tile in tileMatrix)
         {
             if (CanPlacePerimeter(tile, matrixSize)) tile.HasEnv = true;
-            else if (CanPlaceMiddle(tile, matrixSize)) tile.HasEnv = true;
+            else
+            {
+                if (CanPlaceMiddle(tile, matrixSize) & hasMiddleTiles) tile.HasEnv = true;
+            }
 
         }
     }

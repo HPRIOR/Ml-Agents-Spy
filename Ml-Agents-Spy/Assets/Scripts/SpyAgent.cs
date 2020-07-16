@@ -13,18 +13,11 @@ public class SpyAgent : Agent
     
     private float _speed = 10;
 
-
-    void Start()
-    {
-        
-    }
     
-
     public override void OnEpisodeBegin()
     {
         _instanceController = GetComponentInParent<TrainingInstanceController>();
         _agentRigidBody = GetComponent<Rigidbody>();
-        Debug.Log("OnEpisodeBeginCalled");
         if (CompletedEpisodes > 0) _instanceController.RestartEnv();
     }
 
@@ -32,35 +25,31 @@ public class SpyAgent : Agent
     // Called at every step
     public override void OnActionReceived(float[] action)
     {
-        RotateAgent(action[0]);
-        MoveAgent(action[1]);
-
+        AddReward(-1f / MaxStep);
+        // small punishment each step to encourage quicker solving 
         var distanceToExitPoint = 
             _instanceController
                 .TileDict[TileType.ExitTiles]
-                .Select(tile => (tile.Position - transform.localPosition).magnitude)
+                .Select(tile => (tile.Position - transform.position).magnitude)
                 .ToArray();
-
-        DistanceCheck( distanceToExitPoint);
-
-
+        SetRewardAndRestartIfExitReached(distanceToExitPoint);
+        if (transform.position.y < 0f)
+        {
+            EndEpisode();
+        }
+        MoveAgent(action[0]);
     }
 
-    public void DistanceCheck(float[] magnitudes)
+    public void SetRewardAndRestartIfExitReached(float[] magnitudes)
     {
-        foreach (var magnitude in magnitudes) if (magnitude < 1f) EndEpisode();
+        foreach (var magnitude in magnitudes)
+            if (magnitude < 1f)
+            {
+                SetReward(2f);
+                EndEpisode();
+            }
     }
     
-    
-    void RotateAgent(float input)
-    {
-        var rotateDirection = Vector3.zero;
-        var action = Mathf.FloorToInt(input);
-        if (action == 1) rotateDirection = transform.up * 1f;
-        else if (action == 2) rotateDirection = transform.up * -1f;
-        transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
-        
-    }
 
     void MoveAgent(float input)
     {
@@ -78,23 +67,32 @@ public class SpyAgent : Agent
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = 0;
-        actionsOut[1] = 0;
-        if (Input.GetKey(KeyCode.LeftArrow)) actionsOut[0] = 2;
-        else if (Input.GetKey(KeyCode.RightArrow)) actionsOut[0] = 1;
-        else if (Input.GetKey(KeyCode.W)) actionsOut[1] = 1;
-        else if (Input.GetKey(KeyCode.S)) actionsOut[1] = 2;
-        else if (Input.GetKey(KeyCode.D)) actionsOut[1] = 3;
-        else if (Input.GetKey(KeyCode.A)) actionsOut[1] = 4;
+        
+        if (Input.GetKey(KeyCode.W)) actionsOut[0] = 1;
+        else if (Input.GetKey(KeyCode.S)) actionsOut[0] = 2;
+        else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
+        else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // awareness of velocity (2 floats )
-        sensor.AddObservation(_agentRigidBody.velocity.x);
-        sensor.AddObservation(_agentRigidBody.velocity.y);
 
+        // awareness of own position (3 floats)
+        sensor.AddObservation(transform.position);
+
+        // awareness of own position relative to ExitTiles (if 2 exits: 2 floats)
         _instanceController.TileDict[TileType.ExitTiles]
-            .ForEach(tile=> sensor.AddObservation(tile.Position));
+            .ForEach(tile => sensor.AddObservation((transform.position - tile.Position).magnitude));
+        
+        
+
+        // awareness of Exit tile position (2 exits = 6 floats)
+        _instanceController.TileDict[TileType.ExitTiles]
+            .ForEach(tile => sensor.AddObservation(tile.Position));
+
+        // these should be normalised from 0, 1 appaz
+
+
 
     }
 
