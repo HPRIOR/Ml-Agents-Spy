@@ -8,22 +8,22 @@ using Vector3 = UnityEngine.Vector3;
 public class SpyAgent : Agent
 {
     
-    private Transform[] _guardPositions;
     private Rigidbody _agentRigidBody;
     private TrainingInstanceController _instanceController;
-    private IEnumerable<Vector3> _exitPositions; 
+    
     private float _speed = 10;
 
-    // called at start - may be used like a constructor
+
     void Start()
     {
-        _agentRigidBody = GetComponent<Rigidbody>();
-        _instanceController = GetComponentInParent<TrainingInstanceController>();
-        _exitPositions = _instanceController.ExitTiles.Select(tile => tile.Position);
+        
     }
     
+
     public override void OnEpisodeBegin()
     {
+        _instanceController = GetComponentInParent<TrainingInstanceController>();
+        _agentRigidBody = GetComponent<Rigidbody>();
         Debug.Log("OnEpisodeBeginCalled");
         if (CompletedEpisodes > 0) _instanceController.RestartEnv();
     }
@@ -35,14 +35,11 @@ public class SpyAgent : Agent
         RotateAgent(action[0]);
         MoveAgent(action[1]);
 
-
-
-        var distanceToExitPoint = _exitPositions
-            .ToList()
-            .Select(position => (position - transform.localPosition).magnitude)
-            .ToArray();
-
-        //distanceToExitPoint.ToList().ForEach(distance => Debug.Log(distance));
+        var distanceToExitPoint = 
+            _instanceController
+                .TileDict[TileType.ExitTiles]
+                .Select(tile => (tile.Position - transform.localPosition).magnitude)
+                .ToArray();
 
         DistanceCheck( distanceToExitPoint);
 
@@ -91,15 +88,13 @@ public class SpyAgent : Agent
     }
 
     public override void CollectObservations(VectorSensor sensor)
-    {   
-        //awareness of exits and own position (6 floats)
-        _exitPositions
-            .ToList()
-            .ForEach(sensor.AddObservation);
-        
+    {
         // awareness of velocity (2 floats )
         sensor.AddObservation(_agentRigidBody.velocity.x);
         sensor.AddObservation(_agentRigidBody.velocity.y);
+
+        _instanceController.TileDict[TileType.ExitTiles]
+            .ForEach(tile=> sensor.AddObservation(tile.Position));
 
     }
 

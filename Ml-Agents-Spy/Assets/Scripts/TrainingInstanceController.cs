@@ -12,12 +12,9 @@ public class TrainingInstanceController : MonoBehaviour
     public GameObject EnvParent;
     public GameObject DebugParent;
     public GameObject SpyPrefab;
-    public List<Tile> SpyTile;
-    public List<Tile> GuardTiles;
-    public List<Tile> ExitTiles;
-
     private GameObject _spyPrefabClone;
 
+    public Dictionary<TileType, List<Tile>> TileDict;
     private Dictionary<ParentObject, GameObject> _parentObjects;
 
     public int MapScale = 5;
@@ -45,8 +42,8 @@ public class TrainingInstanceController : MonoBehaviour
      */
     public void RestartEnv()
     {
-        Debug.Log("RestartEnv Called");
-        // pass in parents as a names tuples
+        ClearEnv();
+        
         IEnvSetup env = new EnvSetup(
             mapScale: MapScale,
             mapDifficulty: MapDifficulty,
@@ -54,29 +51,26 @@ public class TrainingInstanceController : MonoBehaviour
             guardAgentCount: GuardAgentCount,
             parentDictionary: _parentObjects
         );
-        // need to clear tiles here
-        SetEnvTiles(env);
+        
+        env.SetUpEnv();
+        TileDict = env.GetTileTypes();
         SpawnAgent();
     }
 
-    void SetEnvTiles(IEnvSetup env)
+    void ClearEnv()
     {
-        env.SetUpEnv();
-        SpyTile = env.GetSpyTile();
-        GuardTiles = env.GetGuardTiles();
-        ExitTiles = env.GetExitTiles();
+        foreach (Transform child in EnvParent.transform) Destroy(child.gameObject);
     }
-
     
 
     void SpawnAgent()
     {
         if (_spyPrefabClone is null)
         {
-            _spyPrefabClone = Instantiate(SpyPrefab, SpyTile[0].Position, Quaternion.identity);
+            _spyPrefabClone = Instantiate(SpyPrefab, TileDict[TileType.SpyTile][0].Position, Quaternion.identity);
             _spyPrefabClone.transform.parent = transform;
         }
-        else _spyPrefabClone.transform.localPosition = SpyTile[0].Position;
+        else _spyPrefabClone.transform.localPosition = TileDict[TileType.SpyTile][0].Position;
         
         
     }

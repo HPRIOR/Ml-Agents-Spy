@@ -20,7 +20,6 @@ public class EnvSetup : IEnvSetup
     private readonly int _guardAgentCount;
     private readonly int _mapCreationTolerance;
     private readonly Dictionary<ParentObject, GameObject> _parentDictionary;
-    private Dictionary<TileType, List<Tile>> _tileTypes = new Dictionary<TileType, List<Tile>>();
     private TileMatrix _tileMatrixProducer;
     private Tile[,] _tileMatrix;
 
@@ -37,7 +36,6 @@ public class EnvSetup : IEnvSetup
         _tileMatrix = _tileMatrixProducer.Tiles;
         _mapCreationTolerance = mapCreationTolerance;
         
-        Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => _tileTypes.Add(tileType, new List<Tile>()));
     }
 
     /// <summary>
@@ -47,7 +45,6 @@ public class EnvSetup : IEnvSetup
     {
         ModifyTileLogic();
         PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
-        _tileTypes = GetTileTypes();
 
         // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
@@ -74,12 +71,15 @@ public class EnvSetup : IEnvSetup
             
             IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty);
             envTileLogic.SetEnvTiles();
+            
             IPathFinder pathFinder = new PathFinder();
             pathFinder.GetPath(spyTile);
+            
             IExitFinder exitFinder = new ExitFinder(tilesCopy, _matrixSize, _exitCount);
             int maxExits = exitFinder.ExitCount;
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
+            
             IGuardLogic guardLogic = new GuardLogic(tilesCopy, _mapScale, _matrixSize, maxGuards);
 
             // tests could be done inside classes instead of here, try catch could replaces
@@ -175,22 +175,19 @@ public class EnvSetup : IEnvSetup
     /// <returns>Tile type references and corresponding tiles</returns>
     public Dictionary<TileType, List<Tile>> GetTileTypes()
     {
+        var newTileTypes = new Dictionary<TileType, List<Tile>>();
+        Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => newTileTypes.Add(tileType, new List<Tile>()));
+
         foreach (var tile in _tileMatrix)
         {
-            if (tile.IsExit) _tileTypes[TileType.ExitTiles].Add(tile);
-            else if (tile.HasSpy) _tileTypes[TileType.SpyTile].Add(tile);
-            else if (tile.HasGuard) _tileTypes[TileType.GuardTiles].Add(tile);
-            else if (tile.HasEnv) _tileTypes[TileType.EnvTiles].Add(tile);
-            else _tileTypes[TileType.FreeTiles].Add(tile);
+            if (tile.IsExit) newTileTypes[TileType.ExitTiles].Add(tile);
+            else if (tile.HasSpy) newTileTypes[TileType.SpyTile].Add(tile);
+            else if (tile.HasGuard) newTileTypes[TileType.GuardTiles].Add(tile);
+            else if (tile.HasEnv) newTileTypes[TileType.EnvTiles].Add(tile);
+            else newTileTypes[TileType.FreeTiles].Add(tile);
         }
-        return _tileTypes;
+        return newTileTypes;
     }
-
-    public List<Tile> GetSpyTile() => _tileTypes[TileType.SpyTile];
-
-    public List<Tile> GetGuardTiles() => _tileTypes[TileType.GuardTiles];
-
-    public List<Tile> GetExitTiles() => _tileTypes[TileType.ExitTiles];
 
 
     /// <summary>

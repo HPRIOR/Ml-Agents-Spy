@@ -6,10 +6,7 @@ interface IEnvSetup
 {
     void SetUpEnv();
 
-    List<Tile> GetSpyTile();
-
-    List<Tile> GetGuardTiles();
-
-    List<Tile> GetExitTiles();
+    Dictionary<TileType, List<Tile>> GetTileTypes();
+    
 
 }
