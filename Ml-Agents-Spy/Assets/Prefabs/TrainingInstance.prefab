@@ -157,7 +157,7 @@ MonoBehaviour:
   SpyPrefab: {fileID: 7091373540181754968, guid: 7469f9acaaf62d14fbc8c2e0a5836b83,
     type: 3}
   MapScale: 1
-  MapDifficulty: 2
+  MapDifficulty: 0
   ExitCount: 2
   GuardAgentCount: 1
   HasMiddleTiles: 0

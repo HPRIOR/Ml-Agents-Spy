@@ -10,6 +10,7 @@ public class SpyAgent : Agent
     
     private Rigidbody _agentRigidBody;
     private TrainingInstanceController _instanceController;
+    private float _colliding = 0f;
     
     private float _speed = 10;
 
@@ -25,18 +26,19 @@ public class SpyAgent : Agent
     // Called at every step
     public override void OnActionReceived(float[] action)
     {
-        AddReward(-1f / MaxStep);
-        // small punishment each step to encourage quicker solving 
+        AddReward(-1f/MaxStep);
+
+
         var distanceToExitPoint = 
             _instanceController
                 .TileDict[TileType.ExitTiles]
                 .Select(tile => (tile.Position - transform.position).magnitude)
                 .ToArray();
+        
         SetRewardAndRestartIfExitReached(distanceToExitPoint);
-        if (transform.position.y < 0f)
-        {
-            EndEpisode();
-        }
+        
+        if (transform.position.y < 0f) EndEpisode();
+        
         MoveAgent(action[0]);
     }
 
@@ -45,7 +47,7 @@ public class SpyAgent : Agent
         foreach (var magnitude in magnitudes)
             if (magnitude < 1f)
             {
-                SetReward(2f);
+                SetReward(1f);
                 EndEpisode();
             }
     }
@@ -80,20 +82,44 @@ public class SpyAgent : Agent
         // awareness of own position (3 floats)
         sensor.AddObservation(transform.position);
 
-        // awareness of own position relative to ExitTiles (if 2 exits: 2 floats)
-        _instanceController.TileDict[TileType.ExitTiles]
-            .ForEach(tile => sensor.AddObservation((transform.position - tile.Position).magnitude));
+        // awareness of nearest exit (3 floats)
+        sensor.AddObservation(GetNearestTile(_instanceController.TileDict[TileType.ExitTiles]).Position);
+
+        // Distance to nearest exit
+        sensor.AddObservation(Vector3.Distance(GetNearestTile(_instanceController.TileDict[TileType.ExitTiles]).Position, transform.position));
         
+        // colliding with env
+        sensor.AddObservation(_colliding);
         
+    }
 
-        // awareness of Exit tile position (2 exits = 6 floats)
-        _instanceController.TileDict[TileType.ExitTiles]
-            .ForEach(tile => sensor.AddObservation(tile.Position));
+    private Tile GetNearestTile(List<Tile> tileArray)
+    {
+        var nearestTile = tileArray[0];
+        foreach (var tile in tileArray)
+        {
+            if (Vector3.Distance(tile.Position, transform.position) < Vector3.Distance(nearestTile.Position, transform.position))
+            {
+                nearestTile = tile;
+            }
+        }
+        return nearestTile;
+    }
 
-        // these should be normalised from 0, 1 appaz
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Cube")
+        {
+            _colliding = 1f;
+        }
+    }
 
-
-
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "Cube")
+        {
+            _colliding = 0f;
+        }
     }
 
 

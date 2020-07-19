@@ -171,7 +171,16 @@ public class EnvSetup : IEnvSetup
                 new Vector3(2, 2, 2), 
                 parentDictionary[ParentObject.EnvParent].transform, 
                 tile.Position);
+            // close off exits
+            if (tile.IsExit) CreateBox(
+                new Vector3(2, 2, 2),
+                parentDictionary[ParentObject.EnvParent].transform,
+                tile.Position + new Vector3(0, 0, 2f)
+            );
         }
+
+        
+
     }
 
     /// <summary>

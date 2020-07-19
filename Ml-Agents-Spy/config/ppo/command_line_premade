@@ -1,3 +1,5 @@
 mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_01 --force
 
 mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_01 --resume
+
+tensorboard --logdir=results --port=6006
