@@ -28,7 +28,6 @@ public class SpyAgent : Agent
     {
         AddReward(-1f/MaxStep);
 
-
         var distanceToExitPoint = 
             _instanceController
                 .TileDict[TileType.ExitTiles]
@@ -108,18 +107,12 @@ public class SpyAgent : Agent
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Cube")
-        {
-            _colliding = 1f;
-        }
+        if (collision.gameObject.name == "Cube") _colliding = 1f;
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Cube")
-        {
-            _colliding = 0f;
-        }
+        if (collision.gameObject.name == "Cube") _colliding = 0f;
     }
 
 

@@ -43,6 +43,7 @@ public class TrainingInstanceController : MonoBehaviour
      */
     public void RestartEnv()
     {
+        float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
         ClearEnv();
         
         IEnvSetup env = new EnvSetup(
