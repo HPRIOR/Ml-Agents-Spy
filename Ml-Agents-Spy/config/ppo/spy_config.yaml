@@ -21,7 +21,7 @@ behaviors:
         strength: 1.0
       curiosity:
         gamma: 0.99
-        strength: 0.1
+        strength: 0.3
         encoding_size: 256
         learning_rate: 0.0003
     keep_checkpoints: 5
@@ -40,6 +40,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 1.0
             - name: lesson_2
               completion_criteria:
@@ -48,6 +49,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 2.0
             - name: lesson_3
               completion_criteria:
@@ -56,6 +58,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 3.0
             - name: lesson_4
               completion_criteria:
@@ -64,6 +67,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 4.0
             - name: lesson_5
               completion_criteria:
@@ -72,6 +76,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 5.0
             - name: lesson_6
               completion_criteria:
@@ -80,14 +85,16 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 6.0
             - name: lesson_7
               completion_criteria:
                   measure: reward
                   behavior: Spy
                   signal_smoothing: true
-                  min_lesson_length: 100
+                  min_lesson_length: 250
                   threshold: 0.9
+                  require_reset: true
               value: 7.0
             - name: lesson_8
               completion_criteria:
@@ -96,6 +103,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 8.0
             - name: lesson_9
               completion_criteria:
@@ -104,6 +112,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 9.0
             - name: lesson_10
               completion_criteria:
@@ -112,6 +121,7 @@ environment_parameters:
                   signal_smoothing: true
                   min_lesson_length: 100
                   threshold: 0.9
+                  require_reset: true
               value: 10.0
             
             

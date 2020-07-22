@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
-    width: 1280
-    height: 1007
+    x: 1
+    y: 51
+    width: 1278
+    height: 998
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -41,17 +41,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 772
-    height: 957
+    width: 759
+    height: 948
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 17}
-  - {fileID: 13}
+  - {fileID: 16}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -70,12 +69,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1280
-    height: 957
-  m_MinSize: {x: 708, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+    width: 1278
+    height: 948
+  m_MinSize: {x: 708, y: 471}
+  m_MaxSize: {x: 18003, y: 14021}
   vertical: 1
-  controlID: 92
+  controlID: 97
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -93,13 +92,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 232
-    height: 408
+    width: 236
+    height: 404
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 13}
   m_Panes:
-  - {fileID: 14}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &5
@@ -119,14 +118,14 @@ MonoBehaviour:
   - {fileID: 10}
   m_Position:
     serializedVersion: 2
-    x: 772
+    x: 759
     y: 0
-    width: 232
-    height: 957
-  m_MinSize: {x: 232, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+    width: 236
+    height: 948
+  m_MinSize: {x: 232, y: 471}
+  m_MaxSize: {x: 10002, y: 14021}
   vertical: 1
-  controlID: 100
+  controlID: 99
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,9 +146,9 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1280
-    height: 1007
-  m_MinSize: {x: 875, y: 300}
+    width: 1278
+    height: 998
+  m_MinSize: {x: 875, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -168,7 +167,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1280
+    width: 1278
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -193,12 +192,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1280
-    height: 957
-  m_MinSize: {x: 708, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+    width: 1278
+    height: 948
+  m_MinSize: {x: 708, y: 471}
+  m_MaxSize: {x: 18003, y: 14021}
   vertical: 0
-  controlID: 93
+  controlID: 98
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,8 +214,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 987
-    width: 1280
+    y: 978
+    width: 1278
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -236,14 +235,14 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 408
-    width: 232
-    height: 549
+    y: 404
+    width: 236
+    height: 544
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &11
@@ -261,15 +260,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1004
+    x: 995
     y: 0
-    width: 276
-    height: 957
+    width: 283
+    height: 948
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &12
@@ -293,10 +292,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73
-    width: 771
-    height: 936
+    x: 1
+    y: 81
+    width: 758
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
   m_SerializedViewValues: []
@@ -306,7 +305,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 771, y: 915}
+  m_TargetSize: {x: 758, y: 906}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -321,10 +320,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -385.5
-    m_HBaseRangeMax: 385.5
-    m_VBaseRangeMin: -457.5
-    m_VBaseRangeMax: 457.5
+    m_HBaseRangeMin: -379
+    m_HBaseRangeMax: 379
+    m_VBaseRangeMin: -453
+    m_VBaseRangeMax: 453
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -342,967 +341,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 771
-      height: 915
+      width: 758
+      height: 906
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 385.5, y: 457.5}
+    m_Translation: {x: 379, y: 453}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -385.5
-      y: -457.5
-      width: 771
-      height: 915
+      x: -379
+      y: -453
+      width: 758
+      height: 906
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 771, y: 936}
+  m_LastWindowPixelSize: {x: 758, y: 927}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
 --- !u!114 &13
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Test Runner
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 73
-    width: 1543
-    height: 936
-  m_ViewDataDictionary: {fileID: 0}
-  m_Spl:
-    ID: 21439
-    splitterInitialOffset: 0
-    currentActiveSplitter: -1
-    realSizes: 8a020000d8000000
-    relativeSizes:
-    - 0.75
-    - 0.25
-    minSizes: 2000000020000000
-    maxSizes: 0000000000000000
-    lastTotalSize: 866
-    splitSize: 6
-    xOffset: 0
-  m_TestTypeToolbarIndex: 1
-  m_PlayModeTestListGUI:
-    m_Window: {fileID: 13}
-    newResultList:
-    - id: 1003
-      uniqueId: '[Ml-Agents-Spy][suite]'
-      name: Ml-Agents-Spy
-      fullName: Ml-Agents-Spy
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 
-      parentUniqueId: 
-    - id: 1004
-      uniqueId: '[Play-Mode.dll][suite]'
-      name: Play-Mode.dll
-      fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Play-Mode.dll
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1000
-      parentUniqueId: '[Ml-Agents-Spy][suite]'
-    - id: 1005
-      uniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
-      name: Tests
-      fullName: Tests
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1004
-      parentUniqueId: '[Play-Mode.dll][suite]'
-    - id: 1001
-      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
-      name: TileTest
-      fullName: Tests.TileTest
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1005
-      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
-    - id: 1002
-      uniqueId: Play-Mode.dll/Tests/TileTest/[Play-Mode][Tests.TileTest.TileTestSimplePasses]
-      name: TileTestSimplePasses
-      fullName: Tests.TileTest.TileTestSimplePasses
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
-    m_ResultText: Tests (0.000s)
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a4e15a91
-      m_LastClickedID: -1856314972
-      m_ExpandedIDs: a4e15a91865db401379b0561ce65a269ffffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories:
-      - Uncategorized
-  m_EditModeTestListGUI:
-    m_Window: {fileID: 13}
-    newResultList:
-    - id: 1000
-      uniqueId: '[Ml-Agents-Spy][suite]'
-      name: Ml-Agents-Spy
-      fullName: Ml-Agents-Spy
-      resultStatus: 1
-      duration: 38.840187
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 
-      parentUniqueId: 
-    - id: 1014
-      uniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
-      name: Edit-Mode.dll
-      fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll
-      resultStatus: 1
-      duration: 38.785862
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1006
-      parentUniqueId: '[Ml-Agents-Spy][suite]'
-    - id: 1007
-      uniqueId: Edit-Mode.dll/[Edit-Mode][PathFinderTest][suite]
-      name: PathFinderTest
-      fullName: PathFinderTest
-      resultStatus: 1
-      duration: 0.0372894
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1014
-      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
-    - id: 1008
-      uniqueId: Edit-Mode.dll/PathFinderTest/[Edit-Mode][PathFinderTest.tmOnePathTest]
-      name: tmOnePathTest
-      fullName: PathFinderTest.tmOnePathTest
-      resultStatus: 1
-      duration: 0.0179427
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1007
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][PathFinderTest][suite]
-    - id: 1015
-      uniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
-      name: Tests
-      fullName: Tests
-      resultStatus: 1
-      duration: 36.150345
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1014
-      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
-    - id: 1016
-      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
-      name: ExitFinderTest
-      fullName: Tests.ExitFinderTest
-      resultStatus: 1
-      duration: 0.0371679
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1035
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
-    - id: 1017
-      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestExitCountOneContentiousBlock]
-      name: TestExitCountOneContentiousBlock
-      fullName: Tests.ExitFinderTest.TestExitCountOneContentiousBlock
-      resultStatus: 1
-      duration: 0.0080018
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
-    - id: 1018
-      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestExitsAreAvailable]
-      name: TestExitsAreAvailable
-      fullName: Tests.ExitFinderTest.TestExitsAreAvailable
-      resultStatus: 1
-      duration: 0.0074118
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
-    - id: 1020
-      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestSetExitTiles]
-      name: TestSetExitTiles
-      fullName: Tests.ExitFinderTest.TestSetExitTiles
-      resultStatus: 1
-      duration: 0.0052946
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
-    - id: 1019
-      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestTileGroupsExitCount]
-      name: TestTileGroupsExitCount
-      fullName: Tests.ExitFinderTest.TestTileGroupsExitCount
-      resultStatus: 1
-      duration: 0.0069777
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
-    - id: 1021
-      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-      name: GuardSpawnTest
-      fullName: Tests.GuardSpawnTest
-      resultStatus: 1
-      duration: 0.0247428
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1040
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
-    - id: 1025
-      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestGreaterThanFourYAxis]
-      name: TestGreaterThanFourYAxis
-      fullName: Tests.GuardSpawnTest.TestGreaterThanFourYAxis
-      resultStatus: 1
-      duration: 0.0034723
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-    - id: 1022
-      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestGuardPlacesFilledWithEnvTiles]
-      name: TestGuardPlacesFilledWithEnvTiles
-      fullName: Tests.GuardSpawnTest.TestGuardPlacesFilledWithEnvTiles
-      resultStatus: 1
-      duration: 0.0021812
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-    - id: 1023
-      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestIfCanSpawnBetweenPillars]
-      name: TestIfCanSpawnBetweenPillars
-      fullName: Tests.GuardSpawnTest.TestIfCanSpawnBetweenPillars
-      resultStatus: 1
-      duration: 0.0022929
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-    - id: 1024
-      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestJustRightAmountOfAvailableTiles]
-      name: TestJustRightAmountOfAvailableTiles
-      fullName: Tests.GuardSpawnTest.TestJustRightAmountOfAvailableTiles
-      resultStatus: 1
-      duration: 0.0022163
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-    - id: 1026
-      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestSetGuardTiles]
-      name: TestSetGuardTiles
-      fullName: Tests.GuardSpawnTest.TestSetGuardTiles
-      resultStatus: 1
-      duration: 0.0030596
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
-    - id: 1016
-      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-      name: TileLogicAcceptanceTests
-      fullName: Tests.TileLogicAcceptanceTests
-      resultStatus: 1
-      duration: 32.66019
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1032
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
-    - id: 1024
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleEight]
-      name: TestScaleEight
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleEight
-      resultStatus: 1
-      duration: 5.458745
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1021
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleFive]
-      name: TestScaleFive
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleFive
-      resultStatus: 1
-      duration: 2.3631713
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1020
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleFour]
-      name: TestScaleFour
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleFour
-      resultStatus: 1
-      duration: 1.4194747
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1025
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleNine]
-      name: TestScaleNine
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleNine
-      resultStatus: 1
-      duration: 6.6353407
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1017
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleOne]
-      name: TestScaleOne
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleOne
-      resultStatus: 1
-      duration: 0.16537
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1023
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleSeven]
-      name: TestScaleSeven
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleSeven
-      resultStatus: 1
-      duration: 4.538041
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1022
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleSix]
-      name: TestScaleSix
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleSix
-      resultStatus: 1
-      duration: 2.9814675
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1026
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleTen]
-      name: TestScaleTen
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleTen
-      resultStatus: 1
-      duration: 7.868665
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1019
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleThree]
-      name: TestScaleThree
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleThree
-      resultStatus: 1
-      duration: 0.8668733
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1018
-      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleTwo]
-      name: TestScaleTwo
-      fullName: Tests.TileLogicAcceptanceTests.TestScaleTwo
-      resultStatus: 1
-      duration: 0.3483296
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1016
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
-    - id: 1009
-      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
-      name: TileMatrixTest
-      fullName: Tests.TileMatrixTest
-      resultStatus: 1
-      duration: 3.398941
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1015
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
-    - id: 1013
-      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.AdjacencyMatrixTest]
-      name: AdjacencyMatrixTest
-      fullName: Tests.TileMatrixTest.AdjacencyMatrixTest
-      resultStatus: 1
-      duration: 0.0016834
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1009
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
-    - id: 1012
-      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.CoordsTest]
-      name: CoordsTest
-      fullName: Tests.TileMatrixTest.CoordsTest
-      resultStatus: 1
-      duration: 0.001105
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1009
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
-    - id: 1011
-      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.VectorTest]
-      name: VectorTest
-      fullName: Tests.TileMatrixTest.VectorTest
-      resultStatus: 1
-      duration: 0.0016164
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1009
-      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
-    - id: 1003
-      uniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-      name: TileLogicTests
-      fullName: TileLogicTests
-      resultStatus: 1
-      duration: 2.581614
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1031
-      parentUniqueId: '[Edit-Mode][C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll][suite]'
-    - id: 1007
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestEnvTileCount]
-      name: TestEnvTileCount
-      fullName: TileLogicTests.TestEnvTileCount
-      resultStatus: 1
-      duration: 0.0603871
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1004
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestExitCount]
-      name: TestExitCount
-      fullName: TileLogicTests.TestExitCount
-      resultStatus: 1
-      duration: 0.0182392
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1009
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestExitLocationsOnYAxis]
-      name: TestExitLocationsOnYAxis
-      fullName: TileLogicTests.TestExitLocationsOnYAxis
-      resultStatus: 1
-      duration: 0.0099635
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1008
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestFreeTilesCount]
-      name: TestFreeTilesCount
-      fullName: TileLogicTests.TestFreeTilesCount
-      resultStatus: 1
-      duration: 0.0021957
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1006
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestGuardCount]
-      name: TestGuardCount
-      fullName: TileLogicTests.TestGuardCount
-      resultStatus: 1
-      duration: 0.0179925
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1013
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestGuardCountLessThanExitCount]
-      name: TestGuardCountLessThanExitCount
-      fullName: TileLogicTests.TestGuardCountLessThanExitCount
-      resultStatus: 1
-      duration: 0.0051448
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1011
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestGuardGreaterThanOne]
-      name: TestGuardGreaterThanOne
-      fullName: TileLogicTests.TestGuardGreaterThanOne
-      resultStatus: 1
-      duration: 0.2316859
-      messages: 
-      output: "Not enough free tiles to place guards \nMatrix Size: 6, \nDifficulty:
-        0, \nExit count: 2, changed from 2, \nNumber of Guards: 0, changed from 0\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1012
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestGuardSpawnArea]
-      name: TestGuardSpawnArea
-      fullName: TileLogicTests.TestGuardSpawnArea
-      resultStatus: 1
-      duration: 0.0419486
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1005
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestSpyCount]
-      name: TestSpyCount
-      fullName: TileLogicTests.TestSpyCount
-      resultStatus: 1
-      duration: 0.0185307
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1010
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestSpyOnYAxis]
-      name: TestSpyOnYAxis
-      fullName: TileLogicTests.TestSpyOnYAxis
-      resultStatus: 1
-      duration: 0.009663
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1014
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestThrowErrorIfExitCountBelow2]
-      name: TestThrowErrorIfExitCountBelow2
-      fullName: TileLogicTests.TestThrowErrorIfExitCountBelow2
-      resultStatus: 1
-      duration: 0.4718252
-      messages: 
-      output: "Exits cannot be created: \n either the map is too small for the number
-        of exits, or the spy cannot reach enough exit tiles \nMatrix Size: 6, \nDifficulty:
-        0, \nExit count: 0, changed from 0, \nNumber of Guards: -1, changed from
-        4\r\nExits cannot be created: \n either the map is too small for the number
-        of exits, or the spy cannot reach enough exit tiles \nMatrix Size: 6, \nDifficulty:
-        0, \nExit count: 1, changed from 1, \nNumber of Guards: 0, changed from 4\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    - id: 1015
-      uniqueId: Edit-Mode.dll/TileLogicTests/[Edit-Mode][TileLogicTests.TestThrowExceptionIfMapTooComplex]
-      name: TestThrowExceptionIfMapTooComplex
-      fullName: TileLogicTests.TestThrowExceptionIfMapTooComplex
-      resultStatus: 1
-      duration: 0.1955479
-      messages: 
-      output: "Exits cannot be created: \n either the map is too small for the number
-        of exits, or the spy cannot reach enough exit tiles \nMatrix Size: 6, \nDifficulty:
-        100, \nExit count: 0, changed from 3, \nNumber of Guards: -1, changed from
-        4\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1003
-      parentUniqueId: Edit-Mode.dll/[Edit-Mode][TileLogicTests][suite]
-    m_ResultText: TestSpyCount (0.019s)
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4397e3df
-      m_LastClickedID: -538732733
-      m_ExpandedIDs: 49ef458e249e8fb26c3b6624b2067a36379b0561ffffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories:
-      - Uncategorized
---- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1323,17 +384,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 772
-    y: 73
-    width: 230
-    height: 387
+    x: 760
+    y: 81
+    width: 234
+    height: 383
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b62f0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d6f3deff3ef4deff9cf4deff2456e5ff2856e5ff2c56e5ff3056e5ffc656e5ffc856e5ffd056e5ffd456e5ff3c57e5ff4057e5ffbca2e5ffbea2e5ffc2a2e5ffc6a2e5ff26a3e5ff2aa3e5ff542de8ff8ab4ffff6afbffff
+      m_ExpandedIDs: 6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1357,7 +418,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: ed543f88c2d61dd4db727d9fabe6e312
---- !u!114 &15
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1378,10 +439,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1004
-    y: 73
-    width: 275
-    height: 936
+    x: 996
+    y: 81
+    width: 282
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -1394,8 +455,8 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 100
---- !u!114 &16
+  m_LastVerticalScrollValue: 0
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1416,10 +477,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 772
-    y: 481
-    width: 230
-    height: 528
+    x: 760
+    y: 485
+    width: 234
+    height: 523
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -1446,7 +507,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 54300000
     m_LastClickedID: 12372
-    m_ExpandedIDs: 000000007a3700007c3700007e3700008037000082370000843700008637000088370000
+    m_ExpandedIDs: 000000008e37000090370000923700009437000096370000983700009a3700009c3700009e370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1471,24 +532,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 185}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000007a3700007c3700007e3700008037000082370000843700008637000088370000a4370000
+    m_ExpandedIDs: ffffffff000000008e37000090370000923700009437000096370000983700009a3700009c3700009e370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Spy
-      m_OriginalName: Spy
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 14130
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -1530,7 +591,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 294
---- !u!114 &17
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1551,14 +612,14 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73
-    width: 771
-    height: 936
+    x: 1
+    y: 81
+    width: 758
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 34a73a3eb528cc54ca216c50d0964146
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
@@ -1566,9 +627,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 29.66067, y: -25.40625, z: 12.693574}
+    m_Target: {x: 15.317681, y: -37.6875, z: 29.29614}
     speed: 2
-    m_Value: {x: 29.66067, y: -25.40625, z: 12.693574}
+    m_Value: {x: 15.317681, y: -37.6875, z: 29.29614}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1618,9 +679,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 44.370888
+    m_Target: 38.761494
     speed: 2
-    m_Value: 44.370888
+    m_Value: 38.761494
   m_Ortho:
     m_Target: 1
     speed: 2

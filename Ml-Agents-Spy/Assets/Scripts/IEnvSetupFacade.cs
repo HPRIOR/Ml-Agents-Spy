@@ -2,17 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IEnvSetupFacade : MonoBehaviour
+public interface IEnvSetupFacade
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    IEnvSetup GetEnvSetup(float curriculumParam, Dictionary<ParentObject, GameObject> parentObjects);
 }

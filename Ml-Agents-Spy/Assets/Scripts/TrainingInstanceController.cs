@@ -44,16 +44,23 @@ public class TrainingInstanceController : MonoBehaviour
     public void RestartEnv()
     {
         float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+
         ClearEnv();
+
+
+        IEnvSetupFacade envFacade = new EnvSetupFacade();
+        IEnvSetup env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
         
-        IEnvSetup env = new EnvSetup(
-            mapScale: MapScale,
-            mapDifficulty: MapDifficulty,
-            exitCount: ExitCount,
-            guardAgentCount: GuardAgentCount,
-            parentDictionary: _parentObjects,
-            hasMiddleTiles: HasMiddleTiles
-        );
+        
+        //  IEnvSetup env = new EnvSetup(
+        //     mapScale: MapScale,
+        //     mapDifficulty: MapDifficulty,
+        //     exitCount: ExitCount,
+        //     guardAgentCount: GuardAgentCount,
+        //     parentDictionary: _parentObjects,
+        //     hasMiddleTiles: HasMiddleTiles
+        // );
+        
         
         env.SetUpEnv();
         TileDict = env.GetTileTypes();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IEnvSetup
+public interface IEnvSetup
 {
     void SetUpEnv();
 

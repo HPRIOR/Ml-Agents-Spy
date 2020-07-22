@@ -60,7 +60,7 @@ public class EnvSetup : IEnvSetup
     /// Changes logic within each tile, helping to generate the environment and agent tiles
     /// Loops until appropriate environment found, or throws an error
     /// </summary>
-    private void ModifyTileLogic()
+    void ModifyTileLogic()
     {
         var flag = true;
         int count = 0;
@@ -116,7 +116,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="tileMatrix">Matrix of Tiles</param>
     /// <param name="matrixSize">Size of matrix</param>
     /// <returns></returns>
-    private Tile SetSpyTile(Tile[,] tileMatrix, int matrixSize)
+    Tile SetSpyTile(Tile[,] tileMatrix, int matrixSize)
     {
         int y = 1;
         int x = GetParityRandom(1, matrixSize - 1, ParityEnum.Even);
@@ -130,7 +130,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="scale">Size of box</param>
     /// <param name="parent">Parent GameObject of box</param>
     /// <param name="position">3D position of box</param>
-    private static void CreateBox(Vector3 scale, Transform parent, Vector3 position)
+    static void CreateBox(Vector3 scale, Transform parent, Vector3 position)
     {
         GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
         box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
@@ -144,7 +144,7 @@ public class EnvSetup : IEnvSetup
     /// </summary>
     /// <param name="scale">Size of the plane</param>
     /// <param name="parent">Parent GameObject of the plane</param>
-    private static void CreatePlane(Vector3 scale, Transform parent)
+    static void CreatePlane(Vector3 scale, Transform parent)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         plane.transform.localPosition = parent.position;
@@ -158,7 +158,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="mapScale">Size of map corresponding to scale of plane</param>
-    private void PopulateEnv(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
+    void PopulateEnv(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
     {
         var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
         CreatePlane(
@@ -210,7 +210,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="tilePredicate">Injects predicate into where clause</param>
-    private static void DebugFirstInstance(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+    static void DebugFirstInstance(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
       CreateBox(new Vector3 (1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, (
           from Tile tile in tileMatrix
           select tile).Where(tilePredicate).ToList()[0].Position);
@@ -221,7 +221,7 @@ public class EnvSetup : IEnvSetup
     /// <param name="tileMatrix">Matrix of tiles</param>
     /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
     /// <param name="tilePredicate">Injects predicate into where clause</param>
-    private static void DebugAll(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
+    static void DebugAll(Tile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, Func<Tile, bool> tilePredicate) =>
        (from Tile tile in tileMatrix
            select tile).Where(tilePredicate).ToList().ForEach(tile =>
            CreateBox(new Vector3(1, 1, 1), parentDictionary[ParentObject.DebugParent].transform, tile.Position));
