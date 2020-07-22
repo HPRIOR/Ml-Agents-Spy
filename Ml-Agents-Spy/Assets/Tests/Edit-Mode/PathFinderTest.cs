@@ -12,7 +12,7 @@ public class PathFinderTest
 
     private void TestSetUp()
     {
-        (from Tile tile in tmOne.Tiles
+        (from EnvTile tile in tmOne.Tiles
             where (tile.Coords.x == 0
                    || tile.Coords.x == 6
                    || tile.Coords.y == 0
@@ -29,7 +29,7 @@ public class PathFinderTest
         p.GetPath(tmOne.Tiles[1,1]);
 
         int pathCount =
-            (from Tile tile in tmOne.Tiles
+            (from EnvTile tile in tmOne.Tiles
                 where tile.OnPath
                 select tile).Count();
 
@@ -37,7 +37,7 @@ public class PathFinderTest
         Assert.AreEqual(25, pathCount);
 
         // reset
-        (from Tile tile in tmOne.Tiles
+        (from EnvTile tile in tmOne.Tiles
             where tile.OnPath
             select tile).ToList().ForEach(tile => tile.OnPath = false);
 
@@ -46,7 +46,7 @@ public class PathFinderTest
         p.GetPath(tmOne.Tiles[1,1]);
 
         pathCount =
-            (from Tile tile in tmOne.Tiles
+            (from EnvTile tile in tmOne.Tiles
                 where tile.OnPath
                 select tile).Count();
 

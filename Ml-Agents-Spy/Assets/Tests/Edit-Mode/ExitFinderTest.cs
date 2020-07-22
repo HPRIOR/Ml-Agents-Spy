@@ -11,7 +11,7 @@ namespace Tests
     {
         int matrixSize(int scale) => scale % 2 == 0 ? (scale * 10) / 2 : ((scale * 10) / 2) + 1;
 
-        Tile[,] GetTileMatrix(int scale)=>
+        IEnvTile[,] GetTileMatrix(int scale)=>
             new TileMatrix(
                 new Vector3(0, 0, 0), matrixSize(scale)
             ).Tiles;
@@ -146,7 +146,7 @@ namespace Tests
             
             exitFinder.SetExitTiles();
 
-            int matrixExitCount = (from Tile tile in matrix
+            int matrixExitCount = (from EnvTile tile in matrix
                 where tile.IsExit
                 select tile).Count();
 
@@ -170,7 +170,7 @@ namespace Tests
 
             exitFinder.SetExitTiles();
 
-            matrixExitCount = (from Tile tile in matrix
+            matrixExitCount = (from EnvTile tile in matrix
                 where tile.IsExit
                 select tile).Count();
 
