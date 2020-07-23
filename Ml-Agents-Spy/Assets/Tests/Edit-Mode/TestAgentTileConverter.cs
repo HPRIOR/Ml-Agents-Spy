@@ -72,19 +72,38 @@ namespace Tests
         [Test]
         public void TestInitialSpyPlacement()
         {
-            //occupied by agent = true in correct place, false everywhere else
+            var env = Env;
+            var envDict = env.GetTileTypes();
+            List<IEnvTile> envTiles = new List<IEnvTile>();
+            envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));
+            envDict[TileType.SpyTile].ForEach(tile => envTiles.Add(tile));
+            envDict[TileType.GuardTiles].ForEach(tile => envTiles.Add(tile));
+
+            IAgentTileConverter converter =  new AgentTileConverter(envTiles, new FindAdjacentAgentTile());
+
+            var agentTiles = converter.GetAgentTiles();
+            
+            Assert.AreEqual(
+                agentTiles.First(tile => tile.OccupiedByAgent).Coords,
+                envDict[TileType.SpyTile][0].Coords
+                );
         }
 
         [Test]
         public void TestInitialVisitCount()
         {
-            // all equal to zero
+            IAgentTileConverter agentTileConv = GetAgentTiles();
+
+            agentTileConv.GetAgentTiles().ForEach(tile => Assert.AreEqual(0, tile.VisitCount));
+
         }
 
         [Test]
         public void TestInitialVisitedByAlgo()
         {
-            //Visited by algo false for all
+            IAgentTileConverter agentTileConv = GetAgentTiles();
+
+            agentTileConv.GetAgentTiles().ForEach(tile => Assert.AreEqual(false, tile.VisitedByAlgo));
         }
     }
 }
