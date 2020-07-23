@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using JetBrains.Annotations;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using static VectorConversions;
 using Vector2 = UnityEngine.Vector2;
+using static TileHelper;
 
 public class SpyAgent : Agent
 {
@@ -80,34 +83,33 @@ public class SpyAgent : Agent
         sensor.AddObservation(ConvertToVector2(transform.position));
 
         // awareness of nearest exit (2 floats)
-        sensor.AddObservation(ConvertToVector2(GetNearestTile(_instanceController.TileDict[TileType.ExitTiles]).Position));
+        sensor.AddObservation(
+            ConvertToVector2(
+                GetNearestTile(
+                    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile)tile),
+                    transform)
+                    .Position)
+            );
 
         // Distance to nearest exit (1 float)
-        sensor.AddObservation(Vector3.Distance(
-            GetNearestTile(_instanceController.TileDict[TileType.ExitTiles]).Position, transform.position));
+        sensor.AddObservation(
+            Vector3.Distance(
+                GetNearestTile(
+                    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile)tile), 
+                    transform)
+                    .Position, 
+                transform.position)
+            );
 
-
-        
         // colliding with env
         sensor.AddObservation(_colliding);
 
     }
 
-    IEnvTile GetNearestTile(List<IEnvTile> tileArray)
-    {
-        var nearestTile = tileArray[0];
-        foreach (var tile in tileArray)
-        {
-            if (Vector3.Distance(tile.Position, transform.position) < Vector3.Distance(nearestTile.Position, transform.position))
-            {
-                nearestTile = tile;
-            }
-        }
-        return nearestTile;
-    }
+    
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.name == "Cube") _colliding = 1f;
     }

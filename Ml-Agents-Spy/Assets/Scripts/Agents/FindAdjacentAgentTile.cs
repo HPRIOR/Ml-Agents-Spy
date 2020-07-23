@@ -6,19 +6,19 @@ using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class FindAdjacentAgentTile
+public class FindAdjacentAgentTile : IFindAdjacentAgentTile
 {
     
-    public static void GetAdjacentTiles(List<IAgentTile> tileMatrix, int matrixSize)
+    public  void GetAdjacentTiles(List<IAgentTile> agentTiles, int matrixSize)
     {
-        foreach (var tile in tileMatrix)
+        foreach (var tile in agentTiles)
         {
-            UpdateDirectionDictionary(tile, tileMatrix, matrixSize);
+            UpdateDirectionDictionary(tile, agentTiles, matrixSize);
         }
     }
 
 
-    static void UpdateDirectionDictionary(IAgentTile tile, List<IAgentTile> tileMatrix, int matrixSize)
+    static void  UpdateDirectionDictionary(IAgentTile tile, List<IAgentTile> tileMatrix, int matrixSize)
     {
         System.Enum.GetValues(typeof(Direction)).Cast<Direction>()
             .ToList()
@@ -26,7 +26,7 @@ public class FindAdjacentAgentTile
     }
 
 
-     static IAgentTile GetDirectionTile(Direction d, IAgentTile inputEnvTile, List<IAgentTile> tileMatrix, int matrixSize)
+    static IAgentTile GetDirectionTile(Direction d, IAgentTile inputEnvTile, List<IAgentTile> tileMatrix, int matrixSize)
      {
         if (d == Direction.N) return inputEnvTile.Coords.y == matrixSize ? null : FindDirectionTile(tileMatrix, inputEnvTile.Coords.x, inputEnvTile.Coords.y + 1);
         if (d == Direction.E) return inputEnvTile.Coords.x == matrixSize ? null : FindDirectionTile(tileMatrix, inputEnvTile.Coords.x + 1, inputEnvTile.Coords.y);
