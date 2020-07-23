@@ -61,12 +61,12 @@ namespace Tests
             IAgentTile northFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 4));
             IAgentTile southFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 2));
             IAgentTile eastFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (4, 3));
-            IAgentTile westFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (4, 3));
+            IAgentTile westFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (2, 3));
 
-            Assert.AreEqual(northFromMiddle, middleTile.AdjacentTile[Direction.N]);
-            Assert.AreEqual(eastFromMiddle, middleTile.AdjacentTile[Direction.E]);
-            Assert.AreEqual(southFromMiddle, middleTile.AdjacentTile[Direction.S]);
-            Assert.AreEqual(westFromMiddle, middleTile.AdjacentTile[Direction.W]);
+            Assert.AreEqual(northFromMiddle.Coords, middleTile.AdjacentTile[Direction.N].Coords);
+            Assert.AreEqual(eastFromMiddle.Coords, middleTile.AdjacentTile[Direction.E].Coords);
+            Assert.AreEqual(southFromMiddle.Coords, middleTile.AdjacentTile[Direction.S].Coords);
+            Assert.AreEqual(westFromMiddle.Coords, middleTile.AdjacentTile[Direction.W].Coords);
         }
 
         [Test]

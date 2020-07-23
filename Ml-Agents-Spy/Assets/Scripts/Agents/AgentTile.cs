@@ -18,7 +18,7 @@ public class AgentTile : IAgentTile
     public int VisitCount { get; set; } = 0;
     public bool OccupiedByAgent { get; set; } = false;
 
-    public bool VisitedByAlgo { get; set; } = true;
+    public bool VisitedByAlgo { get; set; } = false;
 
     public AgentTile(Vector3 position, (int, int) coords)
     {

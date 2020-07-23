@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.MLAgents;
 using UnityEngine;
 
 /// <summary>
@@ -52,4 +54,8 @@ public class EnvTile : ICloneable, IEnvTile
     {
         return MemberwiseClone();
     }
+
+    public static explicit operator AgentTile(EnvTile e)
+        => new AgentTile(e.Position, e.Coords);
+
 }

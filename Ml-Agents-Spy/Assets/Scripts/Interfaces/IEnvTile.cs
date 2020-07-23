@@ -11,4 +11,5 @@ public interface IEnvTile : ITile
     bool HasEnv { get; set; }
     bool IsExit { get; set; }
     bool OnPath { get; set; }
+    object Clone();
 }
