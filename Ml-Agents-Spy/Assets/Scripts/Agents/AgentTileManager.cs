@@ -12,7 +12,7 @@ public class AgentTileManager
 
     public AgentTileManager(IAgentTileConverter tileConverter, IAgentTravelMemory travelMemory)
     {
-        _agentTiles = tileConverter.GetEnvTiles();
+        _agentTiles = tileConverter.GetAgentTiles();
         _travelMemory = travelMemory;
     }
 

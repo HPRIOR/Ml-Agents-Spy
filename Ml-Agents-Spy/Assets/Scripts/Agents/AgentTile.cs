@@ -7,7 +7,7 @@ public class AgentTile : IAgentTile
     public Vector3 Position { get; set; }
     public (int x, int y) Coords { get; set; }
     public Dictionary<Direction, IAgentTile> AdjacentTile { get; set; }
-        = new Dictionary<Direction, IAgentTile>()
+        = new Dictionary<Direction, IAgentTile>
         {
             {Direction.N, null},
             {Direction.E, null},

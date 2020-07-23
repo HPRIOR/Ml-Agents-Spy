@@ -38,16 +38,14 @@ public class TrainingInstanceController : MonoBehaviour
 
     }
 
-    /*
-     * this is not called OnEpisodeBegin
-     */
+    
     public void RestartEnv()
     {
         ClearEnv();
 
         float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
         //IEnvSetupFacade envFacade = new EnvSetupFacade();
-        //IEnvSetup env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
+        //IEnvSetup Env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
         
         
         IEnvSetup env = new EnvSetup(

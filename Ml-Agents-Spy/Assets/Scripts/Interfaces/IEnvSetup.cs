@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IEnvSetup
 {
+
+    int MapScale { get; }
     void SetUpEnv();
 
     Dictionary<TileType, List<IEnvTile>> GetTileTypes();

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAgentTileConverter
 {
-    List<IAgentTile> GetEnvTiles();
+    List<IAgentTile> GetAgentTiles();
 }

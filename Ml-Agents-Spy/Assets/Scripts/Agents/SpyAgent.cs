@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using JetBrains.Annotations;
+﻿using System.Linq;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using static VectorConversions;
-using Vector2 = UnityEngine.Vector2;
 using static TileHelper;
 
 public class SpyAgent : Agent

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using static RandomHelper;
 using Vector3 = UnityEngine.Vector3;
+using static StaticFunctions;
 
 
 
@@ -13,7 +14,7 @@ using Vector3 = UnityEngine.Vector3;
 /// </summary>
 public class EnvSetup : IEnvSetup
 {
-    private readonly int _mapScale;
+    public int MapScale { get; }
     private readonly int _mapDifficulty;
     private readonly int _matrixSize;
     private readonly int _exitCount;
@@ -27,9 +28,9 @@ public class EnvSetup : IEnvSetup
     public EnvSetup(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
         Dictionary<ParentObject, GameObject> parentDictionary, int mapCreationTolerance = 500, bool hasMiddleTiles = true)
     {
-        _mapScale = mapScale;
+        MapScale = mapScale;
         _mapDifficulty = mapDifficulty;
-        _matrixSize = mapScale % 2 == 0 ? (mapScale * 10) / 2 : ((mapScale * 10) / 2) + 1;
+        _matrixSize = MapScaleToMatrixSize(mapScale);
         _exitCount = exitCount;
         _guardAgentCount = guardAgentCount;
         _parentDictionary = parentDictionary;
@@ -46,7 +47,7 @@ public class EnvSetup : IEnvSetup
     public void SetUpEnv()
     {
         ModifyTileLogic();
-        PopulateEnv(_tileMatrix, _parentDictionary, _mapScale);
+        PopulateEnv(_tileMatrix, _parentDictionary, MapScale);
 
         // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
         // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
@@ -82,7 +83,7 @@ public class EnvSetup : IEnvSetup
             // ensures there is at most -1 guards to exits
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
             
-            IGuardLogic guardLogic = new GuardLogic(tilesCopy, _mapScale, _matrixSize, maxGuards);
+            IGuardLogic guardLogic = new GuardLogic(tilesCopy, MapScale, _matrixSize, maxGuards);
 
             // tests could be done inside classes instead of here, try catch could replaces
             if (exitFinder.ExitsAreAvailable())

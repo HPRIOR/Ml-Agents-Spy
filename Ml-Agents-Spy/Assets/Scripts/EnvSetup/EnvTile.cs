@@ -14,7 +14,7 @@ public class EnvTile : ICloneable, IEnvTile
     public (int x, int y) Coords { get; set; }
 
     public Dictionary<Direction, IEnvTile> AdjacentTile { get; set; }
-        = new Dictionary<Direction, IEnvTile>()
+        = new Dictionary<Direction, IEnvTile>
         {
             {Direction.N, null},
             {Direction.E, null},
