@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.MLAgents.SideChannels;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using static TileHelper; 
@@ -10,23 +11,34 @@ public class AgentTravelMemory : IAgentTravelMemory
 {
     private List<IAgentTile> _agentTiles;
     private IAgentTile _currentAgentTile;
-    private IAgentTile[] _travelMemoryTiles;
+    
     public AgentTravelMemory(List<IAgentTile> agentTiles)
     {
         _agentTiles = agentTiles;
         _currentAgentTile = _agentTiles.First(tile => tile.OccupiedByAgent);
-        _travelMemoryTiles = new IAgentTile[8];
     }
 
     public float[] GetTileVisitCount()
     {
-        throw new NotImplementedException();
+        float[] visitedTileCount = new float[8];
+        var nearestTiles = GetNearestTiles();
+        for (int i = 0; i < 9; i++)
+        {
+            if (i < nearestTiles.Count) visitedTileCount[i] = 1f / nearestTiles[i].VisitCount;
+        }
+        return visitedTileCount;
     }
 
     public Vector2[] GetTileLocations()
     {
-        throw new NotImplementedException();
+        Vector2[] visitedTileLocations = new Vector2[8];
+        var nearestTiles = GetNearestTiles();
+        for (int i = 0; i < 9; i++)
+        {
+            if (i < nearestTiles.Count) visitedTileCount[i] = 1f / nearestTiles[i].VisitCount;
+        }
     }
+
 
     public void UpdateAgentPosition(Transform agentPosition)
     {
@@ -66,9 +78,7 @@ public class AgentTravelMemory : IAgentTravelMemory
                 }
             }
         }
-
         return nearestTiles;
-
     }
 
     static bool AllStacksAreNull(Dictionary<Direction, Stack<IAgentTile>> dictionaryStack) 
