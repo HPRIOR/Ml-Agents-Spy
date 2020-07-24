@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -11,7 +12,11 @@ namespace Tests
 {
     public class TestAgentTileConverter
     {
-        Dictionary<ParentObject, GameObject> _dictionary =
+        private readonly Func<(IAgentTile, IEnvTile), bool> _spyPredicate = (tileTuple) => tileTuple.Item2.HasSpy;
+        private readonly Func<(IAgentTile, IEnvTile), bool> _guardPredicate = (tileTuple) => tileTuple.Item2.HasGuard;
+
+
+        readonly Dictionary<ParentObject, GameObject> _dictionary =
             new Dictionary<ParentObject, GameObject>()
             {
                 {ParentObject.TopParent,  new GameObject()},
@@ -35,13 +40,15 @@ namespace Tests
 
         IAgentTileConverter GetAgentTiles()
         {
-            var envDict = Env.GetTileTypes();
+            var env = Env;
+            env.SetUpEnv();
+            var envDict = env.GetTileTypes();
             List<IEnvTile> envTileList = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTileList.Add(tile));
             envDict[TileType.SpyTile].ForEach(tile => envTileList.Add(tile));
             envDict[TileType.GuardTiles].ForEach(tile => envTileList.Add(tile));
 
-            return new AgentTileConverter(envTileList, new FindAdjacentAgentTile());
+            return new AgentTileConverter(envTileList, _spyPredicate);
         }
         
         [Test]
@@ -73,13 +80,14 @@ namespace Tests
         public void TestInitialSpyPlacement()
         {
             var env = Env;
+            env.SetUpEnv();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTiles = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));
             envDict[TileType.SpyTile].ForEach(tile => envTiles.Add(tile));
             envDict[TileType.GuardTiles].ForEach(tile => envTiles.Add(tile));
 
-            IAgentTileConverter converter =  new AgentTileConverter(envTiles, new FindAdjacentAgentTile());
+            IAgentTileConverter converter =  new AgentTileConverter(envTiles, _spyPredicate);
 
             var agentTiles = converter.GetAgentTiles();
             
@@ -90,11 +98,36 @@ namespace Tests
         }
 
         [Test]
+        public void TestInitialGuardPlacement()
+        {
+            var env = Env;
+            env.SetUpEnv();
+            var envDict = env.GetTileTypes();
+            List<IEnvTile> envTiles = new List<IEnvTile>();
+            envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));
+            envDict[TileType.SpyTile].ForEach(tile => envTiles.Add(tile));
+            envDict[TileType.GuardTiles].ForEach(tile => envTiles.Add(tile));
+
+            IAgentTileConverter converter = new AgentTileConverter(envTiles, _guardPredicate);
+
+            var agentTiles = converter.GetAgentTiles();
+            
+            var guardAgentTiles = agentTiles
+                .Where(tile => tile.OccupiedByAgent)
+                .OrderBy(tile => tile.Coords.y).ToList();
+
+            var orderedGuardTiles = envDict[TileType.GuardTiles].OrderBy(tile => tile.Coords.y).ToList();
+
+            Assert.AreEqual(guardAgentTiles[0].Coords, orderedGuardTiles[0].Coords);
+
+        }
+
+        [Test]
         public void TestInitialVisitCount()
         {
             IAgentTileConverter agentTileConv = GetAgentTiles();
 
-            agentTileConv.GetAgentTiles().ForEach(tile => Assert.AreEqual(0, tile.VisitCount));
+            agentTileConv.GetAgentTiles().ForEach(tile => Assert.AreEqual(1, tile.VisitCount));
 
         }
 

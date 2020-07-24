@@ -7,4 +7,6 @@ public interface IAgentTravelMemory
     float[] GetTileVisitCount();
 
     Vector2[] GetTileLocations();
+
+    void UpdateAgentPosition(Transform agentPosition);
 }

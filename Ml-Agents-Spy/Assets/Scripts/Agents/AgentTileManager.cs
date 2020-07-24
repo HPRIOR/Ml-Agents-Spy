@@ -16,9 +16,9 @@ public class AgentTileManager
         _travelMemory = travelMemory;
     }
 
-    public void UpdateAgentPosition(Vector3 agentPosition)
+    public void UpdateAgentPosition(Transform agentPosition)
     {
-        // count etc
+        _travelMemory.UpdateAgentPosition(agentPosition);
     }
     
     

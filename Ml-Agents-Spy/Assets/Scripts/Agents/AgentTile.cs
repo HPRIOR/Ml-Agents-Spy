@@ -15,7 +15,7 @@ public class AgentTile : IAgentTile
             {Direction.W, null}
         };
 
-    public int VisitCount { get; set; } = 0;
+    public int VisitCount { get; set; } = 1;
     public bool OccupiedByAgent { get; set; } = false;
 
     public bool VisitedByAlgo { get; set; } = false;
