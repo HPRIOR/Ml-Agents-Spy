@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class TrainingInstanceController : MonoBehaviour
 {
+    public bool debug;
     public GameObject TopParent;
     public GameObject EnvParent;
     public GameObject DebugParent;
@@ -22,6 +23,9 @@ public class TrainingInstanceController : MonoBehaviour
     public int ExitCount = 3;
     public int GuardAgentCount = 5;
     public bool HasMiddleTiles = true;
+
+    [HideInInspector]
+    public int AgentMapScale;
 
     // Start is called before the first frame update
     public void Awake()
@@ -41,26 +45,34 @@ public class TrainingInstanceController : MonoBehaviour
     
     public void RestartEnv()
     {
-        ClearEnv();
-
-        float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
-        //IEnvSetupFacade envFacade = new EnvSetupFacade();
-        //IEnvSetup Env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
-        
-        
-        IEnvSetup env = new EnvSetup(
-           mapScale: MapScale,
-           mapDifficulty: MapDifficulty,
-           exitCount: ExitCount,
-           guardAgentCount: GuardAgentCount,
-           parentDictionary: _parentObjects,
-           hasMiddleTiles: HasMiddleTiles
-           );
-        
-        
-        env.SetUpEnv();
-        TileDict = env.GetTileTypes();
-        SpawnSpyAgent();
+        if (debug)
+        {
+            ClearEnv();
+            IEnvSetup env = new EnvSetup(
+              mapScale: MapScale,
+              mapDifficulty: MapDifficulty,
+              exitCount: ExitCount,
+              guardAgentCount: GuardAgentCount,
+              parentDictionary: _parentObjects,
+              hasMiddleTiles: HasMiddleTiles
+              );
+            env.SetUpEnv();
+            AgentMapScale = env.MapScale;
+            TileDict = env.GetTileTypes();
+            SpawnSpyAgent();
+        }
+        else
+        {
+            ClearEnv();
+            float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+            EnvSetupFacadeInjector facadeInjector = new EnvSetupFacadeInjector();
+            IEnvSetupFacade envFacade = facadeInjector.GetEnvSetupFacade("AdvancedPathFinding");
+            IEnvSetup env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
+            env.SetUpEnv();
+            AgentMapScale = env.MapScale;
+            TileDict = env.GetTileTypes();
+            SpawnSpyAgent();
+        }
     }
 
     void ClearEnv()

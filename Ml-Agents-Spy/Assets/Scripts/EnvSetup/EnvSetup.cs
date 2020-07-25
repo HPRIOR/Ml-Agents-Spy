@@ -6,6 +6,7 @@ using UnityEngine;
 using static RandomHelper;
 using Vector3 = UnityEngine.Vector3;
 using static StaticFunctions;
+using static CreateEnv;
 
 
 
@@ -34,7 +35,7 @@ public class EnvSetup : IEnvSetup
         _exitCount = exitCount;
         _guardAgentCount = guardAgentCount;
         _parentDictionary = parentDictionary;
-        _tileMatrixProducer = new TileMatrix(_parentDictionary[ParentObject.TopParent].transform.localPosition, _matrixSize);
+        _tileMatrixProducer = new TileMatrix(_parentDictionary[ParentObject.TopParent].transform.position, _matrixSize);
         _tileMatrix = _tileMatrixProducer.Tiles;
         _mapCreationTolerance = mapCreationTolerance;
         _hasMiddleTiles = hasMiddleTiles;
@@ -125,33 +126,7 @@ public class EnvSetup : IEnvSetup
         return tileMatrix[x,y];
     }
     
-    /// <summary>
-    /// Creates box with given scale, GameObject parent, and 3D position
-    /// </summary>
-    /// <param name="scale">Size of box</param>
-    /// <param name="parent">Parent GameObject of box</param>
-    /// <param name="position">3D position of box</param>
-    static void CreateBox(Vector3 scale, Transform parent, Vector3 position)
-    {
-        GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        box.transform.localPosition = position + new Vector3(0, 0.5f, 0);
-        box.transform.localScale = scale;
-        box.transform.parent = parent;
-        box.tag = "env";
-    }
-
-    /// <summary>
-    /// Produces a plane with a specified size and position (relative to the parent)
-    /// </summary>
-    /// <param name="scale">Size of the plane</param>
-    /// <param name="parent">Parent GameObject of the plane</param>
-    static void CreatePlane(Vector3 scale, Transform parent)
-    {
-        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        plane.transform.localPosition = parent.position;
-        plane.transform.localScale = scale;
-        plane.transform.parent = parent;
-    }
+    
 
     /// <summary>
     /// Creates 3D objects based on tile position and logic
@@ -179,8 +154,6 @@ public class EnvSetup : IEnvSetup
                 tile.Position + new Vector3(0, 0, 2f)
             );
         }
-
-        
 
     }
 

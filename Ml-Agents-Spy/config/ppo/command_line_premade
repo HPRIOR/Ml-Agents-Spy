@@ -9,6 +9,13 @@ mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_03_02_
 
 mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_04_05_curiosity
 
-mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_05_03_curr --force
+mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_05_03_curr --resume
+
+mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_mem_obvs_normalised 
+
+mlagents-learn ../config/ppo/spy_config2.yaml --run-id=spy_test_advanced_curriculum_normalised_mem 
+
 
 tensorboard --logdir=results --port=6006
+
+C:\Users\User\Documents\Unity_Projects\Ml-Agents-Spy\Ml-Agents-Spy\Venv

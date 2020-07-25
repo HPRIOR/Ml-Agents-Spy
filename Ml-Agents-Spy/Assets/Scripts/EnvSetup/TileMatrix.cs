@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 /// <summary>
 /// Creates Tile Matrix
@@ -12,6 +13,11 @@ public class TileMatrix : ICloneable
     public int MatrixSize { get; }
    
 
+    /// <summary>
+    /// plane center is local position of training instance
+    /// </summary>
+    /// <param name="planeCentre"></param>
+    /// <param name="matrixSize"></param>
     public TileMatrix(Vector3 planeCentre, int matrixSize)
     {
         _planeCentre = planeCentre;
@@ -49,7 +55,6 @@ public class TileMatrix : ICloneable
         return tiles;
     }
 
-    // extract into a class and reuse in AgentTiles, make Tile interface which alows for generic implementation of Get Adjecent tiles 
 
     /// <summary>
     /// Populates the adjacency dictionary of each tile with NESW neighboring tiles
