@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEnvTileLogic
 {
-    void SetEnvTiles();
+    void SetEnvTiles(IEnvTile[,] tileMatrix);
 }

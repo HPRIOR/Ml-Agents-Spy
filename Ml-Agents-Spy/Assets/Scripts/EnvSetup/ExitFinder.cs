@@ -6,14 +6,21 @@ using Random = System.Random;
 
 public class ExitFinder : IExitFinder
 {
-    public int ExitCount { get; }
+    public int ExitCount { get; private set; }
     private bool _canProceed = true;
-    private readonly List<List<IEnvTile>> _groupedAdjacentTiles;
+    private List<List<IEnvTile>> _groupedAdjacentTiles;
+    private int _matrixSize;
+    private int _requestedExitCount;
 
 
-    public ExitFinder(IEnvTile[,] tileMatrix, int matrixSize, int requestedExitCount)
+    public ExitFinder(int matrixSize, int requestedExitCount)
     {
-        List<IEnvTile> potentialExitTiles = PotentialExitTiles(tileMatrix, matrixSize);
+        _matrixSize = matrixSize;
+        _requestedExitCount = requestedExitCount;
+    }
+
+    public void CheckMatrix(IEnvTile[,] tileMatrix){
+        List<IEnvTile> potentialExitTiles = PotentialExitTiles(tileMatrix, _matrixSize);
         if (potentialExitTiles.Count < 2)
         {
             _canProceed = false;
@@ -22,11 +29,12 @@ public class ExitFinder : IExitFinder
         {
             _groupedAdjacentTiles = GroupAdjacentTiles(potentialExitTiles);
             var maxPossibleExitCount = TotalMaxExit(_groupedAdjacentTiles);
-            ExitCount = requestedExitCount > maxPossibleExitCount
+            ExitCount = _requestedExitCount > maxPossibleExitCount
                 ? maxPossibleExitCount
-                : requestedExitCount;
+                : _requestedExitCount;
         }
     }
+
 
 
     /// <summary>

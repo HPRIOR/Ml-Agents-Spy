@@ -31,4 +31,35 @@ public static class CreateEnv
         plane.transform.localScale = scale;
         plane.transform.parent = parent;
     }
+
+
+    /// <summary>
+    /// Creates 3D objects based on tile position and logic
+    /// </summary>
+    /// <param name="tileMatrix">Matrix of tiles</param>
+    /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
+    /// <param name="mapScale">Size of map corresponding to scale of plane</param>
+    public static void PopulateEnv(IEnvTile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
+    {
+        var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
+        CreatePlane(
+            scale: new Vector3(calcMapScale, 1, calcMapScale),
+            parent: parentDictionary[ParentObject.EnvParent].transform
+        );
+        foreach (var tile in tileMatrix)
+        {
+            if (tile.HasEnv) CreateBox(
+                new Vector3(2, 2, 2),
+                parentDictionary[ParentObject.EnvParent].transform,
+                tile.Position);
+            // close off exits
+            if (tile.IsExit) CreateBox(
+                new Vector3(2, 2, 2),
+                parentDictionary[ParentObject.EnvParent].transform,
+                tile.Position + new Vector3(0, 0, 2f)
+            );
+        }
+
+    }
+
 }

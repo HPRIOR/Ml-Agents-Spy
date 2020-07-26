@@ -57,7 +57,6 @@ public class EnvSetup : IEnvSetup
 
     }
 
-    
 
     /// <summary>
     /// Changes logic within each tile, helping to generate the environment and agent tiles
@@ -73,18 +72,23 @@ public class EnvSetup : IEnvSetup
             TileMatrix matrixClone = (TileMatrix)_tileMatrixProducer.Clone();
             IEnvTile[,] tilesCopy = matrixClone.Tiles;
 
-            SpyTileLogic spyTileLogic = new SpyTileLogic(tilesCopy, _matrixSize);
-            IEnvTile spyEnvTile = spyTileLogic.SetSpyTile();
+            SpyTileLogic spyTileLogic = new SpyTileLogic(_matrixSize);
+            IEnvTile spyEnvTile = spyTileLogic.SetSpyTile(tilesCopy);
             
-            IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty, _hasMiddleTiles);
-            envTileLogic.SetEnvTiles();
+            IEnvTileLogic envTileLogic = new EnvTileLogic(_matrixSize, _mapDifficulty, _hasMiddleTiles);
+            envTileLogic.SetEnvTiles(tilesCopy);
             
             IPathFinder pathFinder = new PathFinder();
             pathFinder.GetPath(spyEnvTile);
             
-            IExitFinder exitFinder = new ExitFinder(tilesCopy, _matrixSize, _exitCount);
+            IExitFinder exitFinder = new ExitFinder(_matrixSize, _exitCount);
+            
+            // this needs to be called before ExitFinder's other methods 
+            exitFinder.CheckMatrix(tilesCopy);
+            
             int maxExits = exitFinder.ExitCount;
             // ensures there is at most -1 guards to exits
+            // refactor, this can be passed onto a method istead of the constructor
             int maxGuards = _guardAgentCount >= maxExits ? maxExits - 1 : _guardAgentCount;
             
             IGuardLogic guardLogic = new GuardLogic(tilesCopy, MapScale, _matrixSize, maxGuards);
@@ -115,34 +119,6 @@ public class EnvSetup : IEnvSetup
     }
 
 
-    /// <summary>
-    /// Creates 3D objects based on tile position and logic
-    /// </summary>
-    /// <param name="tileMatrix">Matrix of tiles</param>
-    /// <param name="parentDictionary">Dictionary containing ParentObject references and corresponding GameObjects</param>
-    /// <param name="mapScale">Size of map corresponding to scale of plane</param>
-    void PopulateEnv(IEnvTile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
-    {
-        var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
-        CreatePlane(
-            scale: new Vector3(calcMapScale, 1, calcMapScale),
-            parent: _parentDictionary[ParentObject.EnvParent].transform
-        );
-        foreach (var tile in tileMatrix)
-        {
-            if (tile.HasEnv) CreateBox(
-                new Vector3(2, 2, 2), 
-                parentDictionary[ParentObject.EnvParent].transform, 
-                tile.Position);
-            // close off exits
-            if (tile.IsExit) CreateBox(
-                new Vector3(2, 2, 2),
-                parentDictionary[ParentObject.EnvParent].transform,
-                tile.Position + new Vector3(0, 0, 2f)
-            );
-        }
-
-    }
 
     /// <summary>
     /// Returns dictionary of Tile type references and corresponding tiles

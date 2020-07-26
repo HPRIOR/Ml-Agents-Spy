@@ -9,4 +9,6 @@ public interface IExitFinder
     void SetExitTiles();
 
     bool ExitsAreAvailable();
+
+    void CheckMatrix(IEnvTile[,] tileMatrix);
 }

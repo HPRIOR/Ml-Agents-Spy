@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISpyTileLogic
 {
-    IEnvTile SetSpyTile();
+    IEnvTile SetSpyTile(IEnvTile[,] tileMatrix);
 }

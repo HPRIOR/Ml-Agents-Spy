@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class EnvTileLogic : IEnvTileLogic
 {
-    private readonly IEnvTile[,] _tiles;
     private readonly int _matrixSize;
     private readonly int _mapDifficulty;
     private bool _hasMiddleTiles;
 
-    public EnvTileLogic(IEnvTile[,] tiles, int matrixSize, int mapDifficulty, bool hasMiddleTiles = true)
+    public EnvTileLogic(int matrixSize, int mapDifficulty, bool hasMiddleTiles = true)
     {
-        _tiles = tiles;
         _matrixSize = matrixSize;
         _mapDifficulty = mapDifficulty;
         _hasMiddleTiles = hasMiddleTiles;
     }
-    public void SetEnvTiles()
+    public void SetEnvTiles(IEnvTile[,] tileMatrix)
     {
-        CreateInitialEnv(_tiles, _matrixSize, _hasMiddleTiles);
-        SetEnvDifficulty(_tiles, _matrixSize, _mapDifficulty);
+        CreateInitialEnv(tileMatrix, _matrixSize, _hasMiddleTiles);
+        SetEnvDifficulty(tileMatrix, _matrixSize, _mapDifficulty);
     }
 
     /// <summary>
