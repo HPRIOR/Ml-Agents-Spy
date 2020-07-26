@@ -17,7 +17,7 @@ public class AdvancedPathFindingCurriculum : IEnvSetupFacade
                     exitCount: 2,
                     guardAgentCount: 1,
                     parentDictionary: parentObjects,
-                    hasMiddleTiles: false
+                    hasMiddleTiles: true
                     );
 
             case 2:

@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Linq;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
-using UnityEditor;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
-using static VectorConversions;
 using static TileHelper;
+using static StaticFunctions;
 
 public class SpyAgent : Agent
 {
@@ -18,44 +15,61 @@ public class SpyAgent : Agent
     private float _speed = 10;
     private float _maxLocalDistance;
 
-
+    /// <summary>
+    /// Called at the start of each training episode.
+    /// The instance controller needs to be gotten hear due to the call sequence between this method and the restart env delegate
+    /// </summary>
     public override void OnEpisodeBegin()
     {
         _instanceController = GetComponentInParent<TrainingInstanceController>();
         _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-        _maxLocalDistance = MaxLocalDistance(_instanceController.MapScale);
+        _maxLocalDistance = StaticFunctions.MaxLocalDistance(_instanceController.MapScale);
         if (CompletedEpisodes > 0) _instanceController.RestartEnv();
     }
 
-    // Called at every step
+
+
+    /// <summary>
+    /// This is called at every step - receives actions from policy and is used to give rewards
+    /// </summary>
+    /// <param name="action"></param>
     public override void OnActionReceived(float[] action)
     {
         AddReward(-1f/MaxStep);
-
-        var distanceToExitPoint = 
-            _instanceController
-                .TileDict[TileType.ExitTiles]
-                .Select(tile => (tile.Position - transform.position).magnitude)
-                .ToArray();
-        
-        SetRewardAndRestartIfExitReached(distanceToExitPoint);
-        
+        SetRewardAndRestartIfExitReached(DistancesToEachExitPoint());
         if (transform.position.y < 0f) EndEpisode();
-        
         MoveAgent(action[0]);
     }
 
-    public void SetRewardAndRestartIfExitReached(float[] magnitudes)
+    /// <summary>
+    /// Gets the distances to each exit point
+    /// </summary>
+    /// <returns>Float array of the distance to each exit point</returns>
+    private float[] DistancesToEachExitPoint() => 
+        _instanceController
+            .TileDict[TileType.ExitTiles]
+            .Select(tile => (tile.Position - transform.position).magnitude)
+            .ToArray();
+         
+    /// <summary>
+    /// Sets a reward if the distance any exit point is less than 1
+    /// </summary>
+    /// <param name="distances">Array of distances to each exit</param>
+    public void SetRewardAndRestartIfExitReached(float[] distances)
     {
-        foreach (var magnitude in magnitudes)
+        foreach (var magnitude in distances)
             if (magnitude < 1f)
             {
                 SetReward(1f);
                 EndEpisode();
             }
     }
-    
 
+
+    /// <summary>
+    /// Defines one discrete vector [0](1-4) which defines movement in up left right directions
+    /// </summary>
+    /// <param name="input">action[0] of the discrete action array </param>
     void MoveAgent(float input)
     {
         var movementDirection = Vector3.zero;
@@ -69,80 +83,91 @@ public class SpyAgent : Agent
        transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
     }
 
+    /// <summary>
+    /// defines a means to control agent for debugging purposes
+    /// </summary>
+    /// <param name="actionsOut">Discrete array</param>
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = 0;
-        
         if (Input.GetKey(KeyCode.W)) actionsOut[0] = 1;
         else if (Input.GetKey(KeyCode.S)) actionsOut[0] = 2;
         else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
         else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
     }
 
+    /// <summary>
+    /// Supplies observations to ML algorithm
+    /// </summary>
+    /// <param name="sensor">Sensor used to pass observations</param>
     public override void CollectObservations(VectorSensor sensor)
     {
         // own position (2 floats)
-        sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x));
-        sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z));
-        
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x));
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z));
+
+        var nearestExitVector = GetNearestTile(
+                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+                transform).Position;
 
         // position of nearest exit, x axis (1 float)
-        sensor.AddObservation(
-            NormalisedFloat(
-            -_maxLocalDistance, 
-            _maxLocalDistance, 
-            LocalPosition(
-                GetNearestTile(
-                    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile)tile), 
-                    transform).Position).x));
+        AddNearestExitXAxis(sensor, nearestExitVector);
         
         // position of nearest exit, y axis (1 float)
-        sensor.AddObservation(
-            NormalisedFloat(
-            -_maxLocalDistance,
-            _maxLocalDistance,
-            LocalPosition(
-                GetNearestTile(
-                    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile)tile),
-                    transform).Position).z));
+        AddNearestExitYAxis(sensor, nearestExitVector);
 
         // distance to nearest exit (1 float)
-        sensor.AddObservation(NormalisedFloat(0f, MaxVectorDistanceToExit(_instanceController.MapScale), Vector3.Distance(
-            GetNearestTile(
-                    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                    transform)
-                .Position,
-            transform.position)));
-
+        AddDistanceToNearestExit(sensor, nearestExitVector);
 
         // colliding with env (1 float)
         sensor.AddObservation(_colliding);
 
         // trail of visited locations (default = 10)
-        _agentMemory.GetAgentMemory(transform.localPosition)
-            .ToList()
-            .ForEach(f => sensor.AddObservation(
-                NormalisedMemoryFloat(
-                    -_maxLocalDistance, 
-                    _maxLocalDistance, 
-                    f)));
+        AddVisitedMemoryTrail(sensor);
     }
 
-    Vector3 LocalPosition(Vector3 position) => position - _instanceController.transform.localPosition;
+    /// <summary>
+    /// Adds normalised 'trail' of visited locations to observations
+    /// </summary>
+    /// <param name="sensor">Sensor used to pass observations</param>
+    private void AddVisitedMemoryTrail(VectorSensor sensor) =>
+        _agentMemory.GetAgentMemory(transform.localPosition)
+            .ToList()
+            .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
+                    -_maxLocalDistance,
+                    _maxLocalDistance,
+                    f)));
 
-    float MaxLocalDistance(int mapScale) => mapScale % 2 == 0 ? 
-        (mapScale * 5) - 1.3f : 
-        (mapScale * 5) - 0.3f;
+    /// <summary>
+    /// Adds normalised distance to nearest exit to observations 
+    /// </summary>
+    /// <param name="sensor">Sensor used to pass observations</param>
+    /// <param name="nearestExitVector">Vector of nearest exit</param>
+    private void AddDistanceToNearestExit(VectorSensor sensor, Vector3 nearestExitVector) =>
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.MapScale), Vector3.Distance(
+            nearestExitVector,
+            transform.position)));
 
-    float MaxVectorDistanceToExit(int mapScale) => mapScale % 2 == 0 ?
-        (mapScale * 10) - 1.4f : 
-        (mapScale * 10) + 0.6f;
+    /// <summary>
+    /// Adds normalised X axis location of nearest exit to observations 
+    /// </summary>
+    /// <param name="sensor">Sensor used to pass observations</param>
+    /// <param name="nearestExitVector">Vector of nearest exit</param>
+    private void AddNearestExitYAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, VectorConversions.LocalPosition(
+            nearestExitVector, _instanceController).z));
 
-    float NormalisedFloat(float min, float max, float current) =>
-        (current - min) / (max - min);
-
-    float NormalisedMemoryFloat(float min, float max, float current) => current == 0 ? 0f :
-        (current - min) / (max - min);
+    /// <summary>
+    /// Adds normalised Y axis location of nearest exit to observations 
+    /// </summary>
+    /// <param name="sensor">Sensor used to pass observations</param>
+    /// <param name="nearestExitVector">Vector of nearest exit</param>
+    private void AddNearestExitXAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(
+                -_maxLocalDistance,
+                _maxLocalDistance, VectorConversions.LocalPosition(
+                    nearestExitVector, _instanceController).x));
+    
 
     void OnCollisionEnter(Collision collision) 
     {
@@ -153,7 +178,4 @@ public class SpyAgent : Agent
     {
         if (collision.gameObject.name == "Cube") _colliding = 0f;
     }
-
-
-
 }

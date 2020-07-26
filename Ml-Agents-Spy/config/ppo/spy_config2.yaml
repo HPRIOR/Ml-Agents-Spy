@@ -29,7 +29,6 @@ behaviors:
     time_horizon: 128
     summary_freq: 30000
     threaded: true
-    default: C:\Users\User\Documents\Unity_Projects\Ml-Agents-Spy\Ml-Agents-Spy\Venv\results\spy_test_curriculum_mem_obvs_normalised_02\Spy.nn
     
 environment_parameters:
     spy_curriculum:
