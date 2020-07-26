@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
-using static RandomHelper;
 using Vector3 = UnityEngine.Vector3;
 using static StaticFunctions;
 using static CreateEnv;
@@ -15,6 +13,9 @@ using static CreateEnv;
 /// </summary>
 public class EnvSetup : IEnvSetup
 {
+    /// <summary>
+    /// Scale of map that has been created
+    /// </summary>
     public int MapScale { get; }
     private readonly int _mapDifficulty;
     private readonly int _matrixSize;
@@ -39,13 +40,13 @@ public class EnvSetup : IEnvSetup
         _tileMatrix = _tileMatrixProducer.Tiles;
         _mapCreationTolerance = mapCreationTolerance;
         _hasMiddleTiles = hasMiddleTiles;
-
+        
     }
 
     /// <summary>
     /// Called by Academy class in the SceneController to produce a new env for training instance
     /// </summary>
-    public void SetUpEnv()
+    public void CreateEnv()
     {
         ModifyTileLogic();
         PopulateEnv(_tileMatrix, _parentDictionary, MapScale);
@@ -71,7 +72,9 @@ public class EnvSetup : IEnvSetup
         {
             TileMatrix matrixClone = (TileMatrix)_tileMatrixProducer.Clone();
             IEnvTile[,] tilesCopy = matrixClone.Tiles;
-            IEnvTile spyEnvTile = SetSpyTile(tilesCopy, _matrixSize);
+
+            SpyTileLogic spyTileLogic = new SpyTileLogic(tilesCopy, _matrixSize);
+            IEnvTile spyEnvTile = spyTileLogic.SetSpyTile();
             
             IEnvTileLogic envTileLogic = new EnvTileLogic(tilesCopy, _matrixSize, _mapDifficulty, _hasMiddleTiles);
             envTileLogic.SetEnvTiles();
@@ -86,7 +89,6 @@ public class EnvSetup : IEnvSetup
             
             IGuardLogic guardLogic = new GuardLogic(tilesCopy, MapScale, _matrixSize, maxGuards);
 
-            // tests could be done inside classes instead of here, try catch could replaces
             if (exitFinder.ExitsAreAvailable())
             {
                 exitFinder.SetExitTiles();
@@ -112,21 +114,6 @@ public class EnvSetup : IEnvSetup
         }
     }
 
-    /// <summary>
-    /// Set the spawn tile of the Spy agent in the first row of the tile matrix
-    /// </summary>
-    /// <param name="tileMatrix">Matrix of Tiles</param>
-    /// <param name="matrixSize">Size of matrix</param>
-    /// <returns></returns>
-    IEnvTile SetSpyTile(IEnvTile[,] tileMatrix, int matrixSize)
-    {
-        int y = 1;
-        int x = GetParityRandom(1, matrixSize - 1, ParityEnum.Even);
-        tileMatrix[x,y].HasSpy = true;
-        return tileMatrix[x,y];
-    }
-    
-    
 
     /// <summary>
     /// Creates 3D objects based on tile position and logic

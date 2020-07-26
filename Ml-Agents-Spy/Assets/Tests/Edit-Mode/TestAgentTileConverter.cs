@@ -41,7 +41,7 @@ namespace Tests
         IAgentTileConverter GetAgentTiles()
         {
             var env = Env;
-            env.SetUpEnv();
+            env.CreateEnv();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTileList = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTileList.Add(tile));
@@ -80,7 +80,7 @@ namespace Tests
         public void TestInitialSpyPlacement()
         {
             var env = Env;
-            env.SetUpEnv();
+            env.CreateEnv();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTiles = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));
@@ -101,7 +101,7 @@ namespace Tests
         public void TestInitialGuardPlacement()
         {
             var env = Env;
-            env.SetUpEnv();
+            env.CreateEnv();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTiles = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));

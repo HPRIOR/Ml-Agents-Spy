@@ -17,6 +17,9 @@ public static class StaticFunctions
     public static float NormalisedFloat(float min, float max, float current) =>
         (current - min) / (max - min);
 
+    /// <summary>
+    /// Returning 0 on current == 0 needed for trail memory to indicate a lack of observation to agent
+    /// </summary>
     public static float NormalisedMemoryFloat(float min, float max, float current) => current == 0 ? 0f :
         (current - min) / (max - min);
 }

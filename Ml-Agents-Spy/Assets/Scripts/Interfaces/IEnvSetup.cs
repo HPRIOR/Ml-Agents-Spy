@@ -6,7 +6,7 @@ public interface IEnvSetup
 {
 
     int MapScale { get; }
-    void SetUpEnv();
+    void CreateEnv();
 
     Dictionary<TileType, List<IEnvTile>> GetTileTypes();
     

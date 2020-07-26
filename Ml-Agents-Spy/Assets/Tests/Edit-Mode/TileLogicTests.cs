@@ -38,7 +38,7 @@ public class TileLogicTests
           guardAgentCount: 2,
           parentDictionary: dict
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
 
         Assert.AreEqual(3, tileTypes[TileType.ExitTiles].Count);
@@ -57,7 +57,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
 
         Assert.AreEqual(1, tileTypes[TileType.SpyTile].Count);
@@ -76,7 +76,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
 
         Assert.AreEqual(2, tileTypes[TileType.GuardTiles].Count);
@@ -96,7 +96,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         Assert.AreEqual(245, tileTypes[TileType.EnvTiles].Count);
 
@@ -109,7 +109,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         Assert.AreEqual(243, tileTypes[TileType.EnvTiles].Count);
     }
@@ -129,7 +129,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         Assert.AreEqual(19, tileTypes[TileType.FreeTiles].Count);
 
@@ -149,7 +149,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         tileTypes[TileType.ExitTiles].ForEach(tile => Assert.AreEqual(6 ,tile.Coords.y));
 
@@ -161,7 +161,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.ExitTiles].ForEach(tile => Assert.AreEqual(16, tile.Coords.y));
     }
@@ -180,7 +180,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         tileTypes[TileType.SpyTile].ForEach(tile => Assert.AreEqual(1, tile.Coords.y));
 
@@ -192,7 +192,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.SpyTile].ForEach(tile => Assert.AreEqual(1, tile.Coords.y));
     }
@@ -210,7 +210,7 @@ public class TileLogicTests
 
         );
 
-        Assert.Throws<MapCreationException>(() => env.SetUpEnv());
+        Assert.Throws<MapCreationException>(() => env.CreateEnv());
     }
 
 
@@ -228,7 +228,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(5, tile.Coords.y));
         // 2 map size
@@ -240,7 +240,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(9, tile.Coords.y));
         // 3 map size
@@ -252,7 +252,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(15, tile.Coords.y));
         // > 3 (4) map size
@@ -264,7 +264,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(true, tile.Coords.y == 19 | tile.Coords.y == 17 | tile.Coords.y == 18));
         // > 3 (5) map size
@@ -275,7 +275,7 @@ public class TileLogicTests
             guardAgentCount: 9,
             parentDictionary: dict
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         tileTypes = env.GetTileTypes();
         tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(true, tile.Coords.y == 25 || tile.Coords.y == 24 || tile.Coords.y == 23));
     }
@@ -292,7 +292,7 @@ public class TileLogicTests
             parentDictionary: dict
 
         );
-        env.SetUpEnv();
+        env.CreateEnv();
         var tileTypes = env.GetTileTypes();
         Assert.Greater(tileTypes[TileType.ExitTiles].Count, tileTypes[TileType.GuardTiles].Count);
         Assert.AreEqual(1, tileTypes[TileType.GuardTiles].Count);
@@ -310,7 +310,7 @@ public class TileLogicTests
             guardAgentCount: 4,
             parentDictionary: dict
         );
-        Assert.Throws<MapCreationException>(() => env.SetUpEnv());
+        Assert.Throws<MapCreationException>(() => env.CreateEnv());
 
         // exit count = 1
         env = new EnvSetup(
@@ -320,7 +320,7 @@ public class TileLogicTests
             guardAgentCount: 4,
             parentDictionary: dict
         );
-        Assert.Throws<MapCreationException>(() => env.SetUpEnv());
+        Assert.Throws<MapCreationException>(() => env.CreateEnv());
 
         // exit count = 2
         env = new EnvSetup(
@@ -330,7 +330,7 @@ public class TileLogicTests
             guardAgentCount: 4,
             parentDictionary: dict
         );
-        Assert.DoesNotThrow(() => env.SetUpEnv());
+        Assert.DoesNotThrow(() => env.CreateEnv());
     }
 
 
@@ -346,7 +346,7 @@ public class TileLogicTests
             guardAgentCount: 4,
             parentDictionary: dict
         );
-        Assert.Throws<MapCreationException>(() => env.SetUpEnv());
+        Assert.Throws<MapCreationException>(() => env.CreateEnv());
     }
 
 

@@ -27,8 +27,6 @@ public class SpyAgent : Agent
         if (CompletedEpisodes > 0) _instanceController.RestartEnv();
     }
 
-
-
     /// <summary>
     /// This is called at every step - receives actions from policy and is used to give rewards
     /// </summary>

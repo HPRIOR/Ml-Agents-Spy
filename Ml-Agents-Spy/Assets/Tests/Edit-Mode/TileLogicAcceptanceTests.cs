@@ -46,7 +46,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
             
 
@@ -65,7 +65,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
 
 
@@ -84,7 +84,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
 
@@ -101,7 +101,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
 
 
@@ -120,7 +120,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
 
 
@@ -139,7 +139,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
 
@@ -156,7 +156,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
 
@@ -173,7 +173,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
 
@@ -190,7 +190,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
 
@@ -207,7 +207,7 @@ namespace Tests
                     guardAgentCount: 2,
                     parentDictionary: dict
                 );
-                Assert.DoesNotThrow(() => env.SetUpEnv());
+                Assert.DoesNotThrow(() => env.CreateEnv());
             }
         }
     }
