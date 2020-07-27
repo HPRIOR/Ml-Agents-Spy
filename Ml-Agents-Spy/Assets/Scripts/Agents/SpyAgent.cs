@@ -34,7 +34,7 @@ public class SpyAgent : Agent
     public override void OnActionReceived(float[] action)
     {
         AddReward(-1f/MaxStep);
-        SetRewardAndRestartIfExitReached(DistancesToEachExitPoint());
+        RewardAndRestartIfExitReached(DistancesToEachExitPoint());
         if (transform.position.y < 0f) EndEpisode();
         MoveAgent(action[0]);
     }
@@ -53,7 +53,7 @@ public class SpyAgent : Agent
     /// Sets a reward if the distance any exit point is less than 1
     /// </summary>
     /// <param name="distances">Array of distances to each exit</param>
-    public void SetRewardAndRestartIfExitReached(float[] distances)
+    public void RewardAndRestartIfExitReached(float[] distances)
     {
         foreach (var magnitude in distances)
             if (magnitude < 1f)
@@ -126,14 +126,7 @@ public class SpyAgent : Agent
         DebugObvs();
     }
 
-    void DebugObvs()
-    {
-        // Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
-        //           $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
-
-
-
-    }
+    
 
     /// <summary>
     /// Adds normalised 'trail' of visited locations to observations
@@ -177,6 +170,14 @@ public class SpyAgent : Agent
                 _maxLocalDistance, VectorConversions.LocalPosition(
                     nearestExitVector, _instanceController).x));
     
+    private void DebugObvs()
+    {
+        // Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
+        //           $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
+
+
+
+    }
 
     void OnCollisionEnter(Collision collision) 
     {

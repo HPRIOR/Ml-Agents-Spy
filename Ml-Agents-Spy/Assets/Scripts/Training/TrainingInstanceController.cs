@@ -115,9 +115,9 @@ public class TrainingInstanceController : MonoBehaviour
     }
 
 
-    (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict) GetTileLogic(int curriculumParam)
+    private (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict) GetTileLogic(int curriculumParam)
     {
-        EnvSetupFacadeInjector facadeInjector = new EnvSetupFacadeInjector();
+        TileLogicFacadeInjector facadeInjector = new TileLogicFacadeInjector();
         ITileLogicFacade envFacade = facadeInjector.GetTileLogicFacade(Curriculum);
         ITileLogicBuilder tileLogicBuilder = envFacade.GetTileLogicBuilder(curriculumParam, _parentObjects);
         ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
@@ -128,7 +128,7 @@ public class TrainingInstanceController : MonoBehaviour
     /// Clears children of given GameObject in hierarchy
     /// </summary>
     /// <param name="parentObject">Parent GameObject</param>
-    void ClearChildrenOf(GameObject parentObject)
+    private void ClearChildrenOf(GameObject parentObject)
     {
         foreach (Transform child in parentObject.transform) Destroy(child.gameObject);
     }
@@ -138,7 +138,7 @@ public class TrainingInstanceController : MonoBehaviour
     /// Checks if SpyPrefab has been made - if not then it instantiates one, otherwise its position is set
     /// at the given spawn tile from the tile dictionary
     /// </summary>
-    void SpawnSpyAgent()
+    private void SpawnSpyAgent()
     {
         if (_spyPrefabClone is null)
         {

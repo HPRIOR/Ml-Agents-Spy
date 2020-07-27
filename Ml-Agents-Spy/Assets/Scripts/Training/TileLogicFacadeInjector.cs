@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class EnvSetupFacadeInjector 
+public class TileLogicFacadeInjector 
 {
     public ITileLogicFacade GetTileLogicFacade(Curriculum facadeName)
     {
@@ -15,6 +15,6 @@ public class EnvSetupFacadeInjector
             case Curriculum.AdvancedPathFinding:
                 return new AdvancedPathFindingCurriculum();
         }
-        throw new InvalidEnumArgumentException("Wrong string entered to EnvSetupFacadeInjector.GetEnvSetupFacade(string facadeName)");
+        throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");
     }
 }

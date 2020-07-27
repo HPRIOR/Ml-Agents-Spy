@@ -77,11 +77,13 @@ public class TileLogicSetup : ITileLogicSetup
                 {
                     _guardTileLogic.SetGuardTiles();
                     _tileMatrix = tilesCopy;
+                    
                     flag = false;
                 }
                 else
                 {
                     count += 1;
+                    // add test to see if this will be thrown or if the guard logic resets as it should 
                     if (count > _mapCreationTolerance) throw new MapCreationException("Not enough free tiles to place guards");
                 }
             }

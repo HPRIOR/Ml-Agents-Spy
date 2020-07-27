@@ -41,9 +41,9 @@ public static class CreateEnv
     /// <param name="mapScale">Size of map corresponding to scale of plane</param>
     public static void PopulateEnv(IEnvTile[,] tileMatrix, Dictionary<ParentObject, GameObject> parentDictionary, int mapScale)
     {
-        var calcMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
+        var adjustedMapScale = mapScale % 2 == 0 ? mapScale + .2f : mapScale + .4f;
         CreatePlane(
-            scale: new Vector3(calcMapScale, 1, calcMapScale),
+            scale: new Vector3(adjustedMapScale, 1, adjustedMapScale),
             parent: parentDictionary[ParentObject.EnvParent].transform
         );
         foreach (var tile in tileMatrix)
