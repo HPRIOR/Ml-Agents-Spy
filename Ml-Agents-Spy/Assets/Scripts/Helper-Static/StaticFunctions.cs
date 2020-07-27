@@ -1,10 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
 public static class StaticFunctions
 {
     public static int MapScaleToMatrixSize(int mapScale) =>
         mapScale % 2 == 0 ? (mapScale * 10) / 2 : ((mapScale * 10) / 2) + 1;
+
+    public static int MatrixLengthToMapScale(int matrixLength)
+    {
+        int squareRootOfMatrixSize = (int)Math.Sqrt(matrixLength);
+        var matrixSize = squareRootOfMatrixSize - 1;
+        return matrixSize % 10 == 0 ? (matrixSize * 2) / 10 : ((matrixSize - 1) * 2) / 10;
+    }
+
+
 
     public static float MaxLocalDistance(int mapScale) => mapScale % 2 == 0 ?
         (mapScale * 5) - 1.3f :

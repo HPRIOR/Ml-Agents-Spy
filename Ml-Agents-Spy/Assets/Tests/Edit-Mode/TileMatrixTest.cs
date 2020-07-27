@@ -9,7 +9,7 @@ namespace Tests
         [Test]
         public void VectorTest()
         {
-            TileMatrix tmOne = new TileMatrix(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
+            TileMatrixProducer tmOne = new TileMatrixProducer(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
             
             // (0, 0) 
             Assert.AreEqual(new Vector3(-MapScaleToMatrixSize(1), 0.5f, -MapScaleToMatrixSize(1)), tmOne.Tiles[0,0].Position);
@@ -19,7 +19,7 @@ namespace Tests
             Assert.AreEqual(new Vector3(-MapScaleToMatrixSize(1) + 2, 0.5f, MapScaleToMatrixSize(1)), tmOne.Tiles[1,6].Position);
 
             // Test relative to centre 
-            TileMatrix tmOneRelative = new TileMatrix(new Vector3(2, 1.5f, 2), MapScaleToMatrixSize(1));
+            TileMatrixProducer tmOneRelative = new TileMatrixProducer(new Vector3(2, 1.5f, 2), MapScaleToMatrixSize(1));
             // (0, 0) 
             Assert.AreEqual(new Vector3(-MapScaleToMatrixSize(1)+2, 2, -MapScaleToMatrixSize(1)+2), tmOneRelative.Tiles[0,0].Position);
             // (0, 6)
@@ -32,7 +32,7 @@ namespace Tests
         [Test]
         public void CoordsTest()
         {
-            TileMatrix tmOne = new TileMatrix(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
+            TileMatrixProducer tmOne = new TileMatrixProducer(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
 
             // (0, 0) 
             Assert.AreEqual((0, 0), tmOne.Tiles[0,0].Coords);
@@ -48,7 +48,7 @@ namespace Tests
         [Test]
         public void AdjacencyMatrixTest()
         {
-            TileMatrix tmOne = new TileMatrix(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
+            TileMatrixProducer tmOne = new TileMatrixProducer(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
 
             // test min
             Assert.AreEqual(tmOne.Tiles[0,0], tmOne.Tiles[1,0].AdjacentTile[Direction.W]);

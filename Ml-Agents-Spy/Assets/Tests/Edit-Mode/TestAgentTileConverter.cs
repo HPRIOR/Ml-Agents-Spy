@@ -16,7 +16,7 @@ namespace Tests
         private readonly Func<(IAgentTile, IEnvTile), bool> _guardPredicate = (tileTuple) => tileTuple.Item2.HasGuard;
 
 
-        readonly Dictionary<ParentObject, GameObject> _dictionary =
+        static Dictionary<ParentObject, GameObject> _dictionary =>
             new Dictionary<ParentObject, GameObject>()
             {
                 {ParentObject.TopParent,  new GameObject()},
@@ -26,9 +26,8 @@ namespace Tests
                 {ParentObject.DebugParent, new GameObject()}
 
             };
-        
-        
-        private IEnvSetup Env => new EnvSetup(
+
+        private ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
             mapScale: 1,
             mapDifficulty: 0,
             exitCount: 2,
@@ -38,10 +37,13 @@ namespace Tests
             );
 
 
+        private ITileLogicSetup TileLogic => tileLogicBuilder.GetTileLogicSetup();
+
+
         IAgentTileConverter GetAgentTiles()
         {
-            var env = Env;
-            env.CreateEnv();
+            var env = TileLogic;
+            env.GetTileLogic();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTileList = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTileList.Add(tile));
@@ -79,8 +81,8 @@ namespace Tests
         [Test]
         public void TestInitialSpyPlacement()
         {
-            var env = Env;
-            env.CreateEnv();
+            var env = TileLogic;
+            env.GetTileLogic();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTiles = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));
@@ -100,8 +102,8 @@ namespace Tests
         [Test]
         public void TestInitialGuardPlacement()
         {
-            var env = Env;
-            env.CreateEnv();
+            var env = TileLogic;
+            env.GetTileLogic();
             var envDict = env.GetTileTypes();
             List<IEnvTile> envTiles = new List<IEnvTile>();
             envDict[TileType.FreeTiles].ForEach(tile => envTiles.Add(tile));

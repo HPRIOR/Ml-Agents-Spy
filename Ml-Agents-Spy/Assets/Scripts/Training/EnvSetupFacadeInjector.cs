@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class EnvSetupFacadeInjector 
 {
-    public IEnvSetupFacade GetEnvSetupFacade(string facadeName)
+    public ITileLogicFacade GetTileLogicFacade(Curriculum facadeName)
     {
         switch (facadeName)
         {
-            case "SimplePathFinding":
+            case Curriculum.SimplePathFinding:
                 return new SimplePathFindingCurriculum();
-            case "AdvancedPathFinding":
+            case Curriculum.AdvancedPathFinding:
                 return new AdvancedPathFindingCurriculum();
         }
         throw new InvalidEnumArgumentException("Wrong string entered to EnvSetupFacadeInjector.GetEnvSetupFacade(string facadeName)");

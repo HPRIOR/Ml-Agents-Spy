@@ -23,7 +23,7 @@ public class SpyAgent : Agent
     {
         _instanceController = GetComponentInParent<TrainingInstanceController>();
         _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-        _maxLocalDistance = StaticFunctions.MaxLocalDistance(_instanceController.MapScale);
+        _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
         if (CompletedEpisodes > 0) _instanceController.RestartEnv();
     }
 
@@ -101,8 +101,8 @@ public class SpyAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         // own position (2 floats)
-        sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x));
-        sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z));
+        sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x));
+        sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z));
 
         var nearestExitVector = GetNearestTile(
                 _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
@@ -122,6 +122,17 @@ public class SpyAgent : Agent
 
         // trail of visited locations (default = 10)
         AddVisitedMemoryTrail(sensor);
+
+        DebugObvs();
+    }
+
+    void DebugObvs()
+    {
+        // Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
+        //           $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
+
+
+
     }
 
     /// <summary>
@@ -142,7 +153,7 @@ public class SpyAgent : Agent
     /// <param name="sensor">Sensor used to pass observations</param>
     /// <param name="nearestExitVector">Vector of nearest exit</param>
     private void AddDistanceToNearestExit(VectorSensor sensor, Vector3 nearestExitVector) =>
-        sensor.AddObservation(StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.MapScale), Vector3.Distance(
+        sensor.AddObservation(StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
             nearestExitVector,
             transform.position)));
 

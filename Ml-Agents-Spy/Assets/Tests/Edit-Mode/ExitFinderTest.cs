@@ -12,7 +12,7 @@ namespace Tests
         int matrixSize(int scale) => scale % 2 == 0 ? (scale * 10) / 2 : ((scale * 10) / 2) + 1;
 
         IEnvTile[,] GetTileMatrix(int scale)=>
-            new TileMatrix(
+            new TileMatrixProducer(
                 new Vector3(0, 0, 0), matrixSize(scale)
             ).Tiles;
 
@@ -40,6 +40,7 @@ namespace Tests
             matrix[14, 15].OnPath = true;
             matrix[15, 15].OnPath = true;
             ExitFinder exitFinder = new ExitFinder(matrixSize(3), 100);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(5, exitFinder.ExitCount);
 
             matrix = GetTileMatrix(3);
@@ -54,6 +55,7 @@ namespace Tests
             matrix[9, 15].OnPath = true;
             matrix[10, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 100);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(4, exitFinder.ExitCount);
 
             matrix = GetTileMatrix(3);
@@ -62,6 +64,7 @@ namespace Tests
             matrix[3, 15].OnPath = true;
             matrix[4, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 100);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(2, exitFinder.ExitCount);
 
             matrix = GetTileMatrix(3);
@@ -70,6 +73,7 @@ namespace Tests
             matrix[3, 15].OnPath = true;
             matrix[4, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 1);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(1, exitFinder.ExitCount);
 
         }
@@ -81,6 +85,7 @@ namespace Tests
             var matrix = GetTileMatrix(3);
             matrix[1, 15].OnPath = true;
             ExitFinder exitFinder = new ExitFinder(matrixSize(3), 100);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(false, exitFinder.ExitsAreAvailable());
 
             /*
@@ -92,6 +97,7 @@ namespace Tests
             matrix[2, 15].OnPath = true;
             matrix[3, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 2);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(false, exitFinder.ExitsAreAvailable());
 
             /*
@@ -102,6 +108,7 @@ namespace Tests
             matrix[1, 15].OnPath = true;
             matrix[3, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 2);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(true, exitFinder.ExitsAreAvailable());
 
         }
@@ -123,6 +130,7 @@ namespace Tests
             matrix[14, 15].OnPath = true;
             matrix[15, 15].OnPath = true;
             ExitFinder exitFinder = new ExitFinder(matrixSize(3), 100);
+            exitFinder.CheckMatrix(matrix);
             Assert.AreEqual(4, exitFinder.ExitCount);
         }
 
@@ -143,7 +151,7 @@ namespace Tests
             matrix[14, 15].OnPath = true;
             matrix[15, 15].OnPath = true;
             ExitFinder exitFinder = new ExitFinder(matrixSize(3), 100);
-            
+            exitFinder.CheckMatrix(matrix);
             exitFinder.SetExitTiles();
 
             int matrixExitCount = (from EnvTile tile in matrix
@@ -167,6 +175,7 @@ namespace Tests
             matrix[14, 15].OnPath = true;
             matrix[15, 15].OnPath = true;
             exitFinder = new ExitFinder(matrixSize(3), 2);
+            exitFinder.CheckMatrix(matrix);
 
             exitFinder.SetExitTiles();
 

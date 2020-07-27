@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841314, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 285.2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841314, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -371,12 +371,12 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: MapDifficulty
-      value: 200
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: MapScale
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -386,7 +386,22 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: Curriculum
-      value: AdvancedPathFinding
+      value: SimplePathFinding
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: Debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: DebugEnvSetup
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: GuardAgentCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}

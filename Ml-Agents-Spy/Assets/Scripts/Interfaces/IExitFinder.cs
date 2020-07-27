@@ -5,6 +5,8 @@ using UnityEngine;
 public interface IExitFinder
 {
     int ExitCount { get; }
+    
+    bool CanProceed { get; set; }
 
     void SetExitTiles();
 

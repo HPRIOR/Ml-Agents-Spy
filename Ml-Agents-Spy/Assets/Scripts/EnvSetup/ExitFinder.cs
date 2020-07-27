@@ -7,28 +7,30 @@ using Random = System.Random;
 public class ExitFinder : IExitFinder
 {
     public int ExitCount { get; private set; }
-    private bool _canProceed = true;
+    public bool CanProceed { get; set; }= true;
+
     private List<List<IEnvTile>> _groupedAdjacentTiles;
-    private int _matrixSize;
-    private int _requestedExitCount;
+    private readonly int _matrixSize;
+    private readonly int _requestedExitCount;
 
 
     public ExitFinder(int matrixSize, int requestedExitCount)
     {
         _matrixSize = matrixSize;
         _requestedExitCount = requestedExitCount;
+        // can proceed doesn't reset itself because no new class is created!!!!!!!
     }
 
     public void CheckMatrix(IEnvTile[,] tileMatrix){
         List<IEnvTile> potentialExitTiles = PotentialExitTiles(tileMatrix, _matrixSize);
         if (potentialExitTiles.Count < 2)
         {
-            _canProceed = false;
+            CanProceed = false;
         }
         else
         {
             _groupedAdjacentTiles = GroupAdjacentTiles(potentialExitTiles);
-            var maxPossibleExitCount = TotalMaxExit(_groupedAdjacentTiles);
+            int maxPossibleExitCount = TotalMaxExit(_groupedAdjacentTiles);
             ExitCount = _requestedExitCount > maxPossibleExitCount
                 ? maxPossibleExitCount
                 : _requestedExitCount;
@@ -115,7 +117,6 @@ public class ExitFinder : IExitFinder
     
     public void SetExitTiles()
     {
-        
         List<(int MaxExit, List<IEnvTile> tileGroup)> associatedList = AssociateExitCountWithTileGroup(_groupedAdjacentTiles);
         
         Random r = new Random();
@@ -147,7 +148,7 @@ public class ExitFinder : IExitFinder
         }
     }
 
-    public bool ExitsAreAvailable() => ExitCount > 1 && _canProceed;
+    public bool ExitsAreAvailable() => ExitCount > 1 && CanProceed;
 
     void DebugTuples(int iteration, List<(int MaxExit, List<IEnvTile> tileGroup)> associatedList)
     {

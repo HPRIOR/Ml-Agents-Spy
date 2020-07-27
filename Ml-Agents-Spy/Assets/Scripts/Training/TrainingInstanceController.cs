@@ -2,14 +2,17 @@
 using Unity.MLAgents;
 using System.Collections.Generic;
 using UnityEngine;
+using static CreateEnv;
+using static StaticFunctions;
 
 /// <summary>
 /// This is attached to the TrainingInstance and controls the generation of the env for each instance
 /// </summary>
 public class TrainingInstanceController : MonoBehaviour
 {
-    public bool Debug;
-    public string Curriculum;
+    public bool DebugEnvSetup;
+    public Curriculum Curriculum;
+    
     public GameObject TopParent;
     public GameObject EnvParent;
     public GameObject DebugParent;
@@ -52,34 +55,73 @@ public class TrainingInstanceController : MonoBehaviour
     
     public void RestartEnv()
     {
-        if (Debug)
+        if (DebugEnvSetup)
         {
-            ClearChildrenOf(EnvParent);
-            IEnvSetup env = new EnvSetup(
-              mapScale: MapScale,
-              mapDifficulty: MapDifficulty,
-              exitCount: ExitCount,
-              guardAgentCount: GuardAgentCount,
-              parentDictionary: _parentObjects,
-              hasMiddleTiles: HasMiddleTiles
-              );
-            env.CreateEnv();
-            AgentMapScale = env.MapScale;
-            TileDict = env.GetTileTypes();
-            SpawnSpyAgent();
+            try
+            {
+                ClearChildrenOf(EnvParent);
+                ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                    mapScale: MapScale,
+                    mapDifficulty: MapDifficulty,
+                    exitCount: ExitCount,
+                    guardAgentCount: GuardAgentCount,
+                    parentDictionary: _parentObjects,
+                    hasMiddleTiles: HasMiddleTiles
+                );
+
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+                IEnvTile[,] tileMatrix = tileLogic.GetTileLogic();
+                PopulateEnv(tileMatrix, _parentObjects, MapScale);
+                AgentMapScale = MapScale;
+                Debug.Log(MapScale);
+                Debug.Log(MatrixLengthToMapScale(tileMatrix.Length));
+                TileDict = tileLogic.GetTileTypes();
+                SpawnSpyAgent();
+            }
+            catch (MapCreationException e)
+            {
+                Debug.Log(e);
+            }
+            
         }
         else
         {
-            ClearChildrenOf(EnvParent);
-            float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
-            EnvSetupFacadeInjector facadeInjector = new EnvSetupFacadeInjector();
-            IEnvSetupFacade envFacade = facadeInjector.GetEnvSetupFacade(Curriculum);
-            IEnvSetup env = envFacade.GetEnvSetup(curriculumParam, _parentObjects);
-            env.CreateEnv();
-            AgentMapScale = env.MapScale;
-            TileDict = env.GetTileTypes();
-            SpawnSpyAgent();
+            try
+            {
+                ClearChildrenOf(EnvParent);
+                // Get parameter from curriculum
+                float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+
+                // get logic matrix and tiletype dictionary
+                var (tileMatrix, tileDict) = GetTileLogic((int) curriculumParam);
+
+                // get the MapScale from based on the matrix (So that we don't need to expose this class to the setup classes)
+                int mapScale = MatrixLengthToMapScale(tileMatrix.Length);
+
+                // Create the 3D env based on Tile logic
+                PopulateEnv(tileMatrix, _parentObjects, mapScale);
+
+                // update class fields so that Agent knows the mapscale and tiletypes
+                AgentMapScale = mapScale;
+                TileDict = tileDict;
+
+                SpawnSpyAgent();
+            }
+            catch (MapCreationException e)
+            {
+                Debug.Log(e);
+            }
         }
+    }
+
+
+    (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict) GetTileLogic(int curriculumParam)
+    {
+        EnvSetupFacadeInjector facadeInjector = new EnvSetupFacadeInjector();
+        ITileLogicFacade envFacade = facadeInjector.GetTileLogicFacade(Curriculum);
+        ITileLogicBuilder tileLogicBuilder = envFacade.GetTileLogicBuilder(curriculumParam, _parentObjects);
+        ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+        return (tileLogic.GetTileLogic(), tileLogic.GetTileTypes());
     }
 
     /// <summary>
@@ -107,7 +149,6 @@ public class TrainingInstanceController : MonoBehaviour
         {
             _spyPrefabClone.transform.position = TileDict[TileType.SpyTile][0].Position;
         }
-        
-        
     }
+
 }

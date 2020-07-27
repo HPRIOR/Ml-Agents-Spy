@@ -12,7 +12,7 @@ namespace Tests
         int matrixSize(int scale) => scale % 2 == 0 ? (scale * 10) / 2 : ((scale * 10) / 2) + 1;
 
         IEnvTile[,] GetTileMatrix(int scale) =>
-            new TileMatrix(
+            new TileMatrixProducer(
                 new Vector3(0, 0, 0), matrixSize(scale)
             ).Tiles;
 
@@ -36,8 +36,9 @@ namespace Tests
             matrix[13, 15].HasEnv = true;
             matrix[14, 15].HasEnv = true;
             matrix[15, 15].HasEnv = true;
-            GuardLogic guardLogic = new GuardLogic(matrix, 3, matrixSize(3), 3);
-            Assert.AreEqual(false, guardLogic.GuardPlacesAreAvailable());
+            GuardTileLogic guardTileLogic = new GuardTileLogic(3, matrixSize(3), 3);
+            guardTileLogic.GetPotentialGuardPlaces(matrix);
+            Assert.AreEqual(false, guardTileLogic.GuardPlacesAreAvailable());
         }
 
         [Test]
@@ -60,8 +61,9 @@ namespace Tests
             matrix[13, 15].HasEnv = true;
             matrix[14, 15].HasEnv = true;
             matrix[15, 15].HasEnv = true;
-            GuardLogic guardLogic = new GuardLogic(matrix, 3, matrixSize(3), 3);
-            Assert.AreEqual(false, guardLogic.GuardPlacesAreAvailable());
+            GuardTileLogic guardTileLogic = new GuardTileLogic(3, matrixSize(3), 3);
+            guardTileLogic.GetPotentialGuardPlaces(matrix);
+            Assert.AreEqual(false, guardTileLogic.GuardPlacesAreAvailable());
 
         }
 
@@ -73,8 +75,10 @@ namespace Tests
             matrix[2, 15].OnPath = true;
             matrix[4, 15].OnPath = true;
             matrix[8, 15].OnPath = true;
-            GuardLogic guardLogic = new GuardLogic(matrix, 3, matrixSize(3), 3);
-            Assert.AreEqual(true, guardLogic.GuardPlacesAreAvailable());
+            GuardTileLogic guardTileLogic = new GuardTileLogic(3, matrixSize(3), 3);
+            guardTileLogic.GetMaxExitCount(3);
+            guardTileLogic.GetPotentialGuardPlaces(matrix);
+            Assert.AreEqual(true, guardTileLogic.GuardPlacesAreAvailable());
 
         }
 
@@ -85,8 +89,10 @@ namespace Tests
             matrix[2, 17].OnPath = true;
             matrix[4, 18].OnPath = true;
             matrix[6, 19].OnPath = true;
-            GuardLogic guardLogic = new GuardLogic(matrix, 4, matrixSize(4), 3);
-            Assert.AreEqual(true, guardLogic.GuardPlacesAreAvailable());
+            GuardTileLogic guardTileLogic = new GuardTileLogic(4, matrixSize(4), 3);
+            guardTileLogic.GetMaxExitCount(3);
+            guardTileLogic.GetPotentialGuardPlaces(matrix);
+            Assert.AreEqual(true, guardTileLogic.GuardPlacesAreAvailable());
 
         }
 
@@ -97,9 +103,11 @@ namespace Tests
             matrix[2, 17].OnPath = true;
             matrix[4, 18].OnPath = true;
             matrix[6, 19].OnPath = true;
-            GuardLogic guardLogic = new GuardLogic(matrix, 4, matrixSize(4), 3);
-            guardLogic.SetGuardTiles();
-            Assert.AreEqual(true, matrix[2,17].HasGuard);
+            GuardTileLogic guardTileLogic = new GuardTileLogic(4, matrixSize(4), 3);
+            guardTileLogic.GetMaxExitCount(4);
+            guardTileLogic.GetPotentialGuardPlaces(matrix);
+            guardTileLogic.SetGuardTiles();
+            Assert.AreEqual(true, matrix[2, 17].HasGuard);
             Assert.AreEqual(true, matrix[4, 18].HasGuard);
             Assert.AreEqual(true, matrix[6, 19].HasGuard);
 

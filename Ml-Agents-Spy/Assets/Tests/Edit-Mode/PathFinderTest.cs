@@ -7,7 +7,7 @@ using static StaticFunctions;
 public class PathFinderTest
 {
 
-    TileMatrix tmOne = new TileMatrix(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
+    TileMatrixProducer tmOne = new TileMatrixProducer(new Vector3(0, 0, 0), MapScaleToMatrixSize(1));
     PathFinder p = new PathFinder();
 
     private void TestSetUp()

@@ -13,7 +13,7 @@ namespace Tests
 
     public class TileLogicAcceptanceTests
     {
-        private int _range = 100;
+        private int _range = 500;
         Dictionary<ParentObject, GameObject> GetDictionary()
         {
             GameObject TopParent = new GameObject();
@@ -37,16 +37,19 @@ namespace Tests
         public void TestScaleOne()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 1,
+                mapDifficulty: 1,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
+
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 1,
-                    mapDifficulty: 1,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
             
 
@@ -56,16 +59,19 @@ namespace Tests
         public void TestScaleTwo()
         {
             var dict = GetDictionary();
+
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 2,
+                mapDifficulty: 3,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 2,
-                    mapDifficulty: 3,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
 
 
@@ -75,16 +81,19 @@ namespace Tests
         public void TestScaleThree()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 3,
+                mapDifficulty: 25,
+                exitCount: 2,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 3,
-                    mapDifficulty: 25,
-                    exitCount: 2,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
 
@@ -92,16 +101,18 @@ namespace Tests
         public void TestScaleFour()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 4,
+                mapDifficulty: 50,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 4,
-                    mapDifficulty: 50,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
 
 
@@ -111,16 +122,18 @@ namespace Tests
         public void TestScaleFive()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 5,
+                mapDifficulty: 100,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 5,
-                    mapDifficulty: 100,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
 
 
@@ -130,16 +143,18 @@ namespace Tests
         public void TestScaleSix()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 6,
+                mapDifficulty: 125,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 6,
-                    mapDifficulty: 125,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
 
@@ -147,16 +162,18 @@ namespace Tests
         public void TestScaleSeven()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 7,
+                mapDifficulty: 200,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 7,
-                    mapDifficulty: 200,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
 
@@ -164,16 +181,18 @@ namespace Tests
         public void TestScaleEight()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 8,
+                mapDifficulty: 250,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 8,
-                    mapDifficulty: 250,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
 
@@ -181,16 +200,18 @@ namespace Tests
         public void TestScaleNine()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 9,
+                mapDifficulty: 300,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 9,
-                    mapDifficulty: 300,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
 
@@ -198,16 +219,18 @@ namespace Tests
         public void TestScaleTen()
         {
             var dict = GetDictionary();
+            ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
+                mapScale: 10,
+                mapDifficulty: 350,
+                exitCount: 100,
+                guardAgentCount: 2,
+                parentDictionary: dict
+            );
             foreach (int i in Enumerable.Range(0, _range))
             {
-                EnvSetup env = new EnvSetup(
-                    mapScale: 10,
-                    mapDifficulty: 350,
-                    exitCount: 100,
-                    guardAgentCount: 2,
-                    parentDictionary: dict
-                );
-                Assert.DoesNotThrow(() => env.CreateEnv());
+                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
+                Assert.DoesNotThrow(() => tileLogic.GetTileLogic());
             }
         }
     }
