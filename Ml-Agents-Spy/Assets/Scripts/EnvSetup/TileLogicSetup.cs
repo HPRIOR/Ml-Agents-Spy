@@ -2,125 +2,121 @@
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
-using EnvSetup;
 using Interfaces;
-using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
-using static StaticFunctions;
-using static CreateEnv;
 
-
-
-/// <summary>
-/// This class generates the environment environment 
-/// </summary>
-public class TileLogicSetup : ITileLogicSetup
+namespace EnvSetup
 {
- 
-    private readonly int _mapCreationTolerance;
-    private IEnvTile[,] _tileMatrix;
-
-    private readonly ITileMatrixProducer _tileMatrixProducer;
-    private readonly ISpyTileLogic _spyTileLogic;
-    private readonly IEnvTileLogic _envTileLogic;
-    private readonly IGuardTileLogic _guardTileLogic;
-    private readonly IPathFinder _pathFinder;
-    private readonly IExitFinder _exitFinder;
-
-    public TileLogicSetup(ITileMatrixProducer tileMatrixProducer, ISpyTileLogic spyTileLogic, 
-        IEnvTileLogic envTileLogic, IGuardTileLogic guardTileLogic, IExitFinder exitFinder, IPathFinder pathFinder,
-        int mapCreationTolerance = 500, bool hasMiddleTiles = true)
-    {
-        _tileMatrixProducer = tileMatrixProducer;
-        _tileMatrix = _tileMatrixProducer.Tiles;
-        _spyTileLogic = spyTileLogic;
-        _envTileLogic = envTileLogic;
-        _guardTileLogic = guardTileLogic;
-        _pathFinder = pathFinder;
-        _exitFinder = exitFinder;
-        _mapCreationTolerance = mapCreationTolerance;
-    }
-
     /// <summary>
-    /// Called by Academy class in the SceneController to produce a new env for training instance
+    /// This class generates the environment environment 
     /// </summary>
-    public IEnvTile[,] GetTileLogic()
+    public class TileLogicSetup : ITileLogicSetup
     {
-        ModifyTileLogic();
-        // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
-        // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
-        // DebugAll(_tileMatrix, _parentDictionary, tile => tile.OnPath);
-        return _tileMatrix;
-        
-    }
+ 
+        private readonly int _mapCreationTolerance;
+        private IEnvTile[,] _tileMatrix;
 
-    /// <summary>
-    /// Changes logic within each tile, helping to generate the environment and agent tiles
-    /// Loops until appropriate environment found, or throws an error
-    /// </summary> 
-    void ModifyTileLogic()
-    {
-        var flag = true;
-        int count = 0;
+        private readonly ITileMatrixProducer _tileMatrixProducer;
+        private readonly ISpyTileLogic _spyTileLogic;
+        private readonly IEnvTileLogic _envTileLogic;
+        private readonly IGuardTileLogic _guardTileLogic;
+        private readonly IPathFinder _pathFinder;
+        private readonly IExitFinder _exitFinder;
 
-        while (flag)
+        public TileLogicSetup(ITileMatrixProducer tileMatrixProducer, ISpyTileLogic spyTileLogic, 
+            IEnvTileLogic envTileLogic, IGuardTileLogic guardTileLogic, IExitFinder exitFinder, IPathFinder pathFinder,
+            int mapCreationTolerance = 500, bool hasMiddleTiles = true)
         {
-            ITileMatrixProducer matrixProducerClone = (ITileMatrixProducer)_tileMatrixProducer.Clone();
-            IEnvTile[,] tilesCopy = matrixProducerClone.Tiles;
-            IEnvTile spyEnvTile = _spyTileLogic.SetSpyTile(tilesCopy);
-            _envTileLogic.SetEnvTiles(tilesCopy);
-            _pathFinder.GetPath(spyEnvTile);
-            _exitFinder.CheckMatrix(tilesCopy);
-            _guardTileLogic.GetMaxExitCount(_exitFinder.ExitCount);
-            _guardTileLogic.GetPotentialGuardPlaces(tilesCopy);
-            if (_exitFinder.ExitsAreAvailable())
+            _tileMatrixProducer = tileMatrixProducer;
+            _tileMatrix = _tileMatrixProducer.Tiles;
+            _spyTileLogic = spyTileLogic;
+            _envTileLogic = envTileLogic;
+            _guardTileLogic = guardTileLogic;
+            _pathFinder = pathFinder;
+            _exitFinder = exitFinder;
+            _mapCreationTolerance = mapCreationTolerance;
+        }
+
+        /// <summary>
+        /// Called by Academy class in the SceneController to produce a new env for training instance
+        /// </summary>
+        public IEnvTile[,] GetTileLogic()
+        {
+            ModifyTileLogic();
+            // DebugFirstInstance(_tileMatrix, _parentDictionary, tile => tile.HasSpy);
+            // DebugAll(_tileMatrix, _parentDictionary, tile => tile.HasGuard);
+            // DebugAll(_tileMatrix, _parentDictionary, tile => tile.OnPath);
+            return _tileMatrix;
+        
+        }
+
+        /// <summary>
+        /// Changes logic within each tile, helping to generate the environment and agent tiles
+        /// Loops until appropriate environment found, or throws an error
+        /// </summary> 
+        void ModifyTileLogic()
+        {
+            var flag = true;
+            int count = 0;
+
+            while (flag)
             {
-                _exitFinder.SetExitTiles();
-                if (_guardTileLogic.GuardPlacesAreAvailable())
+                ITileMatrixProducer matrixProducerClone = (ITileMatrixProducer)_tileMatrixProducer.Clone();
+                IEnvTile[,] tilesCopy = matrixProducerClone.Tiles;
+                IEnvTile spyEnvTile = _spyTileLogic.SetSpyTile(tilesCopy);
+                _envTileLogic.SetEnvTiles(tilesCopy);
+                _pathFinder.GetPath(spyEnvTile);
+                _exitFinder.CheckMatrix(tilesCopy);
+                _guardTileLogic.GetMaxExitCount(_exitFinder.ExitCount);
+                _guardTileLogic.GetPotentialGuardPlaces(tilesCopy);
+                if (_exitFinder.ExitsAreAvailable())
                 {
-                    _guardTileLogic.SetGuardTiles();
-                    _tileMatrix = tilesCopy;
+                    _exitFinder.SetExitTiles();
+                    if (_guardTileLogic.GuardPlacesAreAvailable())
+                    {
+                        _guardTileLogic.SetGuardTiles();
+                        _tileMatrix = tilesCopy;
                     
-                    flag = false;
+                        flag = false;
+                    }
+                    else
+                    {
+                        count += 1;
+                        // add test to see if this will be thrown or if the guard logic resets as it should 
+                        if (count > _mapCreationTolerance) throw new MapCreationException("Not enough free tiles to place guards");
+                    }
                 }
                 else
                 {
                     count += 1;
-                    // add test to see if this will be thrown or if the guard logic resets as it should 
-                    if (count > _mapCreationTolerance) throw new MapCreationException("Not enough free tiles to place guards");
+                    _exitFinder.CanProceed = true;
+                    if (count > _mapCreationTolerance) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles");
                 }
             }
-            else
-            {
-                count += 1;
-                _exitFinder.CanProceed = true;
-                if (count > _mapCreationTolerance) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles");
-            }
         }
-    }
 
     
-    /// <summary>
-    /// Returns dictionary of Tile type references and corresponding tiles
-    /// </summary>
-    /// <returns>Tile type references and corresponding tiles</returns>
-    public Dictionary<TileType, List<IEnvTile>> GetTileTypes()
-    {
-        var tileTypesDictionary = new Dictionary<TileType, List<IEnvTile>>();
-        Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => tileTypesDictionary.Add(tileType, new List<IEnvTile>()));
-
-        foreach (var tile in _tileMatrix)
+        /// <summary>
+        /// Returns dictionary of Tile type references and corresponding tiles
+        /// </summary>
+        /// <returns>Tile type references and corresponding tiles</returns>
+        public Dictionary<TileType, List<IEnvTile>> GetTileTypes()
         {
-            if (tile.IsExit) tileTypesDictionary[TileType.ExitTiles].Add(tile);
-            else if (tile.HasSpy) tileTypesDictionary[TileType.SpyTile].Add(tile);
-            else if (tile.HasGuard) tileTypesDictionary[TileType.GuardTiles].Add(tile);
-            else if (tile.HasEnv) tileTypesDictionary[TileType.EnvTiles].Add(tile);
-            else tileTypesDictionary[TileType.FreeTiles].Add(tile);
+            var tileTypesDictionary = new Dictionary<TileType, List<IEnvTile>>();
+            Enum.GetValues(typeof(TileType)).Cast<TileType>().ToList().ForEach(tileType => tileTypesDictionary.Add(tileType, new List<IEnvTile>()));
+
+            foreach (var tile in _tileMatrix)
+            {
+                if (tile.IsExit) tileTypesDictionary[TileType.ExitTiles].Add(tile);
+                else if (tile.HasSpy) tileTypesDictionary[TileType.SpyTile].Add(tile);
+                else if (tile.HasGuard) tileTypesDictionary[TileType.GuardTiles].Add(tile);
+                else if (tile.HasEnv) tileTypesDictionary[TileType.EnvTiles].Add(tile);
+                else tileTypesDictionary[TileType.FreeTiles].Add(tile);
+            }
+            return tileTypesDictionary;
         }
-        return tileTypesDictionary;
-    }
 
 
     
 
+    }
 }

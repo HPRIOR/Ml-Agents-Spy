@@ -3,7 +3,7 @@ using Enums;
 
 namespace EnvSetup
 {
-    public class RandomHelper 
+    public static class RandomHelper 
     {
         private static System.Random _random = new System.Random();
 

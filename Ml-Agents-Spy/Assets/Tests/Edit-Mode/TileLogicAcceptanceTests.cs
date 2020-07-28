@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using EnvSetup;
 using Interfaces;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests
 {
@@ -15,7 +14,8 @@ namespace Tests
 
     public class TileLogicAcceptanceTests
     {
-        private int _range = 500;
+        private const int Range = 500;
+
         Dictionary<ParentObject, GameObject> GetDictionary()
         {
             GameObject TopParent = new GameObject();
@@ -47,7 +47,7 @@ namespace Tests
                 parentDictionary: dict
             );
 
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -69,7 +69,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -90,7 +90,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
@@ -110,7 +110,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -131,7 +131,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -152,7 +152,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -171,7 +171,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -190,7 +190,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -209,7 +209,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
@@ -228,7 +228,7 @@ namespace Tests
                 guardAgentCount: 2,
                 parentDictionary: dict
             );
-            foreach (int i in Enumerable.Range(0, _range))
+            foreach (int i in Enumerable.Range(0, Range))
             {
                 ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
 

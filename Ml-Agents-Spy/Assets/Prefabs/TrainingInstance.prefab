@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7393cc5efe55645aa77f2df4670c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugEnvSetup: 1
+  Curriculum: 0
   TopParent: {fileID: 2483226645643841316}
   EnvParent: {fileID: 2483226645080659941}
   DebugParent: {fileID: 2483226646646885260}
@@ -161,6 +163,7 @@ MonoBehaviour:
   ExitCount: 2
   GuardAgentCount: 1
   HasMiddleTiles: 0
+  AgentMapScale: 0
 --- !u!1 &2483226645983715528
 GameObject:
   m_ObjectHideFlags: 0

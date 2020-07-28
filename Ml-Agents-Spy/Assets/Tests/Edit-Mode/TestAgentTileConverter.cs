@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Agents;
 using Enums;
+using EnvSetup;
 using Interfaces;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using UnityEngine;
-using UnityEngine.TestTools;
-using static StaticFunctions;
 
 namespace Tests
 {

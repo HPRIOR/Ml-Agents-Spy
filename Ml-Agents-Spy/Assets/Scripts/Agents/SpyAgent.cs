@@ -137,7 +137,7 @@ namespace Agents
         /// Adds normalised 'trail' of visited locations to observations
         /// </summary>
         /// <param name="sensor">Sensor used to pass observations</param>
-        private void AddVisitedMemoryTrail(VectorSensor sensor) =>
+        public void AddVisitedMemoryTrail(VectorSensor sensor) =>
             _agentMemory.GetAgentMemory(transform.localPosition)
                 .ToList()
                 .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
