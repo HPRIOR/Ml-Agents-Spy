@@ -1,5 +1,8 @@
-﻿public enum ParityEnum
+﻿namespace Enums
 {
-    Even,
-    Odd
+    public enum ParityEnum
+    {
+        Even,
+        Odd
+    }
 } 

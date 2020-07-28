@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IEnvTileLogic
+﻿namespace Interfaces
 {
-    void SetEnvTiles(IEnvTile[,] tileMatrix);
+    public interface IEnvTileLogic
+    {
+        void SetEnvTiles(IEnvTile[,] tileMatrix);
+    }
 }

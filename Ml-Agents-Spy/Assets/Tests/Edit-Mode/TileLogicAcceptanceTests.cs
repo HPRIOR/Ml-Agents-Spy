@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Enums;
+using Interfaces;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

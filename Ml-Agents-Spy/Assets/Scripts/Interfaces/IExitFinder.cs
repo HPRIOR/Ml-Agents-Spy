@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IExitFinder
+﻿namespace Interfaces
 {
-    int ExitCount { get; }
+    public interface IExitFinder
+    {
+        int ExitCount { get; }
     
-    bool CanProceed { get; set; }
+        bool CanProceed { get; set; }
 
-    void SetExitTiles();
+        void SetExitTiles();
 
-    bool ExitsAreAvailable();
+        bool ExitsAreAvailable();
 
-    void CheckMatrix(IEnvTile[,] tileMatrix);
+        void CheckMatrix(IEnvTile[,] tileMatrix);
+    }
 }

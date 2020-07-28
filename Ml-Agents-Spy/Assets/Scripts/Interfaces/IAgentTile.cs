@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Enums;
 
-public interface IAgentTile : ITile
+namespace Interfaces
 {
-    Dictionary<Direction, IAgentTile> AdjacentTile { get; set; }
-    int VisitCount { get; set; }
-    bool OccupiedByAgent { get; set; }
-    bool VisitedByAlgo { get; set; }
+    public interface IAgentTile : ITile
+    {
+        Dictionary<Direction, IAgentTile> AdjacentTile { get; set; }
+        int VisitCount { get; set; }
+        bool OccupiedByAgent { get; set; }
+        bool VisitedByAlgo { get; set; }
+    }
 }

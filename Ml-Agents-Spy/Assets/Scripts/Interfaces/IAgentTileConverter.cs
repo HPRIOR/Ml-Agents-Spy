@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-public interface IAgentTileConverter
+namespace Interfaces
 {
-    List<IAgentTile> GetAgentTiles();
+    public interface IAgentTileConverter
+    {
+        List<IAgentTile> GetAgentTiles();
+    }
 }

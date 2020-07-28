@@ -1,8 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
-public interface ITileLogicFacade
+namespace Interfaces
 {
-    ITileLogicBuilder GetTileLogicBuilder(float curriculumParam, Dictionary<ParentObject, GameObject> parentObjects);
+    public interface ITileLogicFacade
+    {
+        ITileLogicBuilder GetTileLogicBuilder(float curriculumParam, Dictionary<ParentObject, GameObject> parentObjects);
+    }
 }

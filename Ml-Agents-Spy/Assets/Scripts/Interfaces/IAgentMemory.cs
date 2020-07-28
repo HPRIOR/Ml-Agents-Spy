@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.MLAgents.SideChannels;
-using UnityEngine;
+﻿using UnityEngine;
 
-public interface IAgentMemory
+namespace Interfaces
 {
-    float[] GetAgentMemory(Vector3 agentPosition);
+    public interface IAgentMemory
+    {
+        float[] GetAgentMemory(Vector3 agentPosition);
+    }
 }

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ISpyTileLogic
+﻿namespace Interfaces
 {
-    IEnvTile SetSpyTile(IEnvTile[,] tileMatrix);
+    public interface ISpyTileLogic
+    {
+        IEnvTile SetSpyTile(IEnvTile[,] tileMatrix);
+    }
 }

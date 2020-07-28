@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IPathFinder
+﻿namespace Interfaces
 {
-    void GetPath(IEnvTile startEnvTile);
+    public interface IPathFinder
+    {
+        void GetPath(IEnvTile startEnvTile);
+    }
 }

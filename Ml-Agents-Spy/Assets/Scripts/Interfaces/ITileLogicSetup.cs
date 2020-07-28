@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Enums;
 
-public interface ITileLogicSetup
+namespace Interfaces
 {
+    public interface ITileLogicSetup
+    {
 
-    IEnvTile[,] GetTileLogic();
+        IEnvTile[,] GetTileLogic();
 
-    Dictionary<TileType, List<IEnvTile>> GetTileTypes();
+        Dictionary<TileType, List<IEnvTile>> GetTileTypes();
     
 
+    }
 }

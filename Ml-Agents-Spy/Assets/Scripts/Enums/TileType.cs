@@ -1,8 +1,11 @@
-﻿public enum TileType
+﻿namespace Enums
 {
-    EnvTiles,
-    ExitTiles,
-    FreeTiles,
-    GuardTiles,
-    SpyTile
+    public enum TileType
+    {
+        EnvTiles,
+        ExitTiles,
+        FreeTiles,
+        GuardTiles,
+        SpyTile
+    }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Enums;
+using Interfaces;
 using UnityEngine;
 
 namespace EnvSetup

@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using Enums;
 using EnvSetup;
-using UnityEngine;
+using Interfaces;
 
-public class TileLogicFacadeInjector 
+namespace Training
 {
-    public ITileLogicFacade GetTileLogicFacade(Curriculum facadeName)
+    public class TileLogicFacadeInjector 
     {
-        switch (facadeName)
+        public ITileLogicFacade GetTileLogicFacade(Curriculum facadeName)
         {
-            case Curriculum.SimplePathFinding:
-                return new SimplePathFindingCurriculum();
-            case Curriculum.AdvancedPathFinding:
-                return new AdvancedPathFindingCurriculum();
+            switch (facadeName)
+            {
+                case Curriculum.SimplePathFinding:
+                    return new SimplePathFindingCurriculum();
+                case Curriculum.AdvancedPathFinding:
+                    return new AdvancedPathFindingCurriculum();
+            }
+            throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");
         }
-        throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");
     }
 }

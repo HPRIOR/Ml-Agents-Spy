@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum Curriculum 
+﻿namespace Enums
 {
-    AdvancedPathFinding,
-    SimplePathFinding
+    public enum Curriculum 
+    {
+        AdvancedPathFinding,
+        SimplePathFinding
+    }
 }

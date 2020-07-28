@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Interfaces;
 
-public class AgentMemoryFactory :IAgentMemoryFactory
+namespace Agents
 {
-    public IAgentMemory GetAgentMemoryClass() => new MovementTracker();
+    public class AgentMemoryFactory :IAgentMemoryFactory
+    {
+        public IAgentMemory GetAgentMemoryClass() => new MovementTracker();
+    }
 }

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ITileLogicBuilder
+﻿namespace Interfaces
 {
-    ITileLogicSetup GetTileLogicSetup();
+    public interface ITileLogicBuilder
+    {
+        ITileLogicSetup GetTileLogicSetup();
+    }
 }

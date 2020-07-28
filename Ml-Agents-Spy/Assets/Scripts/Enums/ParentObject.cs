@@ -1,8 +1,11 @@
-﻿public enum ParentObject
+﻿namespace Enums
 {
-    TopParent,
-    EnvParent,
-    SpyParent,
-    GuardParent,
-    DebugParent
+    public enum ParentObject
+    {
+        TopParent,
+        EnvParent,
+        SpyParent,
+        GuardParent,
+        DebugParent
+    }
 }

@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Enums;
 using EnvSetup;
-using UnityEngine;
 
-public interface IGetTileTypes
+namespace Interfaces
 {
-    Dictionary<TileType, List<EnvTile>> GetTileTypes();
+    public interface IGetTileTypes
+    {
+        Dictionary<TileType, List<EnvTile>> GetTileTypes();
+    }
 }
