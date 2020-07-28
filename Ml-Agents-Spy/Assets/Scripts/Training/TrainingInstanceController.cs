@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity.MLAgents;
 using System.Collections.Generic;
+using EnvSetup;
 using UnityEngine;
 using static CreateEnv;
 using static StaticFunctions;

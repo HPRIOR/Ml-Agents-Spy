@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static RandomHelper;
+using static EnvSetup.RandomHelper;
 
 public class SpyTileLogic : ISpyTileLogic
 {
