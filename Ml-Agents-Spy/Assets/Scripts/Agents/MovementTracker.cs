@@ -7,13 +7,13 @@ namespace Agents
 {
     public class MovementTracker : IAgentMemory
     {
-        private int _memorySize;
+        private readonly int _memorySize;
 
         private bool _initialVectorPlaced;
 
-        private float _distanceBetweenNodes;
+        private readonly float _distanceBetweenNodes;
 
-        private Queue<Vector3> _queue;
+        private readonly Queue<Vector3> _queue;
 
         public MovementTracker(int memorySize = 10, float distanceBetweenNodes = 1f)
         {

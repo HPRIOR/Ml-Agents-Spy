@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using EnvSetup;
+﻿using EnvSetup;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
-using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
-
 
 
 namespace Tests

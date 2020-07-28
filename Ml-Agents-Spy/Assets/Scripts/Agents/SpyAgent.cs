@@ -16,9 +16,9 @@ namespace Agents
         private TrainingInstanceController _instanceController;
         private readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
         private IAgentMemory _agentMemory;
-        private float _colliding;
         private float _speed = 10;
         private float _maxLocalDistance;
+        public float IsColliding { get; private set; }
 
         /// <summary>
         /// Called at the start of each training episode.
@@ -73,7 +73,7 @@ namespace Agents
         /// Defines one discrete vector [0](1-4) which defines movement in up left right directions
         /// </summary>
         /// <param name="input">action[0] of the discrete action array </param>
-        void MoveAgent(float input)
+        public void MoveAgent(float input)
         {
             var movementDirection = Vector3.zero;
             var action = Mathf.FloorToInt(input);
@@ -98,6 +98,7 @@ namespace Agents
             else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
             else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
         }
+        
 
         /// <summary>
         /// Supplies observations to ML algorithm
@@ -123,21 +124,19 @@ namespace Agents
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
             // colliding with env (1 float)
-            sensor.AddObservation(_colliding);
+            sensor.AddObservation(IsColliding);
 
             // trail of visited locations (default = 10)
             AddVisitedMemoryTrail(sensor);
 
-            DebugObvs();
+            //DebugObvs();
         }
-
-    
-
+        
         /// <summary>
         /// Adds normalised 'trail' of visited locations to observations
         /// </summary>
         /// <param name="sensor">Sensor used to pass observations</param>
-        public void AddVisitedMemoryTrail(VectorSensor sensor) =>
+        private void AddVisitedMemoryTrail(VectorSensor sensor) =>
             _agentMemory.GetAgentMemory(transform.localPosition)
                 .ToList()
                 .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
@@ -151,9 +150,7 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddDistanceToNearestExit(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
-                nearestExitVector,
-                transform.position)));
+            sensor.AddObservation(DistanceToNearestExit(nearestExitVector));
 
         /// <summary>
         /// Adds normalised X axis location of nearest exit to observations 
@@ -161,37 +158,70 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddNearestExitYAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(StaticFunctions.NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, VectorConversions.LocalPosition(
-                nearestExitVector, _instanceController).z));
+            sensor.AddObservation(NearestExitYAxis(nearestExitVector));
 
+        
         /// <summary>
         /// Adds normalised Y axis location of nearest exit to observations 
         /// </summary>
         /// <param name="sensor">Sensor used to pass observations</param>
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddNearestExitXAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(StaticFunctions.NormalisedFloat(
-                -_maxLocalDistance,
-                _maxLocalDistance, VectorConversions.LocalPosition(
-                    nearestExitVector, _instanceController).x));
-    
+            sensor.AddObservation(NearestExitXAxis(nearestExitVector));
+
+
+        public float PositionX() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x);
+        
+        public float PositionY() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z);
+
+        public float NearestExitYAxis(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(-_maxLocalDistance,
+            _maxLocalDistance, VectorConversions.LocalPosition(
+                nearestExitVector, _instanceController).z);
+
+        public float NearestExitXAxis(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(
+            -_maxLocalDistance,
+            _maxLocalDistance, VectorConversions.LocalPosition(
+                nearestExitVector, _instanceController).x);
+
+        public float DistanceToNearestExit(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(0f,
+            StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
+                nearestExitVector,
+                transform.position));
+
+        
+
+
         private void DebugObvs()
         {
-            // Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
-            //           $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
-
-
-
+            //Agent position
+            //Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
+            //         $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
+           
+            //Distance to nearest Exit
+            //Debug.Log("Distance to nearest Exit: " + DistanceToNearestExit( GetNearestTile(
+            //   _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+            //   transform).Position));
+            
+            //NearestExitPosition
+            //Debug.Log(NearestExitXAxis(GetNearestTile(
+            //    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+            //    transform).Position) + ", " + NearestExitYAxis(GetNearestTile(
+            //    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+            //    transform).Position));
+            
+            // collisions 
+            //Debug.Log($"collision: {IsColliding}");
+            
         }
 
         void OnCollisionEnter(Collision collision) 
         {
-            if (collision.gameObject.name == "Cube") _colliding = 1f;
+            if (collision.gameObject.name == "Cube") IsColliding = 1f;
         }
 
         void OnCollisionExit(Collision collision)
         {
-            if (collision.gameObject.name == "Cube") _colliding = 0f;
+            if (collision.gameObject.name == "Cube") IsColliding = 0f;
         }
     }
 }
