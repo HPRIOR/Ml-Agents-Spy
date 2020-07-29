@@ -1,5 +1,5 @@
 sceneSetups:
-- path: C:/Users/User/Documents/ML-AgentsRepo/ml-agents/Project/Assets/ML-Agents/Examples/Pyramids/Scenes/Pyramids.unity
+- path: Assets/Scenes/EnvironmentSetup.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -77,8 +77,6 @@ namespace Training
                     IEnvTile[,] tileMatrix = tileLogic.GetTileLogic();
                     CreateEnv.PopulateEnv(tileMatrix, _parentObjects, MapScale, Materials);
                     AgentMapScale = MapScale;
-                    Debug.Log(MapScale);
-                    Debug.Log(MatrixLengthToMapScale(tileMatrix.Length));
                     TileDict = tileLogic.GetTileTypes();
                     SpawnSpyAgent();
                 }
@@ -108,7 +106,9 @@ namespace Training
                     AgentMapScale = mapScale;
                     TileDict = tileDict;
                     
-                    SpawnSpyAgent();
+                    IAgentSpawner agentSpawner = new AgentSpawner(TileDict, gameParams, TrainingScenario.SpyPathFinding, new []{SpyPrefab}, transform);
+                    agentSpawner.SpawnAgents();
+                    
                 }
                 catch (MapCreationException e)
                 {
@@ -139,7 +139,7 @@ namespace Training
 
         /// <summary>
         /// Checks if SpyPrefab has been made - if not then it instantiates one, otherwise its position is set
-        /// at the given spawn tile from the tile dictionary
+        /// at the given spawn tile from the tile dictionary (delete me and change debug mode)
         /// </summary>
         private void SpawnSpyAgent()
         {
