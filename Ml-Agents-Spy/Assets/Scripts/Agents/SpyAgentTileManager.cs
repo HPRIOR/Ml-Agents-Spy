@@ -8,16 +8,16 @@ using Direction = Enums.Direction;
 
 namespace Agents
 {
-    public class AgentTileManager
+    public class SpyAgentTileManager
     {
-        List<IAgentTile> _agentTiles;
-        private IAgentTile _currentAgentTile;
+        List<ISpyTile> _agentTiles;
+        private ISpyTile _currentSpyTile;
     
 
-        public AgentTileManager(IAgentTileConverter tileConverter)
+        public SpyAgentTileManager(IAgentTileConverter tileConverter)
         {
             _agentTiles = tileConverter.GetAgentTiles();
-            _currentAgentTile = _agentTiles.First(tile => tile.OccupiedByAgent);
+            _currentSpyTile = _agentTiles.First(tile => tile.OccupiedByAgent);
         }
 
 
@@ -33,7 +33,7 @@ namespace Agents
         /// </summary>
         /// <param name="nearestTiles">List of the nearest tiles to the agent</param>
         /// <returns>An array of floats representing the number of time an agent has visited a certain tile</returns>
-        float[] GetTileVisitCount(List<IAgentTile> nearestTiles)
+        float[] GetTileVisitCount(List<ISpyTile> nearestTiles)
         {
             float[] visitedTileCount = new float[8];
             for (int i = 0; i < 9; i++)
@@ -48,7 +48,7 @@ namespace Agents
         /// </summary>
         /// <param name="nearestTiles">List of the nearest tiles to the agent</param>
         /// <returns>Position of the nearest tiles</returns>
-        Vector2[] GetTileLocations(List<IAgentTile> nearestTiles)
+        Vector2[] GetTileLocations(List<ISpyTile> nearestTiles)
         {
             Vector2[] visitedTileLocations = new Vector2[8];
             for (int i = 0; i < 9; i++)
@@ -67,38 +67,38 @@ namespace Agents
         void UpdateAgentPosition(Transform agentPosition)
         {
             var newAgentTile = GetNearestTile(_agentTiles.ConvertAll(tile => (ITile)tile), agentPosition);
-            if (newAgentTile.Coords != _currentAgentTile.Coords)
+            if (newAgentTile.Coords != _currentSpyTile.Coords)
             {
             
-                _currentAgentTile.OccupiedByAgent = false;
-                _currentAgentTile = (IAgentTile)newAgentTile;
-                _currentAgentTile.OccupiedByAgent = true;
-                _currentAgentTile.VisitCount += 1;
+                _currentSpyTile.OccupiedByAgent = false;
+                _currentSpyTile = (ISpyTile)newAgentTile;
+                _currentSpyTile.OccupiedByAgent = true;
+                _currentSpyTile.VisitCount += 1;
             }
             else
             {
-                _currentAgentTile.VisitCount += 1;
+                _currentSpyTile.VisitCount += 1;
             }
         }
 
 
-        Dictionary<Direction, IAgentTile> InitialiseDictionary()
+        Dictionary<Direction, ISpyTile> InitialiseDictionary()
         {
-            Dictionary<Direction, IAgentTile> directionAgentDictionary = new Dictionary<Direction, IAgentTile>();
+            Dictionary<Direction, ISpyTile> directionAgentDictionary = new Dictionary<Direction, ISpyTile>();
 
             foreach (var direction in System.Enum.GetValues(typeof(Direction)).Cast<Direction>())
             {
-                directionAgentDictionary[direction] = _currentAgentTile.AdjacentTile[direction];
+                directionAgentDictionary[direction] = _currentSpyTile.AdjacentTile[direction];
             }
             return directionAgentDictionary;
         }
 
 
-        List<IAgentTile> GetNearestTiles(Transform agentPosition)
+        List<ISpyTile> GetNearestTiles(Transform agentPosition)
         {
             UpdateAgentPosition(agentPosition);
-            List<IAgentTile> nearestTiles = new List<IAgentTile>();
-            Dictionary<Direction, IAgentTile> directionAgentDictionary = InitialiseDictionary();
+            List<ISpyTile> nearestTiles = new List<ISpyTile>();
+            Dictionary<Direction, ISpyTile> directionAgentDictionary = InitialiseDictionary();
 
             while (nearestTiles.Count < 8 && !AllTilesAreNull(directionAgentDictionary))
             {
@@ -115,7 +115,7 @@ namespace Agents
             return nearestTiles;
         }
 
-        static bool AllTilesAreNull(Dictionary<Direction, IAgentTile> directionAgentDictionary)
+        static bool AllTilesAreNull(Dictionary<Direction, ISpyTile> directionAgentDictionary)
             => directionAgentDictionary.All(item => item.Value == null);
 
 

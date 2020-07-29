@@ -3,9 +3,9 @@ using Enums;
 
 namespace Interfaces
 {
-    public interface IAgentTile : ITile
+    public interface ISpyTile : ITile
     {
-        Dictionary<Direction, IAgentTile> AdjacentTile { get; set; }
+        Dictionary<Direction, ISpyTile> AdjacentTile { get; set; }
         int VisitCount { get; set; }
         bool OccupiedByAgent { get; set; }
         bool VisitedByAlgo { get; set; }

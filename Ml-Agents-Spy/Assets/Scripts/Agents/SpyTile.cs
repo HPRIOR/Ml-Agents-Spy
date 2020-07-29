@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Agents
 {
-    public class AgentTile : IAgentTile
+    public class SpyTile : ISpyTile
     {
         public Vector3 Position { get; set; }
         public (int x, int y) Coords { get; set; }
-        public Dictionary<Direction, IAgentTile> AdjacentTile { get; set; }
-            = new Dictionary<Direction, IAgentTile>
+        public Dictionary<Direction, ISpyTile> AdjacentTile { get; set; }
+            = new Dictionary<Direction, ISpyTile>
             {
                 {Direction.N, null},
                 {Direction.E, null},
@@ -23,7 +23,7 @@ namespace Agents
 
         public bool VisitedByAlgo { get; set; } = false;
 
-        public AgentTile(Vector3 position, (int, int) coords)
+        public SpyTile(Vector3 position, (int, int) coords)
         {
             Position = position;
             Coords = (x: coords.Item1, y: coords.Item2);

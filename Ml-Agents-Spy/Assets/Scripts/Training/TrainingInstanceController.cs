@@ -26,7 +26,7 @@ namespace Training
         private GameObject _spyPrefabClone;
 
         /// <summary>
-        /// Contains the various tile created during environment setup
+        /// Contains the various tiles created during environment setup
         /// </summary>
         public Dictionary<TileType, List<IEnvTile>> TileDict;
         /// <summary>
@@ -95,12 +95,12 @@ namespace Training
                     // Get parameter from curriculum
                     float curriculumParam = Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
 
-                    // get logic matrix and tiletype dictionary
-                    var (tileMatrix, tileDict) = GetTileLogic((int) curriculumParam);
-
+                    // get logic matrix, tiletype dictionary, and gameparam dictionary
+                    var (tileMatrix, tileDict, gameParams) = GetTileLogic((int) curriculumParam);
+                    
                     // get the MapScale from based on the matrix (So that we don't need to expose this class to the setup classes)
-                    int mapScale = MatrixLengthToMapScale(tileMatrix.Length);
-
+                    int mapScale = gameParams[GameParam.MapScale];
+                    
                     // Create the 3D env based on Tile logic
                     CreateEnv.PopulateEnv(tileMatrix, _parentObjects, mapScale, Materials);
 
@@ -117,13 +117,14 @@ namespace Training
             }
         }
         
-        private (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict) GetTileLogic(int curriculumParam)
+        private (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict, Dictionary<GameParam, int> 
+            gameParams) GetTileLogic(int curriculumParam)
         {
             TileLogicFacadeInjector facadeInjector = new TileLogicFacadeInjector();
             ITileLogicFacade envFacade = facadeInjector.GetTileLogicFacade(Curriculum);
             ITileLogicBuilder tileLogicBuilder = envFacade.GetTileLogicBuilder(curriculumParam, _parentObjects);
             ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-            return (tileLogic.GetTileLogic(), tileLogic.GetTileTypes());
+            return (tileLogic.GetTileLogic(), tileLogic.GetTileTypes(), envFacade.EnvParamDict);
         }
 
         /// <summary>

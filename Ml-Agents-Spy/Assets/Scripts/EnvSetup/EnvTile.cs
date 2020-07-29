@@ -4,6 +4,7 @@ using Agents;
 using Enums;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace EnvSetup
 {
@@ -58,8 +59,11 @@ namespace EnvSetup
             return MemberwiseClone();
         }
 
-        public static explicit operator AgentTile(EnvTile e)
-            => new AgentTile(e.Position, e.Coords);
+        public static explicit operator SpyTile(EnvTile e)
+            => new SpyTile(e.Position, e.Coords);
+        
+        public static explicit operator GuardTile(EnvTile e)
+            => new GuardTile(e.Position, e.Coords);
 
     }
 }

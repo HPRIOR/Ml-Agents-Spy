@@ -12,8 +12,8 @@ namespace Tests
 {
     public class TestAgentTileConverter
     {
-        private readonly Func<(IAgentTile, IEnvTile), bool> _spyPredicate = (tileTuple) => tileTuple.Item2.HasSpy;
-        private readonly Func<(IAgentTile, IEnvTile), bool> _guardPredicate = (tileTuple) => tileTuple.Item2.HasGuard;
+        private readonly Func<(ISpyTile, IEnvTile), bool> _spyPredicate = (tileTuple) => tileTuple.Item2.HasSpy;
+        private readonly Func<(ISpyTile, IEnvTile), bool> _guardPredicate = (tileTuple) => tileTuple.Item2.HasGuard;
 
 
         static Dictionary<ParentObject, GameObject> _dictionary =>
@@ -50,7 +50,7 @@ namespace Tests
             envDict[TileType.SpyTile].ForEach(tile => envTileList.Add(tile));
             envDict[TileType.GuardTiles].ForEach(tile => envTileList.Add(tile));
 
-            return new AgentTileConverter(envTileList, _spyPredicate);
+            return new SpyAgentTileConverter(envTileList, _spyPredicate);
         }
         
         [Test]
@@ -66,11 +66,11 @@ namespace Tests
 
             IAgentTileConverter agentTileConv = GetAgentTiles();
 
-            IAgentTile middleTile = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 3));
-            IAgentTile northFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 4));
-            IAgentTile southFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 2));
-            IAgentTile eastFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (4, 3));
-            IAgentTile westFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (2, 3));
+            ISpyTile middleTile = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 3));
+            ISpyTile northFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 4));
+            ISpyTile southFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (3, 2));
+            ISpyTile eastFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (4, 3));
+            ISpyTile westFromMiddle = agentTileConv.GetAgentTiles().First(tile => tile.Coords == (2, 3));
 
             Assert.AreEqual(northFromMiddle.Coords, middleTile.AdjacentTile[Direction.N].Coords);
             Assert.AreEqual(eastFromMiddle.Coords, middleTile.AdjacentTile[Direction.E].Coords);
@@ -89,7 +89,7 @@ namespace Tests
             envDict[TileType.SpyTile].ForEach(tile => envTiles.Add(tile));
             envDict[TileType.GuardTiles].ForEach(tile => envTiles.Add(tile));
 
-            IAgentTileConverter converter =  new AgentTileConverter(envTiles, _spyPredicate);
+            IAgentTileConverter converter =  new SpyAgentTileConverter(envTiles, _spyPredicate);
 
             var agentTiles = converter.GetAgentTiles();
             
@@ -110,7 +110,7 @@ namespace Tests
             envDict[TileType.SpyTile].ForEach(tile => envTiles.Add(tile));
             envDict[TileType.GuardTiles].ForEach(tile => envTiles.Add(tile));
 
-            IAgentTileConverter converter = new AgentTileConverter(envTiles, _guardPredicate);
+            IAgentTileConverter converter = new SpyAgentTileConverter(envTiles, _guardPredicate);
 
             var agentTiles = converter.GetAgentTiles();
             

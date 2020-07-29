@@ -6,27 +6,27 @@ using Interfaces;
 
 namespace Agents
 {
-    public class AgentTileConverter : IAgentTileConverter
+    public class SpyAgentTileConverter : IAgentTileConverter
     {
         readonly List<IEnvTile> _envTiles;
-        List<IAgentTile> GetInitialAgentTiles =>
+        List<ISpyTile> GetInitialAgentTiles =>
             _envTiles
                 .Select(tile => tile.Clone())
                 .ToList()
                 .ConvertAll(tile => (EnvTile)tile)
-                .ConvertAll(tile => (AgentTile)tile)
-                .ConvertAll(tile => (IAgentTile)tile);
-        List<(IAgentTile, IEnvTile)> _correspondingTiles;
-        private readonly Func<(IAgentTile, IEnvTile), bool> _envTileHasAttribute;
+                .ConvertAll(tile => (SpyTile)tile)
+                .ConvertAll(tile => (ISpyTile)tile);
+        List<(ISpyTile, IEnvTile)> _correspondingTiles;
+        private readonly Func<(ISpyTile, IEnvTile), bool> _envTileHasAttribute;
 
-        public AgentTileConverter(List<IEnvTile> envTiles, Func<(IAgentTile, IEnvTile), bool> envTileHasAttribute)
+        public SpyAgentTileConverter(List<IEnvTile> envTiles, Func<(ISpyTile, IEnvTile), bool> envTileHasAttribute)
         {
             _envTiles = envTiles;
             _envTileHasAttribute = envTileHasAttribute;
         }
 
     
-        void GetAdjacentTiles(List<IAgentTile> agentTiles, List<IEnvTile> envTiles)
+        void GetAdjacentTiles(List<ISpyTile> agentTiles, List<IEnvTile> envTiles)
         {
             _correspondingTiles = agentTiles
                 .OrderBy(tile => tile.Coords.x)
@@ -55,13 +55,13 @@ namespace Agents
             }
         }
 
-        void GetAgentLocations(Func<(IAgentTile, IEnvTile), bool> envTileHasAttribute)
+        void GetAgentLocations(Func<(ISpyTile, IEnvTile), bool> envTileHasAttribute)
         {
             if (_correspondingTiles is null) throw new NotImplementedException("Corresponding tuple list of Agent and Env tiles has not been created, run GetAdjecentTiles() first");
             _correspondingTiles.Where(envTileHasAttribute).ToList().ForEach(tileTuple => tileTuple.Item1.OccupiedByAgent = true);
         }
 
-        public List<IAgentTile> GetAgentTiles()
+        public List<ISpyTile> GetAgentTiles()
         {
             var agentTiles = GetInitialAgentTiles;
             GetAdjacentTiles(agentTiles, _envTiles);
