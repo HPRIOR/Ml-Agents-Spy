@@ -39,7 +39,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 1.0
             - name: lesson_2
@@ -48,7 +48,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 2.0
             - name: lesson_3
@@ -57,7 +57,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 3.0
             - name: lesson_4
@@ -66,7 +66,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 4.0
             - name: lesson_5
@@ -75,7 +75,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 5.0
             - name: lesson_6
@@ -84,7 +84,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 6.0
             - name: lesson_7
@@ -92,8 +92,8 @@ environment_parameters:
                   measure: reward
                   behavior: Spy
                   signal_smoothing: true
-                  min_lesson_length: 250
-                  threshold: 0.9
+                  min_lesson_length: 100
+                  threshold: 0.95
                   require_reset: true
               value: 7.0
             - name: lesson_8
@@ -102,7 +102,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 8.0
             - name: lesson_9
@@ -111,7 +111,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 9.0
             - name: lesson_10
@@ -120,7 +120,7 @@ environment_parameters:
                   behavior: Spy
                   signal_smoothing: true
                   min_lesson_length: 100
-                  threshold: 0.9
+                  threshold: 0.95
                   require_reset: true
               value: 10.0
             

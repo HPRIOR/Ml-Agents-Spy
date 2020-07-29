@@ -107,8 +107,9 @@ namespace Agents
         public override void CollectObservations(VectorSensor sensor)
         {
             // own position (2 floats)
-            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x));
-            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z));
+            var localPosition = transform.localPosition;
+            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, localPosition.x));
+            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, localPosition.z));
 
             var nearestExitVector = GetNearestTile(
                 _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
@@ -126,7 +127,7 @@ namespace Agents
             // colliding with env (1 float)
             sensor.AddObservation(IsColliding);
 
-            // trail of visited locations (default = 10)
+            // trail of visited locations (20)
             AddVisitedMemoryTrail(sensor);
 
             //DebugObvs();

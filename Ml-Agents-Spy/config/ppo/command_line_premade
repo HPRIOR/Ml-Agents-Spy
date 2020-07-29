@@ -15,6 +15,8 @@ mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test_curriculum_mem_ob
 
 mlagents-learn ../config/ppo/spy_config2.yaml --run-id=spy_test_advanced_curriculum_normalised_mem_02 --initialize-from=spy_test_curriculum_mem_obvs_normalised_02
 
+mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_simple_pathfinding
+
 
 tensorboard --logdir=results --port=6006
 

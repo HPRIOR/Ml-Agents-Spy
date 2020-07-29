@@ -4,7 +4,6 @@ using EnvSetup;
 using Interfaces;
 using Unity.MLAgents;
 using UnityEngine;
-using static CreateEnv;
 using static StaticFunctions;
 
 namespace Training
@@ -14,6 +13,8 @@ namespace Training
     /// </summary>
     public class TrainingInstanceController : MonoBehaviour
     {
+        public Material[] Materials;
+        
         public bool DebugEnvSetup;
         public Curriculum Curriculum;
     
@@ -55,8 +56,7 @@ namespace Training
             };
             Academy.Instance.OnEnvironmentReset += RestartEnv;
         }
-
-    
+        
         public void RestartEnv()
         {
             if (DebugEnvSetup)
@@ -75,7 +75,7 @@ namespace Training
 
                     ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
                     IEnvTile[,] tileMatrix = tileLogic.GetTileLogic();
-                    PopulateEnv(tileMatrix, _parentObjects, MapScale);
+                    CreateEnv.PopulateEnv(tileMatrix, _parentObjects, MapScale, Materials);
                     AgentMapScale = MapScale;
                     Debug.Log(MapScale);
                     Debug.Log(MatrixLengthToMapScale(tileMatrix.Length));
@@ -86,7 +86,6 @@ namespace Training
                 {
                     Debug.Log(e);
                 }
-            
             }
             else
             {
@@ -103,12 +102,12 @@ namespace Training
                     int mapScale = MatrixLengthToMapScale(tileMatrix.Length);
 
                     // Create the 3D env based on Tile logic
-                    PopulateEnv(tileMatrix, _parentObjects, mapScale);
+                    CreateEnv.PopulateEnv(tileMatrix, _parentObjects, mapScale, Materials);
 
                     // update class fields so that Agent knows the mapscale and tiletypes
                     AgentMapScale = mapScale;
                     TileDict = tileDict;
-
+                    
                     SpawnSpyAgent();
                 }
                 catch (MapCreationException e)
@@ -117,8 +116,7 @@ namespace Training
                 }
             }
         }
-
-
+        
         private (IEnvTile[,] tileMatrix, Dictionary<TileType, List<IEnvTile>> tileDict) GetTileLogic(int curriculumParam)
         {
             TileLogicFacadeInjector facadeInjector = new TileLogicFacadeInjector();

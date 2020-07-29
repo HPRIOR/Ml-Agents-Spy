@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7393cc5efe55645aa77f2df4670c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 3ea338b4e5cb43844bcd69f02a5f9587, type: 2}
+  - {fileID: 2100000, guid: 49ec9dfadab307244adab2c890260ce1, type: 2}
   DebugEnvSetup: 1
   Curriculum: 0
   TopParent: {fileID: 2483226645643841316}
