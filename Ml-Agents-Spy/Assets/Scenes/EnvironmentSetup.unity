@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: MapScale
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -401,7 +401,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: GuardAgentCount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -411,12 +411,17 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: TrainingScenario
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: ExitCount
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: DebugSetup
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}

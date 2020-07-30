@@ -6,5 +6,6 @@
         GuardPatrol,
         GuardAlert,
         SpyEvade,
+        GuardPatrolWithSpy
     }
 }
