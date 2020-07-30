@@ -6,192 +6,88 @@ using UnityEngine;
 
 namespace EnvSetup
 {
-    public class AdvancedPathFindingCurriculum : ITileLogicFacade
+    public class AdvancedPathFindingCurriculum : AbstractCurriculum
     {
-        public Dictionary<GameParam, int> EnvParamDict { get; } = new Dictionary<GameParam, int>();
-        public ITileLogicBuilder GetTileLogicBuilder(float curriculumParam, Dictionary<ParentObject, GameObject> parentObjects)
+        public AdvancedPathFindingCurriculum(float curriculum)
         {
-            int mapScale;
-            int mapDiff;
-            int exitCount;
-            int guardAgentCount;
-            int curriculumParamInt = (int)curriculumParam;
-            switch (curriculumParamInt)
+            InterpretCurriculum(curriculum);
+        }
+        
+        protected sealed override void InterpretCurriculum(float curriculum)
+        {
+            switch ((int)curriculum)
             {
                 case 1:
-                    mapScale = 2;
-                    mapDiff = 20;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
-
+                    _mapScale = 2;
+                    _mapDiff = 20;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 2:
-                    mapScale = 3;
-                    mapDiff = 30;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 3;
+                    _mapDiff = 30;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 3:
-                    mapScale = 3;
-                    mapDiff = 50;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 3;
+                    _mapDiff = 50;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 4:
-                    mapScale = 3;
-                    mapDiff = 60;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 3;
+                    _mapDiff = 60;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 5:
-                    mapScale = 4;
-                    mapDiff = 60;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 4;
+                    _mapDiff = 60;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 6:
-                    mapScale = 4;
-                    mapDiff = 80;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 4;
+                    _mapDiff = 80;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 7:
-                    mapScale = 4;
-                    mapDiff = 100;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 4;
+                    _mapDiff = 100;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 8:
-                    mapScale = 5;
-                    mapDiff = 100;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 5;
+                    _mapDiff = 100;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 9:
-                    mapScale = 5;
-                    mapDiff = 150;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 5;
+                    _mapDiff = 150;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
                 case 10:
-                    mapScale = 6;
-                    mapDiff = 200;
-                    exitCount = 2;
-                    guardAgentCount = 1;
-                    EnvParamDict[GameParam.ExitCount] = exitCount;
-                    EnvParamDict[GameParam.MapDifficulty] = mapDiff;
-                    EnvParamDict[GameParam.MapScale] = mapScale;
-                    EnvParamDict[GameParam.GuardAgentCount] = guardAgentCount;
-                    return new TileLogicBuilder(
-                        mapScale: mapScale,
-                        mapDifficulty: mapDiff,
-                        exitCount: exitCount,
-                        guardAgentCount: guardAgentCount,
-                        parentDictionary: parentObjects,
-                        hasMiddleTiles: true
-                    );
+                    _mapScale = 6;
+                    _mapDiff = 200;
+                    _exitCount = 2;
+                    _guardAgentCount = 1;
+                    _hasMiddleTiles = true;
+                    break;
             }
-
-            throw new InvalidOperationException("Wrong value given to EnvSetupFacade from curriculum.");
         }
     }
 }

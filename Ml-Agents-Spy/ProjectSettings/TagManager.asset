@@ -7,6 +7,8 @@ TagManager:
   - spy
   - env
   - plane
+  - alertguard
+  - patrolguard
   layers:
   - Default
   - TransparentFX

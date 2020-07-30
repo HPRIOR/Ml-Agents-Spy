@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: MapScale
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: Curriculum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -408,6 +408,16 @@ PrefabInstance:
       propertyPath: Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2fa77c17f4d6bcd479868fcc43bc09ad, type: 2}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: TrainingScenario
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: ExitCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: m_Name

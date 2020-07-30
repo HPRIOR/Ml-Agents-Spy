@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Interfaces;
-using static EnvSetup.RandomHelper;
+using static RandomHelper;
 
 namespace EnvSetup
 {

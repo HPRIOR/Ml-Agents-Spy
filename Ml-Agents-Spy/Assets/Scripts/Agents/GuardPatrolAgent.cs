@@ -1,6 +1,9 @@
-﻿using Unity.MLAgents;
+﻿using Interfaces;
+using Training;
+using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using static StaticFunctions;
 
 namespace Agents
 {
@@ -8,6 +11,11 @@ namespace Agents
     {
         [Tooltip("Indicates whether or not agent will be trained in current run")]
         public bool Training;
+
+        private TrainingInstanceController _instanceController;
+        private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
+        private IAgentMemory _agentMemory;
+        private float _maxLocalDistance;
 
         private int _speed = 5;
 
@@ -22,12 +30,20 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
-            base.OnEpisodeBegin();
+            Debug.Log("PatrolGuard Called OnEpisode Begin");
+            _instanceController = GetComponentInParent<TrainingInstanceController>();
+            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
+            _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
+            if (CompletedEpisodes > 0 )
+            {
+                _instanceController.Restart();
+            }
         }
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            base.CollectObservations(sensor);
+            //sensor.AddObservation(_instanceController.SpyPrefabClone.transform.position);
+            //Debug.Log(Vector3.Distance(transform.position, _instanceController.SpyPrefabClone.transform.position));
         }
 
         public override void OnActionReceived(float[] vectorAction)

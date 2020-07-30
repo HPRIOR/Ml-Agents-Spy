@@ -156,11 +156,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 49ec9dfadab307244adab2c890260ce1, type: 2}
   DebugEnvSetup: 1
   Curriculum: 0
+  TrainingScenario: 0
   TopParent: {fileID: 2483226645643841316}
   EnvParent: {fileID: 2483226645080659941}
   DebugParent: {fileID: 2483226646646885260}
   SpyPrefab: {fileID: 7091373540181754968, guid: 7469f9acaaf62d14fbc8c2e0a5836b83,
     type: 3}
+  GuardPatrolPrefab: {fileID: 6665806686107098500, guid: 236ca7c246f26be49b37cb6d3147debd,
+    type: 3}
+  GuardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
+    type: 3}
+  _alertGuardClones: []
   MapScale: 1
   MapDifficulty: 0
   ExitCount: 2

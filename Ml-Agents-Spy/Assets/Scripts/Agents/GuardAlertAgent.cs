@@ -1,6 +1,9 @@
-﻿using Unity.MLAgents;
+﻿using Interfaces;
+using Training;
+using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using static StaticFunctions;
 
 namespace Agents
 {
@@ -8,8 +11,13 @@ namespace Agents
     {
         [Tooltip("Indicates whether or not agent will be trained in current run")]
         public bool Training;
-        
-        private int _speed = 20;
+
+        private TrainingInstanceController _instanceController;
+        private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
+        private IAgentMemory _agentMemory;
+        private float _maxLocalDistance;
+
+        private int _speed = 5;
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
@@ -21,12 +29,18 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
-            base.OnEpisodeBegin();
+            Debug.Log("AlertGuard Called OnEpisode Begin");
+            _instanceController = GetComponentInParent<TrainingInstanceController>();
+            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
+            if (CompletedEpisodes > 0 )
+            {
+                _instanceController.Restart();
+            }
         }
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            base.CollectObservations(sensor);
+            
         }
 
         public override void OnActionReceived(float[] vectorAction)
