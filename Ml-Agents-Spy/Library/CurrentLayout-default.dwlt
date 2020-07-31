@@ -8,23 +8,97 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PixelRect:
+    serializedVersion: 2
+    x: -2036
+    y: 89
+    width: 1297
+    height: 790
+  m_ShowMode: 0
+  m_Title: 
+  m_RootView: {fileID: 4}
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
+  m_Maximized: 0
+--- !u!114 &2
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -1594
+    x: -959
     y: 51
-    width: 1593
+    width: 958
     height: 998
   m_ShowMode: 4
   m_Title: 
-  m_RootView: {fileID: 6}
+  m_RootView: {fileID: 9}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
---- !u!114 &2
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: TestRunnerWindow
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1297
+    height: 790
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
+  m_Panes:
+  - {fileID: 15}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &4
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 3}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1297
+    height: 790
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
+  vertical: 0
+  controlID: 31810
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +115,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 747
+    width: 447
     height: 948
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 16}
   m_Panes:
+  - {fileID: 20}
   - {fileID: 16}
-  - {fileID: 12}
   m_Selected: 1
   m_LastSelected: 0
---- !u!114 &3
+--- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,18 +138,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 8}
+  - {fileID: 11}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1593
+    width: 958
     height: 948
-  m_MinSize: {x: 608, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 609, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 1
   controlID: 55
---- !u!114 &4
+--- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,16 +166,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 385
-    height: 506
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 13}
+    width: 232
+    height: 505
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 13}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &5
+--- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,19 +188,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 4}
-  - {fileID: 10}
+  - {fileID: 7}
+  - {fileID: 13}
   m_Position:
     serializedVersion: 2
-    x: 747
+    x: 447
     y: 0
-    width: 385
+    width: 232
     height: 948
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 96
---- !u!114 &6
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,18 +213,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 7}
-  - {fileID: 3}
-  - {fileID: 9}
+  - {fileID: 10}
+  - {fileID: 6}
+  - {fileID: 12}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1593
+    width: 958
     height: 998
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
---- !u!114 &7
+--- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,12 +241,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1593
+    width: 958
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
---- !u!114 &8
+--- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,20 +259,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 2}
   - {fileID: 5}
-  - {fileID: 11}
+  - {fileID: 8}
+  - {fileID: 14}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1593
+    width: 958
     height: 948
-  m_MinSize: {x: 608, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 609, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
   controlID: 56
---- !u!114 &9
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,11 +289,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 978
-    width: 1593
+    width: 958
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
---- !u!114 &10
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,17 +309,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 506
-    width: 385
-    height: 442
+    y: 505
+    width: 232
+    height: 443
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &11
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,18 +334,2118 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1132
+    x: 679
     y: 0
-    width: 461
+    width: 279
     height: 948
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 14}
+  - {fileID: 18}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &12
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: -2036
+    y: 89
+    width: 1297
+    height: 769
+  m_ViewDataDictionary: {fileID: 0}
+  m_Spl:
+    ID: 31901
+    splitterInitialOffset: 451
+    currentActiveSplitter: -1
+    realSizes: 7d0100003e010000
+    relativeSizes:
+    - 0.5450644
+    - 0.4549356
+    minSizes: 2000000020000000
+    maxSizes: 0000000000000000
+    lastTotalSize: 699
+    splitSize: 6
+    xOffset: 0
+  m_TestTypeToolbarIndex: 0
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 15}
+    newResultList:
+    - id: 1059
+      uniqueId: '[Ml-Agents-Spy][suite]'
+      name: Ml-Agents-Spy
+      fullName: Ml-Agents-Spy
+      resultStatus: 1
+      duration: 5.01832
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1077
+      uniqueId: '[Play-Mode.dll][suite]'
+      name: Play-Mode.dll
+      fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Play-Mode.dll
+      resultStatus: 1
+      duration: 4.987109
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1059
+      parentUniqueId: '[Ml-Agents-Spy][suite]'
+    - id: 1078
+      uniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+      name: Tests
+      fullName: Tests
+      resultStatus: 1
+      duration: 4.9775996
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1077
+      parentUniqueId: '[Play-Mode.dll][suite]'
+    - id: 1001
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+      name: TestAgentSpawning
+      fullName: Tests.TestAgentSpawning
+      resultStatus: 1
+      duration: 4.9686804
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1032
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1024
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr]
+      name: Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr
+      resultStatus: 1
+      duration: 0.2452517
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1025
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug]
+      name: Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug
+      resultStatus: 1
+      duration: 0.2116163
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1017
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug]
+      name: Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug
+      resultStatus: 1
+      duration: 0.210148
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1016
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr]
+      name: Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr
+      resultStatus: 1
+      duration: 0.2087503
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1023
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr]
+      name: Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr
+      resultStatus: 1
+      duration: 4.829766
+      messages: 
+      output: 'Couldn''t connect to trainer on port 5004 using API version 1.0.0.
+        Will perform inference instead.
+
+        PatrolGuard Called OnEpisode Begin
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1022
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug]
+      name: Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug
+      resultStatus: 2
+      duration: 0.0068686
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug>d__27.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:255
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1014
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug]
+      name: Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug
+      resultStatus: 2
+      duration: 0.0064117
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug>d__19.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:198
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1015
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr]
+      name: Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr
+      resultStatus: 2
+      duration: 0.0066132
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr>d__20.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:207
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1029
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr]
+      name: Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr
+      resultStatus: 1
+      duration: 0.1079155
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1028
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug]
+      name: Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug
+      resultStatus: 1
+      duration: 0.1094095
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1020
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug]
+      name: Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug
+      resultStatus: 1
+      duration: 0.1085219
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1021
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr]
+      name: Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr
+      resultStatus: 1
+      duration: 0.109458
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1027
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr]
+      name: Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr
+      resultStatus: 1
+      duration: 0.1095654
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1026
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug]
+      name: Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug
+      resultStatus: 1
+      duration: 0.1091873
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1018
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug]
+      name: Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug
+      resultStatus: 1
+      duration: 0.1101786
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1019
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr]
+      name: Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr
+      resultStatus: 1
+      duration: 0.1091412
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1011
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
+      resultStatus: 2
+      duration: 0.007458
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr>d__16.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:161
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1005
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
+      resultStatus: 2
+      duration: 0.006871
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug>d__10.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:99
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1004
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
+      resultStatus: 2
+      duration: 0.0065456
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug>d__9.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:89
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1009
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
+      resultStatus: 2
+      duration: 0.0068922
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr>d__15.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:152
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1007
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
+      resultStatus: 2
+      duration: 0.0074956
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug>d__12.MoveNext
+        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:121
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1006
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
+      resultStatus: 2
+      duration: 0.0068665
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug>d__11.MoveNext
+        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:108
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1009
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
+      resultStatus: 2
+      duration: 0.0068585
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr>d__14.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:143
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1003
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
+      resultStatus: 2
+      duration: 0.0065235
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug>d__8.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:79
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1002
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
+      resultStatus: 2
+      duration: 0.0064682
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
+        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug>d__7.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:70
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1008
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
+      resultStatus: 2
+      duration: 0.0063014
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr>d__13.MoveNext
+        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:134
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1013
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr]
+      name: Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
+      resultStatus: 2
+      duration: 0.0063927
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr>d__18.MoveNext
+        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:183
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1010
+      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr]
+      name: Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
+      fullName: Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
+      resultStatus: 2
+      duration: 0.0066519
+      messages: 'System.ArgumentException : The Object you want to instantiate is
+        null.'
+      output: 
+      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
+        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
+        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
+        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
+        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
+        \r\n  at Tests.TestAgentSpawning+<Test_Spy_PathFinding_Agent_Respawn_Simple_Curr>d__17.MoveNext
+        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:170
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+    - id: 1062
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+      name: TestSpy
+      fullName: Tests.TestSpy
+      resultStatus: 2
+      duration: 1.4413586
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1078
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1071
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestCloseToExit]
+      name: TestCloseToExit
+      fullName: Tests.TestSpy.TestCloseToExit
+      resultStatus: 2
+      duration: 0.1114138
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestCloseToExit>d__9.MoveNext () [0x000e1]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:174
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1074
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestCollision]
+      name: TestCollision
+      fullName: Tests.TestSpy.TestCollision
+      resultStatus: 2
+      duration: 0.115125
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestCollision>d__12.MoveNext () [0x000c4]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:246
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1070
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestDistanceFromExitChange]
+      name: TestDistanceFromExitChange
+      fullName: Tests.TestSpy.TestDistanceFromExitChange
+      resultStatus: 2
+      duration: 0.1142746
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestDistanceFromExitChange>d__8.MoveNext ()
+        [0x000de] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:149
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1072
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestFallOffEdge]
+      name: TestFallOffEdge
+      fullName: Tests.TestSpy.TestFallOffEdge
+      resultStatus: 2
+      duration: 0.1176797
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestFallOffEdge>d__10.MoveNext () [0x000d5]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:200
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1063
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale1]
+      name: TestInitialPositionMapScale1
+      fullName: Tests.TestSpy.TestInitialPositionMapScale1
+      resultStatus: 2
+      duration: 0.118682
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale1>d__1.MoveNext
+        () [0x0008a] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:31
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1064
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale2]
+      name: TestInitialPositionMapScale2
+      fullName: Tests.TestSpy.TestInitialPositionMapScale2
+      resultStatus: 2
+      duration: 0.1173014
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale2>d__2.MoveNext
+        () [0x000a7] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:47
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1065
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale3]
+      name: TestInitialPositionMapScale3
+      fullName: Tests.TestSpy.TestInitialPositionMapScale3
+      resultStatus: 2
+      duration: 0.118121
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale3>d__3.MoveNext
+        () [0x000a7] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:61
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1067
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveDown]
+      name: TestMoveDown
+      fullName: Tests.TestSpy.TestMoveDown
+      resultStatus: 2
+      duration: 0.1200544
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestMoveDown>d__5.MoveNext () [0x000be] in
+        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:93
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1068
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveLeft]
+      name: TestMoveLeft
+      fullName: Tests.TestSpy.TestMoveLeft
+      resultStatus: 2
+      duration: 0.120501
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestMoveLeft>d__6.MoveNext () [0x000be] in
+        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:111
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1069
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveRight]
+      name: TestMoveRight
+      fullName: Tests.TestSpy.TestMoveRight
+      resultStatus: 2
+      duration: 0.1224482
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestMoveRight>d__7.MoveNext () [0x000be] in
+        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:129
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1066
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveUp]
+      name: TestMoveUp
+      fullName: Tests.TestSpy.TestMoveUp
+      resultStatus: 2
+      duration: 0.1183521
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestMoveUp>d__4.MoveNext () [0x000be] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:74
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1073
+      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestRespawnPoint]
+      name: TestRespawnPoint
+      fullName: Tests.TestSpy.TestRespawnPoint
+      resultStatus: 2
+      duration: 0.1170082
+      messages: 'System.NullReferenceException : Object reference not set to an instance
+        of an object'
+      output: 
+      stacktrace: "  at Tests.TestSpy+<TestRespawnPoint>d__11.MoveNext () [0x000de]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:222
+        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
+        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1062
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+    - id: 1075
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
+      name: TileTest
+      fullName: Tests.TileTest
+      resultStatus: 1
+      duration: 0.0124587
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1078
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1076
+      uniqueId: Play-Mode.dll/Tests/TileTest/[Play-Mode][Tests.TileTest.TileTestSimplePasses]
+      name: TileTestSimplePasses
+      fullName: Tests.TileTest.TileTestSimplePasses
+      resultStatus: 1
+      duration: 0.0033107
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1075
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
+    m_ResultText: 'Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr (4.830s)
+
+      ---
+
+      Couldn''t
+      connect to trainer on port 5004 using API version 1.0.0. Will perform inference
+      instead.
+
+      PatrolGuard Called OnEpisode Begin'
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 6c829b47
+      m_LastClickedID: 1201373804
+      m_ExpandedIDs: a4e15a91a89056cf865db401d278063c59de173f379b0561ce65a269ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 15}
+    newResultList:
+    - id: 1000
+      uniqueId: '[Ml-Agents-Spy][suite]'
+      name: Ml-Agents-Spy
+      fullName: Ml-Agents-Spy
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1055
+      uniqueId: '[Edit-Mode.dll][suite]'
+      name: Edit-Mode.dll
+      fullName: C:/Users/User/Documents/Unity_Projects/Ml-Agents-Spy/Ml-Agents-Spy/Library/ScriptAssemblies/Edit-Mode.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[Ml-Agents-Spy][suite]'
+    - id: 1056
+      uniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+      name: Tests
+      fullName: Tests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1055
+      parentUniqueId: '[Edit-Mode.dll][suite]'
+    - id: 1001
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
+      name: ExitFinderTest
+      fullName: Tests.ExitFinderTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1002
+      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestExitCountOneContentiousBlock]
+      name: TestExitCountOneContentiousBlock
+      fullName: Tests.ExitFinderTest.TestExitCountOneContentiousBlock
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
+    - id: 1003
+      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestExitsAreAvailable]
+      name: TestExitsAreAvailable
+      fullName: Tests.ExitFinderTest.TestExitsAreAvailable
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
+    - id: 1005
+      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestSetExitTiles]
+      name: TestSetExitTiles
+      fullName: Tests.ExitFinderTest.TestSetExitTiles
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
+    - id: 1004
+      uniqueId: Edit-Mode.dll/Tests/ExitFinderTest/[Edit-Mode][Tests.ExitFinderTest.TestTileGroupsExitCount]
+      name: TestTileGroupsExitCount
+      fullName: Tests.ExitFinderTest.TestTileGroupsExitCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.ExitFinderTest][suite]
+    - id: 1006
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+      name: GuardSpawnTest
+      fullName: Tests.GuardSpawnTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1010
+      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestGreaterThanFourYAxis]
+      name: TestGreaterThanFourYAxis
+      fullName: Tests.GuardSpawnTest.TestGreaterThanFourYAxis
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+    - id: 1007
+      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestGuardPlacesFilledWithEnvTiles]
+      name: TestGuardPlacesFilledWithEnvTiles
+      fullName: Tests.GuardSpawnTest.TestGuardPlacesFilledWithEnvTiles
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+    - id: 1008
+      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestIfCanSpawnBetweenPillars]
+      name: TestIfCanSpawnBetweenPillars
+      fullName: Tests.GuardSpawnTest.TestIfCanSpawnBetweenPillars
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+    - id: 1009
+      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestJustRightAmountOfAvailableTiles]
+      name: TestJustRightAmountOfAvailableTiles
+      fullName: Tests.GuardSpawnTest.TestJustRightAmountOfAvailableTiles
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+    - id: 1011
+      uniqueId: Edit-Mode.dll/Tests/GuardSpawnTest/[Edit-Mode][Tests.GuardSpawnTest.TestSetGuardTiles]
+      name: TestSetGuardTiles
+      fullName: Tests.GuardSpawnTest.TestSetGuardTiles
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.GuardSpawnTest][suite]
+    - id: 1012
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.PathFinderTest][suite]
+      name: PathFinderTest
+      fullName: Tests.PathFinderTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1013
+      uniqueId: Edit-Mode.dll/Tests/PathFinderTest/[Edit-Mode][Tests.PathFinderTest.tmOnePathTest]
+      name: tmOnePathTest
+      fullName: Tests.PathFinderTest.tmOnePathTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.PathFinderTest][suite]
+    - id: 1014
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+      name: TestAgentTileConverter
+      fullName: Tests.TestAgentTileConverter
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1016
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestAdjacentTiles]
+      name: TestAdjacentTiles
+      fullName: Tests.TestAgentTileConverter.TestAdjacentTiles
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1015
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestAgentTileCount]
+      name: TestAgentTileCount
+      fullName: Tests.TestAgentTileConverter.TestAgentTileCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1018
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestInitialGuardPlacement]
+      name: TestInitialGuardPlacement
+      fullName: Tests.TestAgentTileConverter.TestInitialGuardPlacement
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1017
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestInitialSpyPlacement]
+      name: TestInitialSpyPlacement
+      fullName: Tests.TestAgentTileConverter.TestInitialSpyPlacement
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1019
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestInitialVisitCount]
+      name: TestInitialVisitCount
+      fullName: Tests.TestAgentTileConverter.TestInitialVisitCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1020
+      uniqueId: Edit-Mode.dll/Tests/TestAgentTileConverter/[Edit-Mode][Tests.TestAgentTileConverter.TestInitialVisitedByAlgo]
+      name: TestInitialVisitedByAlgo
+      fullName: Tests.TestAgentTileConverter.TestInitialVisitedByAlgo
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1014
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestAgentTileConverter][suite]
+    - id: 1021
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+      name: TestMovementTracker
+      fullName: Tests.TestMovementTracker
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1026
+      uniqueId: Edit-Mode.dll/Tests/TestMovementTracker/[Edit-Mode][Tests.TestMovementTracker.TestDequeue]
+      name: TestDequeue
+      fullName: Tests.TestMovementTracker.TestDequeue
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1021
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+    - id: 1025
+      uniqueId: Edit-Mode.dll/Tests/TestMovementTracker/[Edit-Mode][Tests.TestMovementTracker.TestFullList]
+      name: TestFullList
+      fullName: Tests.TestMovementTracker.TestFullList
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1021
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+    - id: 1022
+      uniqueId: Edit-Mode.dll/Tests/TestMovementTracker/[Edit-Mode][Tests.TestMovementTracker.TestInitialFloatArray]
+      name: TestInitialFloatArray
+      fullName: Tests.TestMovementTracker.TestInitialFloatArray
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1021
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+    - id: 1024
+      uniqueId: Edit-Mode.dll/Tests/TestMovementTracker/[Edit-Mode][Tests.TestMovementTracker.TestLargeEnoughToChange]
+      name: TestLargeEnoughToChange
+      fullName: Tests.TestMovementTracker.TestLargeEnoughToChange
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1021
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+    - id: 1023
+      uniqueId: Edit-Mode.dll/Tests/TestMovementTracker/[Edit-Mode][Tests.TestMovementTracker.TestTooSmallToChange]
+      name: TestTooSmallToChange
+      fullName: Tests.TestMovementTracker.TestTooSmallToChange
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1021
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TestMovementTracker][suite]
+    - id: 1027
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+      name: TileLogicAcceptanceTests
+      fullName: Tests.TileLogicAcceptanceTests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1035
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleEight]
+      name: TestScaleEight
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleEight
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1032
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleFive]
+      name: TestScaleFive
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleFive
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1031
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleFour]
+      name: TestScaleFour
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleFour
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1036
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleNine]
+      name: TestScaleNine
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleNine
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1028
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleOne]
+      name: TestScaleOne
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleOne
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1034
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleSeven]
+      name: TestScaleSeven
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleSeven
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1033
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleSix]
+      name: TestScaleSix
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleSix
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1037
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleTen]
+      name: TestScaleTen
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleTen
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1030
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleThree]
+      name: TestScaleThree
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleThree
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1029
+      uniqueId: Edit-Mode.dll/Tests/TileLogicAcceptanceTests/[Edit-Mode][Tests.TileLogicAcceptanceTests.TestScaleTwo]
+      name: TestScaleTwo
+      fullName: Tests.TileLogicAcceptanceTests.TestScaleTwo
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1027
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicAcceptanceTests][suite]
+    - id: 1038
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+      name: TileLogicTests
+      fullName: Tests.TileLogicTests
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1042
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestEnvTileCount]
+      name: TestEnvTileCount
+      fullName: Tests.TileLogicTests.TestEnvTileCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1039
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestExitCount]
+      name: TestExitCount
+      fullName: Tests.TileLogicTests.TestExitCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1044
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestExitLocationsOnYAxis]
+      name: TestExitLocationsOnYAxis
+      fullName: Tests.TileLogicTests.TestExitLocationsOnYAxis
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1043
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestFreeTilesCount]
+      name: TestFreeTilesCount
+      fullName: Tests.TileLogicTests.TestFreeTilesCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1041
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestGuardCount]
+      name: TestGuardCount
+      fullName: Tests.TileLogicTests.TestGuardCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1048
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestGuardCountLessThanExitCount]
+      name: TestGuardCountLessThanExitCount
+      fullName: Tests.TileLogicTests.TestGuardCountLessThanExitCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1046
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestGuardGreaterThanOne]
+      name: TestGuardGreaterThanOne
+      fullName: Tests.TileLogicTests.TestGuardGreaterThanOne
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1047
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestGuardSpawnArea]
+      name: TestGuardSpawnArea
+      fullName: Tests.TileLogicTests.TestGuardSpawnArea
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1040
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestSpyCount]
+      name: TestSpyCount
+      fullName: Tests.TileLogicTests.TestSpyCount
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1045
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestSpyOnYAxis]
+      name: TestSpyOnYAxis
+      fullName: Tests.TileLogicTests.TestSpyOnYAxis
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1049
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestThrowErrorIfExitCountBelow2]
+      name: TestThrowErrorIfExitCountBelow2
+      fullName: Tests.TileLogicTests.TestThrowErrorIfExitCountBelow2
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1050
+      uniqueId: Edit-Mode.dll/Tests/TileLogicTests/[Edit-Mode][Tests.TileLogicTests.TestThrowExceptionIfMapTooComplex]
+      name: TestThrowExceptionIfMapTooComplex
+      fullName: Tests.TileLogicTests.TestThrowExceptionIfMapTooComplex
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1038
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileLogicTests][suite]
+    - id: 1051
+      uniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+      name: TileMatrixTest
+      fullName: Tests.TileMatrixTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1056
+      parentUniqueId: Edit-Mode.dll/[Edit-Mode][Tests][suite]
+    - id: 1054
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.AdjacencyMatrixTest]
+      name: AdjacencyMatrixTest
+      fullName: Tests.TileMatrixTest.AdjacencyMatrixTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1051
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    - id: 1053
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.CoordsTest]
+      name: CoordsTest
+      fullName: Tests.TileMatrixTest.CoordsTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1051
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    - id: 1052
+      uniqueId: Edit-Mode.dll/Tests/TileMatrixTest/[Edit-Mode][Tests.TileMatrixTest.VectorTest]
+      name: VectorTest
+      fullName: Tests.TileMatrixTest.VectorTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1051
+      parentUniqueId: Edit-Mode.dll/Tests/[Edit-Mode][Tests.TileMatrixTest][suite]
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 790905b2249e8fb2f50f4ebe10110dcbd66e2ee8890706ee6c3b6624d7a0d22b1a735441379b0561bbbe7963ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,9 +2466,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1594
+    x: -959
     y: 81
-    width: 746
+    width: 446
     height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
@@ -305,7 +2479,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 746, y: 906}
+  m_TargetSize: {x: 446, y: 906}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -320,8 +2494,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -373
-    m_HBaseRangeMax: 373
+    m_HBaseRangeMin: -223
+    m_HBaseRangeMax: 223
     m_VBaseRangeMin: -453
     m_VBaseRangeMax: 453
     m_HAllowExceedBaseRangeMin: 1
@@ -341,29 +2515,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 746
+      width: 446
       height: 906
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 373, y: 453}
+    m_Translation: {x: 223, y: 453}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -373
+      x: -223
       y: -453
-      width: 746
+      width: 446
       height: 906
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 746, y: 927}
+  m_LastWindowPixelSize: {x: 446, y: 927}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &13
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -384,33 +2558,33 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -847
+    x: -512
     y: 81
-    width: 383
-    height: 485
+    width: 230
+    height: 484
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fe370000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f6f3ffff06f4ffff68fbffff
+      m_ExpandedIDs: d225d9ffee25d9ffd027d9ffe427d9ff0028d9ff6029d9ff7429d9ff9029d9ff082ad9ff822ad9ff9e2ad9ff162bd9ffe22bd9fffe2bd9ff762cd9fff02cd9ff0c2dd9ff842dd9ffac2dd9ffc82dd9ffda31d9ffea35d9ff0636d9ffd837d9fffc37d9ff1838d9ff0e3bd9ff2e3bd9ff4a3bd9ffac45d9ffd845d9fff445d9ffea48d9ff0e49d9ff2a49d9ff204cd9ff484cd9ff644cd9ff384ed9ff604ed9ff7c4ed9ff5050d9ff7850d9ff9450d9ff1e56d9ff4656d9ff6256d9ffec5bd9ff105cd9ff2c5cd9ff5661d9ff4c66d9ff6866d9ff5e69d9ff7e69d9ff9a69d9ff906cd9ffb86cd9ffd46cd9ffa86ed9ffcc6ed9ffe86ed9ffbc70d9ffe470d9ff0071d9ffd272d9fff272d9ff0e73d9fff075d9ff9c78d9ffb878d9ff8c7ad9ff5c7bd9ff787bd9ff247dd9ff4c7dd9ff687dd9ff067ed9ffb07ed9ffcc7ed9ff6a7fd9ff3e80d9ff5a80d9fff880d9ffea81d9ff0682d9ffa482d9ff1e83d9ff3a83d9ffe085d9ff0086d9ff1c86d9ff1289d9ff3a89d9ff5689d9ff2a8bd9ff4e8bd9ff6a8bd9ff168dd9ff3e8dd9ff5a8dd9ff2c8fd9ff508fd9ff6c8fd9ff2692d9ff8ea6d9ffaaa6d9ff50a9d9ffc6a9d9ffe2a9d9ffb4abd9ffe0abd9fffcabd9ffa6add9ffcaadd9ffe6add9ffdcb0d9ff04b1d9ff20b1d9fff4b2d9ff1cb3d9ff38b3d9ffe4b4d9ff0cb5d9ff28b5d9ffdeb8d9ffaeb9d9ffcab9d9ff76bbd9ff04bcd9ff20bcd9ffd6bfd9ff1ec1d9ff3ac1d9ff08c5d9ff30c5d9ff4cc5d9ff6ec8d9ff0ec9d9ff2ac9d9ffd0cbd9ff7cced9ff98ced9ff6ad0d9ff08d4d9ff24d4d9ffcad6d9ff4cd7d9ff68d7d9ff5edad9ffdcdbd9fff8dbd9ffa4ddd9ffccddd9ffe8ddd9ff94dfd9ffc8e0d9ffd0e0d9ffece0d9ffc0e2d9ffe8e2d9ff04e3d9ffd8e4d9ff68e6d9ff84e6d9ff58e8d9ffe2e8d9fffee8d9ffd2ead9fffeead9ff1aebd9ffe0f0d9ff08f1d9ff24f1d9ff4af6d9ff72f6d9ff8ef6d9ffb4fbd9ffdcfbd9fff8fbd9ff1e01daff4601daff6201daff8806daffb006daffcc06dafff20bdaff1a0cdaff360cdaff220fdaff4a0fdaff660fdaff3a11daff6211daff7e11daff4417daff6c17daff8817daffc41adaffec1adaff081bdaff441edaff681edaff841edaffc021daffe821daff0422daff4025daff7cafe1ff84afe1ffa0afe1ff3eb0e1ffe2b1e1ffeab1e1ff06b2e1ffa4b2e1ff46b3e1ff62b3e1ffe4b5e1ff00b6e1ff9eb6e1ff52b9e1ff6eb9e1ff34bde1ffaebde1ffcabde1ff7ec1e1fff4c1e1ff10c2e1ffc4c5e1ff3ec6e1ff5ac6e1ff0ecae1ffe2cae1fffecae1ff12d0e1ffaad0e1ffc2d0e1fff0d9e1fff8d9e1ff96dce1ffecdce1ff08dde1ffbce0e1ff88e1e1ffa4e1e1ff58e5e1ff84e5e1ffa0e5e1ff54e9e1ffcee9e1ffeae9e1ff9eede1ffc2ede1ffdeede1ff56eee1ff7eeee1ff9aeee1ff52f8e1ff7af8e1ff96f8e1ff4afce1ff72fce1ff8efce1ff4200e2ff6a00e2ff8600e2ff3a04e2ff6204e2ff7e04e2ff3208e2ff5a08e2ff7608e2ff2a0ce2ff520ce2ff6e0ce2ff2210e2ff4a10e2ff6610e2ff1a14e2ff4214e2ff5e14e2ff141be2ff3c1be2ff581be2ff0c1fe2ff341fe2ff501fe2ff0423e2ff3a23e2ff5623e2ff0a27e2ff3227e2ff4e27e2ff022be2ffe0c2ffffe8c2ffff04c3ffff50c5ffff78c5ffff94c5ffff40c7ffff68c7ffff84c7ffff4acdffff72cdffff8ecdffffcad0fffff2d0ffff0ed1ffff4ad4ffff72d4ffff8ed4ffffcad7fffff2d7ffff0ed8ffff4adbffff54fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: TrainingInstance (Missing Prefab)
+        m_OriginalName: TrainingInstance (Missing Prefab)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -2546224
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 4}
+        m_ClientGUIView: {fileID: 7}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -418,7 +2592,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: ed543f88c2d61dd4db727d9fabe6e312
---- !u!114 &14
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,9 +2613,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -462
+    x: -280
     y: 81
-    width: 460
+    width: 278
     height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
@@ -455,8 +2629,8 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 100
---- !u!114 &15
+  m_LastVerticalScrollValue: 0
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,10 +2651,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -847
-    y: 587
-    width: 383
-    height: 421
+    x: -512
+    y: 586
+    width: 230
+    height: 422
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -507,7 +2681,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 54300000
     m_LastClickedID: 12372
-    m_ExpandedIDs: 00000000b8370000ba370000bc370000be370000c0370000c2370000c4370000c6370000c8370000ca370000cc370000ce370000d0370000d2370000d4370000
+    m_ExpandedIDs: 00000000d0370000d2370000d4370000d6370000d8370000da370000dc370000de370000e0370000e2370000e4370000e6370000e8370000ea370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -535,7 +2709,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000b8370000ba370000bc370000be370000c0370000c2370000c4370000c6370000c8370000ca370000cc370000d4370000f6370000323b0000
+    m_ExpandedIDs: ffffffff00000000d0370000d2370000d4370000d6370000d8370000da370000dc370000de370000e0370000e2370000e4370000e6370000e8370000ea3700001a3800001e38000026380000283800002a380000e8380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -551,7 +2725,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 13}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -579,7 +2753,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -591,7 +2765,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 294
---- !u!114 &16
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -612,10 +2786,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -960
-    y: 73
-    width: 450
-    height: 936
+    x: -959
+    y: 81
+    width: 446
+    height: 927
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 34a73a3eb528cc54ca216c50d0964146
@@ -627,9 +2801,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.4091856, y: -47.066406, z: -5.670739}
+    m_Target: {x: 1.711644, y: -30.679688, z: -12.185526}
     speed: 2
-    m_Value: {x: 2.4091856, y: -47.066406, z: -5.670739}
+    m_Value: {x: 1.711644, y: -30.679688, z: -12.185526}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -679,9 +2853,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 25.452595
+    m_Target: 22.629374
     speed: 2
-    m_Value: 25.452595
+    m_Value: 22.629374
   m_Ortho:
     m_Target: 1
     speed: 2

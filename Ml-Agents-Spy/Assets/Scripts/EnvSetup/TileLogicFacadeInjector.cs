@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using Curriculum;
+using Curriculum.EnvSetup;
 using Enums;
 using Interfaces;
 
@@ -6,14 +8,18 @@ namespace EnvSetup
 {
     public class TileLogicFacadeInjector 
     {
-        public ITileLogicFacade GetTileLogicFacade(Curriculum facadeName, float curriculumParam)
+        public ITileLogicFacade GetTileLogicFacade(CurriculumEnum facadeName, float curriculumParam)
         {
             switch (facadeName)
             {
-                case Curriculum.SimplePathFinding:
+                case CurriculumEnum.SimplePathFinding:
                     return new SimplePathFindingCurriculum(curriculumParam);
-                case Curriculum.AdvancedPathFinding:
+                case CurriculumEnum.AdvancedPathFinding:
                     return new AdvancedPathFindingCurriculum(curriculumParam);
+                case CurriculumEnum.AdvancedTestCurriculum:
+                    return new AdvancedTestCurriculum(curriculumParam);
+                case CurriculumEnum.SimpleTestCurriculum:
+                    return new SimpleTestCurriculum(curriculumParam);
             }
             throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");
         }

@@ -152,11 +152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Materials:
-  - {fileID: 2100000, guid: 3ea338b4e5cb43844bcd69f02a5f9587, type: 2}
+  - {fileID: 2100000, guid: 2fa77c17f4d6bcd479868fcc43bc09ad, type: 2}
   - {fileID: 2100000, guid: 49ec9dfadab307244adab2c890260ce1, type: 2}
-  DebugEnvSetup: 1
-  Curriculum: 0
-  TrainingScenario: 0
+  debugSetup: 1
+  curriculum: 0
+  trainingScenario: 0
   TopParent: {fileID: 2483226645643841316}
   EnvParent: {fileID: 2483226645080659941}
   DebugParent: {fileID: 2483226646646885260}
@@ -166,12 +166,11 @@ MonoBehaviour:
     type: 3}
   GuardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
     type: 3}
-  _alertGuardClones: []
   MapScale: 1
   MapDifficulty: 0
   ExitCount: 2
   GuardAgentCount: 1
-  HasMiddleTiles: 0
+  HasMiddleTiles: 1
   AgentMapScale: 0
 --- !u!1 &2483226645983715528
 GameObject:

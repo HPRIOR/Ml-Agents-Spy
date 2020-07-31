@@ -296,18 +296,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1400544106
+--- !u!1001 &898091331
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2483226645301601066, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841314, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -365,63 +360,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
-      propertyPath: HasMiddleTiles
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: MapDifficulty
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
       propertyPath: MapScale
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
-      propertyPath: debug
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: Curriculum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: Debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: DebugEnvSetup
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: GuardAgentCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2fa77c17f4d6bcd479868fcc43bc09ad, type: 2}
-    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
-        type: 3}
-      propertyPath: TrainingScenario
-      value: 2
+      propertyPath: MapDifficulty
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: ExitCount
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
-      propertyPath: DebugSetup
-      value: 0
+      propertyPath: GuardAgentCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
