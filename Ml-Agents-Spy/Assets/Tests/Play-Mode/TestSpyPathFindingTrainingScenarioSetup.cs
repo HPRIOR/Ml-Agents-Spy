@@ -1,79 +1,12 @@
 ﻿using System.Collections;
 using Enums;
-using JetBrains.Annotations;
 using NUnit.Framework;
-using Training;
-using Unity.Collections;
-using Unity.MLAgents;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class TestSpyPathFindingSetup
+    public class TestSpyPathFindingTrainingScenarioSetup : AbstractTestTrainingScenarioSetup
     {
-        [SetUp]
-        public void Init()
-        {
-            SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Academy.Instance.Dispose();
-        }
-
-        GameObject trainingInstancePrefab =
-            AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
-
-        private TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario,
-            CurriculumEnum curriculum)
-        {
-
-            GameObject trainingInstance =
-                GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController =
-                trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.trainingScenario = inputTrainingScenario;
-            trainingInstanceController.curriculum = curriculum;
-            trainingInstanceController.debugSetup = false;
-            return trainingInstanceController;
-        }
-
-        private TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
-        {
-            GameObject trainingInstance =
-                GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController =
-                trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.trainingScenario = trainingScenario;
-            trainingInstanceController.debugSetup = true;
-            return trainingInstanceController;
-        }
-
-
-
-        private void SetBasicDebug(TrainingInstanceController trainingInstanceController)
-        {
-            trainingInstanceController.ExitCount = 2;
-            trainingInstanceController.MapScale = 1;
-            trainingInstanceController.MapDifficulty = 0;
-            trainingInstanceController.GuardAgentCount = 1;
-            trainingInstanceController.HasMiddleTiles = true;
-        }
-
-        private void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
-        {
-            trainingInstanceController.ExitCount = 3;
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.MapDifficulty = 10;
-            trainingInstanceController.GuardAgentCount = 2;
-            trainingInstanceController.HasMiddleTiles = true;
-        }
-
         // Spy Path Finding 
 
         [UnityTest]

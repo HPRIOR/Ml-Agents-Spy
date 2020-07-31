@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Agents;
 using Enums;
 using NUnit.Framework;
 using Training;
@@ -11,62 +12,12 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class NewTestScript
+    public class TestGuardPatrolTrainingScenarioSetup : AbstractTestTrainingScenarioSetup
     {
-        [SetUp]
-        public void Init()
-        {
-            SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Academy.Instance.Dispose();
-        }
-        
-        GameObject trainingInstancePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
-        private TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario, CurriculumEnum curriculum)
-        {
-            
-            GameObject trainingInstance = GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.trainingScenario = inputTrainingScenario;
-            trainingInstanceController.curriculum = curriculum;
-            trainingInstanceController.debugSetup = false;
-            return trainingInstanceController;
-        }
-
-        private  TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
-        {
-            GameObject trainingInstance = GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.trainingScenario = trainingScenario;
-            trainingInstanceController.debugSetup = true;
-            return trainingInstanceController;
-        }
-        
-        private void SetBasicDebug(TrainingInstanceController trainingInstanceController)
-        {
-            trainingInstanceController.ExitCount = 2;
-            trainingInstanceController.MapScale = 1;
-            trainingInstanceController.MapDifficulty = 0;
-            trainingInstanceController.GuardAgentCount = 1;
-            trainingInstanceController.HasMiddleTiles = true;
-        }
-
-        private void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
-        {
-            trainingInstanceController.ExitCount = 3;
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.MapDifficulty = 10;
-            trainingInstanceController.GuardAgentCount = 2;
-            trainingInstanceController.HasMiddleTiles = true;
-        }
-        // Guard Patrol
+       // Guard Patrol
        
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug()
+        public IEnumerator Test_Guard_Spawn_Count_Basic_Debug()
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetBasicDebug(trainingInstanceController);
@@ -76,7 +27,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr()
+        public IEnumerator Test_Guard_Spawn_Count_Simple_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -85,7 +36,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr()
+        public IEnumerator Test_Guard_Respawn_Count_Simple_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -99,7 +50,7 @@ namespace Tests
         
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Respawn_Count_Basic_Debug()
+        public IEnumerator Test_Guard_Respawn_Count_Basic_Debug()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -113,7 +64,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug()
+        public IEnumerator Test_No_Spy_Spawn_Basic_Debug()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -127,7 +78,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr()
+        public IEnumerator Test_No_Spy_Spawn_Simple_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -140,7 +91,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug()
+        public IEnumerator Test_No_Spy_Respawn_Basic_Debug()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -154,7 +105,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr()
+        public IEnumerator Test_No_Spy_Respawn_Simple_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
@@ -169,7 +120,7 @@ namespace Tests
         
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug()
+        public IEnumerator Test_Guard_Spawn_Count_Advanced_Debug()
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
@@ -178,7 +129,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr()
+        public IEnumerator Test_Guard_Spawn_Count_Advanced_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
@@ -187,7 +138,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr()
+        public IEnumerator Test_Guard_Respawn_Count_Advanced_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
@@ -197,7 +148,7 @@ namespace Tests
         
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug()
+        public IEnumerator Test_Guard_Respawn_Count_Advanced_Debug()
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
@@ -206,7 +157,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug()
+        public IEnumerator Test_No_Spy_Spawn_Advanced_Debug()
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
@@ -215,7 +166,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr()
+        public IEnumerator Test_No_Spy_Spawn_Advanced_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
@@ -228,7 +179,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug()
+        public IEnumerator Test_No_Spy_Respawn_Advanced_Debug()
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
@@ -241,7 +192,7 @@ namespace Tests
         }
         
         [UnityTest]
-        public IEnumerator Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr()
+        public IEnumerator Test_No_Spy_Respawn_Advanced_Curr()
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
@@ -251,6 +202,15 @@ namespace Tests
             guard.EndEpisode();
             yield return null;
             Assert.IsNull(trainingInstanceController.SpyPrefabClone);
+        }
+        
+        [UnityTest]
+        public IEnumerator Test_Agent_Is_Patrol()
+        {
+            var trainingInstanceController =
+                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+            yield return null;
+            Assert.IsNotNull( trainingInstanceController.GuardClones[0].GetComponent<GuardPatrolAgent>());
         }
     
     }
