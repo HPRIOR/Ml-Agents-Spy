@@ -120,57 +120,74 @@ namespace Training
             Debug.Log(_restartCount);
             Debug.Log(_initialSetup);
 
+            // called once by Academy
             if (_initialSetup)
             {
                 Debug.Log("Restart called in initial setup");
-                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-                IEnvTile[,] tileMatrix = tileLogic.GetTileLogic();
-                CreateEnv.PopulateEnv(tileMatrix, _parentObjects, MapScale, Materials);
+                ITileLogicSetup tileLogicSetup = tileLogicBuilder.GetTileLogicSetup();
+                IEnvTile[,] tileLogic = tileLogicSetup.GetTileLogic();
+                CreateEnv.PopulateEnv(tileLogic, _parentObjects, MapScale, Materials);
                 AgentMapScale = MapScale;
-                TileDict = tileLogic.GetTileTypes();
-                
-                IAgentSpawner agentSpawner = 
-                    new AgentSpawner(TrainingScenario,
-                        SpyPrefab, 
-                        GuardPatrolPrefab, 
-                        GuardAlertPrefab, 
-                        transform, 
-                        TileDict, 
-                        gameParams, 
-                        _initialSetup, 
-                        GuardClones);
-                agentSpawner.SpawnAgents();
-                //if (SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
-                //SpawnGuardAgent(gameParams[GameParam.GuardAgentCount]);
-                //MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
-                //_initialSetup = false;
+                TileDict = tileLogicSetup.GetTileTypes();
+                if (SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
+                SpawnGuardAgent(gameParams[GameParam.GuardAgentCount]);
+                MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
+                _initialSetup = false;
             }
-
-            // this should work but number of guards in scene needs to be accounted for
-            // in the initial setup, create the required list of guards, then move these around in
-            // subsequent runs.
-            // e.g. if (_restartCount == amount of guards depending on the scenario)
-            if (_restartCount == GuardClones.Count)
+            if (_restartCount == MaxNumberOfAgentsIn(TrainingScenario, GuardClones.Count))
             {
                 Debug.Log("Restart called by agent");
-                ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-                IEnvTile[,] tileMatrix = tileLogic.GetTileLogic();
-                CreateEnv.PopulateEnv(tileMatrix, _parentObjects, MapScale, Materials);
+                ITileLogicSetup tileLogicSetup = tileLogicBuilder.GetTileLogicSetup();
+                IEnvTile[,] tileLogic = tileLogicSetup.GetTileLogic();
+                CreateEnv.PopulateEnv(tileLogic, _parentObjects, MapScale, Materials);
                 AgentMapScale = MapScale;
-                TileDict = tileLogic.GetTileTypes();
-                IAgentSpawner agentSpawner = 
-                    new AgentSpawner(TrainingScenario,
-                        SpyPrefab, 
-                        GuardPatrolPrefab, 
-                        GuardAlertPrefab, 
-                        transform, 
-                        TileDict, 
-                        gameParams, 
-                        _initialSetup, 
-                        GuardClones);
-                agentSpawner.SpawnAgents();
-                //if (SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
-                //MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
+                TileDict = tileLogicSetup.GetTileTypes();
+                if (SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
+                MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
+                _restartCount = 0;
+            }
+            else
+            {
+                _restartCount++;
+            }
+        }
+        private void RestartCurriculum()
+        {
+            ClearChildrenOf(EnvParent);
+            
+            float curriculumParam = 
+                Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+            TileLogicFacadeInjector facadeInjector = new TileLogicFacadeInjector();
+            ITileLogicFacade logicBuilderFacade = facadeInjector.GetTileLogicFacade(Curriculum, curriculumParam);
+            Dictionary<GameParam, int> gameParams = logicBuilderFacade.EnvParams;
+            ITileLogicBuilder tileLogicBuilder = logicBuilderFacade.GetTileLogicBuilder(curriculumParam, _parentObjects);
+
+            if (_initialSetup)
+            {
+                
+                ITileLogicSetup tileLogicSetup = tileLogicBuilder.GetTileLogicSetup();
+                // Get Tile Logic modifies the logic of the tiles
+                IEnvTile[,] tileLogic = tileLogicSetup.GetTileLogic();
+                TileDict = tileLogicSetup.GetTileTypes();
+                int mapScale = gameParams[GameParam.MapScale];
+                AgentMapScale = mapScale;
+                CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, Materials);
+                if(SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
+                SpawnGuardAgent(gameParams[GameParam.GuardAgentCount]);
+                MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
+                _initialSetup = false;
+            }
+
+            if (_restartCount == MaxNumberOfAgentsIn(TrainingScenario, GuardClones.Count))
+            {
+                ITileLogicSetup tileLogicSetup = tileLogicBuilder.GetTileLogicSetup();
+                IEnvTile[,] tileLogic = tileLogicSetup.GetTileLogic();
+                TileDict = tileLogicSetup.GetTileTypes();
+                int mapScale = gameParams[GameParam.MapScale];
+                AgentMapScale = mapScale;
+                CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, Materials);
+                if(SpyCanSpawn(TrainingScenario)) SpawnSpyAgent();
+                MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
                 _restartCount = 0;
             }
             else
@@ -217,23 +234,22 @@ namespace Training
             }
         }
 
-        private void RestartCurriculum()
+        private int MaxNumberOfAgentsIn(TrainingScenario trainingScenario, int guardCount)
         {
-            float curriculumParam = 
-                Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
-            TileLogicFacadeInjector facadeInjector = new TileLogicFacadeInjector();
-            ITileLogicFacade logicBuilderFacade = facadeInjector.GetTileLogicFacade(Curriculum, curriculumParam);
-            Dictionary<GameParam, int> envParams = logicBuilderFacade.EnvParams;
-            ClearChildrenOf(EnvParent);
-            ITileLogicBuilder tileLogicBuilder = logicBuilderFacade.GetTileLogicBuilder(curriculumParam, _parentObjects);
-            ITileLogicSetup tileLogicSetup = tileLogicBuilder.GetTileLogicSetup();
-            IEnvTile[,] tileLogic = tileLogicSetup.GetTileLogic();
-            TileDict = tileLogicSetup.GetTileTypes();
-            int mapScale = envParams[GameParam.MapScale];
-            AgentMapScale = mapScale;
-            CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, Materials);
-            SpawnSpyAgent();
-
+            switch (trainingScenario)
+            {
+                case TrainingScenario.GuardAlert:
+                case TrainingScenario.GuardPatrolWithSpy:
+                case TrainingScenario.SpyEvade:
+                    return 1 + guardCount;
+                case TrainingScenario.SpyPathFinding:
+                    return 1;
+                case TrainingScenario.GuardPatrol:
+                    return guardCount;
+                default:
+                    return guardCount + 1;
+            }
+            
         }
 
         
@@ -264,6 +280,7 @@ namespace Training
                 SpyPrefabClone.transform.position = TileDict[TileType.SpyTile][0].Position;
             }
         }
+        
         
 
         

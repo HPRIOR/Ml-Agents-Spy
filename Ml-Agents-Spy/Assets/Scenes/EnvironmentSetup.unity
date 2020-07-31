@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: TrainingScenario
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: DebugSetup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}

@@ -1,4 +1,6 @@
-﻿using Interfaces;
+﻿using System.Linq;
+using Enums;
+using Interfaces;
 using Training;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -45,6 +47,7 @@ namespace Agents
 
         public override void OnActionReceived(float[] vectorAction)
         {
+            //RewardAndRestartIfExitReached(DistancesToEachExitPoint());
             MoveAgent(vectorAction[0]);
         }
         
@@ -64,6 +67,24 @@ namespace Agents
 
             transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
         }
-
+        
+        public void RewardAndRestartIfExitReached(float[] distances)
+        {
+            foreach (var magnitude in distances)
+                if (magnitude < 1f)
+                {
+                    SetReward(1f);
+                    EndEpisode();
+                }
+        }
+        /// <summary>
+        /// Gets the distances to each exit point
+        /// </summary>
+        /// <returns>Float array of the distance to each exit point</returns>
+        private float[] DistancesToEachExitPoint() => 
+            _instanceController
+                .TileDict[TileType.ExitTiles]
+                .Select(tile => (tile.Position - transform.position).magnitude)
+                .ToArray();
     }
 }

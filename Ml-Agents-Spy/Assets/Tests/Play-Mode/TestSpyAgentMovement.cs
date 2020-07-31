@@ -169,13 +169,14 @@ namespace Tests
             trainingInstanceController.HasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
+            trainingInstanceController.TrainingScenario = TrainingScenario.SpyPathFinding;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             Vector3 exitTile = GetNearestTile(
                 tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
                 spyPrefab).Position;
 
-            spyPrefab.transform.position = exitTile - new Vector3(0, 0,2);
+            spyPrefab.transform.position = exitTile - new Vector3(0, 0,1.5f);
             yield return new  WaitForSeconds(0.1f);
             var exitDistance = agentScript.DistanceToNearestExit(GetNearestTile(
                 tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
@@ -250,15 +251,7 @@ namespace Tests
                 yield return new  WaitForSeconds(0.1f);
                 agentScript.MoveAgent(2f);
             }
-
             Assert.AreEqual( 1, agentScript.IsColliding);
-            
-            
-            
-            
         }
-        
-        
-        
     }
 }

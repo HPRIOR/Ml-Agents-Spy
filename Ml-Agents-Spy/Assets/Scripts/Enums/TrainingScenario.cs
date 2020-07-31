@@ -1,4 +1,6 @@
-﻿namespace Enums
+﻿using System;
+
+namespace Enums
 {
     public enum TrainingScenario
     {
