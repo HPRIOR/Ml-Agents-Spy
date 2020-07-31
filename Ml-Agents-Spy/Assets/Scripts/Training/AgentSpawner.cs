@@ -55,6 +55,7 @@ namespace Training
         }
         
 
+        // will need to pass the _prefabClone and prefab into here
         private void SpawnOrMoveSpy()
         {
             if (_spyPrefabClone is null)
@@ -67,7 +68,9 @@ namespace Training
                 _spyPrefabClone.transform.position = _tileDict[TileType.SpyTile][0].Position;
             }
         }
-
+        
+        
+        
         private void SpawnGuards(int numberOfGuards)
         {
             for (int i = 0; i < numberOfGuards; i++)
