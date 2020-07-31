@@ -24,7 +24,7 @@ namespace Tests
         public IEnumerator Test_Initial_Position_Map_Scale_1()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
@@ -35,9 +35,10 @@ namespace Tests
         public IEnumerator Test_Initial_Position_Map_Scale_2()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;            
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 2;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
@@ -49,9 +50,10 @@ namespace Tests
         public IEnumerator Test_Initial_Position_Map_Scale_3()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
@@ -62,16 +64,17 @@ namespace Tests
         public IEnumerator Test_Move_Up()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             var initialPosition = agentScript.PositionY();
             agentScript.MoveAgent(1f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             agentScript.MoveAgent(1f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Assert.Greater(agentScript.PositionY(), initialPosition);
 
         }
@@ -81,6 +84,7 @@ namespace Tests
         public IEnumerator Test_Move_Down()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -88,9 +92,9 @@ namespace Tests
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             var initialPosition = agentScript.PositionY();
             agentScript.MoveAgent(2f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             agentScript.MoveAgent(2f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Assert.Less(agentScript.PositionY(), initialPosition);
         }
         
@@ -99,16 +103,17 @@ namespace Tests
         public IEnumerator Test_Move_Left()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             var initialPosition = agentScript.PositionX();
             agentScript.MoveAgent(4f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             agentScript.MoveAgent(4f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Assert.Less(agentScript.PositionX(), initialPosition);
         }
         
@@ -117,16 +122,17 @@ namespace Tests
         public IEnumerator Test_Move_Right()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             var initialPosition = agentScript.PositionX();
             agentScript.MoveAgent(3f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             agentScript.MoveAgent(3f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Assert.Greater(agentScript.PositionX(), initialPosition);
         }
         
@@ -135,10 +141,11 @@ namespace Tests
         public IEnumerator Test_Distance_From_Exit_Change()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             trainingInstanceController.HasMiddleTiles = false;
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             var tileDict = trainingInstanceController.TileDict;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -165,6 +172,7 @@ namespace Tests
         public IEnumerator Test_Close_To_Exit()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             trainingInstanceController.HasMiddleTiles = false;
@@ -178,7 +186,7 @@ namespace Tests
                 spyPrefab).Position;
 
             spyPrefab.transform.position = exitTile - new Vector3(0, 0,1.5f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             var exitDistance = agentScript.DistanceToNearestExit(GetNearestTile(
                 tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
                 spyPrefab).Position);
@@ -191,18 +199,17 @@ namespace Tests
         public IEnumerator Test_Fall_Off_Edge()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.MapScale =1;
             trainingInstanceController.HasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
 
             var transform = spyPrefab.transform;
-            transform.position -= new Vector3(0, 10, 0);
+            transform.position -= new Vector3(0, 200, 0);
             yield return new  WaitForSeconds(0.1f);
-            
-            
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
         }
         
@@ -211,8 +218,9 @@ namespace Tests
         public IEnumerator Test_Respawn_Point()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.MapScale = 1;
             trainingInstanceController.HasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
@@ -221,11 +229,9 @@ namespace Tests
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             yield return new  WaitForSeconds(0.1f);
             var transform = spyPrefab.transform;
-            transform.position = GetNearestTile(
-                tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                spyPrefab).Position;
-            
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
+            agentScript.EndEpisode();
+            yield return null;   
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
         }
         
@@ -234,6 +240,7 @@ namespace Tests
         public IEnumerator Test_Collision()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             trainingInstanceController.HasMiddleTiles = false;
@@ -257,7 +264,7 @@ namespace Tests
         public IEnumerator Test_Relative_Initial_Position_Map_Scale_1()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
@@ -268,6 +275,7 @@ namespace Tests
         public IEnumerator Test_Relative_Initial_Position_Map_Scale_2()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 2;
             yield return new  WaitForSeconds(0.1f);
@@ -282,6 +290,7 @@ namespace Tests
         public IEnumerator Test_Relative_Initial_Position_Map_Scale_3()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -295,6 +304,7 @@ namespace Tests
         public IEnumerator Test_Relative_Move_Up()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -314,6 +324,7 @@ namespace Tests
         public IEnumerator Test_Relative_Move_Down()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -332,6 +343,7 @@ namespace Tests
         public IEnumerator Test_Relative_Move_Left()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -350,6 +362,7 @@ namespace Tests
         public IEnumerator Test_Relative_Move_Right()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             yield return new  WaitForSeconds(0.1f);
@@ -368,6 +381,7 @@ namespace Tests
         public IEnumerator Test_Relative_Distance_From_Exit_Change()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             trainingInstanceController.HasMiddleTiles = false;
@@ -398,6 +412,7 @@ namespace Tests
         public IEnumerator Test_Relative_Close_To_Exit()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.MapScale = 3;
             trainingInstanceController.HasMiddleTiles = false;
@@ -411,7 +426,7 @@ namespace Tests
                 spyPrefab).Position;
 
             spyPrefab.transform.position = exitTile - new Vector3(0, 0,1.5f);
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;   
             var exitDistance = agentScript.DistanceToNearestExit(GetNearestTile(
                 tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
                 spyPrefab).Position);
@@ -424,21 +439,17 @@ namespace Tests
         public IEnumerator Test_Relative_Respawn_Point()
         {
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
+            yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.MapScale = 1;
             trainingInstanceController.HasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
-            
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            yield return new  WaitForSeconds(0.1f);
-            var transform = spyPrefab.transform;
-            transform.position = GetNearestTile(
-                tileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                spyPrefab).Position;
-            
-            yield return new  WaitForSeconds(0.1f);
+            yield return null;
+            agentScript.EndEpisode();
+            yield return null;   
             Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
         }
     }

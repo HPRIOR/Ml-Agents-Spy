@@ -72,6 +72,7 @@ namespace Training
             Academy.Instance.OnEnvironmentReset += Restart;
         }
 
+        
         public void Restart()
         {
             if (debugSetup)

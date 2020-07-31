@@ -383,6 +383,21 @@ PrefabInstance:
       propertyPath: curriculum
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: trainingScenario
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: guardAgentCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: mapDifficulty
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: m_Name
