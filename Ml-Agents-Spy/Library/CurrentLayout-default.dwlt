@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -2036
-    y: 89
+    x: -1920
+    y: 95
     width: 1297
-    height: 790
+    height: 784
   m_ShowMode: 0
   m_Title: 
   m_RootView: {fileID: 4}
@@ -38,10 +38,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -959
+    x: -966
     y: 51
     width: 958
-    height: 998
+    height: 991
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 9}
@@ -66,9 +66,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1297
-    height: 790
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 784
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -93,11 +93,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1297
-    height: 790
+    height: 784
   m_MinSize: {x: 100, y: 121}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 31810
+  controlID: 14
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -116,7 +116,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 447
-    height: 948
+    height: 941
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
@@ -144,11 +144,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 958
-    height: 948
+    height: 941
   m_MinSize: {x: 609, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 1
-  controlID: 55
+  controlID: 139
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,9 +167,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 232
-    height: 505
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    height: 501
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -195,11 +195,11 @@ MonoBehaviour:
     x: 447
     y: 0
     width: 232
-    height: 948
+    height: 941
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 96
+  controlID: 107
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -221,7 +221,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 958
-    height: 998
+    height: 991
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &10
@@ -267,11 +267,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 958
-    height: 948
+    height: 941
   m_MinSize: {x: 609, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 56
+  controlID: 140
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 978
+    y: 971
     width: 958
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -309,9 +309,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 505
+    y: 501
     width: 232
-    height: 443
+    height: 440
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 19}
@@ -337,7 +337,7 @@ MonoBehaviour:
     x: 679
     y: 0
     width: 279
-    height: 948
+    height: 941
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
@@ -365,22 +365,22 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -2036
-    y: 89
+    x: -1920
+    y: 95
     width: 1297
-    height: 769
+    height: 763
   m_ViewDataDictionary: {fileID: 0}
   m_Spl:
-    ID: 31901
+    ID: 145
     splitterInitialOffset: 451
     currentActiveSplitter: -1
-    realSizes: 7d0100003e010000
+    realSizes: 7a0100003b010000
     relativeSizes:
     - 0.5450644
     - 0.4549356
     minSizes: 2000000020000000
     maxSizes: 0000000000000000
-    lastTotalSize: 699
+    lastTotalSize: 693
     splitSize: 6
     xOffset: 0
   m_TestTypeToolbarIndex: 0
@@ -436,11 +436,11 @@ MonoBehaviour:
       parentId: 1077
       parentUniqueId: '[Play-Mode.dll][suite]'
     - id: 1001
-      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-      name: TestAgentSpawning
-      fullName: Tests.TestAgentSpawning
-      resultStatus: 1
-      duration: 4.9686804
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup][suite]
+      name: TestEdgeCasesCurriculumAndDebugSetup
+      fullName: Tests.TestEdgeCasesCurriculumAndDebugSetup
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -449,574 +449,17 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1032
+      parentId: 1115
       parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
-    - id: 1024
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr]
-      name: Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Curr
-      resultStatus: 1
-      duration: 0.2452517
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1025
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug]
-      name: Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Advanced_Debug
-      resultStatus: 1
-      duration: 0.2116163
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1017
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug]
-      name: Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Basicc_Debug
-      resultStatus: 1
-      duration: 0.210148
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1016
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr]
-      name: Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Respawn_Count_Simple_Curr
-      resultStatus: 1
-      duration: 0.2087503
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1023
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr]
-      name: Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr
-      resultStatus: 1
-      duration: 4.829766
-      messages: 
-      output: 'Couldn''t connect to trainer on port 5004 using API version 1.0.0.
-        Will perform inference instead.
-
-        PatrolGuard Called OnEpisode Begin
-
-'
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1022
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug]
-      name: Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug
-      resultStatus: 2
-      duration: 0.0068686
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Debug>d__27.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:255
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1014
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug]
-      name: Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug
-      resultStatus: 2
-      duration: 0.0064117
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Basic_Debug>d__19.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:198
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1015
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr]
-      name: Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr
-      resultStatus: 2
-      duration: 0.0066132
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Guard_Patrol_Guard_Spawn_Count_Simple_Curr>d__20.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:207
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1029
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr]
-      name: Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Curr
-      resultStatus: 1
-      duration: 0.1079155
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1028
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug]
-      name: Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Advanced_Debug
-      resultStatus: 1
-      duration: 0.1094095
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1020
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug]
-      name: Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Basic_Debug
-      resultStatus: 1
-      duration: 0.1085219
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1021
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr]
-      name: Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Respawn_Simple_Curr
-      resultStatus: 1
-      duration: 0.109458
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1027
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr]
-      name: Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Curr
-      resultStatus: 1
-      duration: 0.1095654
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1026
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug]
-      name: Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Advanced_Debug
-      resultStatus: 1
-      duration: 0.1091873
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1018
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug]
-      name: Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Basic_Debug
-      resultStatus: 1
-      duration: 0.1101786
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1019
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr]
-      name: Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Guard_Patrol_No_Spy_Spawn_Simple_Curr
-      resultStatus: 1
-      duration: 0.1091412
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1011
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr]
-      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
-      resultStatus: 2
-      duration: 0.007458
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr>d__16.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:161
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1005
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug]
-      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
-      resultStatus: 2
-      duration: 0.006871
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug>d__10.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:99
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1004
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug]
-      name: Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
-      resultStatus: 2
-      duration: 0.0065456
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug>d__9.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:89
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1009
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr]
-      name: Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
-      resultStatus: 2
-      duration: 0.0068922
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr>d__15.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:152
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1007
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug]
-      name: Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
-      resultStatus: 2
-      duration: 0.0074956
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug>d__12.MoveNext
-        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:121
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1006
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug]
-      name: Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
-      resultStatus: 2
-      duration: 0.0068665
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug>d__11.MoveNext
-        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:108
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1009
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr]
-      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
-      resultStatus: 2
-      duration: 0.0068585
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr>d__14.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:143
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1003
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug]
-      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
-      resultStatus: 2
-      duration: 0.0065235
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
-      output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug>d__8.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:79
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
     - id: 1002
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug]
-      name: Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
-      resultStatus: 2
-      duration: 0.0064682
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
+      uniqueId: Play-Mode.dll/Tests/TestEdgeCasesCurriculumAndDebugSetup/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Alert]
+      name: Test_More_Agents_Than_Exits_No_Exception_Guard_Alert
+      fullName: Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Alert
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureDebug (Enums.TrainingScenario trainingScenario)
-        [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:40
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug>d__7.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:70
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -1024,28 +467,16 @@ MonoBehaviour:
       categories:
       - Uncategorized
       parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1008
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr]
-      name: Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
-      resultStatus: 2
-      duration: 0.0063014
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup][suite]
+    - id: 1003
+      uniqueId: Play-Mode.dll/Tests/TestEdgeCasesCurriculumAndDebugSetup/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol]
+      name: Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol
+      fullName: Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr>d__13.MoveNext
-        () [0x00020] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:134
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -1053,28 +484,16 @@ MonoBehaviour:
       categories:
       - Uncategorized
       parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1013
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr]
-      name: Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
-      resultStatus: 2
-      duration: 0.0063927
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup][suite]
+    - id: 1005
+      uniqueId: Play-Mode.dll/Tests/TestEdgeCasesCurriculumAndDebugSetup/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol_With_Spy]
+      name: Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol_With_Spy
+      fullName: Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_Patrol_With_Spy
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr>d__18.MoveNext
-        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:183
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -1082,43 +501,336 @@ MonoBehaviour:
       categories:
       - Uncategorized
       parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup][suite]
+    - id: 1004
+      uniqueId: Play-Mode.dll/Tests/TestEdgeCasesCurriculumAndDebugSetup/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_SpyEvade]
+      name: Test_More_Agents_Than_Exits_No_Exception_Guard_SpyEvade
+      fullName: Tests.TestEdgeCasesCurriculumAndDebugSetup.Test_More_Agents_Than_Exits_No_Exception_Guard_SpyEvade
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestEdgeCasesCurriculumAndDebugSetup][suite]
+    - id: 1006
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+      name: TestGuardAlertTrainingScenarioSetup
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1115
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1023
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Alert_Agent_Is_Alert]
+      name: Test_Guard_Alert_Agent_Is_Alert
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Alert_Agent_Is_Alert
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
     - id: 1010
-      uniqueId: Play-Mode.dll/Tests/TestAgentSpawning/[Play-Mode][Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr]
-      name: Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
-      fullName: Tests.TestAgentSpawning.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
-      resultStatus: 2
-      duration: 0.0066519
-      messages: 'System.ArgumentException : The Object you want to instantiate is
-        null.'
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug]
+      name: Test_Guard_Respawn_Count_Basic_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at UnityEngine.Object.CheckNullArgument (System.Object arg,
-        System.String message) [0x00009] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3
-        position, UnityEngine.Quaternion rotation) [0x00001] in <3dc54541a2574ac7826a004a212a4332>:0
-        \r\n  at Tests.TestAgentSpawning.ConfigureCurriculum (Enums.TrainingScenario
-        inputTrainingScenario, Enums.CurriculumEnum curriculum) [0x00001] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:30
-        \r\n  at Tests.TestAgentSpawning+<Test_Spy_PathFinding_Agent_Respawn_Simple_Curr>d__17.MoveNext
-        () [0x0002e] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestAgentSpawning.cs:170
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestAgentSpawning][suite]
-    - id: 1062
-      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-      name: TestSpy
-      fullName: Tests.TestSpy
-      resultStatus: 2
-      duration: 1.4413586
-      messages: One or more child tests had errors
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1009
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr]
+      name: Test_Guard_Respawn_Count_Simple_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1016
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr]
+      name: Test_Guard_Spawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1015
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug]
+      name: Test_Guard_Spawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1007
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug]
+      name: Test_Guard_Spawn_Count_Basic_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1008
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr]
+      name: Test_Guard_Spawn_Count_Simple_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1014
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr]
+      name: Test_No_Spy_Respawn_Simple_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1017
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr]
+      name: Test_Respawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1018
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug]
+      name: Test_Respawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1022
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr]
+      name: Test_Spy_Respawn_Advanced_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1021
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug]
+      name: Test_Spy_Respawn_Advanced_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1013
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug]
+      name: Test_Spy_Respawn_Basic_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1020
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr]
+      name: Test_Spy_Spawn_Advanced_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1019
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug]
+      name: Test_Spy_Spawn_Advanced_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1011
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug]
+      name: Test_Spy_Spawn_Basic_Debug
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1012
+      uniqueId: Play-Mode.dll/Tests/TestGuardAlertTrainingScenarioSetup/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr]
+      name: Test_Spy_Spawn_Simple_Curr
+      fullName: Tests.TestGuardAlertTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardAlertTrainingScenarioSetup][suite]
+    - id: 1024
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+      name: TestGuardPatrolTrainingScenarioSetup
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1126,265 +838,998 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1078
+      parentId: 1115
       parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
-    - id: 1071
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestCloseToExit]
-      name: TestCloseToExit
-      fullName: Tests.TestSpy.TestCloseToExit
-      resultStatus: 2
-      duration: 0.1114138
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+    - id: 1041
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Agent_Is_Patrol]
+      name: Test_Agent_Is_Patrol
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Agent_Is_Patrol
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestCloseToExit>d__9.MoveNext () [0x000e1]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:174
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1074
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestCollision]
-      name: TestCollision
-      fullName: Tests.TestSpy.TestCollision
-      resultStatus: 2
-      duration: 0.115125
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1035
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Advanced_Curr]
+      name: Test_Guard_Respawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestCollision>d__12.MoveNext () [0x000c4]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:246
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1070
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestDistanceFromExitChange]
-      name: TestDistanceFromExitChange
-      fullName: Tests.TestSpy.TestDistanceFromExitChange
-      resultStatus: 2
-      duration: 0.1142746
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1036
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Advanced_Debug]
+      name: Test_Guard_Respawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestDistanceFromExitChange>d__8.MoveNext ()
-        [0x000de] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:149
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1072
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestFallOffEdge]
-      name: TestFallOffEdge
-      fullName: Tests.TestSpy.TestFallOffEdge
-      resultStatus: 2
-      duration: 0.1176797
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1028
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug]
+      name: Test_Guard_Respawn_Count_Basic_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestFallOffEdge>d__10.MoveNext () [0x000d5]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:200
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1063
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale1]
-      name: TestInitialPositionMapScale1
-      fullName: Tests.TestSpy.TestInitialPositionMapScale1
-      resultStatus: 2
-      duration: 0.118682
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1027
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr]
+      name: Test_Guard_Respawn_Count_Simple_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale1>d__1.MoveNext
-        () [0x0008a] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:31
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1064
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale2]
-      name: TestInitialPositionMapScale2
-      fullName: Tests.TestSpy.TestInitialPositionMapScale2
-      resultStatus: 2
-      duration: 0.1173014
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1034
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr]
+      name: Test_Guard_Spawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale2>d__2.MoveNext
-        () [0x000a7] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:47
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1065
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestInitialPositionMapScale3]
-      name: TestInitialPositionMapScale3
-      fullName: Tests.TestSpy.TestInitialPositionMapScale3
-      resultStatus: 2
-      duration: 0.118121
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1033
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug]
+      name: Test_Guard_Spawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestInitialPositionMapScale3>d__3.MoveNext
-        () [0x000a7] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:61
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1067
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveDown]
-      name: TestMoveDown
-      fullName: Tests.TestSpy.TestMoveDown
-      resultStatus: 2
-      duration: 0.1200544
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1025
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug]
+      name: Test_Guard_Spawn_Count_Basic_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestMoveDown>d__5.MoveNext () [0x000be] in
-        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:93
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
-    - id: 1068
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveLeft]
-      name: TestMoveLeft
-      fullName: Tests.TestSpy.TestMoveLeft
-      resultStatus: 2
-      duration: 0.120501
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1026
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr]
+      name: Test_Guard_Spawn_Count_Simple_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestMoveLeft>d__6.MoveNext () [0x000be] in
-        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:111
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1040
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Advanced_Curr]
+      name: Test_No_Spy_Respawn_Advanced_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1039
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Advanced_Debug]
+      name: Test_No_Spy_Respawn_Advanced_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1031
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Basic_Debug]
+      name: Test_No_Spy_Respawn_Basic_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1032
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr]
+      name: Test_No_Spy_Respawn_Simple_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1038
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Advanced_Curr]
+      name: Test_No_Spy_Spawn_Advanced_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1037
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Advanced_Debug]
+      name: Test_No_Spy_Spawn_Advanced_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1029
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Basic_Debug]
+      name: Test_No_Spy_Spawn_Basic_Debug
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1030
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Simple_Curr]
+      name: Test_No_Spy_Spawn_Simple_Curr
+      fullName: Tests.TestGuardPatrolTrainingScenarioSetup.Test_No_Spy_Spawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1024
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolTrainingScenarioSetup][suite]
+    - id: 1042
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+      name: TestGuardPatrolWithSpyTrainingScenarioSetup
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1115
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1059
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Alert_Agent_Is_Alert]
+      name: Test_Guard_Alert_Agent_Is_Alert
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Alert_Agent_Is_Alert
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1046
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug]
+      name: Test_Guard_Respawn_Count_Basic_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1045
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr]
+      name: Test_Guard_Respawn_Count_Simple_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1052
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr]
+      name: Test_Guard_Spawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1051
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug]
+      name: Test_Guard_Spawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1043
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug]
+      name: Test_Guard_Spawn_Count_Basic_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1044
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr]
+      name: Test_Guard_Spawn_Count_Simple_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1050
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr]
+      name: Test_No_Spy_Respawn_Simple_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1053
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr]
+      name: Test_Respawn_Count_Advanced_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1054
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug]
+      name: Test_Respawn_Count_Advanced_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1058
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr]
+      name: Test_Spy_Respawn_Advanced_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1057
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug]
+      name: Test_Spy_Respawn_Advanced_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1049
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug]
+      name: Test_Spy_Respawn_Basic_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1056
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr]
+      name: Test_Spy_Spawn_Advanced_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1055
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug]
+      name: Test_Spy_Spawn_Advanced_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1047
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug]
+      name: Test_Spy_Spawn_Basic_Debug
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1048
+      uniqueId: Play-Mode.dll/Tests/TestGuardPatrolWithSpyTrainingScenarioSetup/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr]
+      name: Test_Spy_Spawn_Simple_Curr
+      fullName: Tests.TestGuardPatrolWithSpyTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1042
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestGuardPatrolWithSpyTrainingScenarioSetup][suite]
+    - id: 1060
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+      name: TestSpyAgent
+      fullName: Tests.TestSpyAgent
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1115
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
     - id: 1069
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveRight]
-      name: TestMoveRight
-      fullName: Tests.TestSpy.TestMoveRight
-      resultStatus: 2
-      duration: 0.1224482
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Close_To_Exit]
+      name: Test_Close_To_Exit
+      fullName: Tests.TestSpyAgent.Test_Close_To_Exit
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestMoveRight>d__7.MoveNext () [0x000be] in
-        C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:129
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1072
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Collision]
+      name: Test_Collision
+      fullName: Tests.TestSpyAgent.Test_Collision
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1068
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Distance_From_Exit_Change]
+      name: Test_Distance_From_Exit_Change
+      fullName: Tests.TestSpyAgent.Test_Distance_From_Exit_Change
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1070
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Fall_Off_Edge]
+      name: Test_Fall_Off_Edge
+      fullName: Tests.TestSpyAgent.Test_Fall_Off_Edge
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1061
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_1]
+      name: Test_Initial_Position_Map_Scale_1
+      fullName: Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_1
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1062
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_2]
+      name: Test_Initial_Position_Map_Scale_2
+      fullName: Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_2
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1063
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_3]
+      name: Test_Initial_Position_Map_Scale_3
+      fullName: Tests.TestSpyAgent.Test_Initial_Position_Map_Scale_3
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1065
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Move_Down]
+      name: Test_Move_Down
+      fullName: Tests.TestSpyAgent.Test_Move_Down
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
     - id: 1066
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestMoveUp]
-      name: TestMoveUp
-      fullName: Tests.TestSpy.TestMoveUp
-      resultStatus: 2
-      duration: 0.1183521
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Move_Left]
+      name: Test_Move_Left
+      fullName: Tests.TestSpyAgent.Test_Move_Left
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestMoveUp>d__4.MoveNext () [0x000be] in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:74
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1067
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Move_Right]
+      name: Test_Move_Right
+      fullName: Tests.TestSpyAgent.Test_Move_Right
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1064
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Move_Up]
+      name: Test_Move_Up
+      fullName: Tests.TestSpyAgent.Test_Move_Up
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1081
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Close_To_Exit]
+      name: Test_Relative_Close_To_Exit
+      fullName: Tests.TestSpyAgent.Test_Relative_Close_To_Exit
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1080
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Distance_From_Exit_Change]
+      name: Test_Relative_Distance_From_Exit_Change
+      fullName: Tests.TestSpyAgent.Test_Relative_Distance_From_Exit_Change
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
     - id: 1073
-      uniqueId: Play-Mode.dll/Tests/TestSpy/[Play-Mode][Tests.TestSpy.TestRespawnPoint]
-      name: TestRespawnPoint
-      fullName: Tests.TestSpy.TestRespawnPoint
-      resultStatus: 2
-      duration: 0.1170082
-      messages: 'System.NullReferenceException : Object reference not set to an instance
-        of an object'
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_1]
+      name: Test_Relative_Initial_Position_Map_Scale_1
+      fullName: Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_1
+      resultStatus: 0
+      duration: 0
+      messages: 
       output: 
-      stacktrace: "  at Tests.TestSpy+<TestRespawnPoint>d__11.MoveNext () [0x000de]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Assets\\Tests\\Play-Mode\\TestSpy.cs:222
-        \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__5.MoveNext () [0x0004c]
-        in C:\\Users\\User\\Documents\\Unity_Projects\\Ml-Agents-Spy\\Ml-Agents-Spy\\Library\\PackageCache\\com.unity.test-framework@1.1.16\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:31 "
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1062
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpy][suite]
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1074
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_2]
+      name: Test_Relative_Initial_Position_Map_Scale_2
+      fullName: Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_2
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
     - id: 1075
-      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
-      name: TileTest
-      fullName: Tests.TileTest
-      resultStatus: 1
-      duration: 0.0124587
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_3]
+      name: Test_Relative_Initial_Position_Map_Scale_3
+      fullName: Tests.TestSpyAgent.Test_Relative_Initial_Position_Map_Scale_3
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1077
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Move_Down]
+      name: Test_Relative_Move_Down
+      fullName: Tests.TestSpyAgent.Test_Relative_Move_Down
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1078
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Move_Left]
+      name: Test_Relative_Move_Left
+      fullName: Tests.TestSpyAgent.Test_Relative_Move_Left
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1079
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Move_Right]
+      name: Test_Relative_Move_Right
+      fullName: Tests.TestSpyAgent.Test_Relative_Move_Right
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1076
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Move_Up]
+      name: Test_Relative_Move_Up
+      fullName: Tests.TestSpyAgent.Test_Relative_Move_Up
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1082
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Relative_Respawn_Point]
+      name: Test_Relative_Respawn_Point
+      fullName: Tests.TestSpyAgent.Test_Relative_Respawn_Point
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1071
+      uniqueId: Play-Mode.dll/Tests/TestSpyAgent/[Play-Mode][Tests.TestSpyAgent.Test_Respawn_Point]
+      name: Test_Respawn_Point
+      fullName: Tests.TestSpyAgent.Test_Respawn_Point
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1060
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyAgent][suite]
+    - id: 1083
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+      name: TestSpyEvadeTrainingScenarioSetup
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1393,14 +1838,14 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1078
+      parentId: 1115
       parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
-    - id: 1076
-      uniqueId: Play-Mode.dll/Tests/TileTest/[Play-Mode][Tests.TileTest.TileTestSimplePasses]
-      name: TileTestSimplePasses
-      fullName: Tests.TileTest.TileTestSimplePasses
-      resultStatus: 1
-      duration: 0.0033107
+    - id: 1100
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Agent_Is_Patrol]
+      name: Test_Guard_Agent_Is_Patrol
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Agent_Is_Patrol
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -1410,8 +1855,500 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1075
-      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TileTest][suite]
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1087
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug]
+      name: Test_Guard_Respawn_Count_Basic_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Respawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1086
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr]
+      name: Test_Guard_Respawn_Count_Simple_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Respawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1093
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr]
+      name: Test_Guard_Spawn_Count_Advanced_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1092
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug]
+      name: Test_Guard_Spawn_Count_Advanced_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1084
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug]
+      name: Test_Guard_Spawn_Count_Basic_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1085
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr]
+      name: Test_Guard_Spawn_Count_Simple_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Guard_Spawn_Count_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1091
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr]
+      name: Test_No_Spy_Respawn_Simple_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_No_Spy_Respawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1094
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr]
+      name: Test_Respawn_Count_Advanced_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Respawn_Count_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1095
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug]
+      name: Test_Respawn_Count_Advanced_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Respawn_Count_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1099
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr]
+      name: Test_Spy_Respawn_Advanced_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1098
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug]
+      name: Test_Spy_Respawn_Advanced_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1090
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug]
+      name: Test_Spy_Respawn_Basic_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Respawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1097
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr]
+      name: Test_Spy_Spawn_Advanced_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1096
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug]
+      name: Test_Spy_Spawn_Advanced_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1088
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug]
+      name: Test_Spy_Spawn_Basic_Debug
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1089
+      uniqueId: Play-Mode.dll/Tests/TestSpyEvadeTrainingScenarioSetup/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr]
+      name: Test_Spy_Spawn_Simple_Curr
+      fullName: Tests.TestSpyEvadeTrainingScenarioSetup.Test_Spy_Spawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1083
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyEvadeTrainingScenarioSetup][suite]
+    - id: 1101
+      uniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+      name: TestSpyPathFindingTrainingScenarioSetup
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1115
+      parentUniqueId: Play-Mode.dll/[Play-Mode][Tests][suite]
+    - id: 1111
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1105
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1104
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1110
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr]
+      name: Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1107
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1106
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1109
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1103
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1102
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1108
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr]
+      name: Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1113
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr]
+      name: Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
+    - id: 1112
+      uniqueId: Play-Mode.dll/Tests/TestSpyPathFindingTrainingScenarioSetup/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr]
+      name: Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
+      fullName: Tests.TestSpyPathFindingTrainingScenarioSetup.Test_Spy_PathFinding_Agent_Respawn_Simple_Curr
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1101
+      parentUniqueId: Play-Mode.dll/Tests/[Play-Mode][Tests.TestSpyPathFindingTrainingScenarioSetup][suite]
     m_ResultText: 'Test_Guard_Patrol_Guard_Spawn_Count_Advanced_Curr (4.830s)
 
       ---
@@ -2466,10 +3403,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -959
+    x: -966
     y: 81
     width: 446
-    height: 927
+    height: 920
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames: []
   m_SerializedViewValues: []
@@ -2479,7 +3416,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 446, y: 906}
+  m_TargetSize: {x: 446, y: 899}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -2496,8 +3433,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -223
     m_HBaseRangeMax: 223
-    m_VBaseRangeMin: -453
-    m_VBaseRangeMax: 453
+    m_VBaseRangeMin: -449.5
+    m_VBaseRangeMax: 449.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -2516,9 +3453,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 446
-      height: 906
+      height: 899
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 223, y: 453}
+    m_Translation: {x: 223, y: 449.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -2526,12 +3463,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -223
-      y: -453
+      y: -449.5
       width: 446
-      height: 906
+      height: 899
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 446, y: 927}
+  m_LastWindowPixelSize: {x: 446, y: 920}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -2558,31 +3495,31 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -512
+    x: -519
     y: 81
     width: 230
-    height: 484
+    height: 480
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: b0340000
       m_LastClickedID: 0
-      m_ExpandedIDs: d225d9ffee25d9ffd027d9ffe427d9ff0028d9ff6029d9ff7429d9ff9029d9ff082ad9ff822ad9ff9e2ad9ff162bd9ffe22bd9fffe2bd9ff762cd9fff02cd9ff0c2dd9ff842dd9ffac2dd9ffc82dd9ffda31d9ffea35d9ff0636d9ffd837d9fffc37d9ff1838d9ff0e3bd9ff2e3bd9ff4a3bd9ffac45d9ffd845d9fff445d9ffea48d9ff0e49d9ff2a49d9ff204cd9ff484cd9ff644cd9ff384ed9ff604ed9ff7c4ed9ff5050d9ff7850d9ff9450d9ff1e56d9ff4656d9ff6256d9ffec5bd9ff105cd9ff2c5cd9ff5661d9ff4c66d9ff6866d9ff5e69d9ff7e69d9ff9a69d9ff906cd9ffb86cd9ffd46cd9ffa86ed9ffcc6ed9ffe86ed9ffbc70d9ffe470d9ff0071d9ffd272d9fff272d9ff0e73d9fff075d9ff9c78d9ffb878d9ff8c7ad9ff5c7bd9ff787bd9ff247dd9ff4c7dd9ff687dd9ff067ed9ffb07ed9ffcc7ed9ff6a7fd9ff3e80d9ff5a80d9fff880d9ffea81d9ff0682d9ffa482d9ff1e83d9ff3a83d9ffe085d9ff0086d9ff1c86d9ff1289d9ff3a89d9ff5689d9ff2a8bd9ff4e8bd9ff6a8bd9ff168dd9ff3e8dd9ff5a8dd9ff2c8fd9ff508fd9ff6c8fd9ff2692d9ff8ea6d9ffaaa6d9ff50a9d9ffc6a9d9ffe2a9d9ffb4abd9ffe0abd9fffcabd9ffa6add9ffcaadd9ffe6add9ffdcb0d9ff04b1d9ff20b1d9fff4b2d9ff1cb3d9ff38b3d9ffe4b4d9ff0cb5d9ff28b5d9ffdeb8d9ffaeb9d9ffcab9d9ff76bbd9ff04bcd9ff20bcd9ffd6bfd9ff1ec1d9ff3ac1d9ff08c5d9ff30c5d9ff4cc5d9ff6ec8d9ff0ec9d9ff2ac9d9ffd0cbd9ff7cced9ff98ced9ff6ad0d9ff08d4d9ff24d4d9ffcad6d9ff4cd7d9ff68d7d9ff5edad9ffdcdbd9fff8dbd9ffa4ddd9ffccddd9ffe8ddd9ff94dfd9ffc8e0d9ffd0e0d9ffece0d9ffc0e2d9ffe8e2d9ff04e3d9ffd8e4d9ff68e6d9ff84e6d9ff58e8d9ffe2e8d9fffee8d9ffd2ead9fffeead9ff1aebd9ffe0f0d9ff08f1d9ff24f1d9ff4af6d9ff72f6d9ff8ef6d9ffb4fbd9ffdcfbd9fff8fbd9ff1e01daff4601daff6201daff8806daffb006daffcc06dafff20bdaff1a0cdaff360cdaff220fdaff4a0fdaff660fdaff3a11daff6211daff7e11daff4417daff6c17daff8817daffc41adaffec1adaff081bdaff441edaff681edaff841edaffc021daffe821daff0422daff4025daff7cafe1ff84afe1ffa0afe1ff3eb0e1ffe2b1e1ffeab1e1ff06b2e1ffa4b2e1ff46b3e1ff62b3e1ffe4b5e1ff00b6e1ff9eb6e1ff52b9e1ff6eb9e1ff34bde1ffaebde1ffcabde1ff7ec1e1fff4c1e1ff10c2e1ffc4c5e1ff3ec6e1ff5ac6e1ff0ecae1ffe2cae1fffecae1ff12d0e1ffaad0e1ffc2d0e1fff0d9e1fff8d9e1ff96dce1ffecdce1ff08dde1ffbce0e1ff88e1e1ffa4e1e1ff58e5e1ff84e5e1ffa0e5e1ff54e9e1ffcee9e1ffeae9e1ff9eede1ffc2ede1ffdeede1ff56eee1ff7eeee1ff9aeee1ff52f8e1ff7af8e1ff96f8e1ff4afce1ff72fce1ff8efce1ff4200e2ff6a00e2ff8600e2ff3a04e2ff6204e2ff7e04e2ff3208e2ff5a08e2ff7608e2ff2a0ce2ff520ce2ff6e0ce2ff2210e2ff4a10e2ff6610e2ff1a14e2ff4214e2ff5e14e2ff141be2ff3c1be2ff581be2ff0c1fe2ff341fe2ff501fe2ff0423e2ff3a23e2ff5623e2ff0a27e2ff3227e2ff4e27e2ff022be2ffe0c2ffffe8c2ffff04c3ffff50c5ffff78c5ffff94c5ffff40c7ffff68c7ffff84c7ffff4acdffff72cdffff8ecdffffcad0fffff2d0ffff0ed1ffff4ad4ffff72d4ffff8ed4ffffcad7fffff2d7ffff0ed8ffff4adbffff54fbffff
+      m_ExpandedIDs: 52fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: TrainingInstance (Missing Prefab)
-        m_OriginalName: TrainingInstance (Missing Prefab)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -2546224
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -2613,10 +3550,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -280
+    x: -287
     y: 81
     width: 278
-    height: 927
+    height: 920
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -2651,10 +3588,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -512
-    y: 586
+    x: -519
+    y: 582
     width: 230
-    height: 422
+    height: 419
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -2669,7 +3606,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts/Training
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -2681,7 +3618,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 54300000
     m_LastClickedID: 12372
-    m_ExpandedIDs: 00000000d0370000d2370000d4370000d6370000d8370000da370000dc370000de370000e0370000e2370000e4370000e6370000e8370000ea370000
+    m_ExpandedIDs: 000000001c3800001e38000020380000223800002438000026380000283800002a3800002c3800002e38000030380000323800003438000036380000383800003a3800003c3800003e3800004038000042380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2706,10 +3643,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 720}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d0370000d2370000d4370000d6370000d8370000da370000dc370000de370000e0370000e2370000e4370000e6370000e8370000ea3700001a3800001e38000026380000283800002a380000e8380000
+    m_ExpandedIDs: ffffffff000000001c3800001e38000020380000223800002438000026380000283800002a3800002c3800002e38000030380000323800003438000036380000383800003a3800003c3800003e3800004038000042380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2801,7 +3738,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.711644, y: -30.679688, z: -12.185526}
+    m_Target: {x: -1.1421968, y: -32.742188, z: -5.5078006}
     speed: 2
     m_Value: {x: 1.711644, y: -30.679688, z: -12.185526}
   m_RenderMode: 0
@@ -2851,9 +3788,9 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    m_Value: {x: -0.7071068, y: 0, z: -0, w: -0.7071068}
   m_Size:
-    m_Target: 22.629374
+    m_Target: 28.528883
     speed: 2
     m_Value: 22.629374
   m_Ortho:

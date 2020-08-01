@@ -15,7 +15,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return null;
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
         [UnityTest]
@@ -24,7 +24,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return null;
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
 
         }
 
@@ -34,7 +34,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.NotNull(trainingInstanceController.Spy);
         }
 
         [UnityTest]
@@ -43,7 +43,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetAdvancedDebug(trainingInstanceController);
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.NotNull(trainingInstanceController.Spy);
         }
 
         [UnityTest]
@@ -53,10 +53,10 @@ namespace Tests
             SetBasicDebug(trainingInstanceController);
             yield return null;
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
-            trainingInstanceController.SpyPrefabClone.transform.position = firstExitPosition.Position;
+            trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.NotNull(trainingInstanceController.Spy);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
         [UnityTest]
@@ -66,10 +66,10 @@ namespace Tests
             SetBasicDebug(trainingInstanceController);
             yield return null;
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
-            trainingInstanceController.SpyPrefabClone.transform.position = firstExitPosition.Position;
+            trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.NotNull(trainingInstanceController.Spy);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
 //
@@ -79,7 +79,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return null;
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
         [UnityTest]
@@ -88,7 +88,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return null;
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
         [UnityTest]
@@ -97,7 +97,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.NotNull(trainingInstanceController.Spy);
         }
 
         [UnityTest]
@@ -106,7 +106,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.NotNull(trainingInstanceController.Spy);
         }
 
         [UnityTest]
@@ -116,10 +116,10 @@ namespace Tests
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return null;
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
-            trainingInstanceController.SpyPrefabClone.transform.position = firstExitPosition.Position;
+            trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.NotNull(trainingInstanceController.Spy);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
         [UnityTest]
@@ -129,10 +129,10 @@ namespace Tests
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return null;
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
-            trainingInstanceController.SpyPrefabClone.transform.position = firstExitPosition.Position;
+            trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
-            Assert.NotNull(trainingInstanceController.SpyPrefabClone);
-            Assert.AreEqual(0, trainingInstanceController.GuardClones.Count);
+            Assert.NotNull(trainingInstanceController.Spy);
+            Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
     }

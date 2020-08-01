@@ -32,7 +32,7 @@ namespace Tests
             return trainingInstanceController;
         }
 
-        protected void SetBasicDebug(TrainingInstanceController trainingInstanceController)
+        protected static void SetBasicDebug(TrainingInstanceController trainingInstanceController)
         {
             trainingInstanceController.exitCount = 2;
             trainingInstanceController.mapScale = 1;
@@ -41,13 +41,22 @@ namespace Tests
             trainingInstanceController.hasMiddleTiles = true;
         }
 
-        protected void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
+        protected static void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
         {
             trainingInstanceController.exitCount = 3;
             trainingInstanceController.mapScale = 3;
             trainingInstanceController.mapDifficulty = 10;
             trainingInstanceController.guardAgentCount = 2;
             trainingInstanceController.hasMiddleTiles = true;
+        }
+
+        protected static void SetDebugParameters(TrainingInstanceController trainingInstanceController, int mapScale,
+            int mapDifficulty, int exitCount, int guardAgentCount)
+        {
+            trainingInstanceController.mapDifficulty = mapDifficulty;
+            trainingInstanceController.mapScale = mapScale;
+            trainingInstanceController.exitCount = exitCount;
+            trainingInstanceController.guardAgentCount = guardAgentCount;
         }
         
     }

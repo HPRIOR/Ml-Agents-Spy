@@ -26,7 +26,6 @@ namespace Agents
         /// </summary>
         public override void OnEpisodeBegin()
         {
-            Debug.Log("Spy agent called on episode begin");
             _instanceController = GetComponentInParent<TrainingInstanceController>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);

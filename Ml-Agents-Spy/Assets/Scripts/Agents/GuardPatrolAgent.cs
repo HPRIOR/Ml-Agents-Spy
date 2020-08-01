@@ -32,7 +32,6 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
-            Debug.Log("PatrolGuard Called OnEpisode Begin");
             _instanceController = GetComponentInParent<TrainingInstanceController>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);

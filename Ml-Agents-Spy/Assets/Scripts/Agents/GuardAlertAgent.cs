@@ -31,7 +31,6 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
-            Debug.Log("AlertGuard Called OnEpisode Begin");
             _instanceController = GetComponentInParent<TrainingInstanceController>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             if (CompletedEpisodes > 0 )

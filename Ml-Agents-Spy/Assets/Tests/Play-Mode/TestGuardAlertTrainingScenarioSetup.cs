@@ -17,7 +17,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
             SetBasicDebug(trainingInstanceController);
             yield return  null;
-            Assert.AreEqual(1, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(1, trainingInstanceController.Guards.Count);
             
         }
 
@@ -27,7 +27,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             yield return  null;
-            Assert.AreEqual(1, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
         
         [UnityTest]
@@ -36,11 +36,11 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.AreEqual(1, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
         
         
@@ -51,11 +51,11 @@ namespace Tests
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.AreEqual(1, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
         
         [UnityTest]
@@ -65,11 +65,11 @@ namespace Tests
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -78,11 +78,11 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -92,11 +92,11 @@ namespace Tests
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -105,11 +105,11 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         
@@ -119,7 +119,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitForSeconds(0.2f);
-            Assert.AreEqual(2, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
         [UnityTest]
@@ -128,7 +128,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitForSeconds(0.2f);
-            Assert.AreEqual(2, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
         [UnityTest]
@@ -137,7 +137,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitForSeconds(0.2f);
-            Assert.AreEqual(2, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
         
@@ -147,7 +147,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitForSeconds(0.2f);
-            Assert.AreEqual(2, trainingInstanceController.GuardClones.Count);
+            Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
         [UnityTest]
@@ -156,7 +156,7 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitForSeconds(0.1f);
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -165,11 +165,11 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -178,11 +178,11 @@ namespace Tests
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
             SetAdvancedDebug(trainingInstanceController);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -191,11 +191,11 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return  null;
-            var guard = trainingInstanceController.GuardClones[0].GetComponent<Agent>();
+            var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
             yield return null;
-            Assert.IsNotNull(trainingInstanceController.SpyPrefabClone);
+            Assert.IsNotNull(trainingInstanceController.Spy);
         }
         
         [UnityTest]
@@ -204,7 +204,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return null;
-            Assert.IsNotNull( trainingInstanceController.GuardClones[0].GetComponent<GuardAlertAgent>());
+            Assert.IsNotNull( trainingInstanceController.Guards[0].GetComponent<GuardAlertAgent>());
         }
     }
 }

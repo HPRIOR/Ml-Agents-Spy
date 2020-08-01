@@ -9,26 +9,26 @@ public static class RandomHelper
     /// Generates list of random unique sequence of numbers.
     /// </summary>
     /// <remarks>
-    /// The ExitCount will default to the max value if the ExitCount is larger than the max value.
+    /// The count will default to the max value if the count is larger than the max value.
     /// Otherwise there will be no values left to populate the list and it will loop forever
     /// </remarks>
-    /// <param name="count">the length of the returned List</param>
-    /// <param name="maxVal">highest value which can be generated</param>
+    /// <param name="listLength">the length of the returned List</param>
+    /// <param name="maximumValue">highest value which can be generated - exclusive</param>
     /// <returns>List of random unique sequence of number</returns>
-    public static List<int> GetUniqueRandomList(int count, int maxVal)
+    public static List<int> GetUniqueRandomList(int listLength, int maximumValue)
     {
-        int checkCount = count > maxVal ? maxVal : count;
+        int maximumNumberOfElements = listLength > maximumValue ? maximumValue : listLength;
 
         List<int> uniqueInts = new List<int>();
         
-        int counting = 0;
-        while (counting < checkCount)
+        int numberOfAddedElements = 0;
+        while (numberOfAddedElements < maximumNumberOfElements)
         {
-            int num = _random.Next(0, maxVal);
+            int num = _random.Next(0, maximumValue);
             if  (!uniqueInts.Contains(num))
             {
                 uniqueInts.Add(num);
-                counting += 1;
+                numberOfAddedElements += 1;
             }
         }
 
