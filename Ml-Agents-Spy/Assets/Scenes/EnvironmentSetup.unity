@@ -398,6 +398,12 @@ PrefabInstance:
       propertyPath: mapDifficulty
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2483226645643841315, guid: c2e8c952d0729044d86939a1399c7402,
+        type: 3}
+      propertyPath: spyPrefab
+      value: 
+      objectReference: {fileID: 7091373540181754968, guid: 7469f9acaaf62d14fbc8c2e0a5836b83,
+        type: 3}
     - target: {fileID: 2483226645643841316, guid: c2e8c952d0729044d86939a1399c7402,
         type: 3}
       propertyPath: m_Name

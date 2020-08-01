@@ -8,7 +8,7 @@ using Random = System.Random;
 
 namespace EnvSetup
 {
-    public class ExitFinder : IExitFinder
+    public class ExitTileLogic : IExitTileLogic
     {
         public int ExitCount { get; private set; }
         public bool CanProceed { get; set; }= true;
@@ -18,7 +18,7 @@ namespace EnvSetup
         private readonly int _requestedExitCount;
 
 
-        public ExitFinder(int matrixSize, int requestedExitCount)
+        public ExitTileLogic(int matrixSize, int requestedExitCount)
         {
             _matrixSize = matrixSize;
             _requestedExitCount = requestedExitCount;

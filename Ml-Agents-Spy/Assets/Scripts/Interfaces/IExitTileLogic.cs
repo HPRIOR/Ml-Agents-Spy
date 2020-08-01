@@ -1,6 +1,6 @@
 ﻿namespace Interfaces
 {
-    public interface IExitFinder
+    public interface IExitTileLogic
     {
         int ExitCount { get; }
     

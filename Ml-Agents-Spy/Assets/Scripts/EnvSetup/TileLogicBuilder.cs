@@ -15,7 +15,7 @@ namespace EnvSetup
         private readonly IEnvTileLogic _envTileLogic;
         private readonly IGuardTileLogic _guardTileLogic;
         private readonly IPathFinder _pathFinder;
-        private readonly IExitFinder _exitFinder;
+        private readonly IExitTileLogic _exitTileLogic;
         private readonly int _mapCreationTolerance;
 
         public TileLogicBuilder(int mapScale, int mapDifficulty, int exitCount, int guardAgentCount,
@@ -27,7 +27,7 @@ namespace EnvSetup
             _spyTileLogic = new SpyTileLogic(matrixSize);
             _envTileLogic = new EnvTileLogic(matrixSize, mapDifficulty, hasMiddleTiles);
             _pathFinder = new PathFinder();
-            _exitFinder = new ExitFinder(matrixSize, exitCount);
+            _exitTileLogic = new ExitTileLogic(matrixSize, exitCount);
             _guardTileLogic = new GuardTileLogic(mapScale, matrixSize, guardAgentCount);
             _mapCreationTolerance = mapCreationTolerance;
         }
@@ -38,7 +38,7 @@ namespace EnvSetup
                 _spyTileLogic, 
                 _envTileLogic,
                 _guardTileLogic, 
-                _exitFinder, 
+                _exitTileLogic, 
                 _pathFinder, 
                 _mapCreationTolerance
             );

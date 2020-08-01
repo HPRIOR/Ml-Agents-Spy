@@ -20,10 +20,10 @@ namespace EnvSetup
         private readonly IEnvTileLogic _envTileLogic;
         private readonly IGuardTileLogic _guardTileLogic;
         private readonly IPathFinder _pathFinder;
-        private readonly IExitFinder _exitFinder;
+        private readonly IExitTileLogic _exitTileLogic;
 
         public TileLogicSetup(ITileMatrixProducer tileMatrixProducer, ISpyTileLogic spyTileLogic, 
-            IEnvTileLogic envTileLogic, IGuardTileLogic guardTileLogic, IExitFinder exitFinder, IPathFinder pathFinder,
+            IEnvTileLogic envTileLogic, IGuardTileLogic guardTileLogic, IExitTileLogic exitTileLogic, IPathFinder pathFinder,
             int mapCreationTolerance = 500, bool hasMiddleTiles = true)
         {
             _tileMatrixProducer = tileMatrixProducer;
@@ -32,7 +32,7 @@ namespace EnvSetup
             _envTileLogic = envTileLogic;
             _guardTileLogic = guardTileLogic;
             _pathFinder = pathFinder;
-            _exitFinder = exitFinder;
+            _exitTileLogic = exitTileLogic;
             _mapCreationTolerance = mapCreationTolerance;
         }
 
@@ -65,12 +65,12 @@ namespace EnvSetup
                 IEnvTile spyEnvTile = _spyTileLogic.SetSpyTile(tilesCopy);
                 _envTileLogic.SetEnvTiles(tilesCopy);
                 _pathFinder.GetPath(spyEnvTile);
-                _exitFinder.CheckMatrix(tilesCopy);
-                _guardTileLogic.GetMaxExitCount(_exitFinder.ExitCount);
+                _exitTileLogic.CheckMatrix(tilesCopy);
+                _guardTileLogic.GetMaxExitCount(_exitTileLogic.ExitCount);
                 _guardTileLogic.GetPotentialGuardPlaces(tilesCopy);
-                if (_exitFinder.ExitsAreAvailable())
+                if (_exitTileLogic.ExitsAreAvailable())
                 {
-                    _exitFinder.SetExitTiles();
+                    _exitTileLogic.SetExitTiles();
                     if (_guardTileLogic.GuardPlacesAreAvailable())
                     {
                         _guardTileLogic.SetGuardTiles();
@@ -87,7 +87,7 @@ namespace EnvSetup
                 else
                 {
                     count += 1;
-                    _exitFinder.CanProceed = true;
+                    _exitTileLogic.CanProceed = true;
                     if (count > _mapCreationTolerance) throw new MapCreationException("Exits cannot be created: \n either the map is too small for the number of exits, or the spy cannot reach enough exit tiles");
                 }
             }

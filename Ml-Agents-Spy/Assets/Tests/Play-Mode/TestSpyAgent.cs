@@ -37,7 +37,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;            
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 2;
+            trainingInstanceController.mapScale = 2;
             yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -52,7 +52,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -66,7 +66,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -86,7 +86,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -105,7 +105,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -124,7 +124,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -143,8 +143,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return null;   
             var tileDict = trainingInstanceController.TileDict;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
@@ -174,8 +174,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
             trainingInstanceController.trainingScenario = TrainingScenario.SpyPathFinding;
@@ -201,8 +201,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale =1;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale =1;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -220,8 +220,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 1;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 1;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
             
@@ -242,8 +242,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -277,7 +277,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 2;
+            trainingInstanceController.mapScale = 2;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -292,7 +292,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -306,7 +306,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -326,7 +326,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -345,7 +345,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -364,7 +364,7 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
+            trainingInstanceController.mapScale = 3;
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
@@ -383,8 +383,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
@@ -414,8 +414,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
             trainingInstanceController.trainingScenario = TrainingScenario.SpyPathFinding;
@@ -441,8 +441,8 @@ namespace Tests
             var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(100, 100, 100), Quaternion.identity);
             yield return null;   
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.MapScale = 1;
-            trainingInstanceController.HasMiddleTiles = false;
+            trainingInstanceController.mapScale = 1;
+            trainingInstanceController.hasMiddleTiles = false;
             yield return new  WaitForSeconds(0.1f);
             var tileDict = trainingInstanceController.TileDict;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");

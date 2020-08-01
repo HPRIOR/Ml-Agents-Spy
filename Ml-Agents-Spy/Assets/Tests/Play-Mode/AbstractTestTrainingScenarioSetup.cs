@@ -34,20 +34,20 @@ namespace Tests
 
         protected void SetBasicDebug(TrainingInstanceController trainingInstanceController)
         {
-            trainingInstanceController.ExitCount = 2;
-            trainingInstanceController.MapScale = 1;
-            trainingInstanceController.MapDifficulty = 0;
-            trainingInstanceController.GuardAgentCount = 1;
-            trainingInstanceController.HasMiddleTiles = true;
+            trainingInstanceController.exitCount = 2;
+            trainingInstanceController.mapScale = 1;
+            trainingInstanceController.mapDifficulty = 0;
+            trainingInstanceController.guardAgentCount = 1;
+            trainingInstanceController.hasMiddleTiles = true;
         }
 
         protected void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
         {
-            trainingInstanceController.ExitCount = 3;
-            trainingInstanceController.MapScale = 3;
-            trainingInstanceController.MapDifficulty = 10;
-            trainingInstanceController.GuardAgentCount = 2;
-            trainingInstanceController.HasMiddleTiles = true;
+            trainingInstanceController.exitCount = 3;
+            trainingInstanceController.mapScale = 3;
+            trainingInstanceController.mapDifficulty = 10;
+            trainingInstanceController.guardAgentCount = 2;
+            trainingInstanceController.hasMiddleTiles = true;
         }
         
     }
