@@ -194,24 +194,6 @@ namespace Tests
             Assert.That(exitDistance, Is.EqualTo(0).Within(0.1));
         }
         
-        [UnityTest]
-        [NotNull]
-        public IEnumerator Test_Fall_Off_Edge()
-        {
-            var trainingInstance = Object.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            yield return null;   
-            TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
-            trainingInstanceController.mapScale =1;
-            trainingInstanceController.hasMiddleTiles = false;
-            yield return new  WaitForSeconds(0.1f);
-            Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
-            SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-
-            var transform = spyPrefab.transform;
-            transform.position -= new Vector3(0, 200, 0);
-            yield return new  WaitForSeconds(0.1f);
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
-        }
         
         [UnityTest]
         [NotNull]

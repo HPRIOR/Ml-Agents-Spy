@@ -166,10 +166,10 @@ MonoBehaviour:
     type: 3}
   guardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
     type: 3}
-  mapScale: 1
+  mapScale: 2
   mapDifficulty: 0
-  exitCount: 2
-  guardAgentCount: 1
+  exitCount: 3
+  guardAgentCount: 2
   hasMiddleTiles: 1
 --- !u!1 &2483226645983715528
 GameObject:

@@ -5,6 +5,7 @@ using EnvSetup;
 using Interfaces;
 using Unity.MLAgents;
 using UnityEngine;
+using NUnit;
 
 namespace Training
 {
@@ -84,9 +85,11 @@ namespace Training
                 if (debugSetup) InitDebugSetup();
                 else InitCurrSetup();
             }
-            catch (MapCreationException e)
+            catch (MapCreationException)
             {
-                Debug.Log(e);
+                //Debug.Log(e);
+                ClearChildrenOf(envParent);
+                InitSetup();
             }
             
         }
@@ -126,7 +129,6 @@ namespace Training
         {
             if (SpyCanSpawn(trainingScenario)) SpawnSpyAgent();
             SpawnGuardAgent(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount]);
-            MoveGuardAgents(TileDict[TileType.GuardTiles], gameParams);
         }
 
         /// <summary>
@@ -139,9 +141,11 @@ namespace Training
                 if (debugSetup) DebugRestart();
                 else RestartCurriculum();
             }
-            catch (MapCreationException e)
+            catch (MapCreationException)
             {
-                Debug.Log(e);
+                //Debug.Log(e);
+                ClearChildrenOf(envParent);
+                Restart();
             }
         }
 
@@ -322,14 +326,28 @@ namespace Training
         /// <param name="inputExitCount"></param>
         private void SpawnGuardAgent(int numberOfGuards, int inputExitCount)
         {
+            if (TileDict[TileType.GuardTiles].Count < numberOfGuards)
+                throw new MapCreationException("Number of guards has exceeded the number of spawn places");
+
+            
+            var indexes =
+                RandomHelper.GetUniqueRandomList(MaxNumberOfGuards(numberOfGuards, exitCount), 
+                    TileDict[TileType.GuardTiles].Count);
+            
             for (int i = 0; i < MaxNumberOfGuards(numberOfGuards, inputExitCount); i++)
             {
                 if (TrainingScenarioWantsPatrol(trainingScenario))
-                    Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][0].Position,
+                {
+                    Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position, 
                         Quaternion.identity));
+                }
+
                 if (TrainingScenarioWantsAlert(trainingScenario))
-                    Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][0].Position,
+                {
+                    Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
                         Quaternion.identity));
+
+                }
             }
             Guards.ForEach(guard => guard.transform.parent = transform);
         }
@@ -341,16 +359,15 @@ namespace Training
         /// <param name="gameParams"></param>
         private void MoveGuardAgents(List<IEnvTile> potentialSpawnTiles, Dictionary<GameParam, int> gameParams)
         {
-            
+            if (potentialSpawnTiles.Count < Guards.Count)
+            {
+                throw new MapCreationException("Number of guards has exceeded the number of spawn places");
+            }
             var indexes =
                 RandomHelper.GetUniqueRandomList(MaxNumberOfGuards(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount]), potentialSpawnTiles.Count);
-            Debug.Log($"Number of guards: {Guards.Count}");
-            indexes.ForEach(index => Debug.Log($"{index}"));
-            
             for (int i = 0; i < Guards.Count; i++)
             {
                 Guards[i].transform.position = potentialSpawnTiles[indexes[i]].Position;
-                
             }
         }
 
