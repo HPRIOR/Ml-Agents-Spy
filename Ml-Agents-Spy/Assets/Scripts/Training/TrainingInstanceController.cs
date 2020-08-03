@@ -32,6 +32,7 @@ namespace Training
         
         public GameObject guardPatrolPrefab;
         public GameObject guardAlertPrefab;
+        public GameObject coroutineSurrogate;
         
         /// <summary>
         /// Instantiated spy in the scene

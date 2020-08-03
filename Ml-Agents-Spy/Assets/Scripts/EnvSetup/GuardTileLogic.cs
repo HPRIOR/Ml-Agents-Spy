@@ -29,10 +29,10 @@ namespace EnvSetup
         public void GetPotentialGuardPlaces(IEnvTile[,] tiles)
         {
             _potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tiles, _mapScale, _matrixSize);
-            if (_potentialGuardSpawnTiles.Length < _requestedGuardCount)
-            {
-                throw new MapCreationException("Requested guard places exceed number of available spawn tiles");
-            }
+            // if (_potentialGuardSpawnTiles.Length < _requestedGuardCount)
+            // {
+            //     throw new MapCreationException("Requested guard places exceed number of available spawn tiles");
+            // }
         }
 
         public bool GuardPlacesAreAvailable() => 

@@ -5,9 +5,9 @@ namespace Interfaces
 {
     public interface ISpyTile : ITile
     {
-        Dictionary<Direction, ISpyTile> AdjacentTile { get; set; }
+        Dictionary<Direction, ISpyTile> AdjacentTile { get;  }
         int VisitCount { get; set; }
         bool OccupiedByAgent { get; set; }
-        bool VisitedByAlgo { get; set; }
+        bool VisitedByAlgo { get;  }
     }
 }

@@ -52,10 +52,55 @@ namespace Tests
         public void TestNearestCount()
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
+
+            var nearestOne = thisGameObject.GetNearest(1, nearestList);
+            var nearestThree = thisGameObject.GetNearest(3, nearestList);
+            var nearestFour = thisGameObject.GetNearest(4, nearestList);
             
-            thisGameObject.GetNearest()
+            
+            Assert.AreEqual(1, nearestOne.Count);
+            Assert.AreEqual(3, nearestThree.Count);
+            Assert.AreEqual(4, nearestFour.Count);
         }
         
+        [Test]
+        public void TestZeroCount()
+        {
+            (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
+
+            var nearestZero = thisGameObject.GetNearest(0, nearestList);
+            
+            Assert.AreEqual(0, nearestZero.Count);
+        }
         
+        [Test]
+        public void TestOverCount()
+        {
+            (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
+
+            var nearestEight = thisGameObject.GetNearest(8, nearestList);
+            
+            Assert.AreEqual(7, nearestEight.Count);
+        }
+        
+        [Test]
+        public void TestNearestDistances()
+        {
+            (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
+
+            var nearestThree = thisGameObject.GetNearest(3, nearestList);
+
+            Assert.AreEqual(new Vector3(1f,0, 0), nearestThree[0].transform.position);
+        }
+        
+        [Test]
+        public void TestThirdNearestDistances()
+        {
+            (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
+
+            var nearestThree = thisGameObject.GetNearest(3, nearestList);
+
+            Assert.AreEqual(new Vector3(3f,0, 0), nearestThree[2].transform.position);
+        }
     }
 }

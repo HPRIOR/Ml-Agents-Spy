@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Runtime.CompilerServices;
 using Enums;
 using Interfaces;
 using Training;
@@ -11,14 +12,14 @@ namespace Agents
 {
     public class GuardPatrolAgent : Agent
     {
-        [Tooltip("Indicates whether or not agent will be trained in current run")]
-        public bool Training;
-
         private TrainingInstanceController _instanceController;
+        private IPatrolGuardTileManager _patrolGuardTileManager;
         private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
         private IAgentMemory _agentMemory;
         private float _maxLocalDistance;
-
+        
+        
+      
         private int _speed = 5;
 
         public override void Heuristic(float[] actionsOut)
@@ -33,6 +34,12 @@ namespace Agents
         public override void OnEpisodeBegin()
         {
             _instanceController = GetComponentInParent<TrainingInstanceController>();
+            var tileDict = _instanceController.TileDict;
+            var freeEnvTiles =
+                tileDict[TileType.FreeTiles]
+                    .Concat(tileDict[TileType.GuardTiles])
+                    .Concat(tileDict[TileType.SpyTile]);
+            _patrolGuardTileManager = new PatrolGuardTileManager(_instanceController.coroutineSurrogate, freeEnvTiles);
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
             if (CompletedEpisodes > 0 )

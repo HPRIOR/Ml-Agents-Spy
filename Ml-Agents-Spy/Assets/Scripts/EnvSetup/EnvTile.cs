@@ -4,7 +4,6 @@ using Agents;
 using Enums;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnvSetup
 {
@@ -30,9 +29,9 @@ namespace EnvSetup
 
         public bool HasSpy { get; set; } = false;
         public bool HasGuard { get; set; } = false;
-        public bool HasEnv { get; set; } = false;
+        public bool HasEnv { get; set; }
         public bool IsExit { get; set; } = false;
-        public bool OnPath { get; set; } = false;
+        public bool OnPath { get; set; }
 
 
 
@@ -62,8 +61,6 @@ namespace EnvSetup
         public static explicit operator SpyTile(EnvTile e)
             => new SpyTile(e.Position, e.Coords);
         
-        public static explicit operator GuardTile(EnvTile e)
-            => new GuardTile(e.Position, e.Coords);
 
     }
 }
