@@ -27,7 +27,7 @@ namespace Tests
             yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
 
         }
         [UnityTest]
@@ -41,7 +41,7 @@ namespace Tests
             yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
             
         }
         
@@ -56,7 +56,7 @@ namespace Tests
             yield return null;
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
 
         }
         [UnityTest]
@@ -70,12 +70,12 @@ namespace Tests
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionY();
+            var initialPosition = agentScript.NormalisedPositionY();
             agentScript.MoveAgent(1f);
             yield return null;   
             agentScript.MoveAgent(1f);
             yield return null;   
-            Assert.Greater(agentScript.PositionY(), initialPosition);
+            Assert.Greater(agentScript.NormalisedPositionY(), initialPosition);
 
         }
         
@@ -90,12 +90,12 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionY();
+            var initialPosition = agentScript.NormalisedPositionY();
             agentScript.MoveAgent(2f);
             yield return null;   
             agentScript.MoveAgent(2f);
             yield return null;   
-            Assert.Less(agentScript.PositionY(), initialPosition);
+            Assert.Less(agentScript.NormalisedPositionY(), initialPosition);
         }
         
         [UnityTest]
@@ -109,12 +109,12 @@ namespace Tests
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionX();
+            var initialPosition = agentScript.NormalisedPositionX();
             agentScript.MoveAgent(4f);
             yield return null;   
             agentScript.MoveAgent(4f);
             yield return null;   
-            Assert.Less(agentScript.PositionX(), initialPosition);
+            Assert.Less(agentScript.NormalisedPositionX(), initialPosition);
         }
         
         [UnityTest]
@@ -128,12 +128,12 @@ namespace Tests
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionX();
+            var initialPosition = agentScript.NormalisedPositionX();
             agentScript.MoveAgent(3f);
             yield return null;   
             agentScript.MoveAgent(3f);
             yield return null;   
-            Assert.Greater(agentScript.PositionX(), initialPosition);
+            Assert.Greater(agentScript.NormalisedPositionX(), initialPosition);
         }
         
         [UnityTest]
@@ -214,7 +214,7 @@ namespace Tests
             yield return null;   
             agentScript.EndEpisode();
             yield return null;   
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
         }
         
         [UnityTest]
@@ -249,7 +249,7 @@ namespace Tests
             yield return null;   
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
 
         }
         [UnityTest]
@@ -263,7 +263,7 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
             
         }
         
@@ -278,7 +278,7 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
 
         }
         [UnityTest]
@@ -292,12 +292,12 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionY();
+            var initialPosition = agentScript.NormalisedPositionY();
             agentScript.MoveAgent(1f);
             yield return new  WaitForSeconds(0.1f);
             agentScript.MoveAgent(1f);
             yield return new  WaitForSeconds(0.1f);
-            Assert.Greater(agentScript.PositionY(), initialPosition);
+            Assert.Greater(agentScript.NormalisedPositionY(), initialPosition);
 
         }
         
@@ -312,12 +312,12 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionY();
+            var initialPosition = agentScript.NormalisedPositionY();
             agentScript.MoveAgent(2f);
             yield return new  WaitForSeconds(0.1f);
             agentScript.MoveAgent(2f);
             yield return new  WaitForSeconds(0.1f);
-            Assert.Less(agentScript.PositionY(), initialPosition);
+            Assert.Less(agentScript.NormalisedPositionY(), initialPosition);
         }
         
         [UnityTest]
@@ -331,12 +331,12 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionX();
+            var initialPosition = agentScript.NormalisedPositionX();
             agentScript.MoveAgent(4f);
             yield return new  WaitForSeconds(0.1f);
             agentScript.MoveAgent(4f);
             yield return new  WaitForSeconds(0.1f);
-            Assert.Less(agentScript.PositionX(), initialPosition);
+            Assert.Less(agentScript.NormalisedPositionX(), initialPosition);
         }
         
         [UnityTest]
@@ -350,12 +350,12 @@ namespace Tests
             yield return new  WaitForSeconds(0.1f);
             Transform spyPrefab = trainingInstance.transform.Find("Spy(Clone)");
             SpyAgent agentScript = spyPrefab.GetComponent<SpyAgent>();
-            var initialPosition = agentScript.PositionX();
+            var initialPosition = agentScript.NormalisedPositionX();
             agentScript.MoveAgent(3f);
             yield return new  WaitForSeconds(0.1f);
             agentScript.MoveAgent(3f);
             yield return new  WaitForSeconds(0.1f);
-            Assert.Greater(agentScript.PositionX(), initialPosition);
+            Assert.Greater(agentScript.NormalisedPositionX(), initialPosition);
         }
         
         [UnityTest]
@@ -432,7 +432,7 @@ namespace Tests
             yield return null;
             agentScript.EndEpisode();
             yield return null;   
-            Assert.That(agentScript.PositionY(), Is.EqualTo(0f).Within(0.1));
+            Assert.That(agentScript.NormalisedPositionY(), Is.EqualTo(0f).Within(0.1));
         }
     }
 }

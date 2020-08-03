@@ -11,14 +11,14 @@ using static StaticFunctions;
 
 namespace Agents
 {
-    public class SpyAgent : Agent
+    public class SpyAgent : AbstractAgent
     {
-        private TrainingInstanceController _instanceController;
-        private readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
-        private IAgentMemory _agentMemory;
-        private float _speed = 10;
-        private float _maxLocalDistance;
-        public float IsColliding { get; private set; }
+        // private TrainingInstanceController _instanceController;
+        // private readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
+        // private IAgentMemory _agentMemory;
+        // private float _speed = 10;
+        // private float _maxLocalDistance;
+        // public float IsColliding { get; private set; }
 
         /// <summary>
         /// Called at the start of each training episode.
@@ -26,14 +26,19 @@ namespace Agents
         /// </summary>
         public override void OnEpisodeBegin()
         {
-            _instanceController = GetComponentInParent<TrainingInstanceController>();
-            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-            _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
+            Constructor();
             if (CompletedEpisodes > 0 )
             {
                 _instanceController.Restart();
             }
         }
+
+        //private void Constructor()
+        //{
+        //    _instanceController = GetComponentInParent<TrainingInstanceController>();
+        //    _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
+        //    _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
+        //}
 
         /// <summary>
         /// This is called at every step - receives actions from policy and is used to give rewards
@@ -43,7 +48,6 @@ namespace Agents
         {
             AddReward(-1f/MaxStep);
             RewardAndRestartIfExitReached(DistancesToEachExitPoint());
-            if (transform.position.y < 0f) EndEpisode();
             MoveAgent(action[0]);
         }
 
@@ -61,7 +65,7 @@ namespace Agents
         /// Sets a reward if the distance any exit point is less than 1
         /// </summary>
         /// <param name="distances">Array of distances to each exit</param>
-        public void RewardAndRestartIfExitReached(float[] distances)
+        private void RewardAndRestartIfExitReached(float[] distances)
         {
             foreach (var magnitude in distances)
                 if (magnitude < 1f)
@@ -76,18 +80,18 @@ namespace Agents
         /// Defines one discrete vector [0](1-4) which defines movement in up left right directions
         /// </summary>
         /// <param name="input">action[0] of the discrete action array </param>
-        public void MoveAgent(float input)
-        {
-            var movementDirection = Vector3.zero;
-            var action = Mathf.FloorToInt(input);
-
-            if (action == 1) movementDirection = transform.forward * 0.5f;
-            else if (action == 2) movementDirection = transform.forward * -0.5f;
-            else if (action == 3) movementDirection = transform.right * 0.5f;
-            else if (action == 4) movementDirection = transform.right * -0.5f;
-
-            transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
-        }
+        //public void MoveAgent(float input)
+        //{
+        //    var movementDirection = Vector3.zero;
+        //    var action = Mathf.FloorToInt(input);
+        //
+        //    if (action == 1) movementDirection = transform.forward * 0.5f;
+        //    else if (action == 2) movementDirection = transform.forward * -0.5f;
+        //    else if (action == 3) movementDirection = transform.right * 0.5f;
+        //    else if (action == 4) movementDirection = transform.right * -0.5f;
+        //
+        //    transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
+        //}
 
         /// <summary>
         /// defines a means to control agent for debugging purposes
@@ -111,8 +115,8 @@ namespace Agents
         {
             // own position (2 floats)
             var localPosition = transform.localPosition;
-            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, localPosition.x));
-            sensor.AddObservation(NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, localPosition.z));
+            sensor.AddObservation(NormalisedPositionX());
+            sensor.AddObservation(NormalisedPositionY());
 
             var nearestExitVector = GetNearestTile(
                 _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
@@ -140,13 +144,13 @@ namespace Agents
         /// Adds normalised 'trail' of visited locations to observations
         /// </summary>
         /// <param name="sensor">Sensor used to pass observations</param>
-        private void AddVisitedMemoryTrail(VectorSensor sensor) =>
-            _agentMemory.GetAgentMemory(transform.localPosition)
-                .ToList()
-                .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
-                    -_maxLocalDistance,
-                    _maxLocalDistance,
-                    f)));
+        //private void AddVisitedMemoryTrail(VectorSensor sensor) =>
+        //    _agentMemory.GetAgentMemory(transform.localPosition)
+        //        .ToList()
+        //        .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
+        //            -_maxLocalDistance,
+        //            _maxLocalDistance,
+        //            f)));
 
         /// <summary>
         /// Adds normalised distance to nearest exit to observations 
@@ -174,21 +178,25 @@ namespace Agents
             sensor.AddObservation(NearestExitXAxis(nearestExitVector));
 
 
-        public float PositionX() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x);
-        
-        public float PositionY() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z);
+        //public float NormalisedPositionX() => 
+        //    NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x);
+        //
+        //public float NormalisedPositionY() => 
+        //    NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z);
 
-        public float NearestExitYAxis(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(-_maxLocalDistance,
+        private float NearestExitYAxis(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(-_maxLocalDistance,
             _maxLocalDistance, VectorConversions.LocalPosition(
                 nearestExitVector, _instanceController).z);
 
-        public float NearestExitXAxis(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(
+        private float NearestExitXAxis(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(
             -_maxLocalDistance,
             _maxLocalDistance, VectorConversions.LocalPosition(
                 nearestExitVector, _instanceController).x);
 
-        public float DistanceToNearestExit(Vector3 nearestExitVector) => StaticFunctions.NormalisedFloat(0f,
-            StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
+        public float DistanceToNearestExit(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
                 nearestExitVector,
                 transform.position));
 
@@ -218,14 +226,14 @@ namespace Agents
             
         }
 
-        void OnCollisionEnter(Collision collision) 
-        {
-            if (collision.gameObject.name == "Cube") IsColliding = 1f;
-        }
-
-        void OnCollisionExit(Collision collision)
-        {
-            if (collision.gameObject.name == "Cube") IsColliding = 0f;
-        }
+        //void OnCollisionEnter(Collision collision) 
+        //{
+        //    if (collision.gameObject.name == "Cube") IsColliding = 1f;
+        //}
+//
+        //void OnCollisionExit(Collision collision)
+        //{
+        //    if (collision.gameObject.name == "Cube") IsColliding = 0f;
+        //}
     }
 }
