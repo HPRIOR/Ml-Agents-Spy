@@ -16,41 +16,48 @@ namespace Agents
         private List<GameObject> GetNearestGuards(int amount) =>
             transform
                 .gameObject
-                .GetNearest(amount,
+                .GetNearest(
+                    amount,
                     InstanceController.Guards,
-                    guard => transform.gameObject.GetInstanceID() != guard.gameObjectDistance.GetInstanceID());
+                    guard => 
+                        transform.gameObject.GetInstanceID() != guard.gameObjectDistance.GetInstanceID());
 
 
-        private float[] GetNearestGuardPositionsY(int amount)
-        {
-            throw new Exception();
-        }
-        
-        private float[] GetNearestGuardPositionsX(int amount)
-        {
-            throw new Exception();
-
-        }
-
-        private float[] NearestGuardPositions(int amount)
-        {
-            if (InstanceController.Guards.Count < amount)
+        private List<(float, float)> GetNearestGuardPositions(int amount) =>
+            GetNearestGuards(amount).Select(guard =>
             {
-                // add extra 00 on to the list
-            }
-            else
-            { 
-                throw new Exception();
+               Vector3 positions = guard.transform.position;
+               return (positions.x, positions.z);
+            }).ToList();
 
-            }
-            throw new Exception();
 
+        // test me
+        public List<float> NormaliseGuardPositions(int amount)
+        {
+            List<float> normalisedPositions = new List<float>();
+            GetNearestGuardPositions(amount).ForEach(t =>
+            {
+                normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1));
+                normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2));
+            });
+            int numberOfGuards = InstanceController.Guards.Count;
+            if (numberOfGuards < amount)
+            {
+                int leftOver = amount - numberOfGuards;
+                for (int i = 0; i < leftOver; i++)
+                {
+                    // this can be changed to leftOver *2
+                    normalisedPositions.Add(0);
+                    normalisedPositions.Add(0);
+                }
+            }
+            return normalisedPositions;
         }
         
         
-        protected void AddNearestGuardsToAgent(VectorSensor sensor)
+        protected void AddNearestGuardsToAgent(VectorSensor sensor, int amount)
         {
-            
+            NormaliseGuardPositions(amount).ForEach(sensor.AddObservation);
         }
         
         

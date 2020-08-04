@@ -44,25 +44,24 @@ namespace Agents
             transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
         }
 
-        
-        
-        private IEnumerable<float> GetNormalisedNearestTilePositionX(List<IEnvTile> envTiles)
+
+
+        private IEnumerable<(float, float)> GetNormalisedNearestTilePositions(List<IEnvTile> envTiles)
             => envTiles
-                .Select(tiles => (NormalisedFloat(
-                    -MaxLocalDistance,
-                    MaxLocalDistance,
-                    VectorConversions.GetLocalPosition(
-                        tiles.Position,
-                        InstanceController).x)));
+                .Select(tiles =>
+                    (NormalisedFloat(
+                            -MaxLocalDistance,
+                            MaxLocalDistance,
+                            VectorConversions.GetLocalPosition(
+                                tiles.Position,
+                                InstanceController).x),
+                        NormalisedFloat(
+                            -MaxLocalDistance,
+                            MaxLocalDistance,
+                            VectorConversions.GetLocalPosition(
+                                tiles.Position,
+                                InstanceController).z)));
         
-        private IEnumerable<float> GetNormalisedNearestTilePositionY(List<IEnvTile> envTiles)
-            => envTiles
-                .Select(tiles => (NormalisedFloat(
-                    -MaxLocalDistance,
-                    MaxLocalDistance,
-                    VectorConversions.GetLocalPosition(
-                        tiles.Position,
-                        InstanceController).z)));
 
         private List<IEnvTile> GetNearestEnvTiles(int amount) =>
             transform.GetNearestTile(
@@ -70,18 +69,17 @@ namespace Agents
                 InstanceController.TileDict[TileType.EnvTiles], 
                 x => true);
 
-        private List<float> GetNearestEnvTilePositions(int amount)
+        // test me
+        public List<float> GetNearestEnvTilePositions(int amount)
         {
             var envTiles = GetNearestEnvTiles(amount);
             // envTiles.ForEach(x => Debug.Log(x.Coords));
-            var xTiles = GetNormalisedNearestTilePositionX(envTiles).ToList();
-            var yTiles = GetNormalisedNearestTilePositionY(envTiles).ToList();
+            var xTiles = GetNormalisedNearestTilePositions(envTiles).ToList();
             var newList = new List<float>();
             for (int i = 0; i < amount; i++)
             {
-                // Debug.Log($"x: {xTiles[i]},  y: {yTiles[i]}");
-                newList.Add(xTiles[i]);
-                newList.Add(yTiles[i]);
+                newList.Add(xTiles[i].Item1);
+                newList.Add(xTiles[i].Item2);
             }
             return newList.ToList();
         }
