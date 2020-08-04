@@ -53,9 +53,9 @@ namespace Tests
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
 
-            var nearestOne = thisGameObject.GetNearest(1, nearestList);
-            var nearestThree = thisGameObject.GetNearest(3, nearestList);
-            var nearestFour = thisGameObject.GetNearest(4, nearestList);
+            var nearestOne = thisGameObject.GetNearest(1, nearestList, x=> true);
+            var nearestThree = thisGameObject.GetNearest(3, nearestList, x=> true);
+            var nearestFour = thisGameObject.GetNearest(4, nearestList, x=> true);
             
             
             Assert.AreEqual(1, nearestOne.Count);
@@ -68,7 +68,7 @@ namespace Tests
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
 
-            var nearestZero = thisGameObject.GetNearest(0, nearestList);
+            var nearestZero = thisGameObject.GetNearest(0, nearestList, x=> true);
             
             Assert.AreEqual(0, nearestZero.Count);
         }
@@ -78,7 +78,7 @@ namespace Tests
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
 
-            var nearestEight = thisGameObject.GetNearest(8, nearestList);
+            var nearestEight = thisGameObject.GetNearest(8, nearestList, x=> true);
             
             Assert.AreEqual(7, nearestEight.Count);
         }
@@ -88,7 +88,7 @@ namespace Tests
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
 
-            var nearestThree = thisGameObject.GetNearest(3, nearestList);
+            var nearestThree = thisGameObject.GetNearest(3, nearestList, x=> true);
 
             Assert.AreEqual(new Vector3(1f,0, 0), nearestThree[0].transform.position);
         }
@@ -98,7 +98,7 @@ namespace Tests
         {
             (GameObject thisGameObject, List<GameObject> nearestList) = GetThisGameObjectAndNearest();
 
-            var nearestThree = thisGameObject.GetNearest(3, nearestList);
+            var nearestThree = thisGameObject.GetNearest(3, nearestList, x=> true);
 
             Assert.AreEqual(new Vector3(3f,0, 0), nearestThree[2].transform.position);
         }

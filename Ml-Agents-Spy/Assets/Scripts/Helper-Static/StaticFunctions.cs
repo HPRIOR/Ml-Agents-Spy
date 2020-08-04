@@ -14,8 +14,6 @@ public static class StaticFunctions
         return matrixSize % 10 == 0 ? (matrixSize * 2) / 10 : ((matrixSize - 1) * 2) / 10;
     }
 
-
-
     public static float GetMaxLocalDistance(int mapScale) => 
         mapScale % 2 == 0 ?
         (mapScale * 5) - 1.3f :
@@ -44,7 +42,8 @@ public static class StaticFunctions
             for (int i = 0; i < quantity; i++)
             {
                 input++;
-                if (input > 360) input = 0;
+                if (input > 359) input = 0;
+                
             }
             return input;
         }
@@ -54,10 +53,11 @@ public static class StaticFunctions
             for (int i = 0; i < quantity; i++)
             {
                 input--;
-                if (input < 0) input = 360;
+                if (input < 0) input = 359;
+                
             }
             return input;
         }
-        throw new InvalidEnumArgumentException("Wrong enum entered to MinusAddAngle");
+        throw new InvalidEnumArgumentException("Wrong enum given to MinusAddAngle");
     }
 }

@@ -14,9 +14,10 @@ public static class ClassExtensions
 
     public static T MostRecentlyAdded<T>(this Queue<T> queue) => queue.ToArray().ToList().Last();
 
-    public static List<GameObject> GetNearest(this GameObject thisGameObject, int amount, List<GameObject> targets)
+    public static List<GameObject> GetNearest(this GameObject thisGameObject, int amount, List<GameObject> targets, Func<(GameObject gameObjectDistance, float),  bool> predicate)
         => targets
             .Select(gameObjectDistance => (gameObjectDistance, Vector3.Distance(gameObjectDistance.transform.position, thisGameObject.transform.position)))
+            .Where(predicate)
             .OrderBy(t => t.Item2)
             .Take(amount)
             .Select( t=> t.gameObjectDistance)

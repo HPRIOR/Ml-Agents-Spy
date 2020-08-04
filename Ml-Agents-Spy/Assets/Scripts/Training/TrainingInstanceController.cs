@@ -28,8 +28,8 @@ namespace Training
         public GameObject topParent;
         public GameObject envParent;
         public GameObject debugParent;
-        public GameObject spyPrefab;
         
+        public GameObject spyPrefab;
         public GameObject guardPatrolPrefab;
         public GameObject guardAlertPrefab;
         public GameObject coroutineSurrogate;

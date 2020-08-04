@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using System.Linq;
+using System.Numerics;
 using Enums;
 using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Agents
 {
@@ -15,11 +18,11 @@ namespace Agents
         protected override float Speed { get; } = 5;
         private GameObject _head;
         private RayPerceptionSensorComponent3D _eyes;
-        private int _currentHeadRotation = 0;
 
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
+            actionsOut[1] = 0;
             if (Input.GetKey(KeyCode.W)) actionsOut[0] = 1;
             else if (Input.GetKey(KeyCode.S)) actionsOut[0] = 2;
             else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
@@ -56,16 +59,21 @@ namespace Agents
 
         private void RotateHead(float input)
         {
-            Debug.Log(_head.transform.rotation);
-            
-            var rotateDirection = Quaternion.identity;
-            
+
+            var rotateDirection = Vector3.zero;
             var action = Mathf.FloorToInt(input);
-            if (action == 1) rotateDirection = Quaternion.AngleAxis(360, Vector3.up);
-            else if (action == 2) rotateDirection = Quaternion.AngleAxis(180, Vector3.up);
             
-            _head.transform.rotation = rotateDirection;
-            
+            if (action == 1)
+            {
+                rotateDirection = _head.transform.up * 1;
+            }
+            else if (action == 2)
+            {
+                rotateDirection =  _head.transform.up * -1;
+            }
+
+            _head.transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
+
         }
 
         
