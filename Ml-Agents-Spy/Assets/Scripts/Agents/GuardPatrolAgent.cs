@@ -11,7 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Agents
 {
-    public class GuardPatrolAgent : AbstractAgent
+    public class GuardPatrolAgent : AbstractGuard
     {
         
         private IPatrolGuardTileManager _patrolGuardTileManager;
