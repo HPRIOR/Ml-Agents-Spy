@@ -97,7 +97,40 @@ namespace Tests
             var nearestTile = t.GetNearestTile(0, envTiles, x => true);
             Assert.AreEqual(0, nearestTile.Count);
         }
+
+        [Test]
+        public void Test_Same_Distance_Multiple_tiles()
+        {
+            GameObject agentGo = new GameObject();
+            agentGo.transform.position = Vector3.zero;
+            List<EnvTile> envTiles = new List<EnvTile>()
+            {
+                new EnvTile(new Vector3(0,0,1), (1,1) ),
+                new EnvTile(new Vector3(0,0,1), (1,1) ),
+                new EnvTile(new Vector3(0,0,2), (1,1) ),
+                new EnvTile(new Vector3(0,0,2), (1,1) ),
+                new EnvTile(new Vector3(0,0,3), (1,1) ),
+                new EnvTile(new Vector3(0,0,3), (1,1) ),
+                new EnvTile(new Vector3(0,0,3), (1,1) ),
+            };
+
+        var nearestTile = agentGo.transform.GetNearestTile(3, envTiles, x => true);
+            
+        Assert.AreEqual(3, nearestTile.Count);
         
+        nearestTile = agentGo.transform.GetNearestTile(7, envTiles, x => true);
+        Assert.AreEqual(new Vector3(0,0,1), nearestTile[0].Position);
+        Assert.AreEqual(new Vector3(0,0,1), nearestTile[1].Position);
+        Assert.AreEqual(new Vector3(0,0,2), nearestTile[2].Position);
+        Assert.AreEqual(new Vector3(0,0,2), nearestTile[3].Position);
+        Assert.AreEqual(new Vector3(0,0,3), nearestTile[4].Position);
+        Assert.AreEqual(new Vector3(0,0,3), nearestTile[5].Position);
+        Assert.AreEqual(new Vector3(0,0,3), nearestTile[6].Position);
+        }
+        
+        
+        
+
         
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Enums;
 using Interfaces;
 using Training;
 using Unity.MLAgents;
@@ -10,19 +12,19 @@ namespace Agents
 {
     public abstract  class AbstractAgent : Agent
     {
-        protected TrainingInstanceController _instanceController;
-        protected readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
-        protected IAgentMemory _agentMemory;
-        protected readonly float _speed = 10;
-        protected float _maxLocalDistance;
+        protected TrainingInstanceController InstanceController;
+        private readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
+        private IAgentMemory _agentMemory;
+        protected abstract float Speed { get; }
+        protected float MaxLocalDistance;
         public float IsColliding { get; private set; }
         
         
         protected void Constructor()
         {
-            _instanceController = GetComponentInParent<TrainingInstanceController>();
+            InstanceController = GetComponentInParent<TrainingInstanceController>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-            _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
+            MaxLocalDistance = GetMaxLocalDistance(InstanceController.AgentMapScale);
         }
         
         /// <summary>
@@ -39,9 +41,56 @@ namespace Agents
             else if (action == 3) movementDirection = transform.right * 0.5f;
             else if (action == 4) movementDirection = transform.right * -0.5f;
 
-            transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
+            transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
         }
+
         
+        
+        private IEnumerable<float> GetNormalisedNearestTilePositionX(List<IEnvTile> envTiles)
+            => envTiles
+                .Select(tiles => (NormalisedFloat(
+                    -MaxLocalDistance,
+                    MaxLocalDistance,
+                    VectorConversions.GetLocalPosition(
+                        tiles.Position,
+                        InstanceController).x)));
+        
+        private IEnumerable<float> GetNormalisedNearestTilePositionY(List<IEnvTile> envTiles)
+            => envTiles
+                .Select(tiles => (NormalisedFloat(
+                    -MaxLocalDistance,
+                    MaxLocalDistance,
+                    VectorConversions.GetLocalPosition(
+                        tiles.Position,
+                        InstanceController).z)));
+
+        private List<IEnvTile> GetNearestEnvTiles(int amount) =>
+            transform.GetNearestTile(
+                amount, 
+                InstanceController.TileDict[TileType.EnvTiles], 
+                x => true);
+
+        private List<float> GetNearestEnvTilePositions(int amount)
+        {
+            var envTiles = GetNearestEnvTiles(amount);
+            // envTiles.ForEach(x => Debug.Log(x.Coords));
+            var xTiles = GetNormalisedNearestTilePositionX(envTiles).ToList();
+            var yTiles = GetNormalisedNearestTilePositionY(envTiles).ToList();
+            var newList = new List<float>();
+            for (int i = 0; i < amount; i++)
+            {
+                // Debug.Log($"x: {xTiles[i]},  y: {yTiles[i]}");
+                newList.Add(xTiles[i]);
+                newList.Add(yTiles[i]);
+            }
+            return newList.ToList();
+        }
+
+        protected void AddNearestEnvTilePositions(VectorSensor vectorSensor, int amount) =>
+            GetNearestEnvTilePositions(amount)
+                .ForEach(vectorSensor.AddObservation);
+
+
         /// <summary>
         /// Adds normalised 'trail' of visited locations to observations
         /// </summary>
@@ -50,14 +99,14 @@ namespace Agents
             _agentMemory
                 .GetAgentMemory(transform.localPosition)
                 .ToList()
-                .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
-                    -_maxLocalDistance,
-                    _maxLocalDistance,
+                .ForEach(f => sensor.AddObservation(NormalisedMemoryFloat(
+                    -MaxLocalDistance,
+                    MaxLocalDistance,
                     f)));
         
-        public float NormalisedPositionX() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x);
+        public float NormalisedPositionX() => NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.x);
         
-        public float NormalisedPositionY() => NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z);
+        public float NormalisedPositionY() => NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.z);
         
         protected void OnCollisionEnter(Collision collision) 
         {

@@ -1,44 +1,27 @@
 ﻿using System.Linq;
 using Enums;
-using Interfaces;
-using Training;
-using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
-using static TileHelper;
-using static StaticFunctions;
 
 namespace Agents
 {
     public class SpyAgent : AbstractAgent
     {
-        // private TrainingInstanceController _instanceController;
-        // private readonly IAgentMemoryFactory _agentMemoryFactory =  new AgentMemoryFactory();
-        // private IAgentMemory _agentMemory;
-        // private float _speed = 10;
-        // private float _maxLocalDistance;
-        // public float IsColliding { get; private set; }
+        protected override float Speed { get; } = 10;
 
         /// <summary>
         /// Called at the start of each training episode.
-        /// The instance controller needs to be gotten hear due to the call sequence between this method and the restart env delegate
         /// </summary>
         public override void OnEpisodeBegin()
         {
             Constructor();
             if (CompletedEpisodes > 0 )
             {
-                _instanceController.Restart();
+                InstanceController.Restart();
             }
         }
-
-        //private void Constructor()
-        //{
-        //    _instanceController = GetComponentInParent<TrainingInstanceController>();
-        //    _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-        //    _maxLocalDistance = MaxLocalDistance(_instanceController.AgentMapScale);
-        //}
+        
 
         /// <summary>
         /// This is called at every step - receives actions from policy and is used to give rewards
@@ -46,6 +29,7 @@ namespace Agents
         /// <param name="action"></param>
         public override void OnActionReceived(float[] action)
         {
+            // small punishment each step (magnitude of entire episode: max cumulative -1)
             AddReward(-1f/MaxStep);
             RewardAndRestartIfExitReached(DistancesToEachExitPoint());
             MoveAgent(action[0]);
@@ -56,9 +40,9 @@ namespace Agents
         /// </summary>
         /// <returns>Float array of the distance to each exit point</returns>
         private float[] DistancesToEachExitPoint() => 
-            _instanceController
+            InstanceController
                 .TileDict[TileType.ExitTiles]
-                .Select(tile => (tile.Position - transform.position).magnitude)
+                .Select(tile => Vector3.Distance(tile.Position , transform.position))
                 .ToArray();
          
         /// <summary>
@@ -67,32 +51,14 @@ namespace Agents
         /// <param name="distances">Array of distances to each exit</param>
         private void RewardAndRestartIfExitReached(float[] distances)
         {
-            foreach (var magnitude in distances)
-                if (magnitude < 1f)
+            foreach (var distance in distances)
+                if (distance < 1f)
                 {
                     SetReward(1f);
                     EndEpisode();
                 }
         }
-
-
-        /// <summary>
-        /// Defines one discrete vector [0](1-4) which defines movement in up left right directions
-        /// </summary>
-        /// <param name="input">action[0] of the discrete action array </param>
-        //public void MoveAgent(float input)
-        //{
-        //    var movementDirection = Vector3.zero;
-        //    var action = Mathf.FloorToInt(input);
-        //
-        //    if (action == 1) movementDirection = transform.forward * 0.5f;
-        //    else if (action == 2) movementDirection = transform.forward * -0.5f;
-        //    else if (action == 3) movementDirection = transform.right * 0.5f;
-        //    else if (action == 4) movementDirection = transform.right * -0.5f;
-        //
-        //    transform.Translate(movementDirection * Time.fixedDeltaTime * _speed);
-        //}
-
+        
         /// <summary>
         /// defines a means to control agent for debugging purposes
         /// </summary>
@@ -105,7 +71,6 @@ namespace Agents
             else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
             else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
         }
-        
 
         /// <summary>
         /// Supplies observations to ML algorithm
@@ -114,13 +79,14 @@ namespace Agents
         public override void CollectObservations(VectorSensor sensor)
         {
             // own position (2 floats)
-            var localPosition = transform.localPosition;
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
-
-            var nearestExitVector = GetNearestTile(
-                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                transform).Position;
+            
+            Vector3 nearestExitVector =
+                transform.GetNearestTile(
+                    1,
+                    InstanceController.TileDict[TileType.ExitTiles],
+                    x => true)[0].Position;
 
             // position of nearest exit, x axis (1 float)
             AddNearestExitXAxis(sensor, nearestExitVector);
@@ -136,22 +102,13 @@ namespace Agents
 
             // trail of visited locations (20)
             AddVisitedMemoryTrail(sensor);
+            
+            // 12 floats 
+            AddNearestEnvTilePositions(sensor, 6);
 
             //DebugObvs();
         }
         
-        /// <summary>
-        /// Adds normalised 'trail' of visited locations to observations
-        /// </summary>
-        /// <param name="sensor">Sensor used to pass observations</param>
-        //private void AddVisitedMemoryTrail(VectorSensor sensor) =>
-        //    _agentMemory.GetAgentMemory(transform.localPosition)
-        //        .ToList()
-        //        .ForEach(f => sensor.AddObservation(StaticFunctions.NormalisedMemoryFloat(
-        //            -_maxLocalDistance,
-        //            _maxLocalDistance,
-        //            f)));
-
         /// <summary>
         /// Adds normalised distance to nearest exit to observations 
         /// </summary>
@@ -166,7 +123,7 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddNearestExitYAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(NearestExitYAxis(nearestExitVector));
+            sensor.AddObservation(NormalisedNearestExitYAxis(nearestExitVector));
 
         
         /// <summary>
@@ -175,33 +132,26 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddNearestExitXAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(NearestExitXAxis(nearestExitVector));
-
-
-        //public float NormalisedPositionX() => 
-        //    NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x);
-        //
-        //public float NormalisedPositionY() => 
-        //    NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z);
-
-        private float NearestExitYAxis(Vector3 nearestExitVector) => 
-            StaticFunctions.NormalisedFloat(-_maxLocalDistance,
-            _maxLocalDistance, VectorConversions.LocalPosition(
-                nearestExitVector, _instanceController).z);
-
-        private float NearestExitXAxis(Vector3 nearestExitVector) => 
-            StaticFunctions.NormalisedFloat(
-            -_maxLocalDistance,
-            _maxLocalDistance, VectorConversions.LocalPosition(
-                nearestExitVector, _instanceController).x);
-
-        public float DistanceToNearestExit(Vector3 nearestExitVector) => 
-            StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(_instanceController.AgentMapScale), Vector3.Distance(
-                nearestExitVector,
-                transform.position));
-
+            sensor.AddObservation(NormalisedNearestExitXAxis(nearestExitVector));
         
 
+        private float NormalisedNearestExitYAxis(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(-MaxLocalDistance,
+            MaxLocalDistance, VectorConversions.GetLocalPosition(
+                nearestExitVector, InstanceController).z);
+
+        private float NormalisedNearestExitXAxis(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(
+            -MaxLocalDistance,
+            MaxLocalDistance, VectorConversions.GetLocalPosition(
+                nearestExitVector, InstanceController).x);
+
+        // made public for testing 
+        public float DistanceToNearestExit(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(InstanceController.AgentMapScale), Vector3.Distance(
+                nearestExitVector,
+                transform.position));
+        
 
         private void DebugObvs()
         {
@@ -225,15 +175,6 @@ namespace Agents
             //Debug.Log($"collision: {IsColliding}");
             
         }
-
-        //void OnCollisionEnter(Collision collision) 
-        //{
-        //    if (collision.gameObject.name == "Cube") IsColliding = 1f;
-        //}
-//
-        //void OnCollisionExit(Collision collision)
-        //{
-        //    if (collision.gameObject.name == "Cube") IsColliding = 0f;
-        //}
+        
     }
 }

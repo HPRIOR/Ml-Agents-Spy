@@ -23,7 +23,7 @@ namespace Agents
         }
 
 
-        float[] Vector3toFloatArray(List<Vector3> vectors)
+        float[] Vector3ToFloatArray(List<Vector3> vectors)
         {
             float[] vectorFloats = new float[_memorySize];
             int i = 0;
@@ -56,7 +56,7 @@ namespace Agents
                 _queue.Enqueue(agentPosition);
                 _initialVectorPlaced = true;
             }
-            return Vector3toFloatArray(_queue.ToArray().ToList());
+            return Vector3ToFloatArray(_queue.ToArray().ToList());
         }
 
 
