@@ -43,7 +43,7 @@ namespace Agents
                                tile.tDistances.Coords != _currentTile.Coords
                     ).First();
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 return null;
             }

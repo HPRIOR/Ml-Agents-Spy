@@ -25,7 +25,7 @@ namespace Agents
         private List<(float, float)> GetNearestGuardPositions(int amount) =>
             GetNearestGuards(amount).Select(guard =>
             {
-               Vector3 positions = guard.transform.position;
+               Vector3 positions = guard.transform.localPosition;
                return (positions.x, positions.z);
             }).ToList();
 
@@ -54,7 +54,7 @@ namespace Agents
         }
         
         
-        protected void AddNearestGuardsToAgent(VectorSensor sensor, int amount)
+        protected void AddNearestGuards(VectorSensor sensor, int amount)
         {
             NormaliseGuardPositions(amount).ForEach(sensor.AddObservation);
         }

@@ -1,23 +1,22 @@
-﻿using System.Collections;
-using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
+﻿using System.Linq;
 using Enums;
 using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Agents
 {
     public class GuardPatrolAgent : AbstractGuard
     {
+        public int numberOfObservedGuards;
+        public int numberOfObservedEnvTiles;
         
         private IPatrolGuardTileManager _patrolGuardTileManager;
         protected override float Speed { get; } = 5;
         private GameObject _head;
         private RayPerceptionSensorComponent3D _eyes;
+        private IPatrolGuardTile _currentPatrolTile;
 
         public override void Heuristic(float[] actionsOut)
         {
@@ -30,7 +29,8 @@ namespace Agents
             else if (Input.GetKey(KeyCode.Q)) actionsOut[1] = 1;
             else if (Input.GetKey(KeyCode.E)) actionsOut[1] = 2;
         }
-
+        
+        // Some things may be able to move into awake or start if they are not needed every map update 
         public override void OnEpisodeBegin()
         {
             Constructor();
@@ -51,11 +51,48 @@ namespace Agents
             }
         }
 
+        private void AddNearestPatrolTiles(VectorSensor sensor)
+        {
+            var nearestPatrolTiles = GetNearestPatrolTiles();
+            sensor.AddObservation(nearestPatrolTiles.Item1);
+            sensor.AddObservation(nearestPatrolTiles.Item2);
+        }
+        
+        public (float, float) GetNearestPatrolTiles()
+        {
+            if (_currentPatrolTile is null)
+            {
+                return (0, 0);
+            }
+            var patrolTilePosition = _currentPatrolTile.Position;
+            var normalisedPositionX = 
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
+                    VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).x);
+            var normalisedPositionY = 
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
+                    VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).z);
+            return (normalisedPositionX, normalisedPositionY);
+        }
+
         public override void CollectObservations(VectorSensor sensor)
         {
-            //sensor.AddObservation(_instanceController.SpyPrefabClone.transform.position);
-            //Debug.Log(Vector3.Distance(transform.position, _instanceController.SpyPrefabClone.transform.position));
+            // Own position
+            sensor.AddObservation(NormalisedPositionX());
+            sensor.AddObservation(NormalisedPositionY());
+            
+            // NearestPatrolTile
+            AddNearestPatrolTiles(sensor);
+            
+            // NearestGuardAgents
+            AddNearestGuards(sensor, numberOfObservedGuards);
+            
+            // TrailMemory
+            AddVisitedMemoryTrail(sensor);
+            
+            // nearest env tiles
+            AddNearestEnvTilePositions(sensor, numberOfObservedEnvTiles);
         }
+        
 
         private void RotateHead(float input)
         {
@@ -75,19 +112,17 @@ namespace Agents
             _head.transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
 
         }
-
-        
         
         public override void OnActionReceived(float[] vectorAction)
         {
+            if (_patrolGuardTileManager.CanRewardAgent(transform))
+            {
+                AddReward(1f/MaxStep);
+            }
+            _currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
+            
             MoveAgent(vectorAction[0]);
             RotateHead(vectorAction[1]);
         }
-        
-        
-        
-        
     }
-
-    
 }
