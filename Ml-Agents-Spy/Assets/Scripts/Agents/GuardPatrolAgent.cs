@@ -9,8 +9,8 @@ namespace Agents
 {
     public class GuardPatrolAgent : AbstractGuard
     {
-        public int numberOfObservedGuards;
-        public int numberOfObservedEnvTiles;
+        public int guardObvs;
+        public int envTiles;
         
         private IPatrolGuardTileManager _patrolGuardTileManager;
         protected override float Speed { get; } = 5;
@@ -71,6 +71,7 @@ namespace Agents
             var normalisedPositionY = 
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
                     VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).z);
+            // Debug.Log($"{normalisedPositionX},{normalisedPositionY}");
             return (normalisedPositionX, normalisedPositionY);
         }
 
@@ -84,13 +85,13 @@ namespace Agents
             AddNearestPatrolTiles(sensor);
             
             // NearestGuardAgents
-            AddNearestGuards(sensor, numberOfObservedGuards);
+            AddNearestGuards(sensor, guardObvs);
             
             // TrailMemory
             AddVisitedMemoryTrail(sensor);
             
             // nearest env tiles
-            AddNearestEnvTilePositions(sensor, numberOfObservedEnvTiles);
+            AddNearestEnvTilePositions(sensor, envTiles);
         }
         
 

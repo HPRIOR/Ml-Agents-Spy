@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Enums;
 using EnvSetup;
 using Interfaces;
 using Unity.MLAgents;
 using UnityEngine;
-using NUnit;
 
 namespace Training
 {
@@ -82,6 +80,7 @@ namespace Training
         /// </summary>
         private void InitSetup()
         {
+            Debug.Log("init setup called");
             try
             {
                 if (debugSetup) InitDebugSetup();
@@ -138,6 +137,7 @@ namespace Training
         /// </summary>
         public void Restart()
         {
+            Debug.Log("restart Called");
             try
             {
                 if (debugSetup) DebugRestart();
@@ -269,7 +269,7 @@ namespace Training
         /// this method already has access to the game parameters. A game parameter dictionary is created anyway
         /// to encourage code reuse between the curriculum and debug sections of code
         /// </summary>
-        /// <returns>tile logic builder and game paremeters</returns>
+        /// <returns>tile logic builder and game parameters</returns>
         private (ITileLogicBuilder tileLogicBuilder, Dictionary<GameParam, int> gameParams) GetTileLogicBuilderAndGameParamsDebug()
         {
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(

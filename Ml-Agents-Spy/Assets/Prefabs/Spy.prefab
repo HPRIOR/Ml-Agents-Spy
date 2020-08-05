@@ -134,7 +134,7 @@ MonoBehaviour:
     VectorActionSpaceType: 0
   m_Model: {fileID: 5022602860645237092, guid: 891efa2a780565b4db9ea7114fc46159, type: 3}
   m_InferenceDevice: 1
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: Spy
   TeamId: 0
   m_UseChildSensors: 0

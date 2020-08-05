@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Agents
 {
+    // this may be incorped into abstract agent because the agent will need to use this 
     public abstract class AbstractGuard : AbstractAgent
     {
         /// <summary>
@@ -36,6 +37,7 @@ namespace Agents
             List<float> normalisedPositions = new List<float>();
             GetNearestGuardPositions(amount).ForEach(t =>
             {
+                //Debug.Log($"{StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1)}, {StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2)}");
                 normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1));
                 normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2));
             });
@@ -45,7 +47,7 @@ namespace Agents
                 int leftOver = amount - numberOfGuards;
                 for (int i = 0; i < leftOver; i++)
                 {
-                    // this can be changed to leftOver *2
+                   
                     normalisedPositions.Add(0);
                     normalisedPositions.Add(0);
                 }
