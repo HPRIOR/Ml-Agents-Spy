@@ -19,7 +19,12 @@ namespace Agents
             }
         }
         
-        //need to work out the distance between two tiles
+        //need to work out the distance between two tiles ( && tile != _currentTile)
+        /// <summary>
+        /// Used to get the location of the nearest tile 
+        /// </summary>
+        /// <param name="agentPosition"></param>
+        /// <returns></returns>
         public IPatrolGuardTile LocationOfNearestTile(Transform agentPosition) =>
             agentPosition
                 .GetNearestTile(1, _guardTiles, tile => tile.distance > 1)[0];
