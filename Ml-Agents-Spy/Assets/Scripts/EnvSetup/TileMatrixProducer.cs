@@ -39,7 +39,7 @@ namespace EnvSetup
         /// <returns></returns>
         private IEnvTile[,] CreateTilesMatrix(int gridMapSize, Vector3 planeCentre)
         {
-            IEnvTile[,] tiles = new EnvTile[gridMapSize+1, gridMapSize+1];
+            IEnvTile[,] tiles = new IEnvTile[gridMapSize+1, gridMapSize+1];
             int x = -gridMapSize;
             for (int i = 0; i < gridMapSize+1; i++)
             {

@@ -8,7 +8,8 @@ namespace Agents
 {
     public class PatrolGuardTile : IPatrolGuardTile
     {
-        private GameObject _surrogateGameObject;
+        
+        private readonly GameObject _surrogateGameObject;
 
         private bool _recentlyVisitedByGuard;
         public bool RecentlyVisitedByGuard
@@ -18,8 +19,7 @@ namespace Agents
             {
                 _recentlyVisitedByGuard = value;
                 var mono = _surrogateGameObject.GetComponent<SurrogateMono>();
-                mono.StartCoroutine(WaitFor(5));
-                _recentlyVisitedByGuard = false;
+                mono.StartCoroutine(TimeOutFor(5));
             }
         }
 
@@ -30,9 +30,11 @@ namespace Agents
             Coords = coords;
         }
         
-        private static IEnumerator WaitFor(int seconds)
+        private IEnumerator TimeOutFor(int seconds)
         {
             yield return new WaitForSeconds(seconds);
+            _recentlyVisitedByGuard = false;
+            
         }
 
         public Vector3 Position { get; }
@@ -46,6 +48,32 @@ namespace Agents
                && p1.Position == p2.Position;
 
         public static bool operator !=(PatrolGuardTile p1, PatrolGuardTile p2) => !(p1 == p2);
+        
+        protected bool Equals(PatrolGuardTile other)
+        {
+            return Equals(_surrogateGameObject, other._surrogateGameObject) && _recentlyVisitedByGuard == other._recentlyVisitedByGuard && Position.Equals(other.Position) && Coords.Equals(other.Coords);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((PatrolGuardTile) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (_surrogateGameObject != null ? _surrogateGameObject.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ _recentlyVisitedByGuard.GetHashCode();
+                hashCode = (hashCode * 397) ^ Position.GetHashCode();
+                hashCode = (hashCode * 397) ^ Coords.GetHashCode();
+                return hashCode;
+            }
+        }
+
         
         
     }

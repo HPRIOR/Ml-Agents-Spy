@@ -74,6 +74,7 @@ namespace Training
                 {ParentObject.DebugParent, debugParent}
             };
             Academy.Instance.OnEnvironmentReset += InitSetup;
+            
         }
 
         /// <summary>

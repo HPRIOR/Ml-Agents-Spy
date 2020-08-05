@@ -22,7 +22,6 @@ namespace Agents
             }
         }
         
-
         /// <summary>
         /// This is called at every step - receives actions from policy and is used to give rewards
         /// </summary>
@@ -152,29 +151,30 @@ namespace Agents
                 nearestExitVector,
                 transform.position));
         
-
+        /*
         private void DebugObvs()
         {
-            //Agent position
-            //Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
-            //         $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
+            Agent position
+            Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
+                     $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
            
-            //Distance to nearest Exit
-            //Debug.Log("Distance to nearest Exit: " + DistanceToNearestExit( GetNearestTile(
-            //   _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-            //   transform).Position));
+            Distance to nearest Exit
+            Debug.Log("Distance to nearest Exit: " + DistanceToNearestExit( GetNearestTile(
+               _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+               transform).Position));
             
-            //NearestExitPosition
-            //Debug.Log(NearestExitXAxis(GetNearestTile(
-            //    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-            //    transform).Position) + ", " + NearestExitYAxis(GetNearestTile(
-            //    _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-            //    transform).Position));
+            NearestExitPosition
+            Debug.Log(NearestExitXAxis(GetNearestTile(
+                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+                transform).Position) + ", " + NearestExitYAxis(GetNearestTile(
+                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
+                transform).Position));
             
-            // collisions 
-            //Debug.Log($"collision: {IsColliding}");
+             collisions 
+            Debug.Log($"collision: {IsColliding}");
             
         }
+        */
         
     }
 }

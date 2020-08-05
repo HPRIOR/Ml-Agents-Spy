@@ -43,7 +43,7 @@ namespace Agents
                 tileDict[TileType.FreeTiles]
                     .Concat(tileDict[TileType.GuardTiles])
                     .Concat(tileDict[TileType.SpyTile]);
-            _patrolGuardTileManager = new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles);
+            _patrolGuardTileManager = new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
            
             if (CompletedEpisodes > 0 )
             {
