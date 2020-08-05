@@ -27,7 +27,11 @@ namespace Agents
         /// <returns></returns>
         public IPatrolGuardTile LocationOfNearestTile(Transform agentPosition) =>
             agentPosition
-                .GetNearestTile(1, _guardTiles, tile => tile.distance > 1)[0];
+                .GetNearestTile(
+                    1,
+                    _guardTiles,
+                    tile => tile.distance > 1 & tile.tDistances != _currentTile
+                    )[0];
         
         public bool CanRewardAgent(Transform agentPosition)
         { 

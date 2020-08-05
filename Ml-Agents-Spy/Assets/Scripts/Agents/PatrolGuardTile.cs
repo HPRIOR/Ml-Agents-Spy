@@ -39,7 +39,11 @@ namespace Agents
         public (int x, int y) Coords { get; }
 
         public static bool operator ==(PatrolGuardTile p1, PatrolGuardTile p2)
-            => p2 != null && p1 != null && p1.Coords.x == p2.Coords.x && p1.Coords.y == p2.Coords.y;
+            => p2 != null         
+               && p1 != null 
+               && p1.Coords.x == p2.Coords.x 
+               && p1.Coords.y == p2.Coords.y 
+               && p1.Position == p2.Position;
 
         public static bool operator !=(PatrolGuardTile p1, PatrolGuardTile p2) => !(p1 == p2);
         
