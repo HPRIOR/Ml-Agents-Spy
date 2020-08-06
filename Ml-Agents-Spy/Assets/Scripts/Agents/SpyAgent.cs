@@ -105,7 +105,7 @@ namespace Agents
             AddNearestEnvTilePositions(sensor, 6);
             
             // nearest guards
-            // TODO
+            // TODO add neatest guards
             //DebugObvs();
         }
         

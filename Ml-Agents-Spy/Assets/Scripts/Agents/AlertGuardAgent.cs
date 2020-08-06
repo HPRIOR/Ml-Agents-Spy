@@ -51,7 +51,7 @@ namespace Agents
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1;
+        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
 
        
         // test me

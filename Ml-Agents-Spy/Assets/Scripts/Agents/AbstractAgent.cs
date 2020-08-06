@@ -43,8 +43,7 @@ namespace Agents
 
             transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
         }
-
-
+        
 
         private IEnumerable<(float, float)> GetNormalisedNearestTilePositions(List<IEnvTile> envTiles)
             => envTiles
@@ -115,6 +114,8 @@ namespace Agents
         {
             if (collision.gameObject.name == "Cube") IsColliding = 0f;
         }
+        
+        
         
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Agents;
 using Enums;
 using EnvSetup;
 using Interfaces;
@@ -128,7 +130,7 @@ namespace Training
         private void InitialiseAgents(Dictionary<GameParam, int> gameParams)
         {
             if (SpyCanSpawn(trainingScenario)) SpawnSpyAgent();
-            SpawnGuardAgent(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount]);
+            SpawnGuardAgent(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount], trainingScenario);
         }
 
         /// <summary>
@@ -319,13 +321,14 @@ namespace Training
         private bool TrainingScenarioWantsAlert(TrainingScenario inputTrainingScenario) =>
             inputTrainingScenario == TrainingScenario.GuardAlert;
 
-        
+
         /// <summary>
         /// Adds guards to the list of guards property, will only spawn up to the number of exits - 1
         /// </summary>
         /// <param name="numberOfGuards"></param>
         /// <param name="inputExitCount"></param>
-        private void SpawnGuardAgent(int numberOfGuards, int inputExitCount)
+        /// <param name="inputTrainingScenario"></param>
+        private void SpawnGuardAgent(int numberOfGuards, int inputExitCount, TrainingScenario inputTrainingScenario)
         {
             if (TileDict[TileType.GuardTiles].Count < numberOfGuards)
                 throw new MapCreationException("Number of guards has exceeded the number of spawn places");
@@ -337,13 +340,13 @@ namespace Training
             
             for (int i = 0; i < MaxNumberOfGuards(numberOfGuards, inputExitCount); i++)
             {
-                if (TrainingScenarioWantsPatrol(trainingScenario))
+                if (TrainingScenarioWantsPatrol(inputTrainingScenario))
                 {
                     Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position, 
                         Quaternion.identity));
                 }
 
-                if (TrainingScenarioWantsAlert(trainingScenario))
+                if (TrainingScenarioWantsAlert(inputTrainingScenario))
                 {
                     Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
                         Quaternion.identity));
@@ -429,6 +432,17 @@ namespace Training
             {
                 Spy.transform.position = TileDict[TileType.SpyTile][0].Position;
             }
+        }
+
+        public void SwapPatrolForAlert()
+        {
+            Guards.ForEach(guard =>
+            {
+                var spawnPosition = guard.transform.position;
+                guard.transform.position = new Vector3(-10,-10,-10);
+                
+                Instantiate(guardAlertPrefab, spawnPosition, Quaternion.identity, transform);
+            });
         }
     }
 }

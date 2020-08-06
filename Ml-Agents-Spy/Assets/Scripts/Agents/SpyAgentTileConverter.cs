@@ -57,7 +57,8 @@ namespace Agents
 
         void GetAgentLocations(Func<(ISpyTile, IEnvTile), bool> envTileHasAttribute)
         {
-            if (_correspondingTiles is null) throw new NotImplementedException("Corresponding tuple list of Agent and Env tiles has not been created, run GetAdjecentTiles() first");
+            
+            if (_correspondingTiles is null) throw new NullReferenceException("Corresponding tuple list of Agent and Env tiles has not been created, run GetAdjecentTiles() first");
             _correspondingTiles.Where(envTileHasAttribute).ToList().ForEach(tileTuple => tileTuple.Item1.OccupiedByAgent = true);
         }
 

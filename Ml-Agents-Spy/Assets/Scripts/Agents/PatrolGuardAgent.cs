@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Enums;
 using Interfaces;
+using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -122,6 +123,25 @@ namespace Agents
             }
             _currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
             
+            
+            RayPerceptionSensor.Perceive(_eyes.GetRayPerceptionInput()).RayOutputs.ToList().ForEach(output =>
+            {
+                if (output.HitTaggedObject)
+                {
+                    if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
+                    {
+                        SetReward(1);
+                        EndEpisode();
+                    }
+
+                    if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
+                    {
+                        InstanceController.SwapPatrolForAlert();
+                    }
+                }
+            });
+                
+                
             MoveAgent(vectorAction[0]);
             RotateHead(vectorAction[1]);
         }
