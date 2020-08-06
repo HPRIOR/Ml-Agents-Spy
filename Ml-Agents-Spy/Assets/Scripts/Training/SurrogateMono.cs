@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SurrogateMono : MonoBehaviour
+namespace Training
 {
+    public class SurrogateMono : MonoBehaviour
+    {
     
+    }
 }

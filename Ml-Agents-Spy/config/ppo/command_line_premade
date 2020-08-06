@@ -17,9 +17,9 @@ mlagents-learn ../config/ppo/spy_config2.yaml --run-id=spy_test_advanced_curricu
 
 mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_simple_pathfinding
 
-mlagents-learn ../config/ppo/patrol_config.yaml --run-id=patrol_guard_init_test
+mlagents-learn ../config/ppo/patrol_config.yaml --run-id=patrol_guard_init_test --force
 
-mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test
+mlagents-learn ../config/ppo/spy_config.yaml --run-id=spy_test --force
 
 tensorboard --logdir=results --port=6006
 

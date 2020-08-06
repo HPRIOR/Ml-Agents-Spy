@@ -72,17 +72,17 @@ namespace Training
                 {ParentObject.DebugParent, debugParent}
             };
             Academy.Instance.OnEnvironmentReset += InitSetup;
-            
         }
+        
 
         /// <summary>
         /// Called once by Academy.Instance at the start of training. Sets up environment, and Spawns agents
         /// </summary>
         private void InitSetup()
         {
-            Debug.Log("init setup called");
             try
             {
+                ClearChildrenOf(envParent);
                 if (debugSetup) InitDebugSetup();
                 else InitCurrSetup();
             }
@@ -92,7 +92,6 @@ namespace Training
                 ClearChildrenOf(envParent);
                 InitSetup();
             }
-            
         }
 
         /// <summary>
@@ -137,7 +136,6 @@ namespace Training
         /// </summary>
         public void Restart()
         {
-            Debug.Log("restart Called");
             try
             {
                 if (debugSetup) DebugRestart();
@@ -156,10 +154,10 @@ namespace Training
         /// </summary>
         private void DebugRestart()
         {
-            ClearChildrenOf(envParent);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsDebug();
             if (_agentRequestRestartCount == NumberOfAgentsIn(trainingScenario, Guards.Count))
             {
+                ClearChildrenOf(envParent);
                 var tileLogic = GetTileLogicDebug(tileLogicBuilder);
                 CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, materials);
                 SetAgentPosition(gameParams);
@@ -176,13 +174,14 @@ namespace Training
         /// </summary>
         private void RestartCurriculum()
         {
-            ClearChildrenOf(envParent);
+            
             float curriculumParam =
                 Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             
             if (_agentRequestRestartCount == NumberOfAgentsIn(trainingScenario, Guards.Count))
             {
+                ClearChildrenOf(envParent);
                 var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
                 CreateEnv.PopulateEnv(tileLogic, _parentObjects, gameParamMapScale, materials);
                 SetAgentPosition(gameParams);

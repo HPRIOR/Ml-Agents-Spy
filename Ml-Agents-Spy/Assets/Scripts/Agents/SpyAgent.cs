@@ -89,7 +89,6 @@ namespace Agents
 
             // position of nearest exit, x axis (1 float)
             AddNearestExitXAxis(sensor, nearestExitVector);
-        
             // position of nearest exit, y axis (1 float)
             AddNearestExitYAxis(sensor, nearestExitVector);
 
@@ -104,7 +103,9 @@ namespace Agents
             
             // 12 floats 
             AddNearestEnvTilePositions(sensor, 6);
-
+            
+            // nearest guards
+            // TODO
             //DebugObvs();
         }
         

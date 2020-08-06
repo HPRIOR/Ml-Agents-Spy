@@ -37,17 +37,17 @@ namespace Agents
             List<float> normalisedPositions = new List<float>();
             GetNearestGuardPositions(amount).ForEach(t =>
             {
-                //Debug.Log($"{StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1)}, {StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2)}");
+                // Debug.Log($"{StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1)}, {StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2)}");
                 normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item1));
                 normalisedPositions.Add(StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, t.Item2));
             });
-            int numberOfGuards = InstanceController.Guards.Count;
-            if (numberOfGuards < amount)
+            int numberOfGuardsInScene = InstanceController.Guards.Count - 1;
+            if (numberOfGuardsInScene < amount)
             {
-                int leftOver = amount - numberOfGuards;
+                int leftOver = amount - numberOfGuardsInScene;
                 for (int i = 0; i < leftOver; i++)
                 {
-                   
+                    
                     normalisedPositions.Add(0);
                     normalisedPositions.Add(0);
                 }

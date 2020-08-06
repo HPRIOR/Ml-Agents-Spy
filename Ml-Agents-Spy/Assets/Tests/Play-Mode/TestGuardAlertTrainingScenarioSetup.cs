@@ -204,7 +204,7 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.AdvancedTestCurriculum);
             yield return null;
-            Assert.IsNotNull( trainingInstanceController.Guards[0].GetComponent<GuardAlertAgent>());
+            Assert.IsNotNull( trainingInstanceController.Guards[0].GetComponent<AlertGuardAgent>());
         }
     }
 }

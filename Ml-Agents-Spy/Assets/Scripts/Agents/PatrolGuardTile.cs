@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using EnvSetup;
 using Interfaces;
+using Training;
 using Unity.MLAgents;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace Agents
             {
                 _recentlyVisitedByGuard = value;
                 var mono = _surrogateGameObject.GetComponent<SurrogateMono>();
-                mono.StartCoroutine(TimeOutFor(5));
+                mono.StartCoroutine(TimeOutFor(200));
             }
         }
 

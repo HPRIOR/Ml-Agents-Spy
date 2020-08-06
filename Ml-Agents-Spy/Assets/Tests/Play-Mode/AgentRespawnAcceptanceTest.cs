@@ -122,7 +122,7 @@ namespace Tests
         {
             var trainingInstanceController = ConfigTrainingInstanceController(TrainingScenario.GuardPatrol, 100, 5, 6, 5);
             yield return null;
-            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<GuardPatrolAgent>();
+            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
             for (int i = 0; i < _iterations; i++)
             {
                 yield return null;
@@ -136,7 +136,7 @@ namespace Tests
         {
             var trainingInstanceController = ConfigTrainingInstanceController(TrainingScenario.GuardPatrol, 50, 4, 5, 4);
             yield return null;
-            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<GuardPatrolAgent>();
+            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
             for (int i = 0; i < _iterations; i++)
             {
                 yield return null;
@@ -150,7 +150,7 @@ namespace Tests
         {
             var trainingInstanceController = ConfigTrainingInstanceController(TrainingScenario.GuardPatrol, 20, 3, 4, 3);
             yield return null;
-            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<GuardPatrolAgent>();
+            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
             for (int i = 0; i < _iterations; i++)
             {
                 yield return null;
@@ -163,7 +163,7 @@ namespace Tests
         {
             var trainingInstanceController = ConfigTrainingInstanceController(TrainingScenario.GuardPatrol, 10, 2, 3, 2);
             yield return null;
-            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<GuardPatrolAgent>();
+            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
             for (int i = 0; i < _iterations; i++)
             {
                 yield return null;
@@ -176,7 +176,7 @@ namespace Tests
         {
             var trainingInstanceController = ConfigTrainingInstanceController(TrainingScenario.GuardPatrol, 5, 1, 2, 1);
             yield return null;
-            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<GuardPatrolAgent>();
+            var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
             for (int i = 0; i < _iterations; i++)
             {
                 yield return null;
