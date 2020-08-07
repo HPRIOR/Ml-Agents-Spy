@@ -146,6 +146,8 @@ namespace Agents
             }
         }
                 
+        
+        // TODO this can be extracted and used in both guard and spy agents
 
         /// <summary>
         /// Adds normalised distance to nearest exit to observations 

@@ -145,8 +145,6 @@ namespace Agents
         public override void OnActionReceived(float[] vectorAction)
         {
             AddReward(-1f/MaxStep);
-            
-            
             if (CloseToAgent())
             {
                 if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
@@ -158,9 +156,6 @@ namespace Agents
                     SetReward(1);
                     EndEpisode();
                 }
-                
-                
-               
             }
             if (CanMove) MoveAgent(vectorAction[0]);
         }

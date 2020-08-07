@@ -167,10 +167,10 @@ MonoBehaviour:
   guardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
     type: 3}
   coroutineSurrogate: {fileID: 877021492226360997}
-  mapScale: 3
+  mapScale: 1
   mapDifficulty: 0
-  exitCount: 3
-  guardAgentCount: 2
+  exitCount: 2
+  guardAgentCount: 1
   hasMiddleTiles: 1
 --- !u!1 &2483226646646885260
 GameObject:
