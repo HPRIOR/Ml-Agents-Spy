@@ -175,7 +175,6 @@ namespace Training
             else
             {
                 _agentRequestRestartCount++;
-                Debug.Log(_agentRequestRestartCount);
             }
         }
         
@@ -402,6 +401,7 @@ namespace Training
             for (int i = 0; i < Guards.Count; i++)
             {
                 Guards[i].transform.position = potentialSpawnTiles[indexes[i]].Position;
+                Guards[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 
@@ -462,18 +462,24 @@ namespace Training
             else
             {
                 Spy.transform.position = TileDict[TileType.SpyTile][0].Position;
+                Spy.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 
         public void SwapAgents()
         {
-            Guards.Zip(GuardsSwap,Tuple.Create).ToList().ForEach(t =>
-            {
+            Guards
+                .Zip(GuardsSwap,Tuple.Create)
+                .ToList()
+                .ForEach(t => 
+                {
                 // swap transform positions
                 var (inPlay, outPlay) = t;
                 var inPlayGuardTransform = inPlay.transform;
                 outPlay.transform.position = inPlayGuardTransform.position;
                 inPlayGuardTransform.position -= new Vector3(0,100,0);
+                outPlay.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                inPlay.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //swap lists
                 Guards.Remove(inPlay);
                 Guards.Add(outPlay);
@@ -485,8 +491,6 @@ namespace Training
                 inPlayGuardScript.CanMove = false;
                 outPlayGuardScript.CanMove = true;
             });
-            Debug.Log("Swapped");
-            
             
         }
     }

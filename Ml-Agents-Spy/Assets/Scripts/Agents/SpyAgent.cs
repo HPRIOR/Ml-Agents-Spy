@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -104,11 +105,48 @@ namespace Agents
             // 12 floats 
             AddNearestEnvTilePositions(sensor, 6);
             
-            // nearest guards
-            // TODO add neatest guards
+            // nearest guards (6)
+            AddNearestGuards(sensor, 3);
             //DebugObvs();
         }
         
+        
+        public List<GameObject> GetNearestGuards( int amount) =>
+            transform
+                .gameObject
+                .GetNearest(amount, InstanceController.Guards, x => true);
+
+        private void AddNearestGuards(VectorSensor sensor, int amount)
+        {
+            GetNearestGuards(3).ForEach(guard =>
+            {
+                var guardVector = guard.transform.position;
+                sensor.AddObservation(
+                    StaticFunctions.NormalisedFloat(
+                        -MaxLocalDistance,
+                        MaxLocalDistance, 
+                        guardVector.x)
+                );
+                sensor.AddObservation(
+                    StaticFunctions.NormalisedFloat(
+                        -MaxLocalDistance,
+                        MaxLocalDistance, 
+                        guardVector.z)
+                );
+            });
+            var numberOfGuards = InstanceController.Guards.Count;
+            if (amount > numberOfGuards)
+            {
+                var difference = amount - numberOfGuards;
+                for (int i = 0; i < difference; i++)
+                {
+                    sensor.AddObservation(0);
+                    sensor.AddObservation(0);
+                }
+            }
+        }
+                
+
         /// <summary>
         /// Adds normalised distance to nearest exit to observations 
         /// </summary>

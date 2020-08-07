@@ -54,7 +54,7 @@ namespace Agents
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.5;
+        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
 
        
         // test me
@@ -146,10 +146,20 @@ namespace Agents
         {
             AddReward(-1f/MaxStep);
             
+            
             if (CloseToAgent())
             {
-                SetReward(1);
-                EndEpisode();
+                if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
+                {
+                    EndEpisode();
+                }
+                else
+                {
+                    SetReward(1);
+                    EndEpisode();
+                }
+                
+                
                
             }
             if (CanMove) MoveAgent(vectorAction[0]);
