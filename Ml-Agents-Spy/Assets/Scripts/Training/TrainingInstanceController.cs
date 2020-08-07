@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Agents;
@@ -73,6 +74,8 @@ namespace Training
         /// </summary>
         public void Awake()
         {
+            //TODO create a 'can test' bool which signals to the tests that it can go after coroutine 
+            StartCoroutine(WaitFor(1));
             _parentObjects = new Dictionary<ParentObject, GameObject>()
             {
                 {ParentObject.TopParent, topParent},
@@ -80,6 +83,11 @@ namespace Training
                 {ParentObject.DebugParent, debugParent}
             };
             Academy.Instance.OnEnvironmentReset += InitSetup;
+        }
+
+        IEnumerator WaitFor(int seconds)
+        {
+            yield return new WaitForSeconds(seconds);
         }
         
 

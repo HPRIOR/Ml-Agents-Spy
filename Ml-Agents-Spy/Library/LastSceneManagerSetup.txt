@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/TestPatrolEyes.unity
+- path: Assets/Scenes/PatrolGuardDebugTraining.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

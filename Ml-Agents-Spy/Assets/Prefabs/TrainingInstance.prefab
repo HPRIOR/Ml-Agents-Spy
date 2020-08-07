@@ -168,7 +168,7 @@ MonoBehaviour:
     type: 3}
   coroutineSurrogate: {fileID: 877021492226360997}
   mapScale: 1
-  mapDifficulty: 0
+  mapDifficulty: 1
   exitCount: 2
   guardAgentCount: 1
   hasMiddleTiles: 1

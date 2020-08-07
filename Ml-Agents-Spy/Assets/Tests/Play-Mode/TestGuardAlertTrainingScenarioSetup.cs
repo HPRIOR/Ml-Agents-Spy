@@ -35,7 +35,7 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardAlert, CurriculumEnum.SimpleTestCurriculum);
-            yield return  null;
+            yield return new WaitForSeconds(2);
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
