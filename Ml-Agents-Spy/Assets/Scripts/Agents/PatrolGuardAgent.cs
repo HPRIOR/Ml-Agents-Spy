@@ -86,7 +86,20 @@ namespace Agents
             AddNearestPatrolTiles(sensor);
             
             // NearestGuardAgents
-            AddNearestGuards(sensor, guardObvs);
+           
+            if (CanMove)
+            {
+                AddNearestGuards(sensor, guardObvs);
+            }
+            else
+            {
+                for (int i = 0; i < guardObvs; i++)
+                {
+                    sensor.AddObservation(0);
+                    sensor.AddObservation(0);
+                    
+                }
+            }
             
             // TrailMemory
             AddVisitedMemoryTrail(sensor);
@@ -136,14 +149,18 @@ namespace Agents
 
                     if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
                     {
-                        InstanceController.SwapPatrolForAlert();
+                        InstanceController.SwapAgents();
                     }
                 }
             });
-                
-                
-            MoveAgent(vectorAction[0]);
-            RotateHead(vectorAction[1]);
+
+
+            if (CanMove)
+            {
+                MoveAgent(vectorAction[0]);
+                RotateHead(vectorAction[1]);
+            }
+           
         }
     }
 }

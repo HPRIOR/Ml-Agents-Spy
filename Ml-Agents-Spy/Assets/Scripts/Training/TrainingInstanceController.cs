@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Agents;
 using Enums;
 using EnvSetup;
@@ -43,6 +44,11 @@ namespace Training
         /// Instantiated guards in the scene
         /// </summary>
         public List<GameObject> Guards { get; } = new List<GameObject>();
+        
+        /// <summary>
+        /// Instantiated guards to spawn during spy evade scenario (between alert and patrol)
+        /// </summary>
+        public List<GameObject> GuardsSwap { get; } = new List<GameObject>();
         
         /// <summary>
         /// Contains the various tiles created during environment setup
@@ -138,6 +144,7 @@ namespace Training
         /// </summary>
         public void Restart()
         {
+            
             try
             {
                 if (debugSetup) DebugRestart();
@@ -168,6 +175,7 @@ namespace Training
             else
             {
                 _agentRequestRestartCount++;
+                Debug.Log(_agentRequestRestartCount);
             }
         }
         
@@ -176,7 +184,6 @@ namespace Training
         /// </summary>
         private void RestartCurriculum()
         {
-            
             float curriculumParam =
                 Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
@@ -290,8 +297,7 @@ namespace Training
             };
             return (tileLogicBuilder, gameParams);
         }
-        
-        
+
         /// <summary>
         /// Checks if the spy can spawn based on the training scenario
         /// </summary>
@@ -333,27 +339,44 @@ namespace Training
             if (TileDict[TileType.GuardTiles].Count < numberOfGuards)
                 throw new MapCreationException("Number of guards has exceeded the number of spawn places");
 
+            int maxNumOfGuard = MaxNumberOfGuards(numberOfGuards, inputExitCount);
             
             var indexes =
-                RandomHelper.GetUniqueRandomList(MaxNumberOfGuards(numberOfGuards, exitCount), 
+                RandomHelper.GetUniqueRandomList(maxNumOfGuard, 
                     TileDict[TileType.GuardTiles].Count);
             
-            for (int i = 0; i < MaxNumberOfGuards(numberOfGuards, inputExitCount); i++)
+            for (int i = 0; i < maxNumOfGuard; i++)
             {
-                if (TrainingScenarioWantsPatrol(inputTrainingScenario))
+                if (inputTrainingScenario != TrainingScenario.SpyEvade)
                 {
-                    Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position, 
-                        Quaternion.identity));
+                    if (TrainingScenarioWantsPatrol(inputTrainingScenario))
+                        Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position, 
+                            Quaternion.identity, transform));
+                    if (TrainingScenarioWantsAlert(inputTrainingScenario))
+                        Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
+                            Quaternion.identity, transform));
+                    
                 }
-
-                if (TrainingScenarioWantsAlert(inputTrainingScenario))
+                else
                 {
-                    Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
-                        Quaternion.identity));
-
+                    {
+                        Guards.Add(Instantiate(
+                            guardPatrolPrefab, 
+                            TileDict[TileType.GuardTiles][indexes[i]].Position, 
+                            Quaternion.identity, 
+                            transform
+                            )
+                        );
+                        GuardsSwap.Add(Instantiate(
+                                guardAlertPrefab, 
+                                TileDict[TileType.GuardTiles][indexes[i]].Position - new Vector3(0, 100, 0),
+                                Quaternion.identity,
+                                transform
+                            )
+                        );
+                    }
                 }
             }
-            Guards.ForEach(guard => guard.transform.parent = transform);
         }
         
         /// <summary>
@@ -363,6 +386,13 @@ namespace Training
         /// <param name="gameParams"></param>
         private void MoveGuardAgents(List<IEnvTile> potentialSpawnTiles, Dictionary<GameParam, int> gameParams)
         {
+            if (trainingScenario == TrainingScenario.SpyEvade)
+            {
+                if (Guards.Any(guard => guard.CompareTag("alertguard")))
+                {
+                    SwapAgents();
+                }
+            }
             if (potentialSpawnTiles.Count < Guards.Count)
             {
                 throw new MapCreationException("Number of guards has exceeded the number of spawn places");
@@ -388,12 +418,13 @@ namespace Training
             {
                 case TrainingScenario.GuardAlert:
                 case TrainingScenario.GuardPatrolWithSpy:
-                case TrainingScenario.SpyEvade:
                     return 1 + guardCount;
                 case TrainingScenario.SpyPathFinding:
                     return 1;
                 case TrainingScenario.GuardPatrol:
                     return guardCount;
+                case TrainingScenario.SpyEvade:
+                    return 1 + (guardCount * 2);
                 default:
                     return guardCount + 1;
             }
@@ -434,15 +465,29 @@ namespace Training
             }
         }
 
-        public void SwapPatrolForAlert()
+        public void SwapAgents()
         {
-            Guards.ForEach(guard =>
+            Guards.Zip(GuardsSwap,Tuple.Create).ToList().ForEach(t =>
             {
-                var spawnPosition = guard.transform.position;
-                guard.transform.position = new Vector3(-10,-10,-10);
-                
-                Instantiate(guardAlertPrefab, spawnPosition, Quaternion.identity, transform);
+                // swap transform positions
+                var (inPlay, outPlay) = t;
+                var inPlayGuardTransform = inPlay.transform;
+                outPlay.transform.position = inPlayGuardTransform.position;
+                inPlayGuardTransform.position -= new Vector3(0,100,0);
+                //swap lists
+                Guards.Remove(inPlay);
+                Guards.Add(outPlay);
+                GuardsSwap.Remove(outPlay);
+                GuardsSwap.Add(inPlay);
+                // change Can Move
+                var inPlayGuardScript = inPlay.GetComponent<AbstractGuard>();
+                var outPlayGuardScript = outPlay.GetComponent<AbstractGuard>();
+                inPlayGuardScript.CanMove = false;
+                outPlayGuardScript.CanMove = true;
             });
+            Debug.Log("Swapped");
+            
+            
         }
     }
 }

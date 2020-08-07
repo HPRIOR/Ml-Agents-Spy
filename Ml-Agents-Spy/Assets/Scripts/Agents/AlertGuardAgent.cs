@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using Enums;
-using Interfaces;
-using Training;
-using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static StaticFunctions;
@@ -28,6 +26,11 @@ namespace Agents
         public override void OnEpisodeBegin()
         {
             Constructor();
+            if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
+            {
+                CanMove = false;
+            }
+            
             if (CompletedEpisodes > 0 )
             {
                 InstanceController.Restart();
@@ -51,7 +54,7 @@ namespace Agents
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
+        private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.5;
 
        
         // test me
@@ -112,8 +115,20 @@ namespace Agents
             AddSpyLocalPositions(sensor);
 
             // position of other guards (6)
-            AddNearestGuards(sensor, 3);
-
+            int guardObservationCount = 3;
+            if (CanMove)
+            {
+                AddNearestGuards(sensor, guardObservationCount);
+            }
+            else
+            {
+                for (int i = 0; i < guardObservationCount; i++)
+                {
+                    sensor.AddObservation(0);
+                    sensor.AddObservation(0);
+                }
+            }
+            
             //memory trail (20)
             AddVisitedMemoryTrail(sensor);
             
@@ -130,15 +145,15 @@ namespace Agents
         public override void OnActionReceived(float[] vectorAction)
         {
             AddReward(-1f/MaxStep);
+            
             if (CloseToAgent())
             {
                 SetReward(1);
                 EndEpisode();
+               
             }
-            MoveAgent(vectorAction[0]);
+            if (CanMove) MoveAgent(vectorAction[0]);
         }
-
-        
         
     }
 }

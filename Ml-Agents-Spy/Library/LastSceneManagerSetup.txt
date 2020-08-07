@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SimplePathFindingCurr.unity
+- path: Assets/Scenes/TestPatrolEyes.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
