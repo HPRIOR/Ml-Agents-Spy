@@ -167,7 +167,7 @@ MonoBehaviour:
   guardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
     type: 3}
   coroutineSurrogate: {fileID: 877021492226360997}
-  mapScale: 1
+  mapScale: 2
   mapDifficulty: 1
   exitCount: 2
   guardAgentCount: 1

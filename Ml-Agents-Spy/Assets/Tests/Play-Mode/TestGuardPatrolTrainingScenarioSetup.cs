@@ -21,7 +21,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetBasicDebug(trainingInstanceController);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
             
         }
@@ -31,7 +32,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
         
@@ -40,7 +42,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -55,7 +58,8 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -69,7 +73,8 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -82,7 +87,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -96,7 +102,8 @@ namespace Tests
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -109,7 +116,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -124,7 +132,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
@@ -133,7 +142,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
@@ -142,7 +152,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
@@ -152,7 +163,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
         
@@ -161,7 +173,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.IsNull(trainingInstanceController.Spy);
         }
         
@@ -170,7 +183,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -183,7 +197,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -196,7 +211,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
-            yield return  null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
             yield return null;
             guard.EndEpisode();
@@ -209,7 +225,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.IsNotNull( trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>());
         }
     

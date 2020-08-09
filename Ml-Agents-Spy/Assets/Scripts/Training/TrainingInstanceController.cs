@@ -18,6 +18,8 @@ namespace Training
     {
         public Material[] materials;
 
+        public bool waitForTestSetup = true;
+        public bool TestSetUpComplete { get; private set; } = false;
         public bool debugSetup;
         public CurriculumEnum curriculum;
         public TrainingScenario trainingScenario;
@@ -74,33 +76,33 @@ namespace Training
         /// </summary>
         public void Awake()
         {
-            //TODO create a 'can test' bool which signals to the tests that it can go after coroutine 
-            StartCoroutine(WaitFor(1));
-            _parentObjects = new Dictionary<ParentObject, GameObject>()
+           _parentObjects = new Dictionary<ParentObject, GameObject>()
             {
                 {ParentObject.TopParent, topParent},
                 {ParentObject.EnvParent, envParent},
                 {ParentObject.DebugParent, debugParent}
             };
-            Academy.Instance.OnEnvironmentReset += InitSetup;
+            StartCoroutine(WaitUntilAcademyCanProceed());
         }
 
-        IEnumerator WaitFor(int seconds)
+        IEnumerator WaitUntilAcademyCanProceed()
         {
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitUntil(() => !waitForTestSetup);
+            Academy.Instance.OnEnvironmentReset += InitSetup;
         }
         
 
         /// <summary>
         /// Called once by Academy.Instance at the start of training. Sets up environment, and Spawns agents
         /// </summary>
-        private void InitSetup()
+        public void InitSetup()
         {
             try
             {
                 ClearChildrenOf(envParent);
                 if (debugSetup) InitDebugSetup();
                 else InitCurrSetup();
+                TestSetUpComplete = true;
             }
             catch (MapCreationException)
             {

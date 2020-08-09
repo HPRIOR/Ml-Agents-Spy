@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Enums;
 using NUnit.Framework;
+using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -14,7 +15,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
@@ -23,7 +25,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
 
         }
@@ -33,7 +36,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.NotNull(trainingInstanceController.Spy);
         }
 
@@ -42,7 +46,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetAdvancedDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.NotNull(trainingInstanceController.Spy);
         }
 
@@ -51,7 +56,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
             trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
@@ -64,7 +70,8 @@ namespace Tests
         {
             var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
             trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
@@ -78,7 +85,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
@@ -87,7 +95,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
 
@@ -96,7 +105,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             Assert.NotNull(trainingInstanceController.Spy);
         }
 
@@ -105,7 +115,7 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             Assert.NotNull(trainingInstanceController.Spy);
         }
 
@@ -114,7 +124,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
             trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;
@@ -127,7 +138,8 @@ namespace Tests
         {
             var trainingInstanceController =
                 ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
-            yield return null;
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
             trainingInstanceController.Spy.transform.position = firstExitPosition.Position;
             yield return null;

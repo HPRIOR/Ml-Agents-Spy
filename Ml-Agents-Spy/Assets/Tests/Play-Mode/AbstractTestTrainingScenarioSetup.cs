@@ -1,31 +1,28 @@
 ﻿using Enums;
-using NUnit.Framework;
 using Training;
-using Unity.MLAgents;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Tests
 {
     public abstract class AbstractTestTrainingScenarioSetup : AbstractPlayModeTest
     {
-
-        GameObject trainingInstancePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
+        readonly GameObject _trainingInstancePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
         protected TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario, CurriculumEnum curriculum)
         {
             
-            GameObject trainingInstance = GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.trainingScenario = inputTrainingScenario;
             trainingInstanceController.curriculum = curriculum;
             trainingInstanceController.debugSetup = false;
+            trainingInstanceController.waitForTestSetup = false;
             return trainingInstanceController;
         }
 
         protected  TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
         {
-            GameObject trainingInstance = GameObject.Instantiate(trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.trainingScenario = trainingScenario;
             trainingInstanceController.debugSetup = true;
@@ -39,6 +36,7 @@ namespace Tests
             trainingInstanceController.mapDifficulty = 0;
             trainingInstanceController.guardAgentCount = 1;
             trainingInstanceController.hasMiddleTiles = true;
+            trainingInstanceController.waitForTestSetup = false;
         }
 
         protected static void SetAdvancedDebug(TrainingInstanceController trainingInstanceController)
@@ -48,6 +46,7 @@ namespace Tests
             trainingInstanceController.mapDifficulty = 10;
             trainingInstanceController.guardAgentCount = 2;
             trainingInstanceController.hasMiddleTiles = true;
+            trainingInstanceController.waitForTestSetup = false;
         }
 
         protected static void SetDebugParameters(TrainingInstanceController trainingInstanceController, int mapScale,
@@ -57,6 +56,7 @@ namespace Tests
             trainingInstanceController.mapScale = mapScale;
             trainingInstanceController.exitCount = exitCount;
             trainingInstanceController.guardAgentCount = guardAgentCount;
+            trainingInstanceController.waitForTestSetup = false;
         }
         
     }
