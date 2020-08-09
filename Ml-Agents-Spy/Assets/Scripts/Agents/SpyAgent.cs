@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -88,11 +89,9 @@ namespace Agents
                     InstanceController.TileDict[TileType.ExitTiles],
                     x => true)[0].Position;
 
-            // position of nearest exit, x axis (1 float)
-            AddNearestExitXAxis(sensor, nearestExitVector);
-            // position of nearest exit, y axis (1 float)
-            AddNearestExitYAxis(sensor, nearestExitVector);
-
+            //positions of nearest exit
+            AddNearestTilePositions(sensor, 1, InstanceController.TileDict[TileType.ExitTiles]);
+            
             // distance to nearest exit (1 float)
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
@@ -103,52 +102,23 @@ namespace Agents
             AddVisitedMemoryTrail(sensor);
             
             // 12 floats 
-            AddNearestEnvTilePositions(sensor, 6);
+            AddNearestTilePositions(sensor, 6, InstanceController.TileDict[TileType.EnvTiles]);
             
             // nearest guards (6)
             AddNearestGuards(sensor, 3);
-            //DebugObvs();
         }
         
-        
-        public List<GameObject> GetNearestGuards( int amount) =>
+        /// <summary>
+        /// Gets all nearest guards to the current spy agent
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        protected override List<GameObject> GetNearestGuards( int amount) =>
             transform
                 .gameObject
                 .GetNearest(amount, InstanceController.Guards, x => true);
 
-        private void AddNearestGuards(VectorSensor sensor, int amount)
-        {
-            GetNearestGuards(3).ForEach(guard =>
-            {
-                var guardVector = guard.transform.position;
-                sensor.AddObservation(
-                    StaticFunctions.NormalisedFloat(
-                        -MaxLocalDistance,
-                        MaxLocalDistance, 
-                        guardVector.x)
-                );
-                sensor.AddObservation(
-                    StaticFunctions.NormalisedFloat(
-                        -MaxLocalDistance,
-                        MaxLocalDistance, 
-                        guardVector.z)
-                );
-            });
-            var numberOfGuards = InstanceController.Guards.Count;
-            if (amount > numberOfGuards)
-            {
-                var difference = amount - numberOfGuards;
-                for (int i = 0; i < difference; i++)
-                {
-                    sensor.AddObservation(0);
-                    sensor.AddObservation(0);
-                }
-            }
-        }
-                
         
-        // TODO this can be extracted and used in both guard and spy agents
-
         /// <summary>
         /// Adds normalised distance to nearest exit to observations 
         /// </summary>
@@ -156,66 +126,13 @@ namespace Agents
         /// <param name="nearestExitVector">Vector of nearest exit</param>
         private void AddDistanceToNearestExit(VectorSensor sensor, Vector3 nearestExitVector) =>
             sensor.AddObservation(DistanceToNearestExit(nearestExitVector));
-
-        /// <summary>
-        /// Adds normalised X axis location of nearest exit to observations 
-        /// </summary>
-        /// <param name="sensor">Sensor used to pass observations</param>
-        /// <param name="nearestExitVector">Vector of nearest exit</param>
-        private void AddNearestExitYAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(NormalisedNearestExitYAxis(nearestExitVector));
-
         
-        /// <summary>
-        /// Adds normalised Y axis location of nearest exit to observations 
-        /// </summary>
-        /// <param name="sensor">Sensor used to pass observations</param>
-        /// <param name="nearestExitVector">Vector of nearest exit</param>
-        private void AddNearestExitXAxis(VectorSensor sensor, Vector3 nearestExitVector) =>
-            sensor.AddObservation(NormalisedNearestExitXAxis(nearestExitVector));
-        
-
-        private float NormalisedNearestExitYAxis(Vector3 nearestExitVector) => 
-            StaticFunctions.NormalisedFloat(-MaxLocalDistance,
-            MaxLocalDistance, VectorConversions.GetLocalPosition(
-                nearestExitVector, InstanceController).z);
-
-        private float NormalisedNearestExitXAxis(Vector3 nearestExitVector) => 
-            StaticFunctions.NormalisedFloat(
-            -MaxLocalDistance,
-            MaxLocalDistance, VectorConversions.GetLocalPosition(
-                nearestExitVector, InstanceController).x);
-
         // made public for testing 
         public float DistanceToNearestExit(Vector3 nearestExitVector) => 
             StaticFunctions.NormalisedFloat(0f, StaticFunctions.MaxVectorDistanceToExit(InstanceController.AgentMapScale), Vector3.Distance(
                 nearestExitVector,
                 transform.position));
         
-        /*
-        private void DebugObvs()
-        {
-            Agent position
-            Debug.Log($"Agent Position:{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.x)}" +
-                     $",{NormalisedFloat(-_maxLocalDistance, _maxLocalDistance, transform.localPosition.z)}");
-           
-            Distance to nearest Exit
-            Debug.Log("Distance to nearest Exit: " + DistanceToNearestExit( GetNearestTile(
-               _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-               transform).Position));
-            
-            NearestExitPosition
-            Debug.Log(NearestExitXAxis(GetNearestTile(
-                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                transform).Position) + ", " + NearestExitYAxis(GetNearestTile(
-                _instanceController.TileDict[TileType.ExitTiles].ConvertAll(tile => (ITile) tile),
-                transform).Position));
-            
-             collisions 
-            Debug.Log($"collision: {IsColliding}");
-            
-        }
-        */
         
     }
 }

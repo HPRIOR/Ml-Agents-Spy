@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Enums;
 using Interfaces;
 using Training;
 using Unity.MLAgents;
@@ -46,9 +45,17 @@ namespace Agents
             transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
         }
         
+        
+        private List<IEnvTile> GetNearestTiles(int amount, List<IEnvTile> inputTiles) => 
+            transform.GetNearestTile(
+            amount, 
+            inputTiles, 
+            x => true);
 
-        private IEnumerable<(float, float)> GetNormalisedNearestTilePositions(List<IEnvTile> envTiles)
-            => envTiles
+
+        // TODO test me
+        public List<float> GetNearestTilePositions(int amount, List<IEnvTile> inputTile) =>
+            GetNearestTiles(amount, inputTile)
                 .Select(tiles =>
                     (NormalisedFloat(
                             -MaxLocalDistance,
@@ -61,34 +68,17 @@ namespace Agents
                             MaxLocalDistance,
                             VectorConversions.GetLocalPosition(
                                 tiles.Position,
-                                InstanceController).z)));
+                                InstanceController).z)))
+                .FlattenTuples()
+                .ToList();
+           
         
 
-        private List<IEnvTile> GetNearestEnvTiles(int amount) =>
-            transform.GetNearestTile(
-                amount, 
-                InstanceController.TileDict[TileType.EnvTiles], 
-                x => true);
-
-        // test me
-        public List<float> GetNearestEnvTilePositions(int amount)
-        {
-            var envTiles = GetNearestEnvTiles(amount);
-            // envTiles.ForEach(x => Debug.Log(x.Coords));
-            var xTiles = GetNormalisedNearestTilePositions(envTiles).ToList();
-            var newList = new List<float>();
-            for (int i = 0; i < amount; i++)
-            {
-                newList.Add(xTiles[i].Item1);
-                newList.Add(xTiles[i].Item2);
-            }
-            return newList.ToList();
-        }
-
-        protected void AddNearestEnvTilePositions(VectorSensor vectorSensor, int amount) =>
-            GetNearestEnvTilePositions(amount)
+        protected void AddNearestTilePositions(VectorSensor vectorSensor, int amount, List<IEnvTile> inputTile) =>
+            GetNearestTilePositions(amount, inputTile)
                 .ForEach(vectorSensor.AddObservation);
-
+        
+        
 
         /// <summary>
         /// Adds normalised 'trail' of visited locations to observations
@@ -102,9 +92,44 @@ namespace Agents
                     -MaxLocalDistance,
                     MaxLocalDistance,
                     f)));
+
+
+        /// <summary>
+        /// Gets the nearest guards to the current agent
+        /// </summary>
+        /// <remarks>
+        /// Method overrides determine agent specific logic in getting nearest guards
+        /// For guards this is used to exclude themselves from the observation 
+        /// </remarks>>
+        /// <param name="amount">Number of agents to return</param>
+        /// <returns>List of agents (GameObjects)</returns>
+        protected abstract List<GameObject> GetNearestGuards(int amount);
+
         
+        // TODO test me
+        public List<float> GetGuardPositions(int amount) =>
+            GetNearestGuards(amount)
+                .Select(guard => {
+                Vector3 positions = guard.transform.localPosition;
+                return (NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, positions.x),
+                    NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, positions.z)); 
+                })
+                .FlattenTuples()
+                .ToList()
+                .PadList(amount*2, 0)
+                .ToList();
+            
+        
+        
+        protected void AddNearestGuards(VectorSensor sensor, int amount)
+        {
+            GetGuardPositions(amount).ForEach(sensor.AddObservation);
+        }
+        
+        
+        // TODO test me
         public float NormalisedPositionX() => NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.x);
-        
+        // TODO test me
         public float NormalisedPositionY() => NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.z);
         
         private void OnCollisionEnter(Collision collision) 

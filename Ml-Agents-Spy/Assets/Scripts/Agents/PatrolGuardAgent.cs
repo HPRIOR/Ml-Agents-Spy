@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Interfaces;
 using Unity.MLAgents;
@@ -105,9 +106,10 @@ namespace Agents
             AddVisitedMemoryTrail(sensor);
             
             // nearest env tiles
-            AddNearestEnvTilePositions(sensor, envTiles);
+            AddNearestTilePositions(sensor, envTiles, InstanceController.TileDict[TileType.EnvTiles]);
         }
-        
+
+
 
         private void RotateHead(float input)
         {

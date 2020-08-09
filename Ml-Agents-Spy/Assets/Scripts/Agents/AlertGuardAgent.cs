@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using Interfaces;
+using Training;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static StaticFunctions;
@@ -56,54 +58,9 @@ namespace Agents
 
         private bool CloseToAgent() => Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
 
-       
-        // test me
-        public List<(float, float)> NearestExitTilePositions(int amount)
-            => transform
-                .GetNearestTile( amount, 
-                InstanceController.TileDict[TileType.ExitTiles],
-                x=>true)
-                .Select(tile =>
-                {
-                    var localPosition = GetLocalPosition(tile.Position, InstanceController);
-                    var x = NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, localPosition.x);
-                    var y = NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, localPosition.z);
-                    return (x, y);
-                })
-                .ToList();
+
         
-        private static void AddExitPositions(VectorSensor sensor, List<(float, float)> nearestExits)
-        {
-            nearestExits.ForEach(t =>
-            {
-                sensor.AddObservation(t.Item1);
-                sensor.AddObservation(t.Item2);
-            });
-        }
-
-        private void AddNearestExitTilePositions(VectorSensor sensor, int amount)
-        {
-            var nearestExits = NearestExitTilePositions(amount);
-            var requestedExitCount = nearestExits.Count;
-            var exitCount = InstanceController.TileDict[TileType.ExitTiles].Count;
-            
-            if (exitCount < requestedExitCount)
-            {
-                AddExitPositions(sensor, nearestExits);
-                int leftOver = requestedExitCount - exitCount;
-                for (int i = 0; i < leftOver; i++)
-                {
-                    sensor.AddObservation(0);
-                    sensor.AddObservation(0);
-                }
-            }
-            else
-            {
-                AddExitPositions(sensor, nearestExits);
-            }
-            
-        }
-
+        
         
 
         public override void CollectObservations(VectorSensor sensor)
@@ -111,6 +68,7 @@ namespace Agents
             // own position (2)
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
+            
             // spy position (2)
             AddSpyLocalPositions(sensor);
 
@@ -133,13 +91,11 @@ namespace Agents
             AddVisitedMemoryTrail(sensor);
             
             //exits (6)
-            AddNearestExitTilePositions(sensor, 3);
+            AddNearestTilePositions(sensor, 3, InstanceController.TileDict[TileType.ExitTiles]);
             
             //env tiles position (12)
-            AddNearestEnvTilePositions(sensor, 6);
+            AddNearestTilePositions(sensor, 6, InstanceController.TileDict[TileType.EnvTiles]);
         }
-        
-        
         
 
         public override void OnActionReceived(float[] vectorAction)
