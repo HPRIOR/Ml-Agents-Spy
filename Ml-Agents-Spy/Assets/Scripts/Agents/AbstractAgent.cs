@@ -16,17 +16,16 @@ namespace Agents
         private IAgentMemory _agentMemory;
         protected abstract float Speed { get; }
         protected float MaxLocalDistance;
-        public float IsColliding { get; private set; }
-        
+        protected float IsColliding { get; private set; }
         
         protected void Constructor()
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             MaxLocalDistance = GetMaxLocalDistance(InstanceController.AgentMapScale);
-            
         }
         
+       
         /// <summary>
         /// Defines one discrete vector [0](1-4) which defines movement in up left right directions
         /// </summary>
@@ -45,15 +44,13 @@ namespace Agents
             transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
         }
         
-        
         private List<IEnvTile> GetNearestTiles(int amount, List<IEnvTile> inputTiles) => 
             transform.GetNearestTile(
             amount, 
             inputTiles, 
             x => true);
-
-
-        // TODO test me
+        
+    
         public List<float> GetNearestTilePositions(int amount, List<IEnvTile> inputTile) =>
             GetNearestTiles(amount, inputTile)
                 .Select(tiles =>
@@ -71,14 +68,10 @@ namespace Agents
                                 InstanceController).z)))
                 .FlattenTuples()
                 .ToList();
-           
-        
 
         protected void AddNearestTilePositions(VectorSensor vectorSensor, int amount, List<IEnvTile> inputTile) =>
             GetNearestTilePositions(amount, inputTile)
                 .ForEach(vectorSensor.AddObservation);
-        
-        
 
         /// <summary>
         /// Adds normalised 'trail' of visited locations to observations
@@ -92,8 +85,7 @@ namespace Agents
                     -MaxLocalDistance,
                     MaxLocalDistance,
                     f)));
-
-
+        
         /// <summary>
         /// Gets the nearest guards to the current agent
         /// </summary>
@@ -104,7 +96,6 @@ namespace Agents
         /// <param name="amount">Number of agents to return</param>
         /// <returns>List of agents (GameObjects)</returns>
         protected abstract List<GameObject> GetNearestGuards(int amount);
-
         
         // TODO test me
         public List<float> GetGuardPositions(int amount) =>
@@ -118,14 +109,11 @@ namespace Agents
                 .ToList()
                 .PadList(amount*2, 0)
                 .ToList();
-            
-        
         
         protected void AddNearestGuards(VectorSensor sensor, int amount)
         {
             GetGuardPositions(amount).ForEach(sensor.AddObservation);
         }
-        
         
         // TODO test me
         public float NormalisedPositionX() => NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.x);
@@ -141,10 +129,5 @@ namespace Agents
         {
             if (collision.gameObject.name == "Cube") IsColliding = 0f;
         }
-        
-        
-        
-        
-        
     }
 }

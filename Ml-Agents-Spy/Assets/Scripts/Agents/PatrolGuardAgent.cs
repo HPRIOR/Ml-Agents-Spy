@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using Enums;
 using Interfaces;
-using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -31,15 +30,18 @@ namespace Agents
             else if (Input.GetKey(KeyCode.Q)) actionsOut[1] = 1;
             else if (Input.GetKey(KeyCode.E)) actionsOut[1] = 2;
         }
-        
+
+        private void Awake()
+        {
+            _head = transform.GetChild(0).gameObject;
+            _eyes = _head.GetComponent<RayPerceptionSensorComponent3D>();
+        }
+
         // Some things may be able to move into awake or start if they are not needed every map update 
         public override void OnEpisodeBegin()
         {
             Constructor();
-
-            _head = transform.GetChild(0).gameObject;
-            _eyes = _head.GetComponent<RayPerceptionSensorComponent3D>();
-
+            
             var tileDict = InstanceController.TileDict;
             var freeEnvTiles =
                 tileDict[TileType.FreeTiles]
@@ -60,7 +62,7 @@ namespace Agents
             sensor.AddObservation(nearestPatrolTiles.Item2);
         }
         
-        public (float, float) GetNearestPatrolTiles()
+        private (float, float) GetNearestPatrolTiles()
         {
             if (_currentPatrolTile is null)
             {
@@ -73,7 +75,6 @@ namespace Agents
             var normalisedPositionY = 
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
                     VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).z);
-            // Debug.Log($"{normalisedPositionX},{normalisedPositionY}");
             return (normalisedPositionX, normalisedPositionY);
         }
 
@@ -87,7 +88,6 @@ namespace Agents
             AddNearestPatrolTiles(sensor);
             
             // NearestGuardAgents
-           
             if (CanMove)
             {
                 AddNearestGuards(sensor, guardObvs);
@@ -98,7 +98,6 @@ namespace Agents
                 {
                     sensor.AddObservation(0);
                     sensor.AddObservation(0);
-                    
                 }
             }
             
@@ -108,9 +107,7 @@ namespace Agents
             // nearest env tiles
             AddNearestTilePositions(sensor, envTiles, InstanceController.TileDict[TileType.EnvTiles]);
         }
-
-
-
+        
         private void RotateHead(float input)
         {
 
@@ -138,25 +135,25 @@ namespace Agents
             }
             _currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
             
-            
-            RayPerceptionSensor.Perceive(_eyes.GetRayPerceptionInput()).RayOutputs.ToList().ForEach(output =>
-            {
-                if (output.HitTaggedObject)
-                {
-                    if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
-                    {
-                        SetReward(1);
-                        EndEpisode();
+            RayPerceptionSensor
+                .Perceive(_eyes.GetRayPerceptionInput())
+                .RayOutputs
+                .ToList()
+                .ForEach(output => 
+                { 
+                    if (output.HitTaggedObject) 
+                    { 
+                        if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
+                        {
+                            SetReward(1);
+                            EndEpisode();
+                        }
+                        if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
+                        {
+                            InstanceController.SwapAgents();
+                        }
                     }
-
-                    if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
-                    {
-                        InstanceController.SwapAgents();
-                    }
-                }
-            });
-
-
+                });
             if (CanMove)
             {
                 MoveAgent(vectorAction[0]);

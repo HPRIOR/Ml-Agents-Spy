@@ -10,9 +10,9 @@ namespace Tests
         readonly GameObject _trainingInstancePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
         protected TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario, CurriculumEnum curriculum)
         {
-            
             GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
+            trainingInstanceController.waitForTestSetup = true;
             trainingInstanceController.trainingScenario = inputTrainingScenario;
             trainingInstanceController.curriculum = curriculum;
             trainingInstanceController.debugSetup = false;
@@ -24,6 +24,7 @@ namespace Tests
         {
             GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
+            trainingInstanceController.waitForTestSetup = true;
             trainingInstanceController.trainingScenario = trainingScenario;
             trainingInstanceController.debugSetup = true;
             return trainingInstanceController;
@@ -50,12 +51,13 @@ namespace Tests
         }
 
         protected static void SetDebugParameters(TrainingInstanceController trainingInstanceController, int mapScale,
-            int mapDifficulty, int exitCount, int guardAgentCount)
+            int mapDifficulty, int exitCount, int guardAgentCount, bool hasMiddleTiles = true)
         {
             trainingInstanceController.mapDifficulty = mapDifficulty;
             trainingInstanceController.mapScale = mapScale;
             trainingInstanceController.exitCount = exitCount;
             trainingInstanceController.guardAgentCount = guardAgentCount;
+            trainingInstanceController.hasMiddleTiles = hasMiddleTiles;
             trainingInstanceController.waitForTestSetup = false;
         }
         

@@ -14,10 +14,15 @@ public static class StaticFunctions
         return matrixSize % 10 == 0 ? (matrixSize * 2) / 10 : ((matrixSize - 1) * 2) / 10;
     }
 
+    //public static float GetMaxLocalDistance(int mapScale) => 
+    //    mapScale % 2 == 0 ?
+    //    (mapScale * 5) - 1.3f :
+    //    (mapScale * 5) - 0.3f;
+    
     public static float GetMaxLocalDistance(int mapScale) => 
         mapScale % 2 == 0 ?
-        (mapScale * 5) - 1.3f :
-        (mapScale * 5) - 0.3f;
+            (mapScale * 5) - 0f :
+            (mapScale * 5) + 1f;
 
     public static float MaxVectorDistanceToExit(int mapScale) => 
         mapScale % 2 == 0 ?
