@@ -6,7 +6,7 @@ namespace Interfaces
     public interface IPatrolGuardTileManager
     {
         List<IPatrolGuardTile> GuardTiles { get; }
-        IPatrolGuardTile GetNearestPatrolTile(Transform agentPosition);
+        List<IPatrolGuardTile> GetNearestPatrolTile(Transform agentPosition);
         bool CanRewardAgent(Transform agentPosition);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace Tests
             };
             Debug.Log(l1.PadList(5, 0));
 
-            Assert.AreEqual(l1.PadList(5, 0), new List<int> {1, 2, 3, 4, 0});
+            Assert.AreEqual( new List<int> {1, 2, 3, 4, 0}, l1.PadList(5, 0).ToList());
         }
 
         // A Test behaves as an ordinary method
@@ -28,7 +29,7 @@ namespace Tests
                 1, 2, 3, 4, 5
             };
 
-            Assert.AreEqual(l1.PadList(10, 0), new List<int> {1, 2, 3, 4, 5, 0, 0, 0, 0, 0});
+            Assert.AreEqual(new List<int> {1, 2, 3, 4, 5, 0, 0, 0, 0, 0}, l1.PadList(10, 0).ToList());
         }
 
 
@@ -41,8 +42,8 @@ namespace Tests
                 1.1f, 2.1f, 3.1f, 4.1f, 5.1f
             };
 
-            Assert.AreEqual(l1.PadList(10, 1.1f),
-                new List<float> {1.1f, 2.1f, 3.1f, 4.1f, 5.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f});
+            Assert.AreEqual(new List<float> {1.1f, 2.1f, 3.1f, 4.1f, 5.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f}, 
+                l1.PadList(10, 1.1f).ToList());
         }
     }
 }

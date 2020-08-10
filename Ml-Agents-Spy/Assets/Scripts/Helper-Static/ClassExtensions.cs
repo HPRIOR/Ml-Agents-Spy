@@ -67,26 +67,20 @@ public static class ClassExtensions
 
 
     /// <summary>
-    ///     Pads list with additional specified numbers
+    ///     Pads list with additional specified item
     /// </summary>
     /// <param name="currentList"></param>
     /// <param name="desiredSize">Desired size of new padded list</param>
-    /// <param name="padNum">Number to pad list with</param>
-    /// <typeparam name="T">Numeric types (e.g int, float, etc)</typeparam>
+    /// <param name="padWith">Item to pad list with</param>
+    /// <typeparam name="T">Any type</typeparam>
     /// <returns>The current list padded to the specified length, with the specified number</returns>
-    public static IEnumerable<T> PadList<T>(this IList<T> currentList, int desiredSize, T padNum) where T : struct,
-        IComparable,
-        IComparable<T>,
-        IConvertible,
-        IEquatable<T>,
-        IFormattable
+    public static IEnumerable<T> PadList<T>(this IEnumerable<T> currentList, int desiredSize, T padWith)
     {
-        var arraySize = currentList.Count;
-        if (arraySize >= desiredSize) return currentList;
-        var leftOver = desiredSize - arraySize;
-        for (var i = 0; i < leftOver; i++) currentList.Add(padNum);
-
-        return currentList;
+        var enumerable = currentList.ToList();
+        var count = enumerable.Count();
+        return count >= desiredSize ? 
+            enumerable : 
+            enumerable.Concat(Enumerable.Range(0, desiredSize-count).Select(i => padWith));
     }
 
     /// <summary>

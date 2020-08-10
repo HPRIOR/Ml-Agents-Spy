@@ -67,7 +67,6 @@ namespace Agents
                                 tiles.Position,
                                 InstanceController).z)))
                 .FlattenTuples()
-                .ToList()
                 .PadList(amount * 2, 0)
                 .ToList();
         
@@ -114,7 +113,6 @@ namespace Agents
                         NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, positions.z));
                 })
                 .FlattenTuples()
-                .ToList()
                 .PadList(amount * 2, 0)
                 .ToList();
         

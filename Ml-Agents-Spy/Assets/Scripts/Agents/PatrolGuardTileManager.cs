@@ -28,23 +28,18 @@ namespace Agents
         /// </summary>
         /// <param name="agentPosition"></param>
         /// <returns></returns>
-        public IPatrolGuardTile GetNearestPatrolTile(Transform agentPosition)
+        public List<IPatrolGuardTile> GetNearestPatrolTile(Transform agentPosition)
         {
-            try
-            {
-                return agentPosition
-                    .GetNearestTile(
-                        1,
-                        GuardTiles,
-                        tile
-                            => tile.tDistances.RecentlyVisitedByGuard == false &&
-                               tile.tDistances.Coords != _currentTile.Coords
-                    ).First();
-            }
-            catch (InvalidOperationException)
-            {
-                return null;
-            }
+            return agentPosition
+                .GetNearestTile(
+                    3,
+                    GuardTiles,
+                    tile
+                        => tile.tDistances.RecentlyVisitedByGuard == false &&
+                           tile.tDistances.Coords != _currentTile.Coords
+                )
+                .PadList(3, null)
+                .ToList();
         }
 
 
@@ -74,10 +69,17 @@ namespace Agents
                 {
                     // if it hasn't, visit it and change its status to visited
                     _currentTile.RecentlyVisitedByGuard = true;
+                    // if all tiles have been visited then reset them all apart from the current tile
+                    if (GuardTiles.All(tile => tile.RecentlyVisitedByGuard))
+                    {
+                        GuardTiles
+                            .Where(tile => !Equals(tile, _currentTile))
+                            .ToList()
+                            .ForEach(tile => tile.RecentlyVisitedByGuard = false);
+                    }
                     return true;
                 }
             }
-
             return false;
         }
     }

@@ -112,7 +112,7 @@ namespace Agents
         public override void OnActionReceived(float[] vectorAction)
         {
             if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
-            _currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
+            //_currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
 
             RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
