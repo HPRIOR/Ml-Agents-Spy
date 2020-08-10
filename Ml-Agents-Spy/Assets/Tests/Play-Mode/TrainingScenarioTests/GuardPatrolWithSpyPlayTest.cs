@@ -6,7 +6,6 @@ namespace Tests.TrainingScenarioTests
 {
     public class GuardPatrolWithSpyPlayTest
     {
-        // TODO
         [Test]
         public void GuardPatrolWithSpyPlayTestSimplePasses()
         {

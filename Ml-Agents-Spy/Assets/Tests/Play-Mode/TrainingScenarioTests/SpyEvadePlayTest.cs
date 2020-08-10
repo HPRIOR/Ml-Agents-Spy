@@ -6,7 +6,6 @@ namespace Tests.TrainingScenarioTests
 {
     public class SpyEvadePlayTest
     {
-        //TODO 
         [Test]
         public void SpyEvadePlayTestSimplePasses()
         {

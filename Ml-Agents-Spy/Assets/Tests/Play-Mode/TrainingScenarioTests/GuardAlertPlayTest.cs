@@ -6,7 +6,6 @@ namespace Tests.TrainingScenarioTests
 {
     public class GuardAlertPlayTest
     {
-        // TODO
         [Test]
         public void GuardAlertPlayTestSimplePasses()
         {

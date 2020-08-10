@@ -6,7 +6,6 @@ namespace Tests.TrainingScenarioTests
 {
     public class SpyPathFindingPlayTest
     {
-        //TODO
         [Test]
         public void SpyPathFindingPlayTestSimplePasses()
         {

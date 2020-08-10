@@ -102,8 +102,7 @@ namespace Agents
         /// <param name="amount">Number of agents to return</param>
         /// <returns>List of agents (GameObjects)</returns>
         protected abstract List<GameObject> GetNearestGuards(int amount);
-
-        // TODO test me
+        
         public List<float> GetGuardPositions(int amount) 
             => GetNearestGuards(amount)
                 .Select(guard =>
@@ -120,13 +119,10 @@ namespace Agents
         protected void AddNearestGuards(VectorSensor sensor, int amount) =>
             GetGuardPositions(amount).ForEach(sensor.AddObservation);
         
-
-        // TODO test me
+        
         public float NormalisedPositionX() =>
             NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.x);
         
-
-        // TODO test me
         public float NormalisedPositionY() => 
             NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.z);
         

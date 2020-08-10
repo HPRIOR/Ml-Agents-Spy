@@ -44,7 +44,6 @@ namespace Agents
 
         private void AddSpyLocalPositions(VectorSensor sensor)
         {
-            // TODO check that these are padded
             var (x, y) = GetSpyLocalPositions();
             sensor.AddObservation(x);
             sensor.AddObservation(y);

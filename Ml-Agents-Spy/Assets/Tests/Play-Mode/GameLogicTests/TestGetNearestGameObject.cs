@@ -69,13 +69,6 @@ namespace Tests.GameLogicTests
             yield return null;
         }
 
-
-        // TODO More tests here
-
-        // get nearest group
-
-        // get nearest group other than self
-
-        // test padding
+        
     }
 }
