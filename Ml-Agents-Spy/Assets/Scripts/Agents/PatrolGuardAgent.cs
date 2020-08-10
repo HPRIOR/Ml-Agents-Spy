@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Interfaces;
+using Training;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Agents
 {
@@ -18,6 +20,8 @@ namespace Agents
         public int envTiles;
         public int guardObvs;
         protected override float Speed { get; } = 5;
+
+        private List<float[]> _rayBuffers;
 
         public override void Heuristic(float[] actionsOut)
         {
@@ -36,7 +40,24 @@ namespace Agents
             _head = transform.GetChild(0).gameObject;
             _eyes = _head.GetComponent<RayPerceptionSensorComponent3D>();
         }
+        
 
+        private void SetUpRayBuffers()
+        {
+            var lengthOfRayOutPuts = RayPerceptionSensor
+                .Perceive(_eyes.GetRayPerceptionInput())
+                .RayOutputs.Length;
+            
+            _rayBuffers = new List<float[]>()
+            {
+                new float[(2 + 2) * lengthOfRayOutPuts],
+                new float[(2 + 2) * lengthOfRayOutPuts],
+                new float[(2 + 2) * lengthOfRayOutPuts],
+                new float[(2 + 2) * lengthOfRayOutPuts],
+                new float[(2 + 2) * lengthOfRayOutPuts]
+            };
+        }
+        
         // Some things may be able to move into awake or start if they are not needed every map update 
         public override void OnEpisodeBegin()
         {
@@ -78,6 +99,7 @@ namespace Agents
             sensor.AddObservation(NormalisedPositionY());
 
             // NearestPatrolTile
+            //TODO not giving right number of obvs null not working
             AddNearestPatrolTiles(sensor);
 
             // NearestGuardAgents
@@ -113,15 +135,15 @@ namespace Agents
         {
             if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
-
+            
             RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
                 .RayOutputs
                 .ToList()
                 .ForEach(output =>
-                {   // use output.hit tagged index and then get obvs through this iteration
-                    //TODO
-                    if (output.HitTaggedObject)
+                {
+                    FillGuardObservationBuffer(output);
+                    if (output.HitTagIndex == 0)
                     {
                         if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
                         {
@@ -138,6 +160,22 @@ namespace Agents
                 MoveAgent(vectorAction[0]);
                 RotateHead(vectorAction[1]);
             }
+        }
+
+        private void FillGuardObservationBuffer(RayPerceptionOutput.RayOutput output)
+        {
+            // TODO refactor
+            output.ToFloatArray(2, 0, _rayBuffers[0]);
+            output.ToFloatArray(2, 1, _rayBuffers[1]);
+            output.ToFloatArray(2, 2, _rayBuffers[2]);
+            output.ToFloatArray(2, 3, _rayBuffers[3]);
+            output.ToFloatArray(2, 4, _rayBuffers[4]);
+            var thisGameObject = transform.gameObject;
+            InstanceController.GuardObservations[thisGameObject][0] = _rayBuffers[0][3];
+            InstanceController.GuardObservations[thisGameObject][1] = _rayBuffers[1][3];
+            InstanceController.GuardObservations[thisGameObject][2] = _rayBuffers[2][3];
+            InstanceController.GuardObservations[thisGameObject][3] = _rayBuffers[3][3];
+            InstanceController.GuardObservations[thisGameObject][4] = _rayBuffers[4][3];
         }
     }
 }

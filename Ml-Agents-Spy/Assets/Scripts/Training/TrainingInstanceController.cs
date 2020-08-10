@@ -25,8 +25,10 @@ namespace Training
         ///     Contains GameObjects from scene hierarchy
         /// </summary>
         private Dictionary<ParentObject, GameObject> _parentObjects;
-        
-      
+
+        public Dictionary<GameObject, float[]> GuardObservations { get; set; } = new Dictionary<GameObject, float[]>();
+
+
         public GameObject topParent;
         public GameObject debugParent;
         public GameObject envParent;
@@ -141,7 +143,6 @@ namespace Training
             var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
 
             CreateEnv.PopulateEnv(tileLogic, _parentObjects, gameParamMapScale, materials);
-
             InitialiseAgents(gameParams);
         }
 
@@ -370,6 +371,7 @@ namespace Training
                 RandomHelper.GetUniqueRandomList(maxNumOfGuard,
                     TileDict[TileType.GuardTiles].Count);
 
+            // TODO GuardObservationDiction needs to be created here (instantiateobject should be reference by variable, then added to Guards, then Dict)
             for (var i = 0; i < maxNumOfGuard; i++)
                 if (inputTrainingScenario != TrainingScenario.SpyEvade)
                 {
@@ -512,5 +514,6 @@ namespace Training
                     outPlayGuardScript.CanMove = true;
                 });
         }
+        
     }
 }
