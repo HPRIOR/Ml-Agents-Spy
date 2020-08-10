@@ -15,7 +15,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Test_Nearest_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4,0,4,3,false);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -47,7 +47,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Test_Nearest_Guards_Padding()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4,0,4,3,false);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 

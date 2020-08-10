@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Interfaces;
 using Unity.MLAgents.Sensors;
@@ -8,7 +10,7 @@ namespace Agents
 {
     public class PatrolGuardAgent : AbstractGuard
     {
-        private IPatrolGuardTile _currentPatrolTile;
+        private List<IPatrolGuardTile> _currentPatrolTiles = new List<IPatrolGuardTile>();
         private RayPerceptionSensorComponent3D _eyes;
         private GameObject _head;
 
@@ -51,25 +53,23 @@ namespace Agents
             if (CompletedEpisodes > 0) InstanceController.Restart();
         }
 
-        private void AddNearestPatrolTiles(VectorSensor sensor)
-        {
-            var nearestPatrolTiles = GetNearestPatrolTiles();
-            sensor.AddObservation(nearestPatrolTiles.Item1);
-            sensor.AddObservation(nearestPatrolTiles.Item2);
-        }
+        private void AddNearestPatrolTiles(VectorSensor sensor) =>
+            GetNearestPatrolTilePositions().ForEach(sensor.AddObservation);
+        
 
-        private (float, float) GetNearestPatrolTiles()
-        {
-            if (_currentPatrolTile is null) return (0, 0);
-            var patrolTilePosition = _currentPatrolTile.Position;
-            var normalisedPositionX =
-                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
-                    VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).x);
-            var normalisedPositionY =
-                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
-                    VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).z);
-            return (normalisedPositionX, normalisedPositionY);
-        }
+        public List<float> GetNearestPatrolTilePositions() =>
+            _currentPatrolTiles
+                .Select(t => 
+                { 
+                    if (t is null) return (0, 0); 
+                    return (StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
+                        VectorConversions.GetLocalPosition(t.Position, InstanceController).x),
+                    StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
+                        VectorConversions.GetLocalPosition(t.Position, InstanceController).z)); 
+                })
+                .FlattenTuples()
+                .ToList();
+        
 
         public override void CollectObservations(VectorSensor sensor)
         {
@@ -112,14 +112,15 @@ namespace Agents
         public override void OnActionReceived(float[] vectorAction)
         {
             if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
-            //_currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
+            _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
 
             RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
                 .RayOutputs
                 .ToList()
                 .ForEach(output =>
-                {
+                {   // use output.hit tagged index and then get obvs through this iteration
+                    //TODO
                     if (output.HitTaggedObject)
                     {
                         if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)

@@ -14,7 +14,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_No_Guards_Spawned_Basic_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -24,7 +24,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -34,7 +34,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_Agent_Spawned_Basic_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -44,7 +44,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_Agent_Spawned_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -54,7 +54,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_Agents_Respawned_Basic_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -68,7 +68,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Spy_Path_Finding_Agents_Respawned_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -84,7 +84,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_Path_Finding_No_Guards_Spawned_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
@@ -94,7 +94,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_Path_Finding_No_Guards_Spawned_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
@@ -104,7 +104,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_Path_Finding_Agent_Spawned_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.NotNull(trainingInstanceController.Spy);
@@ -114,7 +114,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_Path_Finding_Agent_Spawned_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             Assert.NotNull(trainingInstanceController.Spy);
         }
@@ -123,7 +123,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_PathFinding_Agent_Respawn_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];
@@ -137,7 +137,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Spy_PathFinding_Agent_Respawn_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.SpyPathFinding, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var firstExitPosition = trainingInstanceController.TileDict[TileType.ExitTiles][0];

@@ -14,7 +14,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Alert_Respawn_Acceptance_Map_Scale_5()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 5, 100, 6, 5);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -29,7 +29,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Alert_Respawn_Acceptance_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4, 50, 5, 4);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             yield return null;
@@ -45,7 +45,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Alert_Respawn_Acceptance_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 3, 20, 4, 3);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -60,7 +60,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Alert_Respawn_Acceptance_Map_Scale_2()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 2, 10, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -75,7 +75,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Alert_Respawn_Acceptance_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -91,7 +91,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_Respawn_Acceptance_Map_Scale_5()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetDebugParameters(trainingInstanceController, 5, 100, 6, 5);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
@@ -106,7 +106,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_Respawn_Acceptance_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetDebugParameters(trainingInstanceController, 4, 50, 5, 4);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
@@ -121,7 +121,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_Respawn_Acceptance_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetDebugParameters(trainingInstanceController, 3, 20, 4, 3);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
@@ -136,7 +136,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_Respawn_Acceptance_Map_Scale_2()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetDebugParameters(trainingInstanceController, 2, 10, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
@@ -151,7 +151,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_Respawn_Acceptance_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var guardPatrolAgent = trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>();
@@ -168,7 +168,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_With_Spy_Respawn_Acceptance_Map_Scale_5()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrolWithSpy);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrolWithSpy);
             SetDebugParameters(trainingInstanceController, 5, 100, 6, 5);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -183,7 +183,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_With_Spy_Respawn_Acceptance_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrolWithSpy);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrolWithSpy);
             SetDebugParameters(trainingInstanceController, 4, 50, 5, 4);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -198,7 +198,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_With_Spy_Respawn_Acceptance_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrolWithSpy);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrolWithSpy);
             SetDebugParameters(trainingInstanceController, 3, 20, 4, 3);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -213,7 +213,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_With_Spy_Respawn_Acceptance_Map_Scale_2()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrolWithSpy);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrolWithSpy);
             SetDebugParameters(trainingInstanceController, 2, 10, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -228,7 +228,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Guard_Patrol_With_Spy_Respawn_Acceptance_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrolWithSpy);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrolWithSpy);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -244,7 +244,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Path_Finding_Respawn_Acceptance_Map_Scale_5()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 5, 100, 6, 5);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -259,7 +259,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Path_Finding_Respawn_Acceptance_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 4, 50, 5, 4);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -274,7 +274,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Path_Finding_Respawn_Acceptance_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 3, 20, 4, 3);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -289,7 +289,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Path_Finding_Respawn_Acceptance_Map_Scale_2()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 2, 10, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -304,7 +304,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Path_Finding_Respawn_Acceptance_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -321,7 +321,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Evade_Respawn_Acceptance_Map_Scale_5()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyEvade);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyEvade);
             SetDebugParameters(trainingInstanceController, 5, 100, 6, 5);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -336,7 +336,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Evade_Respawn_Acceptance_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyEvade);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyEvade);
             SetDebugParameters(trainingInstanceController, 4, 50, 5, 4);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -351,7 +351,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Evade_Respawn_Acceptance_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyEvade);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyEvade);
             SetDebugParameters(trainingInstanceController, 3, 20, 4, 3);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -366,7 +366,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Evade_Respawn_Acceptance_Map_Scale_2()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyEvade);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyEvade);
             SetDebugParameters(trainingInstanceController, 2, 10, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();
@@ -381,7 +381,7 @@ namespace Tests.AcceptanceTests
         [UnityTest]
         public IEnumerator Spy_Evade_Respawn_Acceptance_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyEvade);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyEvade);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var spyAgent = trainingInstanceController.Spy.GetComponent<SpyAgent>();

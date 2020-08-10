@@ -14,7 +14,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Local_Position_Observation()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var max = StaticFunctions.GetMaxLocalDistance(1);
@@ -28,7 +28,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Local_Position_Observation_OffSet()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             trainingInstanceController.transform.position = new Vector3(100,100, 100);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -44,7 +44,7 @@ namespace Tests.AgentTests
         [NotNull]
         public IEnumerator Guard_Count_Map_Scale_1_1_Guard()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 1, 5, 2, 1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             
@@ -57,7 +57,7 @@ namespace Tests.AgentTests
         [NotNull]
         public IEnumerator Guard_Count_Map_Scale_2_2_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 2, 5, 3, 2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             

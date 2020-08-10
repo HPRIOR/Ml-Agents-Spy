@@ -16,7 +16,7 @@ namespace Tests.AgentTests
     {
         private TrainingInstanceController GetTrainingInstance(int mapScale)
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, mapScale, 0,
                 2, 1, false);
             return trainingInstanceController;
@@ -143,7 +143,6 @@ namespace Tests.AgentTests
             var trainingInstanceController = GetTrainingInstance(1);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
-            var agentObject = trainingInstanceController.Spy;
             var agentScript = trainingInstanceController.Spy.GetComponent<SpyAgent>();
 
             var middleTile = trainingInstanceController.TileDict[TileType.FreeTiles]
@@ -164,7 +163,6 @@ namespace Tests.AgentTests
             var trainingInstanceController = GetTrainingInstance(2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
-            var agentObject = trainingInstanceController.Spy;
             var agentScript = trainingInstanceController.Spy.GetComponent<SpyAgent>();
 
             var middleTile = trainingInstanceController.TileDict[TileType.FreeTiles]
@@ -186,8 +184,7 @@ namespace Tests.AgentTests
             var trainingInstanceController = GetTrainingInstance(2);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
-            var agentObject = trainingInstanceController.Spy;
-            var agentScript = trainingInstanceController.Spy.GetComponent<SpyAgent>();
+            SpyAgent agentScript = trainingInstanceController.Spy.GetComponent<SpyAgent>();
 
             var middleTile = trainingInstanceController.TileDict[TileType.FreeTiles]
                 .First(tile => tile.Coords == (5, 5));
@@ -223,7 +220,6 @@ namespace Tests.AgentTests
             trainingInstanceController.transform.position = new Vector3(100, 100, 100);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
-            var agentObject = trainingInstanceController.Spy;
             var agentScript = trainingInstanceController.Spy.GetComponent<SpyAgent>();
 
             var middleTile = trainingInstanceController.TileDict[TileType.FreeTiles]

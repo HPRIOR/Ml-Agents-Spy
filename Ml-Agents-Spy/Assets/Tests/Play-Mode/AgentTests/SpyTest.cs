@@ -15,7 +15,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_All_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4,0,4,3,false);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -52,7 +52,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_All_Guards_Padded()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4,0,4,3,false);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -90,7 +90,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_All_Guards_OffSet()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4,0,4,3,false);
             trainingInstanceController.transform.position = new Vector3(100,100,100);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -132,7 +132,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_Padding_3_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4, 0, 4, 3, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -144,7 +144,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_Padding_1_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 4, 0, 4, 1, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -156,7 +156,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Nearest_Guards_Padding_0_Guards()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 4, 0, 4, 1, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -168,7 +168,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Distance_To_Exit_Map_Scale_4()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 4, 0, 4, 1, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -205,7 +205,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Distance_To_Exit_Map_Scale_3()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 3, 0, 2, 1, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -240,7 +240,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Distance_To_Exit_Map_Scale_1()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 1, 0, 2, 1, false);
             
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
@@ -276,7 +276,7 @@ namespace Tests.AgentTests
         [UnityTest]
         public IEnumerator Spy_Distance_To_Exit_Map_Scale_4_Offset()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.SpyPathFinding);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.SpyPathFinding);
             SetDebugParameters(trainingInstanceController, 4, 0, 4, 1, false);
             trainingInstanceController.transform.position = new Vector3(100,100,100);
             

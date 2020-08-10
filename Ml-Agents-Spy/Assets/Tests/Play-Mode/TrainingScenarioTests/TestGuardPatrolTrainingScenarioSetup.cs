@@ -16,7 +16,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Guard_Spawn_Count_Basic_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -27,7 +27,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Guard_Spawn_Count_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
@@ -37,7 +37,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Guard_Respawn_Count_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
@@ -52,7 +52,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Guard_Respawn_Count_Basic_Debug()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -67,7 +67,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Spawn_Basic_Debug()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -82,7 +82,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Spawn_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
@@ -96,7 +96,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Respawn_Basic_Debug()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             SetBasicDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -111,7 +111,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Respawn_Simple_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.SimpleTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
@@ -125,7 +125,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Guard_Spawn_Count_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -136,7 +136,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Guard_Spawn_Count_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
@@ -146,7 +146,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Guard_Respawn_Count_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
@@ -156,7 +156,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_Guard_Respawn_Count_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -166,7 +166,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_No_Spy_Spawn_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -177,7 +177,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Spawn_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
@@ -190,7 +190,7 @@ namespace Tests.TrainingScenarioTests
         [UnityTest]
         public IEnumerator Test_No_Spy_Respawn_Advanced_Debug()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardPatrol);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardPatrol);
             SetAdvancedDebug(trainingInstanceController);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
@@ -205,7 +205,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_No_Spy_Respawn_Advanced_Curr()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             var guard = trainingInstanceController.Guards[0].GetComponent<Agent>();
@@ -219,7 +219,7 @@ namespace Tests.TrainingScenarioTests
         public IEnumerator Test_Agent_Is_Patrol()
         {
             var trainingInstanceController =
-                ConfigureCurriculum(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
+                GetCurriculumSetup(TrainingScenario.GuardPatrol, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.IsNotNull(trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>());

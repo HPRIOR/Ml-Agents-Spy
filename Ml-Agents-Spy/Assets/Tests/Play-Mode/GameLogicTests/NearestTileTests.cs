@@ -15,7 +15,7 @@ namespace Tests.GameLogicTests
         [UnityTest]
         public IEnumerator Tile_Count_Padding()
         {
-            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            var trainingInstanceController = GetDebugSetup(TrainingScenario.GuardAlert);
             SetDebugParameters(trainingInstanceController, 1, 0, 2, 1,false);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
             var exitCount = trainingInstanceController

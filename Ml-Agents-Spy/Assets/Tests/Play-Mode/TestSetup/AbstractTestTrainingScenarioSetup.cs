@@ -10,7 +10,7 @@ namespace Tests.TestSetup
         private readonly GameObject _trainingInstancePrefab =
             AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
 
-        protected TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario,
+        protected TrainingInstanceController GetCurriculumSetup(TrainingScenario inputTrainingScenario,
             CurriculumEnum curriculum)
         {
             var trainingInstance =
@@ -24,7 +24,7 @@ namespace Tests.TestSetup
             return trainingInstanceController;
         }
 
-        protected TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
+        protected TrainingInstanceController GetDebugSetup(TrainingScenario trainingScenario)
         {
             var trainingInstance =
                 Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);

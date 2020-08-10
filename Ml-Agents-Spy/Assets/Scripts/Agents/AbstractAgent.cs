@@ -18,6 +18,11 @@ namespace Agents
         protected abstract float Speed { get; }
         protected float IsColliding { get; private set; }
 
+        /// <summary>
+        /// Instantiates various parts of the agent each training episode
+        /// Resets or Gets the agents memory class
+        /// Gets the max local distance of the current map
+        /// </summary>
         protected void Constructor()
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
