@@ -151,28 +151,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7393cc5efe55645aa77f2df4670c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 2fa77c17f4d6bcd479868fcc43bc09ad, type: 2}
-  - {fileID: 2100000, guid: 49ec9dfadab307244adab2c890260ce1, type: 2}
-  waitForTestSetup: 1
-  debugSetup: 1
+  coroutineSurrogate: {fileID: 877021492226360997}
   curriculum: 0
-  trainingScenario: 0
-  topParent: {fileID: 2483226645643841316}
-  envParent: {fileID: 2483226645080659941}
   debugParent: {fileID: 2483226646646885260}
-  spyPrefab: {fileID: 7091373540181754968, guid: 7469f9acaaf62d14fbc8c2e0a5836b83,
+  debugSetup: 1
+  envParent: {fileID: 2483226645080659941}
+  exitCount: 2
+  guardAgentCount: 1
+  guardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
     type: 3}
   guardPatrolPrefab: {fileID: 6665806686107098500, guid: 236ca7c246f26be49b37cb6d3147debd,
     type: 3}
-  guardAlertPrefab: {fileID: 3615532919505664318, guid: 06d673dfa920d57418f1d86ee453888b,
-    type: 3}
-  coroutineSurrogate: {fileID: 877021492226360997}
-  mapScale: 3
-  mapDifficulty: 1
-  exitCount: 2
-  guardAgentCount: 1
   hasMiddleTiles: 1
+  mapDifficulty: 1
+  mapScale: 3
+  materials:
+  - {fileID: 2100000, guid: 2fa77c17f4d6bcd479868fcc43bc09ad, type: 2}
+  - {fileID: 2100000, guid: 49ec9dfadab307244adab2c890260ce1, type: 2}
+  spyPrefab: {fileID: 7091373540181754968, guid: 7469f9acaaf62d14fbc8c2e0a5836b83,
+    type: 3}
+  topParent: {fileID: 2483226645643841316}
+  trainingScenario: 0
+  waitForTestSetup: 1
 --- !u!1 &2483226646646885260
 GameObject:
   m_ObjectHideFlags: 0

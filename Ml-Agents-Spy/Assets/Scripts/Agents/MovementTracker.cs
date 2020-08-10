@@ -7,13 +7,12 @@ namespace Agents
 {
     public class MovementTracker : IAgentMemory
     {
+        private readonly float _distanceBetweenNodes;
         private readonly int _memorySize;
 
-        private bool _initialVectorPlaced;
-
-        private readonly float _distanceBetweenNodes;
-
         private readonly Queue<Vector3> _queue;
+
+        private bool _initialVectorPlaced;
 
         public MovementTracker(int memorySize = 10, float distanceBetweenNodes = 1f)
         {
@@ -22,11 +21,30 @@ namespace Agents
             _queue = new Queue<Vector3>();
         }
 
-
-        float[] Vector3ToFloatArray(List<Vector3> vectors)
+        public float[] GetAgentMemory(Vector3 agentPosition)
         {
-            float[] vectorFloats = new float[_memorySize];
-            int i = 0;
+            if (_initialVectorPlaced)
+            {
+                if (AgentHasMovedEnough(agentPosition, _queue.MostRecentlyAdded(), _distanceBetweenNodes))
+                {
+                    if (_queue.Count >= _memorySize / 2) _queue.Dequeue();
+                    _queue.Enqueue(agentPosition);
+                }
+            }
+            else
+            {
+                _queue.Enqueue(agentPosition);
+                _initialVectorPlaced = true;
+            }
+
+            return Vector3ToFloatArray(_queue.ToArray().ToList());
+        }
+
+
+        private float[] Vector3ToFloatArray(List<Vector3> vectors)
+        {
+            var vectorFloats = new float[_memorySize];
+            var i = 0;
             foreach (var vector in vectors)
             {
                 vectorFloats[i] = vector.x;
@@ -38,28 +56,9 @@ namespace Agents
             return vectorFloats;
         }
 
-        bool AgentHasMovedEnough(Vector3 agentPosition, Vector3 backOfQueue, float distanceBetweenNodes) =>
-            Vector3.Distance(agentPosition, backOfQueue) > distanceBetweenNodes;
-
-        public float[] GetAgentMemory(Vector3 agentPosition)
+        private bool AgentHasMovedEnough(Vector3 agentPosition, Vector3 backOfQueue, float distanceBetweenNodes)
         {
-            if (_initialVectorPlaced)
-            {
-                if (AgentHasMovedEnough(agentPosition,  _queue.MostRecentlyAdded(), _distanceBetweenNodes))
-                {
-                    if (_queue.Count >= _memorySize/2) _queue.Dequeue();
-                    _queue.Enqueue(agentPosition);
-                }
-            }
-            else
-            {
-                _queue.Enqueue(agentPosition);
-                _initialVectorPlaced = true;
-            }
-            return Vector3ToFloatArray(_queue.ToArray().ToList());
+            return Vector3.Distance(agentPosition, backOfQueue) > distanceBetweenNodes;
         }
-
-
-
     }
 }

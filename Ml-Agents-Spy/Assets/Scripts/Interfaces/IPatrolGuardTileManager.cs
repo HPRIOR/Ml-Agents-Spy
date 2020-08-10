@@ -8,6 +8,5 @@ namespace Interfaces
         List<IPatrolGuardTile> GuardTiles { get; }
         IPatrolGuardTile GetNearestPatrolTile(Transform agentPosition);
         bool CanRewardAgent(Transform agentPosition);
-       
     }
 }

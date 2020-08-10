@@ -1,23 +1,21 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Enums;
 using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 namespace Agents
 {
     public class PatrolGuardAgent : AbstractGuard
     {
-        public int guardObvs;
-        public int envTiles;
-        
-        private IPatrolGuardTileManager _patrolGuardTileManager;
-        protected override float Speed { get; } = 5;
-        private GameObject _head;
-        private RayPerceptionSensorComponent3D _eyes;
         private IPatrolGuardTile _currentPatrolTile;
+        private RayPerceptionSensorComponent3D _eyes;
+        private GameObject _head;
+
+        private IPatrolGuardTileManager _patrolGuardTileManager;
+        public int envTiles;
+        public int guardObvs;
+        protected override float Speed { get; } = 5;
 
         public override void Heuristic(float[] actionsOut)
         {
@@ -41,18 +39,16 @@ namespace Agents
         public override void OnEpisodeBegin()
         {
             Constructor();
-            
+
             var tileDict = InstanceController.TileDict;
             var freeEnvTiles =
                 tileDict[TileType.FreeTiles]
                     .Concat(tileDict[TileType.GuardTiles])
                     .Concat(tileDict[TileType.SpyTile]);
-            _patrolGuardTileManager = new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
-           
-            if (CompletedEpisodes > 0 )
-            {
-                InstanceController.Restart();
-            }
+            _patrolGuardTileManager =
+                new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
+
+            if (CompletedEpisodes > 0) InstanceController.Restart();
         }
 
         private void AddNearestPatrolTiles(VectorSensor sensor)
@@ -61,19 +57,16 @@ namespace Agents
             sensor.AddObservation(nearestPatrolTiles.Item1);
             sensor.AddObservation(nearestPatrolTiles.Item2);
         }
-        
+
         private (float, float) GetNearestPatrolTiles()
         {
-            if (_currentPatrolTile is null)
-            {
-                return (0, 0);
-            }
+            if (_currentPatrolTile is null) return (0, 0);
             var patrolTilePosition = _currentPatrolTile.Position;
-            var normalisedPositionX = 
-                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
+            var normalisedPositionX =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                     VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).x);
-            var normalisedPositionY = 
-                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, 
+            var normalisedPositionY =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                     VectorConversions.GetLocalPosition(patrolTilePosition, InstanceController).z);
             return (normalisedPositionX, normalisedPositionY);
         }
@@ -83,75 +76,60 @@ namespace Agents
             // Own position
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
-            
+
             // NearestPatrolTile
             AddNearestPatrolTiles(sensor);
-            
+
             // NearestGuardAgents
             if (CanMove)
-            {
                 AddNearestGuards(sensor, guardObvs);
-            }
             else
-            {
-                for (int i = 0; i < guardObvs; i++)
+                for (var i = 0; i < guardObvs; i++)
                 {
                     sensor.AddObservation(0);
                     sensor.AddObservation(0);
                 }
-            }
-            
+
             // TrailMemory
             AddVisitedMemoryTrail(sensor);
-            
+
             // nearest env tiles
             AddNearestTilePositions(sensor, envTiles, InstanceController.TileDict[TileType.EnvTiles]);
         }
-        
+
         private void RotateHead(float input)
         {
-
             var rotateDirection = Vector3.zero;
             var action = Mathf.FloorToInt(input);
-            
+
             if (action == 1)
-            {
                 rotateDirection = _head.transform.up * 1;
-            }
-            else if (action == 2)
-            {
-                rotateDirection =  _head.transform.up * -1;
-            }
+            else if (action == 2) rotateDirection = _head.transform.up * -1;
 
             _head.transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
-
         }
-        
+
         public override void OnActionReceived(float[] vectorAction)
         {
-            if (_patrolGuardTileManager.CanRewardAgent(transform))
-            {
-                SetReward(0.01f);
-            }
+            if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
             _currentPatrolTile = _patrolGuardTileManager.GetNearestPatrolTile(transform);
-            
+
             RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
                 .RayOutputs
                 .ToList()
-                .ForEach(output => 
-                { 
-                    if (output.HitTaggedObject) 
-                    { 
+                .ForEach(output =>
+                {
+                    if (output.HitTaggedObject)
+                    {
                         if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
                         {
                             SetReward(1);
                             EndEpisode();
                         }
+
                         if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
-                        {
                             InstanceController.SwapAgents();
-                        }
                     }
                 });
             if (CanMove)
@@ -159,7 +137,6 @@ namespace Agents
                 MoveAgent(vectorAction[0]);
                 RotateHead(vectorAction[1]);
             }
-           
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Curriculum
+﻿namespace Curriculum
 {
     public class SimpleTestCurriculum : AbstractCurriculum
     {
@@ -8,10 +6,10 @@ namespace Curriculum
         {
             InterpretCurriculum(curriculum);
         }
-        
+
         protected sealed override void InterpretCurriculum(float curriculum)
         {
-            switch ((int)curriculum)
+            switch ((int) curriculum)
             {
                 case 1:
                     _mapScale = 1;
@@ -27,9 +25,7 @@ namespace Curriculum
                     _guardAgentCount = 1;
                     _hasMiddleTiles = true;
                     break;
-                    
             }
-            
         }
     }
 }

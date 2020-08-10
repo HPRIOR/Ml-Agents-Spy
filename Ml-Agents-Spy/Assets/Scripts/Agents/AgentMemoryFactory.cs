@@ -2,8 +2,11 @@
 
 namespace Agents
 {
-    public class AgentMemoryFactory :IAgentMemoryFactory
+    public class AgentMemoryFactory : IAgentMemoryFactory
     {
-        public IAgentMemory GetAgentMemoryClass() => new MovementTracker(20, 1);
+        public IAgentMemory GetAgentMemoryClass()
+        {
+            return new MovementTracker(20);
+        }
     }
 }

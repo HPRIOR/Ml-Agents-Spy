@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Training;
+﻿using Training;
 using UnityEngine;
 
-public static class VectorConversions 
+public static class VectorConversions
 {
     public static Vector2 ConvertToVector2(Transform t)
     {
@@ -11,8 +9,13 @@ public static class VectorConversions
         return new Vector2(position.x, position.z);
     }
 
-    public static Vector2 ConvertToVector2(Vector3 v) => new Vector2(v.x, v.z);
+    public static Vector2 ConvertToVector2(Vector3 v)
+    {
+        return new Vector2(v.x, v.z);
+    }
 
     public static Vector3 GetLocalPosition(Vector3 position, TrainingInstanceController trainingInstance)
-        => position - trainingInstance.transform.localPosition;
+    {
+        return position - trainingInstance.transform.localPosition;
+    }
 }

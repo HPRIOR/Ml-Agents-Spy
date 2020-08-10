@@ -9,7 +9,7 @@
 
         protected sealed override void InterpretCurriculum(float curriculum)
         {
-            switch ((int)curriculum)
+            switch ((int) curriculum)
             {
                 case 1:
                     _mapScale = 1;

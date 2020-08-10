@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Enums;
-using Interfaces;
-using Training;
+﻿using Enums;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static StaticFunctions;
-using static VectorConversions;
-using Vector3 = UnityEngine.Vector3;
 
 namespace Agents
 {
-    public class AlertGuardAgent: AbstractGuard
+    public class AlertGuardAgent : AbstractGuard
     {
         protected override float Speed { get; } = 20;
+
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
@@ -28,77 +21,75 @@ namespace Agents
         public override void OnEpisodeBegin()
         {
             Constructor();
-            if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
-            {
-                CanMove = false;
-            }
-            
-            if (CompletedEpisodes > 0 )
-            {
-                InstanceController.Restart();
-            }
+            if (InstanceController.trainingScenario == TrainingScenario.SpyEvade) CanMove = false;
+            if (CompletedEpisodes > 0) InstanceController.Restart();
         }
 
         public (float, float) GetSpyLocalPositions()
         {
-            var localPosition = InstanceController.Spy.transform.localPosition;
+            var spyObject = InstanceController.Spy;
+            if (spyObject is null)
+            {
+                return (0, 0);
+            }
+            var localPosition = spyObject.transform.localPosition;
             var normalisedLocalPositionX = NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                 localPosition.x);
             var normalisedLocalPositionY = NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                 localPosition.z);
             return (normalisedLocalPositionX, normalisedLocalPositionY);
+            
+            
         }
-        
+
         private void AddSpyLocalPositions(VectorSensor sensor)
         {
+            // TODO check that these are padded
             var (x, y) = GetSpyLocalPositions();
             sensor.AddObservation(x);
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent() => 
+        private bool CloseToAgent()=>
             Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
         
+
 
         public override void CollectObservations(VectorSensor sensor)
         {
             // own position (2)
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
-            
+
             // spy position (2)
             AddSpyLocalPositions(sensor);
 
             // position of other guards (6)
-            int guardObservationCount = 3;
+            var guardObservationCount = 3;
             if (CanMove)
-            {
                 AddNearestGuards(sensor, guardObservationCount);
-            }
             else
-            {
-                // observations added with count <1
-                for (int i = 0; i < guardObservationCount; i++)
+                // observations added with count 
+                for (var i = 0; i < guardObservationCount; i++)
                 {
                     sensor.AddObservation(0);
                     sensor.AddObservation(0);
                 }
-            }
-            
+
             //memory trail (20)
             AddVisitedMemoryTrail(sensor);
-            
+
             //exits (6)
             AddNearestTilePositions(sensor, 3, InstanceController.TileDict[TileType.ExitTiles]);
-            
+
             //env tiles position (12)
             AddNearestTilePositions(sensor, 6, InstanceController.TileDict[TileType.EnvTiles]);
         }
-        
+
 
         public override void OnActionReceived(float[] vectorAction)
         {
-            AddReward(-1f/MaxStep);
+            AddReward(-1f / MaxStep);
             if (CloseToAgent())
             {
                 if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
@@ -111,8 +102,8 @@ namespace Agents
                     EndEpisode();
                 }
             }
+
             if (CanMove) MoveAgent(vectorAction[0]);
         }
-        
     }
 }

@@ -6,7 +6,7 @@ using Interfaces;
 
 namespace EnvSetup
 {
-    public class TileLogicFacadeInjector 
+    public class TileLogicFacadeInjector
     {
         public ITileLogicFacade GetTileLogicFacade(CurriculumEnum facadeName, float curriculumParam)
         {
@@ -21,6 +21,7 @@ namespace EnvSetup
                 case CurriculumEnum.SimpleTestCurriculum:
                     return new SimpleTestCurriculum(curriculumParam);
             }
+
             throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");
         }
     }

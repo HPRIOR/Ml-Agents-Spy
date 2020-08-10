@@ -1,6 +1,6 @@
 ﻿namespace Enums
 {
-    public enum CurriculumEnum 
+    public enum CurriculumEnum
     {
         AdvancedPathFinding,
         SimplePathFinding,

@@ -9,23 +9,21 @@ namespace Tests
 {
     public class TileLogicTests
     {
-
-        Dictionary<ParentObject, GameObject> GetDictionary ()
+        private Dictionary<ParentObject, GameObject> GetDictionary()
         {
-            GameObject TopParent = new GameObject();
-            GameObject EnvParent = new GameObject();
-            GameObject SpyParent = new GameObject();
-            GameObject GuardParent = new GameObject();
-            GameObject DebugParent = new GameObject();
-        
-            return new Dictionary<ParentObject, GameObject>()
+            var TopParent = new GameObject();
+            var EnvParent = new GameObject();
+            var SpyParent = new GameObject();
+            var GuardParent = new GameObject();
+            var DebugParent = new GameObject();
+
+            return new Dictionary<ParentObject, GameObject>
             {
                 {ParentObject.TopParent, TopParent},
                 {ParentObject.EnvParent, EnvParent},
                 {ParentObject.SpyParent, SpyParent},
                 {ParentObject.GuardParent, GuardParent},
                 {ParentObject.DebugParent, DebugParent}
-
             };
         }
 
@@ -36,14 +34,14 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 3,
-                guardAgentCount: 2,
-                parentDictionary: dict
+                5,
+                0,
+                3,
+                2,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
@@ -57,15 +55,15 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 3,
-                guardAgentCount: 2,
-                parentDictionary: dict
+                5,
+                0,
+                3,
+                2,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-            
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
 
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
@@ -79,14 +77,14 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 3,
-                guardAgentCount: 2,
-                parentDictionary: dict
+                5,
+                0,
+                3,
+                2,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
@@ -100,25 +98,25 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 3,
-                guardAgentCount: 2,
-                parentDictionary: dict
+                5,
+                0,
+                3,
+                2,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
             Assert.AreEqual(245, tileTypes[TileType.EnvTiles].Count);
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 5,
-                guardAgentCount: 2,
-                parentDictionary: dict
+                5,
+                0,
+                5,
+                2,
+                dict
             );
             // assert change in tiles on increase exit count
             tileLogic = tileLogicBuilder.GetTileLogicSetup();
@@ -135,19 +133,18 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                1,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-        
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
             Assert.AreEqual(19, tileTypes[TileType.FreeTiles].Count);
-
         }
 
         [Test]
@@ -156,32 +153,31 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                1,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-            
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
-        
+
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
-            tileTypes[TileType.ExitTiles].ForEach(tile => Assert.AreEqual(6 ,tile.Coords.y));
+            tileTypes[TileType.ExitTiles].ForEach(tile => Assert.AreEqual(6, tile.Coords.y));
 
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 3,
-                mapDifficulty: 0,
-                exitCount: 4,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                3,
+                0,
+                4,
+                1,
+                dict
             );
 
             tileLogic = tileLogicBuilder.GetTileLogicSetup();
-        
+
             tileLogic.GetTileLogic();
             tileTypes = tileLogic.GetTileTypes();
             tileTypes[TileType.ExitTiles].ForEach(tile => Assert.AreEqual(16, tile.Coords.y));
@@ -193,25 +189,25 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                1,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-        
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
             tileTypes[TileType.SpyTile].ForEach(tile => Assert.AreEqual(1, tile.Coords.y));
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 3,
-                mapDifficulty: 0,
-                exitCount: 4,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                3,
+                0,
+                4,
+                1,
+                dict
             );
 
             tileLogic = tileLogicBuilder.GetTileLogicSetup();
@@ -227,14 +223,14 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 0,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                0,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             Assert.Throws<MapCreationException>(() => tileLogic.GetTileLogic());
         }
@@ -246,14 +242,14 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                1,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
@@ -261,28 +257,27 @@ namespace Tests
 
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 2,
-                mapDifficulty: 0,
-                exitCount: 4,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                2,
+                0,
+                4,
+                1,
+                dict
             );
 
             // 2 map size
             tileLogic = tileLogicBuilder.GetTileLogicSetup();
-            
 
-        
+
             tileLogic.GetTileLogic();
             tileTypes = tileLogic.GetTileTypes();
             tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(9, tile.Coords.y));
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 3,
-                mapDifficulty: 0,
-                exitCount: 4,
-                guardAgentCount: 1,
-                parentDictionary: dict
+                3,
+                0,
+                4,
+                1,
+                dict
             );
 
             // 3 map size
@@ -293,11 +288,11 @@ namespace Tests
             tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(15, tile.Coords.y));
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 4,
-                mapDifficulty: 0,
-                exitCount: 10,
-                guardAgentCount: 9,
-                parentDictionary: dict
+                4,
+                0,
+                10,
+                9,
+                dict
             );
 
             // > 3 (4) map size
@@ -305,14 +300,15 @@ namespace Tests
 
             tileLogic.GetTileLogic();
             tileTypes = tileLogic.GetTileTypes();
-            tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(true, tile.Coords.y == 19 | tile.Coords.y == 17 | tile.Coords.y == 18));
+            tileTypes[TileType.GuardTiles].ForEach(tile =>
+                Assert.AreEqual(true, (tile.Coords.y == 19) | (tile.Coords.y == 17) | (tile.Coords.y == 18)));
 
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 5,
-                mapDifficulty: 0,
-                exitCount: 10,
-                guardAgentCount: 9,
-                parentDictionary: dict
+                5,
+                0,
+                10,
+                9,
+                dict
             );
 
             // > 3 (5) map size
@@ -320,7 +316,8 @@ namespace Tests
 
             tileLogic.GetTileLogic();
             tileTypes = tileLogic.GetTileTypes();
-            tileTypes[TileType.GuardTiles].ForEach(tile => Assert.AreEqual(true, tile.Coords.y == 25 || tile.Coords.y == 24 || tile.Coords.y == 23));
+            tileTypes[TileType.GuardTiles].ForEach(tile =>
+                Assert.AreEqual(true, tile.Coords.y == 25 || tile.Coords.y == 24 || tile.Coords.y == 23));
         }
 
         [Test]
@@ -329,15 +326,15 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 4,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                4,
+                dict
             );
 
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
-        
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
+
             tileLogic.GetTileLogic();
             var tileTypes = tileLogic.GetTileTypes();
             Assert.Greater(tileTypes[TileType.ExitTiles].Count, tileTypes[TileType.GuardTiles].Count);
@@ -350,38 +347,38 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 0,
-                guardAgentCount: 4,
-                parentDictionary: dict
+                1,
+                0,
+                0,
+                4,
+                dict
             );
 
             // exit count = 0
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
 
             Assert.Throws<MapCreationException>(() => tileLogic.GetTileLogic());
-        
+
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 1,
-                guardAgentCount: 4,
-                parentDictionary: dict
+                1,
+                0,
+                1,
+                4,
+                dict
             );
 
             // exit count = 1
             tileLogic = tileLogicBuilder.GetTileLogicSetup();
-            
+
             Assert.Throws<MapCreationException>(() => tileLogic.GetTileLogic());
-        
+
             tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 0,
-                exitCount: 2,
-                guardAgentCount: 4,
-                parentDictionary: dict
+                1,
+                0,
+                2,
+                4,
+                dict
             );
 
             // exit count = 2
@@ -397,19 +394,17 @@ namespace Tests
             var dict = GetDictionary();
 
             ITileLogicBuilder tileLogicBuilder = new TileLogicBuilder(
-                mapScale: 1,
-                mapDifficulty: 100,
-                exitCount: 3,
-                guardAgentCount: 4,
-                parentDictionary: dict
+                1,
+                100,
+                3,
+                4,
+                dict
             );
 
             // exit count = 0
-            ITileLogicSetup tileLogic = tileLogicBuilder.GetTileLogicSetup();
+            var tileLogic = tileLogicBuilder.GetTileLogicSetup();
 
             Assert.Throws<MapCreationException>(() => tileLogic.GetTileLogic());
         }
-
-
     }
 }

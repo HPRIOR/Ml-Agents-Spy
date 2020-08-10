@@ -2,6 +2,7 @@
 {
     public enum AddSub
     {
-        Add, Sub
+        Add,
+        Sub
     }
 }

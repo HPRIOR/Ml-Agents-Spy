@@ -7,11 +7,15 @@ namespace Tests.TestSetup
 {
     public abstract class AbstractTestTrainingScenarioSetup : AbstractPlayModeTest
     {
-        readonly GameObject _trainingInstancePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
-        protected TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario, CurriculumEnum curriculum)
+        private readonly GameObject _trainingInstancePrefab =
+            AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TrainingInstance.prefab");
+
+        protected TrainingInstanceController ConfigureCurriculum(TrainingScenario inputTrainingScenario,
+            CurriculumEnum curriculum)
         {
-            GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
+            var trainingInstance =
+                Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            var trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.waitForTestSetup = true;
             trainingInstanceController.trainingScenario = inputTrainingScenario;
             trainingInstanceController.curriculum = curriculum;
@@ -20,10 +24,11 @@ namespace Tests.TestSetup
             return trainingInstanceController;
         }
 
-        protected  TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
+        protected TrainingInstanceController ConfigureDebug(TrainingScenario trainingScenario)
         {
-            GameObject trainingInstance = Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            TrainingInstanceController trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
+            var trainingInstance =
+                Object.Instantiate(_trainingInstancePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            var trainingInstanceController = trainingInstance.GetComponent<TrainingInstanceController>();
             trainingInstanceController.waitForTestSetup = true;
             trainingInstanceController.trainingScenario = trainingScenario;
             trainingInstanceController.debugSetup = true;
@@ -60,6 +65,5 @@ namespace Tests.TestSetup
             trainingInstanceController.hasMiddleTiles = hasMiddleTiles;
             trainingInstanceController.waitForTestSetup = false;
         }
-        
     }
 }

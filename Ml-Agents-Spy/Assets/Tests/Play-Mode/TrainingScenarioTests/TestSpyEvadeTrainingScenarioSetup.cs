@@ -11,7 +11,6 @@ namespace Tests.TrainingScenarioTests
 {
     public class TestSpyEvadeTrainingScenarioSetup : AbstractTestTrainingScenarioSetup
     {
-        
         [UnityTest]
         public IEnumerator Test_Guard_Spawn_Count_Basic_Debug()
         {
@@ -20,7 +19,6 @@ namespace Tests.TrainingScenarioTests
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
-            
         }
 
         [UnityTest]
@@ -32,7 +30,7 @@ namespace Tests.TrainingScenarioTests
 
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Guard_Respawn_Count_Simple_Curr()
         {
@@ -46,8 +44,8 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
-        
-        
+
+
         [UnityTest]
         public IEnumerator Test_Guard_Respawn_Count_Basic_Debug()
         {
@@ -62,7 +60,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.AreEqual(1, trainingInstanceController.Guards.Count);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Spawn_Basic_Debug()
         {
@@ -77,7 +75,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Spawn_Simple_Curr()
         {
@@ -91,7 +89,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Respawn_Basic_Debug()
         {
@@ -106,7 +104,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_No_Spy_Respawn_Simple_Curr()
         {
@@ -120,8 +118,8 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
-        
+
+
         [UnityTest]
         public IEnumerator Test_Guard_Spawn_Count_Advanced_Debug()
         {
@@ -131,7 +129,7 @@ namespace Tests.TrainingScenarioTests
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Guard_Spawn_Count_Advanced_Curr()
         {
@@ -141,7 +139,7 @@ namespace Tests.TrainingScenarioTests
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Respawn_Count_Advanced_Curr()
         {
@@ -151,8 +149,8 @@ namespace Tests.TrainingScenarioTests
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
-        
-        
+
+
         [UnityTest]
         public IEnumerator Test_Respawn_Count_Advanced_Debug()
         {
@@ -162,7 +160,7 @@ namespace Tests.TrainingScenarioTests
 
             Assert.AreEqual(2, trainingInstanceController.Guards.Count);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Spawn_Advanced_Debug()
         {
@@ -172,7 +170,7 @@ namespace Tests.TrainingScenarioTests
 
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Spawn_Advanced_Curr()
         {
@@ -186,7 +184,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Respawn_Advanced_Debug()
         {
@@ -200,7 +198,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Spy_Respawn_Advanced_Curr()
         {
@@ -214,7 +212,7 @@ namespace Tests.TrainingScenarioTests
             yield return null;
             Assert.IsNotNull(trainingInstanceController.Spy);
         }
-        
+
         [UnityTest]
         public IEnumerator Test_Guard_Agent_Is_Patrol()
         {
@@ -222,7 +220,7 @@ namespace Tests.TrainingScenarioTests
                 ConfigureCurriculum(TrainingScenario.SpyEvade, CurriculumEnum.AdvancedTestCurriculum);
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
-            Assert.IsNotNull( trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>());
+            Assert.IsNotNull(trainingInstanceController.Guards[0].GetComponent<PatrolGuardAgent>());
         }
     }
 }

@@ -5,11 +5,8 @@ namespace Interfaces
 {
     public interface ITileLogicSetup
     {
-
         IEnvTile[,] GetTileLogic();
 
         Dictionary<TileType, List<IEnvTile>> GetTileTypes();
-    
-
     }
 }

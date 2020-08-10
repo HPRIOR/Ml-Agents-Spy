@@ -1,20 +1,11 @@
 ﻿using System.Collections;
-using NUnit.Framework;
+using Tests.TestSetup;
 using UnityEngine.TestTools;
 
 namespace Tests.AgentTests
 {
-    public class PatrolGuardTest
+    public class PatrolGuardTest : AbstractAgentTestSetup
     {
-        // nearest guard tests exclude own guard 
         
-        // spawn point 
-        
-        
-        [UnityTest]
-        public IEnumerator PatrolGuardTestWithEnumeratorPasses()
-        {
-            yield return null;
-        }
     }
 }

@@ -2,7 +2,6 @@
 {
     public interface IGuardTileLogic
     {
-
         void GetMaxExitCount(int maxExitCount);
 
         void GetPotentialGuardPlaces(IEnvTile[,] tiles);

@@ -6,7 +6,9 @@ namespace Interfaces
 {
     public interface ITileLogicFacade
     {
-        ITileLogicBuilder GetTileLogicBuilder(float curriculumParam, Dictionary<ParentObject, GameObject> parentObjects);
         Dictionary<GameParam, int> EnvParams { get; }
+
+        ITileLogicBuilder GetTileLogicBuilder(float curriculumParam,
+            Dictionary<ParentObject, GameObject> parentObjects);
     }
 }

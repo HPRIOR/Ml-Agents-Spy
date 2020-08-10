@@ -29,7 +29,6 @@ namespace Tests.TrainingScenarioTests
             yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
 
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
-
         }
 
         [UnityTest]
@@ -147,6 +146,5 @@ namespace Tests.TrainingScenarioTests
             Assert.NotNull(trainingInstanceController.Spy);
             Assert.AreEqual(0, trainingInstanceController.Guards.Count);
         }
-
     }
 }

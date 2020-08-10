@@ -1,21 +1,29 @@
-﻿using Tests.TestSetup;
+﻿using System.Collections;
+using Agents;
+using Enums;
+using NUnit.Framework;
+using Tests.TestSetup;
+using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace Tests.GameLogicTests
 {
     public class NearestTileTests : AbstractTestTrainingScenarioSetup
     {
-       //TODO test static method get nearest tile
-       
-       //simple single nearest tile
-       
-       //group of nearest tiles
-       
-       //nearest tiles matching condition
-       
-       // Test NearestTilePosition offset (localPosition)
-       
-       // Get Nearest 7 tiles from the center and prove that they all would surround the player 
-       
-       // test padding 
+
+        // test padding 
+        [UnityTest]
+        public IEnumerator Tile_Count_Padding()
+        {
+            var trainingInstanceController = ConfigureDebug(TrainingScenario.GuardAlert);
+            SetDebugParameters(trainingInstanceController, 1, 0, 2, 1,false);
+            yield return new WaitUntil(() => trainingInstanceController.TestSetUpComplete);
+            var exitCount = trainingInstanceController
+                .Guards[0]
+                .GetComponent<AlertGuardAgent>()
+                .GetNearestTilePositions(3, trainingInstanceController.TileDict[TileType.ExitTiles]).Count;
+            
+            Assert.AreEqual(6, exitCount);
+        }
     }
 }

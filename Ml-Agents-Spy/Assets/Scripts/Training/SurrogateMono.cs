@@ -4,6 +4,5 @@ namespace Training
 {
     public class SurrogateMono : MonoBehaviour
     {
-    
     }
 }
