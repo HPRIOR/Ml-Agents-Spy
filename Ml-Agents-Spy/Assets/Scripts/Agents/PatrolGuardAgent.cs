@@ -12,7 +12,7 @@ namespace Agents
 {
     public class PatrolGuardAgent : AbstractGuard
     {
-        private List<IPatrolGuardTile> _currentPatrolTiles = new List<IPatrolGuardTile>();
+        private List<IPatrolGuardTile> _currentPatrolTiles = new List<IPatrolGuardTile>(){null, null, null};
         private RayPerceptionSensorComponent3D _eyes;
         private GameObject _head;
 
@@ -39,6 +39,7 @@ namespace Agents
         {
             _head = transform.GetChild(0).gameObject;
             _eyes = _head.GetComponent<RayPerceptionSensorComponent3D>();
+            SetUpRayBuffers();
         }
         
 
@@ -46,8 +47,9 @@ namespace Agents
         {
             var lengthOfRayOutPuts = RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
-                .RayOutputs.Length;
-            
+                .RayOutputs
+                .Length;
+
             _rayBuffers = new List<float[]>()
             {
                 new float[(2 + 2) * lengthOfRayOutPuts],
@@ -62,7 +64,7 @@ namespace Agents
         public override void OnEpisodeBegin()
         {
             Constructor();
-
+            
             var tileDict = InstanceController.TileDict;
             var freeEnvTiles =
                 tileDict[TileType.FreeTiles]
@@ -76,13 +78,15 @@ namespace Agents
 
         private void AddNearestPatrolTiles(VectorSensor sensor) =>
             GetNearestPatrolTilePositions().ForEach(sensor.AddObservation);
+           
         
+
 
         public List<float> GetNearestPatrolTilePositions() =>
             _currentPatrolTiles
                 .Select(t => 
-                { 
-                    if (t is null) return (0, 0); 
+                {
+                    if (t == null) return (0, 0); 
                     return (StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                         VectorConversions.GetLocalPosition(t.Position, InstanceController).x),
                     StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
@@ -99,7 +103,6 @@ namespace Agents
             sensor.AddObservation(NormalisedPositionY());
 
             // NearestPatrolTile
-            //TODO not giving right number of obvs null not working
             AddNearestPatrolTiles(sensor);
 
             // NearestGuardAgents
@@ -123,26 +126,52 @@ namespace Agents
         {
             var rotateDirection = Vector3.zero;
             var action = Mathf.FloorToInt(input);
-
+            
             if (action == 1)
+            {
                 rotateDirection = _head.transform.up * 1;
-            else if (action == 2) rotateDirection = _head.transform.up * -1;
+            }
+            else if (action == 2)
+            {
+                rotateDirection = _head.transform.up * -1;
+                
+            }
 
             _head.transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
         }
+        
 
         public override void OnActionReceived(float[] vectorAction)
         {
+
+            CheckCurrentTileReward();
+
+            CheckForSpyObservation();
+
+            // upload Guard observations
+            InstanceController.GuardObservations[transform.gameObject] = GetObservationDistances();
+            
+            if (CanMove)
+            {
+                MoveAgent(vectorAction[0]);
+                RotateHead(vectorAction[1]);
+            }
+        }
+
+        private void CheckCurrentTileReward()
+        {
             if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
-            
+        }
+
+        private void CheckForSpyObservation()
+        {
             RayPerceptionSensor
                 .Perceive(_eyes.GetRayPerceptionInput())
                 .RayOutputs
                 .ToList()
                 .ForEach(output =>
                 {
-                    FillGuardObservationBuffer(output);
                     if (output.HitTagIndex == 0)
                     {
                         if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
@@ -155,27 +184,38 @@ namespace Agents
                             InstanceController.SwapAgents();
                     }
                 });
-            if (CanMove)
-            {
-                MoveAgent(vectorAction[0]);
-                RotateHead(vectorAction[1]);
-            }
         }
 
-        private void FillGuardObservationBuffer(RayPerceptionOutput.RayOutput output)
+
+        private float[] GetObservationDistances()
         {
-            // TODO refactor
-            output.ToFloatArray(2, 0, _rayBuffers[0]);
-            output.ToFloatArray(2, 1, _rayBuffers[1]);
-            output.ToFloatArray(2, 2, _rayBuffers[2]);
-            output.ToFloatArray(2, 3, _rayBuffers[3]);
-            output.ToFloatArray(2, 4, _rayBuffers[4]);
-            var thisGameObject = transform.gameObject;
-            InstanceController.GuardObservations[thisGameObject][0] = _rayBuffers[0][3];
-            InstanceController.GuardObservations[thisGameObject][1] = _rayBuffers[1][3];
-            InstanceController.GuardObservations[thisGameObject][2] = _rayBuffers[2][3];
-            InstanceController.GuardObservations[thisGameObject][3] = _rayBuffers[3][3];
-            InstanceController.GuardObservations[thisGameObject][4] = _rayBuffers[4][3];
+
+            var rayOutputs = RayPerceptionSensor
+                .Perceive(_eyes.GetRayPerceptionInput())
+                .RayOutputs;
+            
+            for (int i = 0; i < 5; i++)
+                rayOutputs[i].ToFloatArray(2, 0, _rayBuffers[i]);
+
+            var rotation =
+                StaticFunctions.NormalisedFloat(0, 360, _head.transform.rotation.eulerAngles.y);
+
+            // TODO find vector3 locations of each of the raycasts
+            
+
+            return new[]
+            {
+                _rayBuffers[0][3], 
+                _rayBuffers[1][3],
+                _rayBuffers[2][3],
+                _rayBuffers[3][3],
+                _rayBuffers[4][3],
+                rotation
+            };
         }
+        
+        
+
+        
     }
 }

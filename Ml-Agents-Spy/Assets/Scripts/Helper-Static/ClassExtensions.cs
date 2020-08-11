@@ -99,4 +99,6 @@ public static class ClassExtensions
         });
         return tList;
     }
+    
+    public static float ReverseNormalise(this float init, float max) => init * max;
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Enums;
+using Google.Protobuf.WellKnownTypes;
 
 public static class StaticFunctions
 {
@@ -75,4 +76,9 @@ public static class StaticFunctions
 
         throw new InvalidEnumArgumentException("Wrong enum given to MinusAddAngle");
     }
+    
+    
+    
+    
+    
 }

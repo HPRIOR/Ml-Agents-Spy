@@ -371,27 +371,45 @@ namespace Training
                 RandomHelper.GetUniqueRandomList(maxNumOfGuard,
                     TileDict[TileType.GuardTiles].Count);
 
-            // TODO GuardObservationDiction needs to be created here (instantiateobject should be reference by variable, then added to Guards, then Dict)
+            // TODO GuardObservationDiction needs to be created here (instantiateobject
+            // should be reference by variable, then added to Guards, then Dict)
             for (var i = 0; i < maxNumOfGuard; i++)
                 if (inputTrainingScenario != TrainingScenario.SpyEvade)
                 {
                     if (TrainingScenarioWantsPatrol(inputTrainingScenario))
-                        Guards.Add(Instantiate(guardPatrolPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
-                            Quaternion.identity, transform));
+                    {
+                        var instantiatedPatrolPrefab = 
+                            Instantiate(guardPatrolPrefab,
+                            TileDict[TileType.GuardTiles][indexes[i]].Position,
+                            Quaternion.identity, transform);
+                        
+                        Guards.Add(instantiatedPatrolPrefab);
+                        GuardObservations.Add(instantiatedPatrolPrefab, new float[5]);
+                    }
+
                     if (TrainingScenarioWantsAlert(inputTrainingScenario))
-                        Guards.Add(Instantiate(guardAlertPrefab, TileDict[TileType.GuardTiles][indexes[i]].Position,
-                            Quaternion.identity, transform));
+                    {
+                        var instantiatedAlertPrefab = 
+                            Instantiate(guardAlertPrefab,
+                                TileDict[TileType.GuardTiles][indexes[i]].Position,
+                                Quaternion.identity, transform);
+                        
+                        Guards.Add(instantiatedAlertPrefab);
+                        GuardObservations.Add(instantiatedAlertPrefab, new float[5]);
+                    }
+                        
                 }
                 else
                 {
                     {
-                        Guards.Add(Instantiate(
-                                guardPatrolPrefab,
+                        var instantiatedPatrolPrefab = 
+                            Instantiate(guardPatrolPrefab,
                                 TileDict[TileType.GuardTiles][indexes[i]].Position,
-                                Quaternion.identity,
-                                transform
-                            )
-                        );
+                                Quaternion.identity, transform);
+
+                        Guards.Add(instantiatedPatrolPrefab);
+                        GuardObservations.Add(instantiatedPatrolPrefab, new float[5]);
+                        
                         GuardsSwap.Add(Instantiate(
                                 guardAlertPrefab,
                                 TileDict[TileType.GuardTiles][indexes[i]].Position - new Vector3(0, 100, 0),
