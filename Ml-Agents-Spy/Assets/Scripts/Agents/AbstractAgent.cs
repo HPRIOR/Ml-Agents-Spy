@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
 using Training;
@@ -13,10 +14,11 @@ namespace Agents
     {
         private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
         private IAgentMemory _agentMemory;
+        private Rigidbody _rigidbody;
         protected TrainingInstanceController InstanceController;
         protected float MaxLocalDistance;
         protected abstract float Speed { get; }
-        protected float IsColliding { get; private set; }
+        
 
         /// <summary>
         /// Instantiates various parts of the agent each training episode
@@ -26,10 +28,11 @@ namespace Agents
         protected void Constructor()
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
+            _rigidbody = GetComponent<Rigidbody>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
             MaxLocalDistance = GetMaxLocalDistance(InstanceController.AgentMapScale);
         }
-
+        
 
         /// <summary>
         ///     Defines one discrete vector [0](1-4) which defines movement in up left right directions
@@ -45,7 +48,8 @@ namespace Agents
             else if (action == 3) movementDirection = transform.right * 0.5f;
             else if (action == 4) movementDirection = transform.right * -0.5f;
 
-            transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
+            //transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
+            _rigidbody.MovePosition(transform.position + movementDirection * Time.fixedDeltaTime * Speed);
         }
 
         private List<IEnvTile> GetNearestTiles(int amount, List<IEnvTile> inputTiles) =>
@@ -76,7 +80,7 @@ namespace Agents
                 .ToList();
         
 
-        protected void AddNearestTilePositions(VectorSensor vectorSensor, int amount, List<IEnvTile> inputTile)=> 
+        protected void AddNearestTilePositions(VectorSensor vectorSensor, int amount, List<IEnvTile> inputTile) => 
             GetNearestTilePositions(amount, inputTile)
                 .ForEach(vectorSensor.AddObservation);
         
@@ -131,15 +135,5 @@ namespace Agents
         public float NormalisedPositionY() => 
             NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.z);
         
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.name == "Cube") IsColliding = 1f;
-        }
-
-        private void OnCollisionExit(Collision collision)
-        {
-            if (collision.gameObject.name == "Cube") IsColliding = 0f;
-        }
     }
 }

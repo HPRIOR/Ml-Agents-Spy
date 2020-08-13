@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Interfaces;
-using Training;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Agents
 {
@@ -98,6 +95,8 @@ namespace Agents
 
         public override void CollectObservations(VectorSensor sensor)
         {
+            //TODO mapScale
+            
             // Own position
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
@@ -126,18 +125,19 @@ namespace Agents
         {
             var rotateDirection = Vector3.zero;
             var action = Mathf.FloorToInt(input);
-            
+
+            var headTransform = _head.transform;
             if (action == 1)
             {
-                rotateDirection = _head.transform.up * 1;
+                rotateDirection = headTransform.up * 1;
             }
             else if (action == 2)
             {
-                rotateDirection = _head.transform.up * -1;
+                rotateDirection = headTransform.up * -1;
                 
             }
 
-            _head.transform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
+            headTransform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
         }
         
 
@@ -147,14 +147,19 @@ namespace Agents
             CheckCurrentTileReward();
 
             CheckForSpyObservation();
-
-            // upload Guard observations
-            InstanceController.GuardObservations[transform.gameObject] = GetObservationDistances();
             
             if (CanMove)
             {
+                GetObservationDistances(_rayBuffers);
                 MoveAgent(vectorAction[0]);
                 RotateHead(vectorAction[1]);
+            }
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    InstanceController.GuardObservations[transform.gameObject][i] = 0;
+                }
             }
         }
 
@@ -174,20 +179,21 @@ namespace Agents
                 {
                     if (output.HitTagIndex == 0)
                     {
-                        if (InstanceController.trainingScenario == TrainingScenario.GuardPatrolWithSpy)
+                        var instanceControllerTrainingScenario = InstanceController.trainingScenario;
+                        if (instanceControllerTrainingScenario == TrainingScenario.GuardPatrolWithSpy)
                         {
                             SetReward(1);
                             EndEpisode();
                         }
 
-                        if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
+                        if (instanceControllerTrainingScenario == TrainingScenario.SpyEvade)
                             InstanceController.SwapAgents();
                     }
                 });
         }
 
 
-        private float[] GetObservationDistances()
+        private void GetObservationDistances(List<float[]> rayBuffers)
         {
 
             var rayOutputs = RayPerceptionSensor
@@ -195,23 +201,93 @@ namespace Agents
                 .RayOutputs;
             
             for (int i = 0; i < 5; i++)
-                rayOutputs[i].ToFloatArray(2, 0, _rayBuffers[i]);
+                rayOutputs[i].ToFloatArray(2, 0, rayBuffers[i]);
 
-            var rotation =
-                StaticFunctions.NormalisedFloat(0, 360, _head.transform.rotation.eulerAngles.y);
+            DebugRays(rayOutputs);
 
-            // TODO find vector3 locations of each of the raycasts
+            var headTransform = _head.transform;
+            var headTransformForward = headTransform.forward;
+            var position = headTransform.position;
             
+            var (middleRayPosition, outerRightPosition, outerLeftPosition) 
+                = GetRayPosition(rayBuffers, headTransformForward, position);
+            //Debug.Log(outerLeftPosition);
+            //Debug.Log(middleRayPosition);
+            //Debug.Log(outerRightPosition);
 
-            return new[]
-            {
-                _rayBuffers[0][3], 
-                _rayBuffers[1][3],
-                _rayBuffers[2][3],
-                _rayBuffers[3][3],
-                _rayBuffers[4][3],
-                rotation
-            };
+            AddNormalisedObservationsToArray(outerLeftPosition, middleRayPosition, outerRightPosition);
+        }
+
+        private (Vector3 middleRayPosition, Vector3 outerRightPosition, Vector3 outerLeftPosition) GetRayPosition(
+            List<float[]> rayBuffers, Vector3 headTransformForward, Vector3 position)
+        {
+            var middleRayPosition =
+                VectorConversions.RayCastHitLocation(
+                    headTransformForward,
+                    position,
+                    rayBuffers[0][3].ReverseNormalise(_eyes.RayLength) * 0.765f);
+
+            var outerRightPosition =
+                VectorConversions.RayCastHitLocation(
+                    Quaternion.Euler(0, 15, 0) * headTransformForward,
+                    position,
+                    rayBuffers[3][3].ReverseNormalise(_eyes.RayLength) * 0.765f);
+
+            var outerLeftPosition =
+                VectorConversions.RayCastHitLocation(
+                    Quaternion.Euler(0, -15, 0) * headTransformForward,
+                    position,
+                    rayBuffers[4][3].ReverseNormalise(_eyes.RayLength) * 0.765f);
+            return (middleRayPosition, outerRightPosition, outerLeftPosition);
+        }
+
+        private void AddNormalisedObservationsToArray(Vector3 outerLeftPosition, Vector3 middleRayPosition,
+            Vector3 outerRightPosition)
+        {
+            var thisGameObject = transform.gameObject;
+            InstanceController.GuardObservations[thisGameObject][0] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerLeftPosition.x);
+            InstanceController.GuardObservations[thisGameObject][1] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerLeftPosition.z);
+            InstanceController.GuardObservations[thisGameObject][2] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, middleRayPosition.x);
+            InstanceController.GuardObservations[thisGameObject][3] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, middleRayPosition.z);
+            InstanceController.GuardObservations[thisGameObject][4] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerRightPosition.x);
+            InstanceController.GuardObservations[thisGameObject][5] =
+                StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerRightPosition.z);
+
+            // InstanceController.GuardObservations[thisGameObject].ToList().ForEach(x => Debug.Log(x));
+        }
+
+        private void DebugRays(RayPerceptionOutput.RayOutput[] rayOutPuts)
+        {
+            var forward = _eyes.transform.forward;
+            var rightMostAngle = Quaternion.Euler(0, 15, 0) * forward;
+            var rightMidAngle = Quaternion.Euler(0, 7.5f, 0) * forward;
+            var leftMidAngle = Quaternion.Euler(0, -7.5f, 0) * forward;
+            var leftMostAngle = Quaternion.Euler(0, -15, 0) * forward;
+
+            var position = _head.transform.position;
+            Ray centerRightMost = new Ray(position, rightMostAngle);
+            Ray centerRightMid = new Ray(position, rightMidAngle);
+            Ray centerRay = new Ray(position, _head.transform.forward);
+            Ray centerLeftMid = new Ray(position, leftMidAngle);
+            Ray centerLeftMost = new Ray(position, leftMostAngle);
+
+
+            var eyesRayLength = _eyes.RayLength;
+            Debug.DrawLine(position,
+                centerRightMost.GetPoint(_rayBuffers[3][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            Debug.DrawLine(position, 
+                centerRightMid.GetPoint(_rayBuffers[1][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            Debug.DrawLine(position, 
+                centerRay.GetPoint(_rayBuffers[0][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            Debug.DrawLine(position, 
+                centerLeftMid.GetPoint(_rayBuffers[2][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            Debug.DrawLine(position, 
+                centerLeftMost.GetPoint(_rayBuffers[4][3].ReverseNormalise(eyesRayLength) * 0.765f));
         }
         
         

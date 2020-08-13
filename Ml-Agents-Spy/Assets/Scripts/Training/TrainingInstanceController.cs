@@ -370,8 +370,7 @@ namespace Training
             var indexes =
                 RandomHelper.GetUniqueRandomList(maxNumOfGuard,
                     TileDict[TileType.GuardTiles].Count);
-
-            // TODO GuardObservationDiction needs to be created here (instantiateobject
+            
             // should be reference by variable, then added to Guards, then Dict)
             for (var i = 0; i < maxNumOfGuard; i++)
                 if (inputTrainingScenario != TrainingScenario.SpyEvade)
@@ -384,7 +383,7 @@ namespace Training
                             Quaternion.identity, transform);
                         
                         Guards.Add(instantiatedPatrolPrefab);
-                        GuardObservations.Add(instantiatedPatrolPrefab, new float[5]);
+                        GuardObservations.Add(instantiatedPatrolPrefab, new float[6]);
                     }
 
                     if (TrainingScenarioWantsAlert(inputTrainingScenario))
@@ -395,7 +394,7 @@ namespace Training
                                 Quaternion.identity, transform);
                         
                         Guards.Add(instantiatedAlertPrefab);
-                        GuardObservations.Add(instantiatedAlertPrefab, new float[5]);
+                        GuardObservations.Add(instantiatedAlertPrefab, new float[6]);
                     }
                         
                 }
@@ -408,7 +407,7 @@ namespace Training
                                 Quaternion.identity, transform);
 
                         Guards.Add(instantiatedPatrolPrefab);
-                        GuardObservations.Add(instantiatedPatrolPrefab, new float[5]);
+                        GuardObservations.Add(instantiatedPatrolPrefab, new float[6]);
                         
                         GuardsSwap.Add(Instantiate(
                                 guardAlertPrefab,
@@ -420,6 +419,9 @@ namespace Training
                     }
                 }
         }
+        
+        
+        
 
         /// <summary>
         ///     Spawns guard at a random guard spawn tile

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Enums;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -46,6 +47,8 @@ namespace TestScripts
             var distances3 = rayBuffers[2][3];
             var distances4 = rayBuffers[3][3];
             var distances5 = rayBuffers[4][3];
+            
+            
             
             // I want to convert these distances into Vector3's
             // assuming this script is attached to gameobject the rays are cast from

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Enums;
+using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
@@ -76,33 +78,76 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         public override void CollectObservations(VectorSensor sensor)
         {
-            // own position (2 floats)
-            sensor.AddObservation(NormalisedPositionX());
-            sensor.AddObservation(NormalisedPositionY());
+            
+            //TODO mapScale
 
+            Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
+            
             var nearestExitVector =
                 transform.GetNearestTile(
                     1,
-                    InstanceController.TileDict[TileType.ExitTiles],
+                    instanceControllerTileDict[TileType.ExitTiles],
                     x => true)[0].Position;
-
+            
+            // own position (2 floats)
+            sensor.AddObservation(NormalisedPositionX());
+            sensor.AddObservation(NormalisedPositionY());
+            
             // distance to nearest exit (1 float)
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
             // position of nearest exit (2 floats)
-            AddNearestTilePositions(sensor, 1, InstanceController.TileDict[TileType.ExitTiles]);
+            AddNearestTilePositions(sensor, 1, instanceControllerTileDict[TileType.ExitTiles]);
 
             // position of nearest input tiles (12 floats)
-            AddNearestTilePositions(sensor, 6, InstanceController.TileDict[TileType.EnvTiles]);
-            
+            AddNearestTilePositions(sensor, 6, instanceControllerTileDict[TileType.EnvTiles]);
+
+            int requestedGuardObvs = 3;
             // nearest guards (6)
-            AddNearestGuards(sensor, 3);
+            AddNearestGuards(sensor, requestedGuardObvs);
 
-            // colliding with env (1 float)
-            sensor.AddObservation(IsColliding);
-
+            AddGuardObservations(sensor, requestedGuardObvs);
+            
             // trail of visited locations (20)
             AddVisitedMemoryTrail(sensor);
+        }
+
+        private void AddGuardObservations(VectorSensor sensor, int requestedGuardObvs)
+        {
+            try
+            {
+                var nearestGuards = GetNearestGuards(requestedGuardObvs);
+                nearestGuards.ForEach(guard =>
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        sensor.AddObservation(InstanceController.GuardObservations[guard][i]);
+                    }
+                });
+                var nearestGuardsCount = nearestGuards.Count;
+                if (requestedGuardObvs > nearestGuardsCount)
+                {
+                    int difference = requestedGuardObvs - nearestGuardsCount;
+                    for (int i = 0; i < difference; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            sensor.AddObservation(0);
+                        }
+                    }
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                for (int i = 0; i < requestedGuardObvs; i++)
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        sensor.AddObservation(0);
+                    }
+                }
+            }
+            
         }
 
         /// <summary>
@@ -116,6 +161,8 @@ namespace Agents
                 .gameObject
                 .GetNearest(amount, InstanceController.Guards, x => true);
         }
+        
+        
 
 
         /// <summary>

@@ -49,13 +49,16 @@ namespace Agents
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent()=>
+        private bool CloseToAgent() =>
             Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
+        
         
 
 
         public override void CollectObservations(VectorSensor sensor)
         {
+            //TODO mapScale
+            
             // own position (2)
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
@@ -79,11 +82,13 @@ namespace Agents
             AddVisitedMemoryTrail(sensor);
 
             //exits (6)
-            AddNearestTilePositions(sensor, 3, InstanceController.TileDict[TileType.ExitTiles]);
+            var instanceControllerTileDict = InstanceController.TileDict;
+            AddNearestTilePositions(sensor, 3, instanceControllerTileDict[TileType.ExitTiles]);
 
             //env tiles position (12)
-            AddNearestTilePositions(sensor, 6, InstanceController.TileDict[TileType.EnvTiles]);
+            AddNearestTilePositions(sensor, 6, instanceControllerTileDict[TileType.EnvTiles]);
         }
+        
 
 
         public override void OnActionReceived(float[] vectorAction)

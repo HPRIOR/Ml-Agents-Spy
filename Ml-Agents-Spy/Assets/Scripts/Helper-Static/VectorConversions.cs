@@ -4,11 +4,9 @@ using UnityEngine;
 public static class VectorConversions
 {
     
-    public static Vector3 RayCastHitLocation(Quaternion rotation, Vector3 position, float distance)
-    {
-        Vector3 direction = rotation * Vector3.forward;
-        return position + (direction  * distance);
-    }
+    public static Vector3 RayCastHitLocation(Vector3 direction, Vector3 position, float distance) =>
+         position + (direction  * distance);
+    
     public static Vector2 ConvertToVector2(Transform t)
     {
         var position = t.position;

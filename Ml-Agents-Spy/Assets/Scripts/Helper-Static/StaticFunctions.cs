@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using Enums;
-using Google.Protobuf.WellKnownTypes;
 
 public static class StaticFunctions
 {
@@ -26,11 +25,7 @@ public static class StaticFunctions
     {
         return mapScale % 2 == 0 ? mapScale * 5 - 0f : mapScale * 5 + 1f;
     }
-
-    //public static float MaxVectorDistanceToExit(int mapScale)
-    //{
-    //    return mapScale % 2 == 0 ? mapScale * 10 - 1.4f : mapScale * 10 + 0.6f;
-    //}
+    
     
     public static float MaxVectorDistanceToExit(int mapScale)
     {
