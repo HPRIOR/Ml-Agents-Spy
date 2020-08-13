@@ -57,7 +57,7 @@ namespace Agents
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            //TODO mapScale
+            sensor.AddObservation(InstanceController.AgentMapScale);
             
             // own position (2)
             sensor.AddObservation(NormalisedPositionX());
@@ -67,16 +67,7 @@ namespace Agents
             AddSpyLocalPositions(sensor);
 
             // position of other guards (6)
-            var guardObservationCount = 3;
-            if (CanMove)
-                AddNearestGuards(sensor, guardObservationCount);
-            else
-                // observations added with count 
-                for (var i = 0; i < guardObservationCount; i++)
-                {
-                    sensor.AddObservation(0);
-                    sensor.AddObservation(0);
-                }
+            AddNearestGuardPositions(sensor);
 
             //memory trail (20)
             AddVisitedMemoryTrail(sensor);
@@ -88,7 +79,20 @@ namespace Agents
             //env tiles position (12)
             AddNearestTilePositions(sensor, 6, instanceControllerTileDict[TileType.EnvTiles]);
         }
-        
+
+        private void AddNearestGuardPositions(VectorSensor sensor)
+        {
+            var guardObservationCount = 3;
+            if (CanMove)
+                AddNearestGuards(sensor, guardObservationCount);
+            else
+                // observations added with count 
+                for (var i = 0; i < guardObservationCount; i++)
+                {
+                    sensor.AddObservation(0);
+                    sensor.AddObservation(0);
+                }
+        }
 
 
         public override void OnActionReceived(float[] vectorAction)

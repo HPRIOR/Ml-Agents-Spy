@@ -95,7 +95,7 @@ namespace Agents
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            //TODO mapScale
+            sensor.AddObservation(InstanceController.AgentMapScale);
             
             // Own position
             sensor.AddObservation(NormalisedPositionX());

@@ -79,7 +79,7 @@ namespace Agents
         public override void CollectObservations(VectorSensor sensor)
         {
             
-            //TODO mapScale
+            sensor.AddObservation(InstanceController.AgentMapScale);
 
             Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
             

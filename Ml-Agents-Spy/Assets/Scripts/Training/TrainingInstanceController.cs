@@ -515,23 +515,26 @@ namespace Training
                 .ToList()
                 .ForEach(t =>
                 {
-                    // swap transform positions
                     var (inPlay, outPlay) = t;
-                    var inPlayGuardTransform = inPlay.transform;
-                    outPlay.transform.position = inPlayGuardTransform.position;
-                    inPlayGuardTransform.position -= new Vector3(0, 100, 0);
-                    outPlay.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    inPlay.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    Rigidbody outPlayRb = outPlay.GetComponent<Rigidbody>();
+                    Rigidbody inPlayRb = inPlay.GetComponent<Rigidbody>();
+                    
+                    //move agents
+                    outPlayRb.transform.position = inPlay.transform.position;
+                    inPlayRb.transform.position -=  new Vector3(0, 100, 0);
+                    // stop their movement
+                    outPlayRb.velocity = Vector3.zero;
+                    inPlayRb.velocity = Vector3.zero;
                     //swap lists
                     Guards.Remove(inPlay);
                     Guards.Add(outPlay);
                     GuardsSwap.Remove(outPlay);
                     GuardsSwap.Add(inPlay);
+                    
                     // change Can Move
-                    var inPlayGuardScript = inPlay.GetComponent<AbstractGuard>();
-                    var outPlayGuardScript = outPlay.GetComponent<AbstractGuard>();
-                    inPlayGuardScript.CanMove = false;
-                    outPlayGuardScript.CanMove = true;
+                    inPlay.GetComponent<AbstractGuard>().CanMove =false;
+                    outPlay.GetComponent<AbstractGuard>().CanMove = true;
+                    
                 });
         }
         
