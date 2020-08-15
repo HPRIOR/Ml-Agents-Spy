@@ -2,6 +2,6 @@
 {
     public interface IAgentMemoryFactory
     {
-        IAgentMemory GetAgentMemoryClass();
+        IAgentMemory GetAgentMemoryClass(int mapScale);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
 using Training;
@@ -14,7 +13,7 @@ namespace Agents
     {
         private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
         private IAgentMemory _agentMemory;
-        private Rigidbody _rigidbody;
+        protected Rigidbody _rigidbody;
         protected TrainingInstanceController InstanceController;
         protected float MaxLocalDistance;
         protected abstract float Speed { get; }
@@ -29,8 +28,9 @@ namespace Agents
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
             _rigidbody = GetComponent<Rigidbody>();
-            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass();
-            MaxLocalDistance = GetMaxLocalDistance(InstanceController.AgentMapScale);
+            var instanceControllerAgentMapScale = InstanceController.AgentMapScale;
+            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(instanceControllerAgentMapScale);
+            MaxLocalDistance = GetMaxLocalDistance(instanceControllerAgentMapScale);
         }
         
 

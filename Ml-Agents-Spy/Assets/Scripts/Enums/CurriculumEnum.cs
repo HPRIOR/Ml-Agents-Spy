@@ -5,6 +5,16 @@
         AdvancedPathFinding,
         SimplePathFinding,
         SimpleTestCurriculum,
-        AdvancedTestCurriculum
+        AdvancedTestCurriculum,
+        SimplePatrolGuardPathFinding,
+        AdvancedPatrolGuardPathFinding,
+        SimplePatrolGuardPathFindingWithSpy,
+        AdvancedPatrolGuardPathFindingWithSpy,
+        SimpleGuardAlert,
+        AdvancedGuardAlert,
+        SimpleSpyEvade,
+        AdvancedSpyEvade,
+        AdvancedRandom,
+        SimpleRandom
     }
 }

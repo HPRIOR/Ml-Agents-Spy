@@ -4,9 +4,9 @@ namespace Agents
 {
     public class AgentMemoryFactory : IAgentMemoryFactory
     {
-        public IAgentMemory GetAgentMemoryClass()
+        public IAgentMemory GetAgentMemoryClass(int mapScale)
         {
-            return new MovementTracker(20);
+            return new MovementTracker(20, mapScale);
         }
     }
 }

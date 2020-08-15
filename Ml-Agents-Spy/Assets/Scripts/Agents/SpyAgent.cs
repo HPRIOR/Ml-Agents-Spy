@@ -17,8 +17,9 @@ namespace Agents
         /// </summary>
         public override void OnEpisodeBegin()
         {
-            Constructor();
             if (CompletedEpisodes > 0) InstanceController.Restart();
+            Constructor();
+           
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         public override void CollectObservations(VectorSensor sensor)
         {
-            
+            // map scale (1)
             sensor.AddObservation(InstanceController.AgentMapScale);
 
             Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
@@ -106,6 +107,7 @@ namespace Agents
             // nearest guards (6)
             AddNearestGuards(sensor, requestedGuardObvs);
 
+            // 6 per guard 
             AddGuardObservations(sensor, requestedGuardObvs);
             
             // trail of visited locations (20)

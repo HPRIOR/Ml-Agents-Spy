@@ -58,6 +58,7 @@ namespace Agents
 
         private bool AgentHasMovedEnough(Vector3 agentPosition, Vector3 backOfQueue, float distanceBetweenNodes)
         {
+            // change this the distance has to be greater than x from any node in the queue 
             return Vector3.Distance(agentPosition, backOfQueue) > distanceBetweenNodes;
         }
     }

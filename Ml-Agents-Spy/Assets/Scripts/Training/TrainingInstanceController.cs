@@ -8,6 +8,7 @@ using EnvSetup;
 using Interfaces;
 using Unity.MLAgents;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Training
 {
@@ -16,10 +17,10 @@ namespace Training
     /// </summary>
     public class TrainingInstanceController : MonoBehaviour
     {
-        /// <summary>
-        ///     The amount of times a restart has been requested by an agent during one training episode
-        /// </summary>
-        private int _agentRequestRestartCount;
+        ///// <summary>
+        /////     The amount of times a restart has been requested by an agent during one training episode
+        ///// </summary>
+        //private int _agentRequestRestartCount;
 
         /// <summary>
         ///     Contains GameObjects from scene hierarchy
@@ -27,8 +28,7 @@ namespace Training
         private Dictionary<ParentObject, GameObject> _parentObjects;
 
         public Dictionary<GameObject, float[]> GuardObservations { get; set; } = new Dictionary<GameObject, float[]>();
-
-
+        
         public GameObject topParent;
         public GameObject debugParent;
         public GameObject envParent;
@@ -49,14 +49,12 @@ namespace Training
         public bool hasMiddleTiles = true;
        
         public Material[] materials;
-
-        
-        
         
         public bool TestSetUpComplete { get; private set; }
         
         public bool debugSetup;
         public bool waitForTestSetup = true;
+        public bool randomiseParameters;
          
         /// <summary>
         ///     Instantiated spy in the scene
@@ -137,11 +135,11 @@ namespace Training
         /// </summary>
         private void InitCurrSetup()
         {
-            var curriculumParam =
-                Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+            Random rand = new Random();
+            var curriculumParam = randomiseParameters ? rand.Next(1, 6) :
+                Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
-
             CreateEnv.PopulateEnv(tileLogic, _parentObjects, gameParamMapScale, materials);
             InitialiseAgents(gameParams);
         }
@@ -165,7 +163,7 @@ namespace Training
             try
             {
                 if (debugSetup) DebugRestart();
-                else RestartCurriculum();
+                else CurriculumRestart();
             }
             catch (MapCreationException)
             {
@@ -181,41 +179,26 @@ namespace Training
         private void DebugRestart()
         {
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsDebug();
-            if (_agentRequestRestartCount == NumberOfAgentsIn(trainingScenario, Guards.Count))
-            {
-                ClearChildrenOf(envParent);
-                var tileLogic = GetTileLogicDebug(tileLogicBuilder);
-                CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, materials);
-                SetAgentPosition(gameParams);
-                _agentRequestRestartCount = 0;
-            }
-            else
-            {
-                _agentRequestRestartCount++;
-            }
+            ClearChildrenOf(envParent);
+            var tileLogic = GetTileLogicDebug(tileLogicBuilder);
+            CreateEnv.PopulateEnv(tileLogic, _parentObjects, mapScale, materials);
+            SetAgentPosition(gameParams);
         }
 
         /// <summary>
         ///     Resets the environment and agent positions with parameters from curriculum
         /// </summary>
-        private void RestartCurriculum()
+        private void CurriculumRestart()
         {
-            var curriculumParam =
-                Academy.Instance.EnvironmentParameters.GetWithDefault("spy_curriculum", 1.0f);
+            //TODO create bool: IsRandom. If is random, get random param
+            Random rand = new Random();
+            var curriculumParam = randomiseParameters ? rand.Next(1, 6) :
+                Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
-
-            if (_agentRequestRestartCount == NumberOfAgentsIn(trainingScenario, Guards.Count))
-            {
-                ClearChildrenOf(envParent);
-                var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
-                CreateEnv.PopulateEnv(tileLogic, _parentObjects, gameParamMapScale, materials);
-                SetAgentPosition(gameParams);
-                _agentRequestRestartCount = 0;
-            }
-            else
-            {
-                _agentRequestRestartCount++;
-            }
+            ClearChildrenOf(envParent);
+            var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
+            CreateEnv.PopulateEnv(tileLogic, _parentObjects, gameParamMapScale, materials);
+            SetAgentPosition(gameParams);
         }
 
 
@@ -518,10 +501,17 @@ namespace Training
                     var (inPlay, outPlay) = t;
                     Rigidbody outPlayRb = outPlay.GetComponent<Rigidbody>();
                     Rigidbody inPlayRb = inPlay.GetComponent<Rigidbody>();
+
+                    outPlayRb.isKinematic = true;
+                    inPlayRb.isKinematic = true;
                     
                     //move agents
                     outPlayRb.transform.position = inPlay.transform.position;
                     inPlayRb.transform.position -=  new Vector3(0, 100, 0);
+                    
+                    outPlayRb.isKinematic = false;
+                    inPlayRb.isKinematic = false;
+                    
                     // stop their movement
                     outPlayRb.velocity = Vector3.zero;
                     inPlayRb.velocity = Vector3.zero;

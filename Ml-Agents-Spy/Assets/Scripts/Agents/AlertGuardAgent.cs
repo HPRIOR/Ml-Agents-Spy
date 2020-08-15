@@ -1,4 +1,8 @@
-﻿using Enums;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using Enums;
+using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static StaticFunctions;
@@ -8,6 +12,7 @@ namespace Agents
     public class AlertGuardAgent : AbstractGuard
     {
         protected override float Speed { get; } = 20;
+        
 
         public override void Heuristic(float[] actionsOut)
         {
@@ -20,9 +25,9 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
+            if (CompletedEpisodes > 0) InstanceController.Restart();
             Constructor();
             if (InstanceController.trainingScenario == TrainingScenario.SpyEvade) CanMove = false;
-            if (CompletedEpisodes > 0) InstanceController.Restart();
         }
 
         public (float, float) GetSpyLocalPositions()
@@ -38,8 +43,6 @@ namespace Agents
             var normalisedLocalPositionY = NormalisedFloat(-MaxLocalDistance, MaxLocalDistance,
                 localPosition.z);
             return (normalisedLocalPositionX, normalisedLocalPositionY);
-            
-            
         }
 
         private void AddSpyLocalPositions(VectorSensor sensor)
@@ -49,9 +52,6 @@ namespace Agents
             sensor.AddObservation(y);
         }
 
-        private bool CloseToAgent() =>
-            Vector3.Distance(transform.position, InstanceController.Spy.transform.position) < 1.1;
-        
         
 
 
@@ -93,11 +93,14 @@ namespace Agents
                     sensor.AddObservation(0);
                 }
         }
-
+        
+        private bool CloseToAgent() =>
+            Vector3.Distance(_rigidbody.position,
+                         InstanceController.Spy.GetComponent<Rigidbody>().position) < 1.1f;
+        
 
         public override void OnActionReceived(float[] vectorAction)
         {
-            AddReward(-1f / MaxStep);
             if (CloseToAgent())
             {
                 if (InstanceController.trainingScenario == TrainingScenario.SpyEvade)
@@ -106,11 +109,11 @@ namespace Agents
                 }
                 else
                 {
-                    SetReward(1);
+                    SetReward(1f);
                     EndEpisode();
                 }
             }
-
+            AddReward(-1f / MaxStep);
             if (CanMove) MoveAgent(vectorAction[0]);
         }
     }

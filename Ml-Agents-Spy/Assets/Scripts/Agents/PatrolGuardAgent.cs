@@ -60,8 +60,8 @@ namespace Agents
         // Some things may be able to move into awake or start if they are not needed every map update 
         public override void OnEpisodeBegin()
         {
+            if (CompletedEpisodes > 0) InstanceController.Restart();
             Constructor();
-            
             var tileDict = InstanceController.TileDict;
             var freeEnvTiles =
                 tileDict[TileType.FreeTiles]
@@ -70,16 +70,14 @@ namespace Agents
             _patrolGuardTileManager =
                 new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
 
-            if (CompletedEpisodes > 0) InstanceController.Restart();
+            
         }
 
         private void AddNearestPatrolTiles(VectorSensor sensor) =>
             GetNearestPatrolTilePositions().ForEach(sensor.AddObservation);
-           
-        
 
 
-        public List<float> GetNearestPatrolTilePositions() =>
+        private List<float> GetNearestPatrolTilePositions() =>
             _currentPatrolTiles
                 .Select(t => 
                 {
@@ -95,6 +93,7 @@ namespace Agents
 
         public override void CollectObservations(VectorSensor sensor)
         {
+            //map scale
             sensor.AddObservation(InstanceController.AgentMapScale);
             
             // Own position
@@ -143,14 +142,20 @@ namespace Agents
 
         public override void OnActionReceived(float[] vectorAction)
         {
+            AddReward(-1f/MaxStep);
 
-            CheckCurrentTileReward();
+            CheckCurrentTile();
 
-            CheckForSpyObservation();
+            RayPerceptionOutput.RayOutput[] rayOutputs = 
+                RayPerceptionSensor
+                    .Perceive(_eyes.GetRayPerceptionInput())
+                    .RayOutputs;
+            
+            CheckForSpyObservation(rayOutputs);
             
             if (CanMove)
             {
-                GetObservationDistances(_rayBuffers);
+                GetObservationDistances(_rayBuffers, rayOutputs);
                 MoveAgent(vectorAction[0]);
                 RotateHead(vectorAction[1]);
             }
@@ -163,17 +168,16 @@ namespace Agents
             }
         }
 
-        private void CheckCurrentTileReward()
+        private void CheckCurrentTile()
         {
-            if (_patrolGuardTileManager.CanRewardAgent(transform)) SetReward(0.01f);
+            // needed in this order to change current tile
+            _patrolGuardTileManager.CanRewardAgent(transform);
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
         }
 
-        private void CheckForSpyObservation()
+        private void CheckForSpyObservation(RayPerceptionOutput.RayOutput[] rayOutputs)
         {
-            RayPerceptionSensor
-                .Perceive(_eyes.GetRayPerceptionInput())
-                .RayOutputs
+            rayOutputs
                 .ToList()
                 .ForEach(output =>
                 {
@@ -193,17 +197,12 @@ namespace Agents
         }
 
 
-        private void GetObservationDistances(List<float[]> rayBuffers)
+        private void GetObservationDistances(List<float[]> rayBuffers, RayPerceptionOutput.RayOutput[] rayOutputs)
         {
-
-            var rayOutputs = RayPerceptionSensor
-                .Perceive(_eyes.GetRayPerceptionInput())
-                .RayOutputs;
-            
             for (int i = 0; i < 5; i++)
                 rayOutputs[i].ToFloatArray(2, 0, rayBuffers[i]);
 
-            DebugRays(rayOutputs);
+            DebugRays();
 
             var headTransform = _head.transform;
             var headTransformForward = headTransform.forward;
@@ -245,23 +244,24 @@ namespace Agents
             Vector3 outerRightPosition)
         {
             var thisGameObject = transform.gameObject;
-            InstanceController.GuardObservations[thisGameObject][0] =
+            var guardObservations = InstanceController.GuardObservations;
+            guardObservations[thisGameObject][0] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerLeftPosition.x);
-            InstanceController.GuardObservations[thisGameObject][1] =
+            guardObservations[thisGameObject][1] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerLeftPosition.z);
-            InstanceController.GuardObservations[thisGameObject][2] =
+            guardObservations[thisGameObject][2] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, middleRayPosition.x);
-            InstanceController.GuardObservations[thisGameObject][3] =
+            guardObservations[thisGameObject][3] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, middleRayPosition.z);
-            InstanceController.GuardObservations[thisGameObject][4] =
+            guardObservations[thisGameObject][4] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerRightPosition.x);
-            InstanceController.GuardObservations[thisGameObject][5] =
+            guardObservations[thisGameObject][5] =
                 StaticFunctions.NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, outerRightPosition.z);
 
-            // InstanceController.GuardObservations[thisGameObject].ToList().ForEach(x => Debug.Log(x));
+            //InstanceController.GuardObservations[thisGameObject].ToList().ForEach(x => Debug.Log(x));
         }
 
-        private void DebugRays(RayPerceptionOutput.RayOutput[] rayOutPuts)
+        private void DebugRays()
         {
             var forward = _eyes.transform.forward;
             var rightMostAngle = Quaternion.Euler(0, 15, 0) * forward;
@@ -289,9 +289,7 @@ namespace Agents
             Debug.DrawLine(position, 
                 centerLeftMost.GetPoint(_rayBuffers[4][3].ReverseNormalise(eyesRayLength) * 0.765f));
         }
-        
-        
 
-        
+       
     }
 }
