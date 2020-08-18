@@ -13,10 +13,10 @@
             {
                 case 1:
                     _mapScale = 2;
-                    _mapDiff = 20;
+                    _mapDiff = 0;
                     _exitCount = 2;
                     _guardAgentCount = 1;
-                    _hasMiddleTiles = true;
+                    _hasMiddleTiles = false;
                     break;
                 case 2:
                     _mapScale = 3;

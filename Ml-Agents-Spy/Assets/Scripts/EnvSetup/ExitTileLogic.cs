@@ -19,7 +19,7 @@ namespace EnvSetup
         {
             _matrixSize = matrixSize;
             _requestedExitCount = requestedExitCount;
-            // can proceed doesn't reset itself because no new class is created!!!!!!!
+            
         }
 
         public int ExitCount { get; private set; }
@@ -44,7 +44,7 @@ namespace EnvSetup
 
         public void SetExitTiles()
         {
-            var associatedList = AssociateExitCountWithTileGroup(_groupedAdjacentTiles);
+            List<(int MaxExit, List<IEnvTile> tileGroup)> associatedList = AssociateExitCountWithTileGroup(_groupedAdjacentTiles);
 
             var r = new Random();
             for (var i = 0; i < ExitCount; i++)
@@ -152,7 +152,6 @@ namespace EnvSetup
             if ((tiles.Count == 1) | (tiles.Count == 2) | (tiles.Count == 3)) return 1;
             var nearestCeilingDivThree = tiles.Count;
             while (nearestCeilingDivThree % 3 != 0) nearestCeilingDivThree += 1;
-
             return nearestCeilingDivThree / 3;
         }
 

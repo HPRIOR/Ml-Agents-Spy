@@ -13,7 +13,7 @@ namespace Agents
     {
         private readonly IAgentMemoryFactory _agentMemoryFactory = new AgentMemoryFactory();
         private IAgentMemory _agentMemory;
-        protected Rigidbody _rigidbody;
+        protected Rigidbody AgentRigidbody;
         protected TrainingInstanceController InstanceController;
         protected float MaxLocalDistance;
         protected abstract float Speed { get; }
@@ -27,7 +27,7 @@ namespace Agents
         protected void Constructor()
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
-            _rigidbody = GetComponent<Rigidbody>();
+            AgentRigidbody = GetComponent<Rigidbody>();
             var instanceControllerAgentMapScale = InstanceController.AgentMapScale;
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(instanceControllerAgentMapScale);
             MaxLocalDistance = GetMaxLocalDistance(instanceControllerAgentMapScale);
@@ -49,7 +49,7 @@ namespace Agents
             else if (action == 4) movementDirection = transform.right * -0.5f;
 
             //transform.Translate(movementDirection * Time.fixedDeltaTime * Speed);
-            _rigidbody.MovePosition(transform.position + movementDirection * Time.fixedDeltaTime * Speed);
+            AgentRigidbody.MovePosition(transform.position + movementDirection * Time.fixedDeltaTime * Speed);
         }
 
         private List<IEnvTile> GetNearestTiles(int amount, List<IEnvTile> inputTiles) =>

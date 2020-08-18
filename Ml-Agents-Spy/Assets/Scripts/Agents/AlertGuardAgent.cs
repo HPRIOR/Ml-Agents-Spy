@@ -95,7 +95,7 @@ namespace Agents
         }
         
         private bool CloseToAgent() =>
-            Vector3.Distance(_rigidbody.position,
+            Vector3.Distance(AgentRigidbody.position,
                          InstanceController.Spy.GetComponent<Rigidbody>().position) < 1.1f;
         
 

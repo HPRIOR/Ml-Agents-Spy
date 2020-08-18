@@ -25,7 +25,7 @@ namespace Agents
         {
             if (_initialVectorPlaced)
             {
-                if (AgentHasMovedEnough(agentPosition, _queue.MostRecentlyAdded(), _distanceBetweenNodes))
+                if (AgentHasMovedEnough(agentPosition, _queue.ToList(), _distanceBetweenNodes))
                 {
                     if (_queue.Count >= _memorySize / 2) _queue.Dequeue();
                     _queue.Enqueue(agentPosition);
@@ -56,10 +56,11 @@ namespace Agents
             return vectorFloats;
         }
 
-        private bool AgentHasMovedEnough(Vector3 agentPosition, Vector3 backOfQueue, float distanceBetweenNodes)
+        private bool AgentHasMovedEnough(Vector3 agentPosition, List<Vector3> queue, float distanceBetweenNodes)
         {
-            // change this the distance has to be greater than x from any node in the queue 
-            return Vector3.Distance(agentPosition, backOfQueue) > distanceBetweenNodes;
+            // change this the distance has to be greater than x from any node in the queue
+            return queue.All(q => Vector3.Distance(agentPosition, q) > distanceBetweenNodes);
+            //return Vector3.Distance(agentPosition, queue) > distanceBetweenNodes;
         }
     }
 }

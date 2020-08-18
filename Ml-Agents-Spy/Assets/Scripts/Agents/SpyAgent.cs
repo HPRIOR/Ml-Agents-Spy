@@ -17,7 +17,11 @@ namespace Agents
         /// </summary>
         public override void OnEpisodeBegin()
         {
-            if (CompletedEpisodes > 0) InstanceController.Restart();
+            if (CompletedEpisodes > 0)
+            { 
+                InstanceController.Restart();
+            } 
+            
             Constructor();
            
         }

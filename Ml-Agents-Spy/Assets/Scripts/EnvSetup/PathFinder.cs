@@ -12,15 +12,14 @@ namespace EnvSetup
         ///     For each tile it will attempt to visit NESW neighbor and change its Path to true
         ///     Can move to adjacent tile if it is not an environment tile, if it hasn't already been visited and if it not null
         /// </summary>
-        /// <param name="startEnvTile">Tile which the path starts from</param>
-        public void GetPath(IEnvTile startEnvTile)
+        /// <param name="envTile">Tile which the path starts from</param>
+        public void GetPath(IEnvTile envTile)
         {
-            // DebugSphere(tile.Position);
-            startEnvTile.OnPath = true;
+            envTile.OnPath = true;
             foreach (var direction in Enum.GetValues(typeof(Direction)).Cast<Direction>())
-                if (!startEnvTile.AdjacentTile[direction].HasEnv & !startEnvTile.AdjacentTile[direction].OnPath &
-                    !(startEnvTile.AdjacentTile[direction] is null))
-                    GetPath(startEnvTile.AdjacentTile[direction]);
+                if (!envTile.AdjacentTile[direction].HasEnv & !envTile.AdjacentTile[direction].OnPath &
+                    !(envTile.AdjacentTile[direction] is null))
+                    GetPath(envTile.AdjacentTile[direction]);
         }
 
 

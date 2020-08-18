@@ -2,6 +2,6 @@
 {
     public interface IPathFinder
     {
-        void GetPath(IEnvTile startEnvTile);
+        void GetPath(IEnvTile envTile);
     }
 }

@@ -99,6 +99,9 @@ namespace Agents
             // Own position
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
+            
+            // rotation of head
+            sensor.AddObservation(StaticFunctions.NormalisedFloat(0, 360,_head.transform.rotation.eulerAngles.y));
 
             // NearestPatrolTile
             AddNearestPatrolTiles(sensor);
@@ -135,15 +138,13 @@ namespace Agents
                 rotateDirection = headTransform.up * -1;
                 
             }
-
             headTransform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
         }
         
 
         public override void OnActionReceived(float[] vectorAction)
         {
-            AddReward(-1f/MaxStep);
-
+            
             CheckCurrentTile();
 
             RayPerceptionOutput.RayOutput[] rayOutputs = 
@@ -170,8 +171,10 @@ namespace Agents
 
         private void CheckCurrentTile()
         {
-            // needed in this order to change current tile
-            _patrolGuardTileManager.CanRewardAgent(transform);
+            if (_patrolGuardTileManager.CanRewardAgent(transform))
+            {
+                SetReward(0.01f);
+            }
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
         }
 
@@ -186,7 +189,6 @@ namespace Agents
                         var instanceControllerTrainingScenario = InstanceController.trainingScenario;
                         if (instanceControllerTrainingScenario == TrainingScenario.GuardPatrolWithSpy)
                         {
-                            SetReward(1);
                             EndEpisode();
                         }
 
@@ -206,7 +208,7 @@ namespace Agents
 
             var headTransform = _head.transform;
             var headTransformForward = headTransform.forward;
-            var position = headTransform.position;
+            var position = headTransform.localPosition;
             
             var (middleRayPosition, outerRightPosition, outerLeftPosition) 
                 = GetRayPosition(rayBuffers, headTransformForward, position);

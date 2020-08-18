@@ -55,6 +55,7 @@ namespace Training
         public bool debugSetup;
         public bool waitForTestSetup = true;
         public bool randomiseParameters;
+        private bool firstSetup = true;
          
         /// <summary>
         ///     Instantiated spy in the scene
@@ -104,19 +105,24 @@ namespace Training
         /// </summary>
         public void InitSetup()
         {
-            try
+            if (firstSetup)
             {
-                ClearChildrenOf(envParent);
-                if (debugSetup) InitDebugSetup();
-                else InitCurrSetup();
-                TestSetUpComplete = true;
+                try
+                {
+                    ClearChildrenOf(envParent);
+                    if (debugSetup) InitDebugSetup();
+                    else InitCurrSetup();
+                    TestSetUpComplete = true;
+                }
+                catch (MapCreationException) 
+                {
+                    //Debug.Log(e);
+                    ClearChildrenOf(envParent);
+                    InitSetup();
+                }
+                firstSetup = false;
             }
-            catch (MapCreationException)
-            {
-                //Debug.Log(e);
-                ClearChildrenOf(envParent);
-                InitSetup();
-            }
+            
         }
 
         /// <summary>
@@ -136,7 +142,7 @@ namespace Training
         private void InitCurrSetup()
         {
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 6) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
@@ -167,7 +173,6 @@ namespace Training
             }
             catch (MapCreationException)
             {
-                //Debug.Log(e);
                 ClearChildrenOf(envParent);
                 Restart();
             }
@@ -190,9 +195,8 @@ namespace Training
         /// </summary>
         private void CurriculumRestart()
         {
-            //TODO create bool: IsRandom. If is random, get random param
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 6) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             ClearChildrenOf(envParent);
@@ -354,7 +358,6 @@ namespace Training
                 RandomHelper.GetUniqueRandomList(maxNumOfGuard,
                     TileDict[TileType.GuardTiles].Count);
             
-            // should be reference by variable, then added to Guards, then Dict)
             for (var i = 0; i < maxNumOfGuard; i++)
                 if (inputTrainingScenario != TrainingScenario.SpyEvade)
                 {
