@@ -28,9 +28,8 @@ namespace Agents
         {
             InstanceController = GetComponentInParent<TrainingInstanceController>();
             AgentRigidbody = GetComponent<Rigidbody>();
-            var instanceControllerAgentMapScale = InstanceController.AgentMapScale;
-            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(instanceControllerAgentMapScale);
-            MaxLocalDistance = GetMaxLocalDistance(instanceControllerAgentMapScale);
+            _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(2);
+            MaxLocalDistance = GetMaxLocalDistance(6);
         }
         
 

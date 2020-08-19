@@ -66,7 +66,7 @@ namespace Agents
             var freeEnvTiles =
                 tileDict[TileType.FreeTiles]
                     .Concat(tileDict[TileType.GuardTiles])
-                    .Concat(tileDict[TileType.SpyTile]);
+                    .Concat(tileDict[TileType.SpyTile]).Where(tile => tile.OnPath);
             _patrolGuardTileManager =
                 new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
 
@@ -102,7 +102,7 @@ namespace Agents
             
             // rotation of head
             sensor.AddObservation(StaticFunctions.NormalisedFloat(0, 360,_head.transform.rotation.eulerAngles.y));
-
+            
             // NearestPatrolTile
             AddNearestPatrolTiles(sensor);
 
@@ -136,7 +136,6 @@ namespace Agents
             else if (action == 2)
             {
                 rotateDirection = headTransform.up * -1;
-                
             }
             headTransform.Rotate(rotateDirection, Time.fixedDeltaTime * 200f);
         }
@@ -146,14 +145,12 @@ namespace Agents
         {
             
             CheckCurrentTile();
-
             RayPerceptionOutput.RayOutput[] rayOutputs = 
                 RayPerceptionSensor
                     .Perceive(_eyes.GetRayPerceptionInput())
                     .RayOutputs;
-            
             CheckForSpyObservation(rayOutputs);
-            
+            CheckHeadRotation(_head.transform.rotation.eulerAngles.y, vectorAction[0]);
             if (CanMove)
             {
                 GetObservationDistances(_rayBuffers, rayOutputs);
@@ -166,6 +163,29 @@ namespace Agents
                 {
                     InstanceController.GuardObservations[transform.gameObject][i] = 0;
                 }
+            }
+        }
+
+        private void CheckHeadRotation(float headRotation, float movementDirection)
+        {
+            switch (movementDirection)
+            {
+                case 1:
+                    if (headRotation > 340 || headRotation < 20)
+                        SetReward(0.0025f);
+                    break;
+                case 2:
+                    if (headRotation > 160 & headRotation < 200) 
+                        SetReward(0.0025f);
+                    break;
+                case 3:
+                    if (headRotation > 70 & headRotation < 110)
+                        SetReward(0.0025f);
+                    break;
+                case 4: 
+                    if (headRotation > 250 & headRotation < 290)
+                        SetReward(0.0025f);
+                    break;
             }
         }
 
@@ -197,8 +217,7 @@ namespace Agents
                     }
                 });
         }
-
-
+        
         private void GetObservationDistances(List<float[]> rayBuffers, RayPerceptionOutput.RayOutput[] rayOutputs)
         {
             for (int i = 0; i < 5; i++)
@@ -212,6 +231,7 @@ namespace Agents
             
             var (middleRayPosition, outerRightPosition, outerLeftPosition) 
                 = GetRayPosition(rayBuffers, headTransformForward, position);
+            
             //Debug.Log(outerLeftPosition);
             //Debug.Log(middleRayPosition);
             //Debug.Log(outerRightPosition);

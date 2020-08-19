@@ -56,7 +56,6 @@ namespace Agents
         /// <returns></returns>
         public bool CanRewardAgent(Transform agentPosition)
         {
-            // TODO refactor to void - rename to check position
             var nearestTile =
                 agentPosition.GetNearestTile(1, GuardTiles, tile => true).First();
 
