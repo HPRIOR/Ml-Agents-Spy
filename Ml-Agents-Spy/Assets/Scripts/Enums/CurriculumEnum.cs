@@ -15,6 +15,6 @@
         SimpleSpyEvade,
         AdvancedSpyEvade,
         AdvancedRandom,
-        SimpleRandom
+        PathFinding
     }
 }

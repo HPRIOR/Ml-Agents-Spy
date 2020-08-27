@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Interfaces;
@@ -11,6 +10,7 @@ namespace Agents
     public class SpyAgent : AbstractAgent
     {
         protected override float Speed { get; } = 10;
+        private IEnumerable<IEnvTile> _freeTiles;
 
         /// <summary>
         ///     Called at the start of each training episode.
@@ -20,10 +20,15 @@ namespace Agents
             if (CompletedEpisodes > 0)
             { 
                 InstanceController.Restart();
-            } 
-            
+            }
             Constructor();
-           
+            
+            Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
+            _freeTiles
+                = instanceControllerTileDict[TileType.FreeTiles]
+                    .Concat(instanceControllerTileDict[TileType.GuardTiles])
+                    .Concat(instanceControllerTileDict[TileType.SpyTile]).Where(tile => tile.OnPath);
+
         }
 
         /// <summary>
@@ -33,7 +38,8 @@ namespace Agents
         public override void OnActionReceived(float[] action)
         {
             // small punishment each step (magnitude of entire episode: max cumulative -1)
-            AddReward(-1f / MaxStep);
+            // 5000 is an arbitrarily high number so that rewards are homogenised when testing different max steps 
+            AddReward(-1f / 5000);
             RewardAndRestartIfExitReached(DistancesToEachExitPoint());
             MoveAgent(action[0]);
         }
@@ -88,24 +94,23 @@ namespace Agents
 
             Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
             
+            // own position (2 floats)
+            sensor.AddObservation(NormalisedPositionX());
+            sensor.AddObservation(NormalisedPositionY());
+            
             var nearestExitVector =
                 transform.GetNearestTile(
                     1,
                     instanceControllerTileDict[TileType.ExitTiles],
                     x => true)[0].Position;
-            
-            // own position (2 floats)
-            sensor.AddObservation(NormalisedPositionX());
-            sensor.AddObservation(NormalisedPositionY());
-            
             // distance to nearest exit (1 float)
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
             // position of nearest exit (2 floats)
             AddNearestTilePositions(sensor, 1, instanceControllerTileDict[TileType.ExitTiles]);
 
-            // position of nearest input tiles (12 floats)
-            AddNearestTilePositions(sensor, 6, instanceControllerTileDict[TileType.EnvTiles]);
+            // position of nearest input tiles (20 floats)
+            AddNearestTilePositions(sensor, 10, _freeTiles.ToList());
 
             int requestedGuardObvs = 3;
             // nearest guards (6)

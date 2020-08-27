@@ -17,10 +17,6 @@ namespace Training
     /// </summary>
     public class TrainingInstanceController : MonoBehaviour
     {
-        ///// <summary>
-        /////     The amount of times a restart has been requested by an agent during one training episode
-        ///// </summary>
-        //private int _agentRequestRestartCount;
 
         /// <summary>
         ///     Contains GameObjects from scene hierarchy
@@ -142,7 +138,7 @@ namespace Training
         private void InitCurrSetup()
         {
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 7) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
@@ -196,7 +192,7 @@ namespace Training
         private void CurriculumRestart()
         {
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 7) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             ClearChildrenOf(envParent);

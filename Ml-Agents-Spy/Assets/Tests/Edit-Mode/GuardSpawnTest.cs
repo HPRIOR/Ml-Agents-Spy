@@ -24,22 +24,11 @@ namespace Tests
         public void TestGuardPlacesFilledWithEnvTiles()
         {
             var matrix = GetTileMatrix(3);
-            matrix[1, 15].HasEnv = true;
-            matrix[2, 15].HasEnv = true;
-            matrix[3, 15].HasEnv = true;
-            matrix[4, 15].HasEnv = true;
-            matrix[5, 15].HasEnv = true;
-            matrix[6, 15].HasEnv = true;
-            matrix[7, 15].HasEnv = true;
-            matrix[8, 15].HasEnv = true;
-            matrix[9, 15].HasEnv = true;
-            matrix[10, 15].HasEnv = true;
-            matrix[11, 15].HasEnv = true;
-            matrix[12, 15].HasEnv = true;
-            matrix[13, 15].HasEnv = true;
-            matrix[14, 15].HasEnv = true;
-            matrix[15, 15].HasEnv = true;
+            foreach (var envTile in matrix)
+                envTile.HasEnv = true;
+            
             var guardTileLogic = new GuardTileLogic(3, matrixSize(3), 3);
+            
             guardTileLogic.GetPotentialGuardPlaces(matrix);
             Assert.AreEqual(false, guardTileLogic.GuardPlacesAreAvailable());
         }

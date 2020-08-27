@@ -38,6 +38,8 @@ namespace EnvSetup
                     return new AdvancedSpyEvadeCurriculum(curriculumParam);
                 case CurriculumEnum.AdvancedRandom:
                     return new AdvancedRandomCurriculum(curriculumParam);
+                case CurriculumEnum.PathFinding:
+                    return new PathFindingCurriculum(curriculumParam);
             }
 
             throw new InvalidEnumArgumentException("Invalid Enum passed to Facade");

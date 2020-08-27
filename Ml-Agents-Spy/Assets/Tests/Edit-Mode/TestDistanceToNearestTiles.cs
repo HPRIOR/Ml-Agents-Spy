@@ -29,7 +29,7 @@ namespace Tests
         [Test]
         public void TestNearestTileCount()
         {
-            (var t, var envTiles) = GetTestStuff();
+            var (t, envTiles) = GetTestStuff();
 
             var nearestTile = t.GetNearestTile(1, envTiles, x => true);
             var nearestTwoTile = t.GetNearestTile(2, envTiles, x => true);

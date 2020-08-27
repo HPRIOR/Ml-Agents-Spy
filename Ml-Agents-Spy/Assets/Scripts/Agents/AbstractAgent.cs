@@ -16,7 +16,7 @@ namespace Agents
         protected Rigidbody AgentRigidbody;
         protected TrainingInstanceController InstanceController;
         protected float MaxLocalDistance;
-        protected abstract float Speed { get; }
+        protected abstract float Speed { get;}
         
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Agents
             InstanceController = GetComponentInParent<TrainingInstanceController>();
             AgentRigidbody = GetComponent<Rigidbody>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(2);
-            MaxLocalDistance = GetMaxLocalDistance(6);
+            MaxLocalDistance = GetMaxLocalDistance(5);
         }
         
 
@@ -57,8 +57,6 @@ namespace Agents
                 inputTiles,
                 x => true);
         
-
-
         public List<float> GetNearestTilePositions(int amount, List<IEnvTile> inputTile) => 
             GetNearestTiles(amount, inputTile)
                 .Select(tiles =>

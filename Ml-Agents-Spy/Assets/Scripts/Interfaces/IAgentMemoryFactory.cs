@@ -2,6 +2,6 @@
 {
     public interface IAgentMemoryFactory
     {
-        IAgentMemory GetAgentMemoryClass(int mapScale);
+        IAgentMemory GetAgentMemoryClass(int distanceBetweenNodes);
     }
 }
