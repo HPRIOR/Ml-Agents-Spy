@@ -10,6 +10,7 @@ namespace Tests.TestSetup
         protected void Init()
         {
             SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
+            //
         }
 
         [TearDown]
