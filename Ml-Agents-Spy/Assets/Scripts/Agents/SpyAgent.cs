@@ -89,9 +89,6 @@ namespace Agents
         /// <param name="sensor">Sensor used to pass observations</param>
         public override void CollectObservations(VectorSensor sensor)
         {
-            // map scale (1)
-            sensor.AddObservation(InstanceController.AgentMapScale);
-
             Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
             
             // own position (2 floats)
@@ -119,7 +116,7 @@ namespace Agents
             // 6 per guard 
             AddGuardObservations(sensor, requestedGuardObvs);
             
-            // trail of visited locations (20)
+            // trail of visited locations (40)
             AddVisitedMemoryTrail(sensor);
         }
 

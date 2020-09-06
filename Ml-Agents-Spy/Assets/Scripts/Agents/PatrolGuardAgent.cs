@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Enums;
 using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Agents
 {
     public class PatrolGuardAgent : AbstractGuard
     {
-        private List<IPatrolGuardTile> _currentPatrolTiles = new List<IPatrolGuardTile>(){null, null, null};
+        private List<IPatrolGuardTile> _currentPatrolTiles = new List<IPatrolGuardTile>{null, null, null};
         private RayPerceptionSensorComponent3D _eyes;
         private GameObject _head;
 
@@ -20,16 +22,18 @@ namespace Agents
 
         private List<float[]> _rayBuffers;
 
+        private readonly float[] _lookBuffer = new float[10];
+        private int _bufferCount;
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
-            actionsOut[1] = 0;
+//            actionsOut[1] = 0;
             if (Input.GetKey(KeyCode.W)) actionsOut[0] = 1;
             else if (Input.GetKey(KeyCode.S)) actionsOut[0] = 2;
             else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
             else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
-            else if (Input.GetKey(KeyCode.Q)) actionsOut[1] = 1;
-            else if (Input.GetKey(KeyCode.E)) actionsOut[1] = 2;
+            //else if (Input.GetKey(KeyCode.Q)) actionsOut[1] = 1;
+            //else if (Input.GetKey(KeyCode.E)) actionsOut[1] = 2;
         }
 
         private void Awake()
@@ -69,8 +73,6 @@ namespace Agents
                     .Concat(tileDict[TileType.SpyTile]).Where(tile => tile.OnPath);
             _patrolGuardTileManager =
                 new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
-
-            
         }
 
         private void AddNearestPatrolTiles(VectorSensor sensor) =>
@@ -94,33 +96,35 @@ namespace Agents
         public override void CollectObservations(VectorSensor sensor)
         {
             //map scale
-            sensor.AddObservation(InstanceController.AgentMapScale);
+            //sensor.AddObservation(InstanceController.AgentMapScale);
             
             // Own position
             sensor.AddObservation(NormalisedPositionX());
             sensor.AddObservation(NormalisedPositionY());
             
             // rotation of head
-            sensor.AddObservation(StaticFunctions.NormalisedFloat(0, 360,_head.transform.rotation.eulerAngles.y));
+//            sensor.AddObservation(StaticFunctions.NormalisedFloat(0, 360,_head.transform.rotation.eulerAngles.y));
             
             // NearestPatrolTile
             AddNearestPatrolTiles(sensor);
+            
+            
 
             // NearestGuardAgents
-            if (CanMove)
-                AddNearestGuards(sensor, guardObvs);
-            else
-                for (var i = 0; i < guardObvs; i++)
-                {
-                    sensor.AddObservation(0);
-                    sensor.AddObservation(0);
-                }
+            // if (CanMove)
+            //     AddNearestGuards(sensor, guardObvs);
+            // else
+            //     for (var i = 0; i < guardObvs; i++)
+            //     {
+            //         sensor.AddObservation(0);
+            //         sensor.AddObservation(0);
+            //     }
 
             // TrailMemory
-            AddVisitedMemoryTrail(sensor);
+            //AddVisitedMemoryTrail(sensor);
 
             // nearest env tiles
-            AddNearestTilePositions(sensor, envTiles, InstanceController.TileDict[TileType.EnvTiles]);
+            //AddNearestTilePositions(sensor, envTiles, InstanceController.TileDict[TileType.EnvTiles]);
         }
 
         private void RotateHead(float input)
@@ -150,12 +154,18 @@ namespace Agents
                     .Perceive(_eyes.GetRayPerceptionInput())
                     .RayOutputs;
             CheckForSpyObservation(rayOutputs);
-            CheckHeadRotation(_head.transform.rotation.eulerAngles.y, vectorAction[0]);
+//            CheckHeadRotation(_head.transform.rotation.eulerAngles.y, vectorAction[0]);
             if (CanMove)
             {
                 GetObservationDistances(_rayBuffers, rayOutputs);
                 MoveAgent(vectorAction[0]);
-                RotateHead(vectorAction[1]);
+                
+                // update look buffer
+                _lookBuffer[_bufferCount] = vectorAction[0];
+                _ = _bufferCount == 9 ? _bufferCount = 0 : _bufferCount += 1;
+                
+                // rotate head based on maximum number in buffer
+                //RotateHead(vectorAction[1]);
             }
             else
             {
@@ -166,25 +176,63 @@ namespace Agents
             }
         }
 
-        private void CheckHeadRotation(float headRotation, float movementDirection)
+        private float GetMaxLookBuffer(float[] buffer)
         {
+            Dictionary<float, int> bufferCount = new Dictionary<float, int>();
+            foreach (var f in buffer)
+            {
+                if (bufferCount.ContainsKey(f))
+                {
+                    bufferCount[f] += 1;
+                }
+                else
+                {
+                    bufferCount.Add(f, 1);
+                }
+            }
+            return bufferCount.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+        }
+
+        private void ChangeHeadDirection(float direction, GameObject head)
+        {
+            switch (direction)
+            {
+                case 1:
+                    // up
+                    break;
+                case 2:
+                    // down 
+                    break;
+                case 3:
+                    // right 
+                    break;
+                case 4:
+                    // left
+                    break;
+                default:
+                    break;
+            }
+        }
+            private void CheckHeadRotation(float headRotation, float movementDirection)
+        {
+            const float reward = -0.0001f;
             switch (movementDirection)
             {
                 case 1:
-                    if (headRotation > 340 || headRotation < 20)
-                        SetReward(0.0025f);
+                    if (!(headRotation > 340 || headRotation < 20))
+                        SetReward(reward);
                     break;
                 case 2:
-                    if (headRotation > 160 & headRotation < 200) 
-                        SetReward(0.0025f);
+                    if (!(headRotation > 160 & headRotation < 200)) 
+                        SetReward(reward);
                     break;
                 case 3:
-                    if (headRotation > 70 & headRotation < 110)
-                        SetReward(0.0025f);
+                    if (!(headRotation > 70 & headRotation < 110))
+                        SetReward(reward);
                     break;
                 case 4: 
-                    if (headRotation > 250 & headRotation < 290)
-                        SetReward(0.0025f);
+                    if (!(headRotation > 250 & headRotation < 290))
+                        SetReward(reward);
                     break;
             }
         }
@@ -193,7 +241,7 @@ namespace Agents
         {
             if (_patrolGuardTileManager.CanRewardAgent(transform))
             {
-                SetReward(0.01f);
+                SetReward(0.001f);
             }
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
         }

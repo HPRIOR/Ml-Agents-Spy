@@ -97,7 +97,7 @@ namespace Training
 
 
         /// <summary>
-        ///     Called once by Academy.Instance at the start of training. Sets up environment, and Spawns agents
+        ///     Called once by Academy.Instance at the start of training. Sets up environment, and Spawns agent
         /// </summary>
         public void InitSetup()
         {
@@ -123,6 +123,7 @@ namespace Training
 
         /// <summary>
         ///     This sets up environment and agents based on parameters given in inspector, or otherwise
+        ///       # these can be replaced by restart Env so long Initialise agents is accounted for 
         /// </summary>
         private void InitDebugSetup()
         {
@@ -138,7 +139,7 @@ namespace Training
         private void InitCurrSetup()
         {
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 7) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             var (tileLogic, gameParamMapScale) = GetTileLogicAndGameParamMapScaleCurr(tileLogicBuilder, gameParams);
@@ -192,7 +193,7 @@ namespace Training
         private void CurriculumRestart()
         {
             Random rand = new Random();
-            var curriculumParam = randomiseParameters ? rand.Next(1, 7) :
+            var curriculumParam = randomiseParameters ? rand.Next(1, 11) :
                 Academy.Instance.EnvironmentParameters.GetWithDefault(curriculum.ToString(), 1.0f);
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsFromCurr(curriculumParam);
             ClearChildrenOf(envParent);
