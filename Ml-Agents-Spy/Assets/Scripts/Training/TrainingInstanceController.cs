@@ -371,9 +371,18 @@ namespace Training
 
                     if (TrainingScenarioWantsAlert(inputTrainingScenario))
                     {
+                        // TODO change this to move the agent anywhere
+                        var freeTiles = TileDict[TileType.GuardTiles]
+                            .Concat(TileDict[TileType.FreeTiles])
+                            .Where(tile => tile.OnPath)
+                            .ToList();
+                        
+                        var agentIndex = RandomHelper.GetUniqueRandomList(maxNumOfGuard,
+                    freeTiles.Count);
+                        
                         var instantiatedAlertPrefab = 
                             Instantiate(guardAlertPrefab,
-                                TileDict[TileType.GuardTiles][indexes[i]].Position,
+                                freeTiles[agentIndex[i]].Position,
                                 Quaternion.identity, transform);
                         
                         Guards.Add(instantiatedAlertPrefab);
