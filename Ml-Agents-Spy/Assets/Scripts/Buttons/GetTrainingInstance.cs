@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class GetTrainingInstance : MonoBehaviour
 
 {
-     TrainingInstanceController _instanceController;
+     protected TrainingInstanceController _instanceController;
      void Start()
      {
          var trainingInstanceObject = GameObject.FindWithTag("traininginstance");

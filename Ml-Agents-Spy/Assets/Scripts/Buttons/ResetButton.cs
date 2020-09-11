@@ -4,15 +4,9 @@ using Enums;
 using Training;
 using UnityEngine;
 
-public class ResetButton : MonoBehaviour
+public class ResetButton : GetTrainingInstance
 {
-    TrainingInstanceController _instanceController;
-    void Start()
-    {
-        var trainingInstanceObject = GameObject.FindWithTag("traininginstance");
-        _instanceController = trainingInstanceObject.GetComponent<TrainingInstanceController>();
-    }
-
+   
     public void ResetEnv()
     {
         switch (_instanceController.trainingScenario)
