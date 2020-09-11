@@ -125,7 +125,7 @@ namespace Training
         ///     This sets up environment and agents based on parameters given in inspector, or otherwise
         ///       # these can be replaced by restart Env so long Initialise agents is accounted for 
         /// </summary>
-        private void InitDebugSetup()
+        public void InitDebugSetup()
         {
             var (tileLogicBuilder, gameParams) = GetTileLogicBuilderAndGameParamsDebug();
             var tileLogic = GetTileLogicDebug(tileLogicBuilder);
@@ -152,7 +152,7 @@ namespace Training
         ///     Spawns spy and guard agents, and move them into the correct position
         /// </summary>
         /// <param name="gameParams">Parameters of the training scenario (exit count, map scale, difficulty, guard count)</param>
-        private void InitialiseAgents(Dictionary<GameParam, int> gameParams)
+        public void InitialiseAgents(Dictionary<GameParam, int> gameParams)
         {
             if (SpyCanSpawn(trainingScenario)) SpawnSpyAgent();
             SpawnGuardAgent(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount], trainingScenario);
@@ -344,7 +344,7 @@ namespace Training
         /// <param name="numberOfGuards"></param>
         /// <param name="inputExitCount"></param>
         /// <param name="inputTrainingScenario"></param>
-        private void SpawnGuardAgent(int numberOfGuards, int inputExitCount, TrainingScenario inputTrainingScenario)
+        public void SpawnGuardAgent(int numberOfGuards, int inputExitCount, TrainingScenario inputTrainingScenario)
         {
             if (TileDict[TileType.GuardTiles].Count < numberOfGuards)
                 throw new MapCreationException("Number of guards has exceeded the number of spawn places");

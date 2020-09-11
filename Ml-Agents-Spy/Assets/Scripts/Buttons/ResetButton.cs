@@ -19,6 +19,7 @@ public class ResetButton : MonoBehaviour
             case TrainingScenario.SpyEvade:
             case TrainingScenario.GuardPatrolWithSpy:
             case TrainingScenario.GuardAlert:
+            case TrainingScenario.SpyPathFinding:
                 _instanceController.Spy.GetComponent<SpyAgent>().EndEpisode();
                 break;
             case TrainingScenario.GuardPatrol:
