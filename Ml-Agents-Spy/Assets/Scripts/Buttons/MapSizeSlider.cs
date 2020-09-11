@@ -1,19 +1,23 @@
-﻿using UnityEngine;
+﻿using Training;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Buttons
 {
-   public class MapSizeSlider : GetTrainingInstance
+   public class MapSizeSlider : MonoBehaviour
    {
+      public GameObject instanceControllerPref;
       public GameObject mapDifficultySlider;
       public GameObject numberOfGuardSlider;
       public GameObject exitCount;
+      private TrainingInstanceController _instanceController;
       private Slider _difficultySliderScript;
       private Slider _guardSliderScript;
       private Slider _exitCountSlider;
 
       public void Start()
       {
+         _instanceController = instanceControllerPref.GetComponent<TrainingInstanceController>();
          _difficultySliderScript = mapDifficultySlider.GetComponent<Slider>();
          _guardSliderScript = numberOfGuardSlider.GetComponent<Slider>();
          _exitCountSlider = exitCount.GetComponent<Slider>();
