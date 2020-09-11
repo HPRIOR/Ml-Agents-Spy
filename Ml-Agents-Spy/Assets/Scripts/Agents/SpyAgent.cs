@@ -10,25 +10,34 @@ namespace Agents
     public class SpyAgent : AbstractAgent
     {
         protected override float Speed { get; } = 10;
+
         private IEnumerable<IEnvTile> _freeTiles;
+
+        public delegate void SpyEpisodeBeginHandler();
+
+        public event SpyEpisodeBeginHandler SpyEpisodeBegin;
 
         /// <summary>
         ///     Called at the start of each training episode.
         /// </summary>
         public override void OnEpisodeBegin()
         {
-            if (CompletedEpisodes > 0)
-            { 
-                InstanceController.Restart();
-            }
+            MustBeCalledAnyEpisodeBegin();
+            SpyEpisodeBegin?.Invoke();
+            //Debug.Log("Spy called OnEpisodeBegin");
+            if (CompletedEpisodes > 0) InstanceController.Restart();
+            if (!HasSubscribed) SubscribeToOtherAgents();
+        }
+
+        protected override void MustBeCalledAnyEpisodeBegin()
+        {
+            //Debug.Log("Spy Has Called Must be Called"); 
             Constructor();
-            
             Dictionary<TileType,List<IEnvTile>> instanceControllerTileDict = InstanceController.TileDict;
             _freeTiles
                 = instanceControllerTileDict[TileType.FreeTiles]
                     .Concat(instanceControllerTileDict[TileType.GuardTiles])
                     .Concat(instanceControllerTileDict[TileType.SpyTile]).Where(tile => tile.OnPath);
-
         }
 
         /// <summary>
@@ -39,7 +48,7 @@ namespace Agents
         {
             // small punishment each step (magnitude of entire episode: max cumulative -1)
             // 5000 is an arbitrarily high number so that rewards are homogenised when testing different max steps 
-            AddReward(-1f / 5000);
+            AddReward(-1f / MaxStep);
             RewardAndRestartIfExitReached(DistancesToEachExitPoint());
             MoveAgent(action[0]);
         }
@@ -48,13 +57,12 @@ namespace Agents
         ///     Gets the distances to each exit point
         /// </summary>
         /// <returns>Float array of the distance to each exit point</returns>
-        private float[] DistancesToEachExitPoint()
-        {
-            return InstanceController
+        private float[] DistancesToEachExitPoint() =>
+            InstanceController
                 .TileDict[TileType.ExitTiles]
                 .Select(tile => Vector3.Distance(tile.Position, transform.position))
                 .ToArray();
-        }
+        
 
         /// <summary>
         ///     Sets a reward if the distance any exit point is less than 1
@@ -103,8 +111,8 @@ namespace Agents
             // distance to nearest exit (1 float)
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
-            // position of nearest exit (2 floats)
-            AddNearestTilePositions(sensor, 1, instanceControllerTileDict[TileType.ExitTiles]);
+            // position of nearest exit (6 floats)
+            AddNearestTilePositions(sensor, 3, instanceControllerTileDict[TileType.ExitTiles]);
 
             // position of nearest input tiles (20 floats)
             AddNearestTilePositions(sensor, 10, _freeTiles.ToList());
@@ -155,7 +163,6 @@ namespace Agents
                     }
                 }
             }
-            
         }
 
         /// <summary>
@@ -163,15 +170,11 @@ namespace Agents
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        protected override List<GameObject> GetNearestGuards(int amount)
-        {
-            return transform
+        protected override List<GameObject> GetNearestGuards(int amount) => 
+            transform
                 .gameObject
                 .GetNearest(amount, InstanceController.Guards, x => true);
-        }
         
-        
-
 
         /// <summary>
         ///     Adds normalised distance to nearest exit to observations
@@ -184,12 +187,11 @@ namespace Agents
         }
 
         // made public for testing 
-        public float DistanceToNearestExit(Vector3 nearestExitVector)
-        {
-            return StaticFunctions.NormalisedFloat(0f,
+        public float DistanceToNearestExit(Vector3 nearestExitVector) => 
+            StaticFunctions.NormalisedFloat(0f, 
                 StaticFunctions.MaxVectorDistanceToExit(InstanceController.AgentMapScale), Vector3.Distance(
-                    nearestExitVector,
+                    nearestExitVector, 
                     transform.position));
-        }
+        
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using Enums;
-using Interfaces;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using static StaticFunctions;
@@ -12,8 +10,9 @@ namespace Agents
     public class AlertGuardAgent : AbstractGuard
     {
         protected override float Speed { get; } = 20;
-        
 
+        public delegate void AlertEpisodeBeginHandler();
+        public event AlertEpisodeBeginHandler AlertEpisodeBegin;
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
@@ -25,11 +24,20 @@ namespace Agents
 
         public override void OnEpisodeBegin()
         {
+            MustBeCalledAnyEpisodeBegin();
+            AlertEpisodeBegin?.Invoke();
+            //Debug.Log("AlertGuard called OnEpisodeBegin");
             if (CompletedEpisodes > 0) InstanceController.Restart();
-            Constructor();
             if (InstanceController.trainingScenario == TrainingScenario.SpyEvade) CanMove = false;
+            if (!HasSubscribed) SubscribeToOtherAgents();
         }
 
+        protected override void MustBeCalledAnyEpisodeBegin()
+        {
+            //Debug.Log("Alert Has Called MustBeCalled");
+            Constructor();
+        }
+        
         public (float, float) GetSpyLocalPositions()
         {
             var spyObject = InstanceController.Spy;
@@ -48,16 +56,13 @@ namespace Agents
         private void AddSpyLocalPositions(VectorSensor sensor)
         {
             var (x, y) = GetSpyLocalPositions();
+            //Debug.Log($"{x}, {y}");
             sensor.AddObservation(x);
             sensor.AddObservation(y);
         }
-
         
-
-
         public override void CollectObservations(VectorSensor sensor)
         {
-            sensor.AddObservation(InstanceController.AgentMapScale);
             
             // own position (2)
             sensor.AddObservation(NormalisedPositionX());

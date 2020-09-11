@@ -371,7 +371,6 @@ namespace Training
 
                     if (TrainingScenarioWantsAlert(inputTrainingScenario))
                     {
-                        // TODO change this to move the agent anywhere
                         var freeTiles = TileDict[TileType.GuardTiles]
                             .Concat(TileDict[TileType.FreeTiles])
                             .Where(tile => tile.OnPath)
@@ -433,8 +432,25 @@ namespace Training
                     potentialSpawnTiles.Count);
             for (var i = 0; i < Guards.Count; i++)
             {
-                Guards[i].transform.position = potentialSpawnTiles[indexes[i]].Position;
-                Guards[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                if (trainingScenario != TrainingScenario.GuardAlert)
+                {
+                    Guards[i].transform.position = potentialSpawnTiles[indexes[i]].Position;
+                    Guards[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
+                else
+                {
+                    
+                    var freeTiles = TileDict[TileType.GuardTiles]
+                        .Concat(TileDict[TileType.FreeTiles])
+                        .Where(tile => tile.OnPath)
+                        .ToList();
+                    var maxNumOfGuard = MaxNumberOfGuards(gameParams[GameParam.GuardAgentCount], gameParams[GameParam.ExitCount]); 
+                    var agentIndex = RandomHelper.GetUniqueRandomList(maxNumOfGuard,
+                    freeTiles.Count);
+                        
+                    Guards[i].transform.position = freeTiles[agentIndex[i]].Position;
+                    Guards[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
             }
         }
 

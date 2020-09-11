@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Interfaces;
@@ -19,7 +20,10 @@ namespace Agents
         private List<float[]> _rayBuffers;
         private readonly float[] _lookBuffer = new float[15];
         private int _bufferCount;
-        
+
+        public delegate void PatrolEpisodeBeginHandler();
+
+        public event PatrolEpisodeBeginHandler PatrolEpisodeBegin;
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
@@ -56,7 +60,16 @@ namespace Agents
         
         public override void OnEpisodeBegin()
         {
+            MustBeCalledAnyEpisodeBegin();
+            //Debug.Log("Patrol has called on episode being");
+            PatrolEpisodeBegin?.Invoke();
             if (CompletedEpisodes > 0) InstanceController.Restart();
+            if (!HasSubscribed) SubscribeToOtherAgents();
+        }
+       
+        protected override void MustBeCalledAnyEpisodeBegin()
+        {
+            //Debug.Log("Patrol has called MustBeCalled");
             Constructor();
             var tileDict = InstanceController.TileDict;
             var freeEnvTiles =
@@ -66,7 +79,8 @@ namespace Agents
             _patrolGuardTileManager =
                 new PatrolGuardTileManager(InstanceController.coroutineSurrogate, freeEnvTiles, transform);
         }
-        
+
+
         private void AddNearestPatrolTiles(VectorSensor sensor) =>
             GetNearestPatrolTilePositions().ForEach(sensor.AddObservation);
 
@@ -182,7 +196,7 @@ namespace Agents
                         var instanceControllerTrainingScenario = InstanceController.trainingScenario;
                         if (instanceControllerTrainingScenario == TrainingScenario.GuardPatrolWithSpy)
                         {
-                            EndEpisode();
+                            InstanceController.Spy.GetComponent<SpyAgent>().EndEpisode();
                         }
 
                         if (instanceControllerTrainingScenario == TrainingScenario.SpyEvade)

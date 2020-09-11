@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Enums;
 using Interfaces;
 using Training;
 using Unity.MLAgents;
@@ -17,6 +18,7 @@ namespace Agents
         protected TrainingInstanceController InstanceController;
         protected float MaxLocalDistance;
         protected abstract float Speed { get;}
+        protected bool HasSubscribed { get;  set; } = false;
         
 
         /// <summary>
@@ -26,13 +28,62 @@ namespace Agents
         /// </summary>
         protected void Constructor()
         {
+            
             InstanceController = GetComponentInParent<TrainingInstanceController>();
             AgentRigidbody = GetComponent<Rigidbody>();
             _agentMemory = _agentMemoryFactory.GetAgentMemoryClass(2);
             MaxLocalDistance = GetMaxLocalDistance(5);
         }
-        
 
+        protected abstract void MustBeCalledAnyEpisodeBegin();
+       
+
+
+        protected  void SubscribeToOtherAgents()
+        {
+            IEnumerable<GameObject> allAgents;
+             // subscribe to other Alert agents 
+             if (InstanceController.trainingScenario == TrainingScenario.GuardPatrol)
+             {
+                allAgents =  InstanceController.GuardsSwap
+                                              .Concat(InstanceController.Guards);
+             }
+             else
+             {
+                 allAgents = InstanceController.GuardsSwap
+                     .Concat(InstanceController.Guards).Append(InstanceController.Spy);
+             }
+             
+             allAgents.ToList().ForEach(agent =>
+             {
+                 if (agent.GetInstanceID() != GetInstanceID())
+                 {
+                     var spy = agent.GetComponent<SpyAgent>();
+                     var alert = agent.GetComponent<AlertGuardAgent>();
+                     var patrol = agent.GetComponent<PatrolGuardAgent>();
+                     if (spy != null)
+                     {
+                         //Debug.Log("Subscribed to spy agent");
+                         spy.SpyEpisodeBegin += MustBeCalledAnyEpisodeBegin;
+                     }
+                     
+                     if (alert != null)
+                     {
+                         //Debug.Log("Subscribed to alert agent");
+                         alert.AlertEpisodeBegin += MustBeCalledAnyEpisodeBegin;
+                     }
+                     
+                     if (patrol != null)
+                     {
+                         //Debug.Log("Subscribed to patrol agent");
+                         patrol.PatrolEpisodeBegin += MustBeCalledAnyEpisodeBegin;
+                     }
+                 }
+             });
+             HasSubscribed = true;
+        }
+        
+        
         /// <summary>
         ///     Defines one discrete vector [0](1-4) which defines movement in up left right directions
         /// </summary>

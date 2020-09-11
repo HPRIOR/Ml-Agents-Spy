@@ -9,6 +9,7 @@ TagManager:
   - plane
   - alertguard
   - patrolguard
+  - traininginstance
   layers:
   - Default
   - TransparentFX
