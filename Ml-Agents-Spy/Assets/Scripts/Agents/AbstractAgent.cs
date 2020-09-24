@@ -35,10 +35,16 @@ namespace Agents
             MaxLocalDistance = GetMaxLocalDistance(5);
         }
 
+        /// <summary>
+        /// overriden by each agent - called when other agents events are fired   
+        /// </summary>
         protected abstract void MustBeCalledAnyEpisodeBegin();
        
-
-
+        /// <summary>
+        /// This subscribes the agents to other agents events which occur at the start of each episode.
+        /// This is required to set other agents observations at the start of training - OnEpisodeBegin only called
+        /// by triggered agent.
+        /// </summary>
         protected  void SubscribeToOtherAgents()
         {
             IEnumerable<GameObject> allAgents;
@@ -102,12 +108,25 @@ namespace Agents
             AgentRigidbody.MovePosition(transform.position + movementDirection * Time.fixedDeltaTime * Speed);
         }
 
+        /// <summary>
+        /// Gets the nearest tiles to the game current gameobject
+        /// </summary>
+        /// <param name="amount">The number of tiles to retrieve</param>
+        /// <param name="inputTiles">The tiles to choose from</param>
+        /// <returns></returns>
         private List<IEnvTile> GetNearestTiles(int amount, List<IEnvTile> inputTiles) =>
             transform.GetNearestTile(
                 amount,
                 inputTiles,
                 x => true);
         
+        /// <summary>
+        /// Gets the positions of the tiles selected by GetNearestTiles.
+        /// Will pad the list with zeros if number of tiles to choose from is less than the requested amount
+        /// </summary>
+        /// <param name="amount">the number of tiles to get their position retrieved</param>
+        /// <param name="inputTile">The tiles to choose from</param>
+        /// <returns>Normalised list of floats</returns>
         public List<float> GetNearestTilePositions(int amount, List<IEnvTile> inputTile) => 
             GetNearestTiles(amount, inputTile)
                 .Select(tiles =>
@@ -128,6 +147,12 @@ namespace Agents
                 .ToList();
         
 
+        /// <summary>
+        /// Adds the retrieved positions to a vector sensor - this is used in the agent to add observations
+        /// </summary>
+        /// <param name="vectorSensor">Class used to add observations to</param>
+        /// <param name="amount">number of tiles to add to vector sensor</param>
+        /// <param name="inputTile">The list of tiles to select from </param>
         protected void AddNearestTilePositions(VectorSensor vectorSensor, int amount, List<IEnvTile> inputTile) => 
             GetNearestTilePositions(amount, inputTile)
                 .ForEach(vectorSensor.AddObservation);
@@ -172,14 +197,26 @@ namespace Agents
                 .PadList(amount * 2, 0)
                 .ToList();
         
-
+        /// <summary>
+        /// Adds nearest guard positions to Vector sensor
+        /// </summary>
+        /// <param name="sensor">Sensor to add observations to</param>
+        /// <param name="amount"></param>
         protected void AddNearestGuards(VectorSensor sensor, int amount) =>
             GetGuardPositions(amount).ForEach(sensor.AddObservation);
         
         
+        /// <summary>
+        /// Returns a normalised float of the gameobjects position on X axis
+        /// </summary>
+        /// <returns></returns>
         public float NormalisedPositionX() =>
             NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.x);
         
+        /// <summary>
+        /// Returns a normalised float of the gameobjects position on Y axis
+        /// </summary>
+        /// <returns></returns>
         public float NormalisedPositionY() => 
             NormalisedFloat(-MaxLocalDistance, MaxLocalDistance, transform.localPosition.z);
         

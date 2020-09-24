@@ -20,12 +20,19 @@ namespace EnvSetup
             _requestedGuardCount = requestedGuardCount;
         }
 
-
+        /// <summary>
+        /// Ensures number of guards are 1 less than the number of exits
+        /// </summary>
+        /// <param name="maxExitCount"></param>
         public void GetMaxExitCount(int maxExitCount)
         {
             _maxGuards = _requestedGuardCount >= maxExitCount ? maxExitCount - 1 : _requestedGuardCount;
         }
 
+        /// <summary>
+        /// updates the private field with the potential spawn points of the guards
+        /// </summary>
+        /// <param name="tiles"></param>
         public void GetPotentialGuardPlaces(IEnvTile[,] tiles)
         {
             _potentialGuardSpawnTiles = PotentialGuardSpawnTiles(tiles, _mapScale, _matrixSize);

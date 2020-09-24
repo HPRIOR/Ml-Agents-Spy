@@ -35,8 +35,11 @@ namespace Agents
         private int _bufferCount;
 
         public delegate void PatrolEpisodeBeginHandler();
-
         public event PatrolEpisodeBeginHandler PatrolEpisodeBegin;
+        /// <summary>
+        /// Allows movement to be overriden by keyboard - for debugging
+        /// </summary>
+        /// <param name="actionsOut"></param>
         public override void Heuristic(float[] actionsOut)
         {
             actionsOut[0] = 0;
@@ -45,7 +48,10 @@ namespace Agents
             else if (Input.GetKey(KeyCode.D)) actionsOut[0] = 3;
             else if (Input.GetKey(KeyCode.A)) actionsOut[0] = 4;
         }
-
+        
+        /// <summary>
+        /// Does setup stuff when the agent is first created
+        /// </summary>
         private void Awake()
         {
             ConfigureLineRenderer();
@@ -54,6 +60,9 @@ namespace Agents
             SetUpRayBuffers();
         }
 
+        /// <summary>
+        /// Gets the components for each line renderer, applies material to them, and set's their width
+        /// </summary>
         private void ConfigureLineRenderer()
         {
             _middleLine = middleLine.GetComponent<LineRenderer>();
@@ -77,6 +86,9 @@ namespace Agents
         }
 
 
+        /// <summary>
+        /// Sets up arrays which can be used to store vector information from the ray perception sensor
+        /// </summary>
         private void SetUpRayBuffers()
         {
             var lengthOfRayOutPuts = RayPerceptionSensor
@@ -117,9 +129,17 @@ namespace Agents
         }
 
 
+        /// <summary>
+        /// Adds the nearest patrol tiles to the vector sensor
+        /// </summary>
+        /// <param name="sensor"></param>
         private void AddNearestPatrolTiles(VectorSensor sensor) =>
             GetNearestPatrolTilePositions().ForEach(sensor.AddObservation);
 
+        /// <summary>
+        /// Gets the positions of the nearest patrol tiles 
+        /// </summary>
+        /// <returns></returns>
         private List<float> GetNearestPatrolTilePositions() =>
             _currentPatrolTiles
                 .Select(t => 
@@ -172,6 +192,11 @@ namespace Agents
             }
         }
 
+        /// <summary>
+        /// Gets the number occuring most in the input array. Used to get the look direction of the agent.
+        /// </summary>
+        /// <param name="buffer">Array which holds the most recent movement directions of the agent</param>
+        /// <returns></returns>
         private float GetMaxLookBuffer(float[] buffer)
         {
             Dictionary<float, int> bufferCount = new Dictionary<float, int>();
@@ -189,6 +214,10 @@ namespace Agents
             return bufferCount.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
+        /// <summary>
+        /// Changes the rotation of the agents eyes based on the input float
+        /// </summary>
+        /// <param name="direction"></param>
         private void ChangeHeadDirection(float direction)
         {
             switch (direction)
@@ -212,6 +241,10 @@ namespace Agents
             }
         }
         
+        /// <summary>
+        /// Retrieves information from the patrol guard tile manager as to whether the agent has moved to a new tile and
+        /// rewards accordingly
+        /// </summary>
         private void CheckCurrentTile()
         {
             if (_patrolGuardTileManager.CanRewardAgent(transform))
@@ -221,6 +254,10 @@ namespace Agents
             _currentPatrolTiles = _patrolGuardTileManager.GetNearestPatrolTile(transform);
         }
 
+        /// <summary>
+        /// Checks if on of the rays omitted by the guard has hit
+        /// </summary>
+        /// <param name="rayOutputs"></param>
         private void CheckForSpyObservation(RayPerceptionOutput.RayOutput[] rayOutputs)
         {
             rayOutputs
@@ -241,6 +278,11 @@ namespace Agents
                 });
         }
         
+        /// <summary>
+        /// Gets the distance between the rays origin and the hit location for each ommited ray
+        /// </summary>
+        /// <param name="rayBuffers"></param>
+        /// <param name="rayOutputs"></param>
         private void GetObservationDistances(List<float[]> rayBuffers, RayPerceptionOutput.RayOutput[] rayOutputs)
         {
             for (int i = 0; i < 5; i++)
@@ -262,6 +304,14 @@ namespace Agents
             AddNormalisedObservationsToArray(outerLeftPosition, middleRayPosition, outerRightPosition);
         }
 
+        /// <summary>
+        /// Returns the hit location for the outer rays, and the middle ray.
+        /// This is used by the Spy to observe the Patrol guards line of sight.
+        /// </summary>
+        /// <param name="rayBuffers"></param>
+        /// <param name="headTransformForward"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
         private (Vector3 middleRayPosition, Vector3 outerRightPosition, Vector3 outerLeftPosition) GetRayPosition(
             List<float[]> rayBuffers, Vector3 headTransformForward, Vector3 position)
         {
@@ -285,6 +335,13 @@ namespace Agents
             return (middleRayPosition, outerRightPosition, outerLeftPosition);
         }
 
+        /// <summary>
+        /// Adds normalised vector information to dictionary in instance controller -
+        /// this is used by the Spy to get the observations of the nearest guards
+        /// </summary>
+        /// <param name="outerLeftPosition"></param>
+        /// <param name="middleRayPosition"></param>
+        /// <param name="outerRightPosition"></param>
         private void AddNormalisedObservationsToArray(Vector3 outerLeftPosition, Vector3 middleRayPosition,
             Vector3 outerRightPosition)
         {

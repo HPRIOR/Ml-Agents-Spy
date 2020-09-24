@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Curriculum
 {
+    /// <summary>
+    /// Protected fields are defined in subclasses. These are then used to retrieve the Builder class, and game param
+    /// dictionary
+    /// </summary>
     public abstract class AbstractCurriculum : ITileLogicFacade
     {
         protected int _exitCount;
@@ -14,6 +18,13 @@ namespace Curriculum
         protected int _mapDiff;
         protected int _mapScale;
 
+        /// <summary>
+        /// Returns a builder class which instantiates the various environment producing classes
+        /// with the various arguments 
+        /// </summary>
+        /// <param name="curriculumParam"></param>
+        /// <param name="parentObjects"></param>
+        /// <returns></returns>
         public ITileLogicBuilder GetTileLogicBuilder(float curriculumParam,
             Dictionary<ParentObject, GameObject> parentObjects)
         {
@@ -27,6 +38,10 @@ namespace Curriculum
             );
         }
 
+        /// <summary>
+        /// Returns a dictionary of game parameters, these are defined as public fields after InterpretCurriculum has
+        /// been called in the subclasses
+        /// </summary>
         public Dictionary<GameParam, int> EnvParams =>
             new Dictionary<GameParam, int>
             {

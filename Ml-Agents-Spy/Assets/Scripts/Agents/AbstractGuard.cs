@@ -6,6 +6,10 @@ namespace Agents
     // this may be incorporated into abstract agent because the agent will need to use this 
     public abstract class AbstractGuard : AbstractAgent
     {
+        /// <summary>
+        /// Determines if the agent can move
+        /// Used when swapping the alerted guard with the patrol guard
+        /// </summary>
         public bool CanMove { get; set; } = true;
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace EnvSetup
 
         private List<List<IEnvTile>> _groupedAdjacentTiles;
 
-
+        
         public ExitTileLogic(int matrixSize, int requestedExitCount)
         {
             _matrixSize = matrixSize;
@@ -25,6 +25,11 @@ namespace EnvSetup
         public int ExitCount { get; private set; }
         public bool CanProceed { get; set; } = true;
 
+        /// <summary>
+        /// Checks if there are enough potential exit tile to proceed. If there are it will get the maximum exit count
+        /// and update the grouped exit tiles field
+        /// </summary>
+        /// <param name="tileMatrix"></param>
         public void CheckMatrix(IEnvTile[,] tileMatrix)
         {
             var potentialExitTiles = PotentialExitTiles(tileMatrix, _matrixSize);
@@ -41,7 +46,7 @@ namespace EnvSetup
                     : _requestedExitCount;
             }
         }
-
+        
         public void SetExitTiles()
         {
             List<(int MaxExit, List<IEnvTile> tileGroup)> associatedList = AssociateExitCountWithTileGroup(_groupedAdjacentTiles);
@@ -95,6 +100,11 @@ namespace EnvSetup
                 select tile).ToList();
         }
 
+        /// <summary>
+        /// Groups the potential exit tiles by those which are adjacent to each other
+        /// </summary>
+        /// <param name="tiles"></param>
+        /// <returns></returns>
         private static List<List<IEnvTile>> GroupAdjacentTiles(List<IEnvTile> tiles)
         {
             var orderedTiles = tiles.OrderBy(tile => tile.Coords.y).ToList();
@@ -132,7 +142,12 @@ namespace EnvSetup
             return adjacentTiles.Where(tile => tile.Count > 0).ToList();
         }
 
-
+        /// <summary>
+        /// Returns true if tiles are adjacent to each other
+        /// </summary>
+        /// <param name="envTileOne"></param>
+        /// <param name="envTileTwo"></param>
+        /// <returns></returns>
         private static bool TilesAreAdjacent(IEnvTile envTileOne, IEnvTile envTileTwo)
         {
             return envTileOne == envTileTwo.AdjacentTile[Direction.W];

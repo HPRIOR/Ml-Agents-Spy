@@ -516,6 +516,9 @@ namespace Training
             }
         }
 
+        /// <summary>
+        /// Swaps patrol for alert guard
+        /// </summary>
         public void SwapAgents()
         {
             Guards
