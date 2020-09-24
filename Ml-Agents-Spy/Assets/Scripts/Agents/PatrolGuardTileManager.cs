@@ -28,9 +28,8 @@ namespace Agents
         /// </summary>
         /// <param name="agentPosition"></param>
         /// <returns></returns>
-        public List<IPatrolGuardTile> GetNearestPatrolTile(Transform agentPosition)
-        {
-            return agentPosition
+        public List<IPatrolGuardTile> GetNearestPatrolTile(Transform agentPosition) =>
+            agentPosition
                 .GetNearestTile(
                     3,
                     GuardTiles,
@@ -40,7 +39,6 @@ namespace Agents
                 )
                 .PadList(3, null)
                 .ToList();
-        }
 
 
         /// <summary>

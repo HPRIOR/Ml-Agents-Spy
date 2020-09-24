@@ -111,7 +111,7 @@ namespace Agents
             // distance to nearest exit (1 float)
             AddDistanceToNearestExit(sensor, nearestExitVector);
 
-            // position of nearest exit (6 floats)
+            // position of nearest exits (6 floats)
             AddNearestTilePositions(sensor, 3, instanceControllerTileDict[TileType.ExitTiles]);
 
             // position of nearest input tiles (20 floats)

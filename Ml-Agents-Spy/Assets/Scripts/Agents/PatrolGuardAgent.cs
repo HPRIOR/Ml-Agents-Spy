@@ -15,6 +15,19 @@ namespace Agents
         private RayPerceptionSensorComponent3D _eyes;
         private GameObject _head;
 
+        public GameObject middleLine;
+        public GameObject outerRightLine;
+        public GameObject outerLeftLine;
+        public GameObject innerLeftLine;
+        public GameObject innerRightLine;
+        
+        private LineRenderer _middleLine;
+        private LineRenderer _outerRightLine;
+        private LineRenderer _outerLeftLine;
+        private LineRenderer _innerLeftLine;
+        private LineRenderer _innerRightLine;
+        
+        
         private IPatrolGuardTileManager _patrolGuardTileManager;
         protected override float Speed { get; } = 5;
         private List<float[]> _rayBuffers;
@@ -35,11 +48,34 @@ namespace Agents
 
         private void Awake()
         {
+            ConfigureLineRenderer();
             _head = transform.GetChild(0).gameObject;
             _eyes = _head.GetComponent<RayPerceptionSensorComponent3D>();
             SetUpRayBuffers();
         }
-        
+
+        private void ConfigureLineRenderer()
+        {
+            _middleLine = middleLine.GetComponent<LineRenderer>();
+            _outerRightLine = outerRightLine.GetComponent<LineRenderer>();
+            _outerLeftLine = outerLeftLine.GetComponent<LineRenderer>();
+            _innerLeftLine = innerLeftLine.GetComponent<LineRenderer>();
+            _innerRightLine = innerRightLine.GetComponent<LineRenderer>();
+
+            _middleLine.material = new Material(Shader.Find("Sprites/Default"));
+            _outerLeftLine.material = new Material(Shader.Find("Sprites/Default"));
+            _outerRightLine.material = new Material(Shader.Find("Sprites/Default"));
+            _innerLeftLine.material = new Material(Shader.Find("Sprites/Default"));
+            _innerRightLine.material = new Material(Shader.Find("Sprites/Default"));
+
+            _middleLine.startWidth = 0.1f;
+            _outerLeftLine.startWidth = 0.1f;
+            _outerRightLine.startWidth = 0.1f;
+            _innerLeftLine.startWidth = 0.1f;
+            _innerRightLine.startWidth = 0.1f;
+
+        }
+
 
         private void SetUpRayBuffers()
         {
@@ -286,16 +322,34 @@ namespace Agents
             Ray centerLeftMost = new Ray(position, leftMostAngle);
 
             var eyesRayLength = _eyes.RayLength;
-            Debug.DrawLine(position,
-                centerRightMost.GetPoint(_rayBuffers[3][3].ReverseNormalise(eyesRayLength) * 0.765f));
-            Debug.DrawLine(position, 
-                centerRightMid.GetPoint(_rayBuffers[1][3].ReverseNormalise(eyesRayLength) * 0.765f));
-            Debug.DrawLine(position, 
-                centerRay.GetPoint(_rayBuffers[0][3].ReverseNormalise(eyesRayLength) * 0.765f));
-            Debug.DrawLine(position, 
-                centerLeftMid.GetPoint(_rayBuffers[2][3].ReverseNormalise(eyesRayLength) * 0.765f));
-            Debug.DrawLine(position, 
-                centerLeftMost.GetPoint(_rayBuffers[4][3].ReverseNormalise(eyesRayLength) * 0.765f));
+
+            _middleLine.SetPosition(0, position);
+            _middleLine.SetPosition(1, centerRay.GetPoint(_rayBuffers[0][3].ReverseNormalise(eyesRayLength) * 0.765f));
+
+            _outerLeftLine.SetPosition(0, position);
+            _outerLeftLine.SetPosition(1, centerLeftMost.GetPoint(_rayBuffers[4][3].ReverseNormalise(eyesRayLength) * 0.765f)); 
+            
+            _outerRightLine.SetPosition(0, position);
+            _outerRightLine.SetPosition(1, centerRightMost.GetPoint(_rayBuffers[3][3].ReverseNormalise(eyesRayLength) * 0.765f)); 
+            
+            _innerLeftLine.SetPosition(0, position);
+            _innerLeftLine.SetPosition(1, centerLeftMid.GetPoint(_rayBuffers[2][3].ReverseNormalise(eyesRayLength) * 0.765f)); 
+            
+            _innerRightLine.SetPosition(0, position);
+            _innerRightLine.SetPosition(1, centerRightMid.GetPoint(_rayBuffers[1][3].ReverseNormalise(eyesRayLength) * 0.765f)); 
+            
+            
+            
+            //Debug.DrawLine(position,
+            //    centerRightMost.GetPoint(_rayBuffers[3][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            //Debug.DrawLine(position, 
+            //    centerRightMid.GetPoint(_rayBuffers[1][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            //Debug.DrawLine(position, 
+            //    centerRay.GetPoint(_rayBuffers[0][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            //Debug.DrawLine(position, 
+            //    centerLeftMid.GetPoint(_rayBuffers[2][3].ReverseNormalise(eyesRayLength) * 0.765f));
+            //Debug.DrawLine(position, 
+            //    centerLeftMost.GetPoint(_rayBuffers[4][3].ReverseNormalise(eyesRayLength) * 0.765f));
         }
     }
 }

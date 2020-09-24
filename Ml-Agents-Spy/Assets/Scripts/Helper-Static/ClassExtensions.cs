@@ -32,9 +32,8 @@ public static class ClassExtensions
     /// <param name="predicate">Predicate used to filter which of the targets should be evaluated</param>
     /// <returns>List of game objects in ascending order of distance</returns>
     public static List<GameObject> GetNearest(this GameObject thisGameObject, int amount, List<GameObject> targets,
-        Func<(GameObject gameObjectDistance, float), bool> predicate)
-    {
-        return targets
+        Func<(GameObject gameObjectDistance, float), bool> predicate) => 
+        targets
             .Select(gameObjectDistance => (gameObjectDistance,
                 Vector3.Distance(gameObjectDistance.transform.position, thisGameObject.transform.position)))
             .Where(predicate)
@@ -42,7 +41,7 @@ public static class ClassExtensions
             .Take(amount)
             .Select(t => t.gameObjectDistance)
             .ToList();
-    }
+    
 
     /// <summary>
     ///     Gets the nearest tile(s) to the current transform

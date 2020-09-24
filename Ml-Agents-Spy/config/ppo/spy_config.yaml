@@ -87,7 +87,7 @@ environment_parameters:
           behavior: Spy
           min_lesson_length: 1000
           signal_smoothing: true
-          threshold: 0.7
+          threshold: 0.65
           require_reset: true
       - value:
           sampler_type: constant
@@ -100,7 +100,7 @@ environment_parameters:
           behavior: Spy
           min_lesson_length: 1000
           signal_smoothing: true
-          threshold: 0.70
+          threshold: 0.65
           require_reset: true
       - value:
           sampler_type: constant
@@ -113,7 +113,7 @@ environment_parameters:
           behavior: Spy
           min_lesson_length: 1000
           signal_smoothing: true
-          threshold: 0.70
+          threshold: 0.65
           require_reset: true
       - value:
           sampler_type: constant
@@ -126,7 +126,7 @@ environment_parameters:
           behavior: Spy
           min_lesson_length: 1000
           signal_smoothing: true
-          threshold: 0.70
+          threshold: 0.65
           require_reset: true
       - value:
           sampler_type: constant
