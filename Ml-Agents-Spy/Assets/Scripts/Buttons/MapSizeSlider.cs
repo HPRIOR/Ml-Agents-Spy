@@ -30,7 +30,7 @@ namespace Buttons
                break;
             case 3:
                _instanceController.mapScale = 3;
-               _difficultySliderScript.maxValue = 40;
+               _difficultySliderScript.maxValue = 20;
                break;
             case 4:
                _instanceController.mapScale = 4;
