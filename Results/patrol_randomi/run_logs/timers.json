@@ -1,0 +1,46 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1599297045",
+        "python_version": "3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\mlagents-learn ../config/ppo/patrol_config.yaml --run-id=patrol_randomi",
+        "mlagents_version": "0.18.0",
+        "mlagents_envs_version": "0.18.0",
+        "communication_protocol_version": "1.0.0",
+        "tensorflow_version": "2.2.0",
+        "end_time_seconds": "1599297048"
+    },
+    "total": 2.8877307,
+    "count": 1,
+    "self": 0.23351610000000012,
+    "children": {
+        "run_training.setup": {
+            "total": 0.006000100000000064,
+            "count": 1,
+            "self": 0.006000100000000064
+        },
+        "TrainerController.start_learning": {
+            "total": 2.6482145,
+            "count": 1,
+            "self": 0.0010810000000001097,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 2.6469318,
+                    "count": 1,
+                    "self": 2.6469318
+                },
+                "trainer_threads": {
+                    "total": 7.999999995789153e-07,
+                    "count": 1,
+                    "self": 7.999999995789153e-07
+                },
+                "TrainerController._save_model": {
+                    "total": 0.0002009000000002814,
+                    "count": 1,
+                    "self": 0.0002009000000002814
+                }
+            }
+        }
+    }
+}
