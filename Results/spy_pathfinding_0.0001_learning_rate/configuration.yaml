@@ -1,0 +1,413 @@
+behaviors:
+  Spy:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0001
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      memory: null
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+      curiosity:
+        gamma: 0.99
+        strength: 0.2
+        encoding_size: 256
+        learning_rate: 0.0001
+    init_path: null
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 30000000
+    time_horizon: 128
+    summary_freq: 30000
+    threaded: true
+    self_play: null
+    behavioral_cloning: null
+env_settings:
+  env_path: null
+  env_args: null
+  base_port: 5005
+  num_envs: 1
+  seed: -1
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: false
+environment_parameters:
+  PathFinding:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 201
+          value: 1.0
+      name: lesson_1_ms_1_md_0_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 250
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 202
+          value: 2.0
+      name: lesson_2_ms_1_md_0_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 203
+          value: 3.0
+      name: lesson_3_ms_1_md_1_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 204
+          value: 4.0
+      name: lesson_4_ms_1_md_2_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 205
+          value: 5.0
+      name: lesson_5_ms_1_md_3_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 206
+          value: 6.0
+      name: lesson_6_ms_1_md_4_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 207
+          value: 7.0
+      name: lesson_7_ms_1_md_5_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 208
+          value: 8.0
+      name: lesson_8_ms_2_md_0_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 250
+        signal_smoothing: true
+        threshold: 0.95
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 209
+          value: 9.0
+      name: lesson_9_ms_2_md_5_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.85
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 210
+          value: 10.0
+      name: lesson_10_ms_2_md_10_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 211
+          value: 11.0
+      name: lesson_11_ms_2_md_15_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 212
+          value: 12.0
+      name: lesson_12_ms_2_md_20_ex_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 213
+          value: 13.0
+      name: lesson_13_ms_3_md_0_ex_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 250
+        signal_smoothing: true
+        threshold: 0.9
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 214
+          value: 14.0
+      name: lesson_14_ms_3_md_10_ex_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 215
+          value: 15.0
+      name: lesson_15_ms_3_md_20_ex_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 216
+          value: 16.0
+      name: lesson_16_ms_3_md_30_ex_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 217
+          value: 17.0
+      name: lesson_17_ms_3_md_40_ex_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 218
+          value: 18.0
+      name: lesson_18_ms_4_md_0_ex_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 250
+        signal_smoothing: true
+        threshold: 0.9
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 219
+          value: 19.0
+      name: lesson_19_ms_4_md_20_ex_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 220
+          value: 20.0
+      name: lesson_20_ms_4_md_30_ex_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 221
+          value: 21.0
+      name: lesson_21_ms_4_md_40_ex_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 222
+          value: 22.0
+      name: lesson_22_ms_4_md_50_ex_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 223
+          value: 23.0
+      name: lesson_23_ms_5_md_0_ex_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 250
+        signal_smoothing: true
+        threshold: 0.85
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 224
+          value: 24.0
+      name: lesson_24_ms_5_md_25_ex_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 225
+          value: 25.0
+      name: lesson_25_ms_5_md_50_ex_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.65
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 226
+          value: 26.0
+      name: lesson_26_ms_5_md_75_ex_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.65
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 227
+          value: 27.0
+      name: lesson_27_ms_5_md_100_ex_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 1000
+        signal_smoothing: true
+        threshold: 0.65
+        require_reset: true
+checkpoint_settings:
+  run_id: spy_pathfinding_0.0001_learning_rate
+  initialize_from: null
+  load_model: false
+  resume: false
+  force: false
+  train_model: false
+  inference: false
+debug: false

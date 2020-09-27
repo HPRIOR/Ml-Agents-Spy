@@ -1,0 +1,194 @@
+behaviors:
+  Spy:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      memory:
+        sequence_length: 64
+        memory_size: 128
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+      curiosity:
+        gamma: 0.99
+        strength: 0.2
+        encoding_size: 256
+        learning_rate: 0.0003
+    init_path: results\spy_config_cnn_simple_pathfinding_03_homo_with_mem_trail_and_free_tiles\Spy
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 128
+    summary_freq: 30000
+    threaded: true
+    self_play: null
+    behavioral_cloning: null
+env_settings:
+  env_path: null
+  env_args: null
+  base_port: 5005
+  num_envs: 1
+  seed: -1
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: false
+environment_parameters:
+  AdvancedPathFinding:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9282
+          value: 1.0
+      name: lesson_1
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.9
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9283
+          value: 2.0
+      name: lesson_2
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.85
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9284
+          value: 3.0
+      name: lesson_3
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.85
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9285
+          value: 4.0
+      name: lesson_4
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.85
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9286
+          value: 5.0
+      name: lesson_5
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9287
+          value: 6.0
+      name: lesson_6
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9288
+          value: 7.0
+      name: lesson_7
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.8
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9289
+          value: 8.0
+      name: lesson_8
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9290
+          value: 9.0
+      name: lesson_9
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.75
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9291
+          value: 10.0
+      name: lesson_10
+      completion_criteria:
+        measure: reward
+        behavior: Spy
+        min_lesson_length: 500
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: true
+checkpoint_settings:
+  run_id: spy_config_cnn_advanced_pathfinding_01_homo_with_mem_trail_and_free_tiles
+  initialize_from: spy_config_cnn_simple_pathfinding_03_homo_with_mem_trail_and_free_tiles
+  load_model: false
+  resume: false
+  force: false
+  train_model: false
+  inference: false
+debug: false
